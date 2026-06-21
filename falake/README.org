@@ -53,7 +53,7 @@ These two similar functions both accept three arguments:
         outputs = {
           # Define raw flake output attributes here
         };
-        systems = {
+        allSystems = {
           "x86_64-linux" = {};
           # Other system architectures to build for
         };
@@ -80,7 +80,7 @@ These two similar functions both accept three arguments:
       outputs = {
         # Define raw flake output attributes here
       };
-      systems = {
+      allSystems = {
         "x86_64-linux" = {};
         # Other system architectures to build for
       };
