@@ -1,0 +1,7 @@
+position = "top"
+height = 24
+layer = "background"
+exclusive_zone = false
+
+[[center]]
+type = "tray"

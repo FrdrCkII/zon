@@ -1,14 +1,8 @@
-let
-  overlay = final: prev: {
-    wrapit = prev.lib.filesystem.packagesFromDirectoryRecursive {
-      inherit (prev) callPackage;
-      directory = ./pkgs;
-    };
-  };
-in
 {
   overlays = {
-    default = overlay;
-    wrapit = overlay;
+    default = import ./wrapit;
+    wrapit = import ./wrapit;
+    extra = import ./extra;
+    conf = import ./conf;
   };
 }

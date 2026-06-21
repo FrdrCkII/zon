@@ -1,0 +1,27 @@
+(add-to-list 'load-path (expand-file-name "core" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "pkgs" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "plugins" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "theme" user-emacs-directory))
+
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
+(set-buffer-file-coding-system 'utf-8-unix)
+(set-clipboard-coding-system 'utf-8-unix)
+(set-file-name-coding-system 'utf-8-unix)
+(set-keyboard-coding-system 'utf-8-unix)
+(set-next-selection-coding-system 'utf-8-unix)
+(set-selection-coding-system 'utf-8-unix)
+(set-terminal-coding-system 'utf-8-unix)
+(setq locale-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
+(require 'elpa)
+(require 'lsp-mode)
+(require 'org-mode)
+(require 'tree)
+
+(require 'theme-doom-atom)
+(require 'fonts)
+
+(require 'core)
+(require 'keybinds)
