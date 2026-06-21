@@ -1,0 +1,102 @@
+#+title: README (falake)
+#+author: FrdrCkII
+
+/Falake/ 是一个受 [[https://flake.parts/][flake-parts]] 启发的轻量级 Nix 模块系统，但是专门针对非 _flakes_
+场景重新编写，因此允许在传统 Nix 项目中编写类似 flake-parts 的结构化配置。
+
+* 安装与获取
+
+/Falake/ 可通过以下方式获取：
+
+1. 在 _flake.nix_ 的 _inputs_ 中引入 /falake/
+2. 在传统 Nix 项目中直接导入 _default.nix_
+
+* 基本用法
+
+通过 Flakes 引用 /falake/，或直接导入 _default.nix_ ，将获得以下属性：
+
+#+begin_src nix-ts
+  { lib = { eval = <CODE>; mkFalake = <CODE>; }; }
+#+end_src
+
+- _eval_ : 返回未经修饰的评估结果，适用于调试目的.
+- _mkFalake_ : 返回一个整洁、可直接使用的属性集，用于构建最终配置。
+
+这两个功能相似的函数，均接受三个参数：
+  - _nixpkgs_ ：指向 _nixpkgs_ 的路径
+  - _specialArgs_ ：一个属性集，其内容将被传递到所有 Falake 模块中
+  - _module_ ：一个模块，作为 /falake/ 模块入口点
+
+* 快速开始
+
+** 在 Flakes 项目中使用
+
+#+begin_src nix-ts
+  # flake.nix
+  {
+    inputs = {
+      falake.url = "...";
+    };
+    
+    outputs = { falake, nixpkgs, ... } @ inputs:
+    falake.lib.mkFalake {
+      nixpkgs = nixpkgs.sourceInfo.outPath;
+      specialArgs = { };
+      module = {...}: {
+        imports = [
+          # 在此引入你的模块
+        ];
+        outputs = {
+          # 在此定义原始的 flake 输出属性
+        };
+        systems = {
+          "x86_64-linux" = {};
+          # 其他需要构建的系统架构
+        };
+      };
+    };
+  }
+#+end_src
+
+** 在非 Flakes 项目中使用
+
+#+begin_src nix-ts
+  # default.nix
+  let
+    pins = import ./npins;
+    inherit (pins) nixpkgs falake;
+  in
+  (import falake).lib.mkFalake {
+    nixpkgs = nixpkgs;
+    specialArgs = { };
+    module = {...}: {
+      imports = [
+        # 在此引入你的模块
+      ];
+      outputs = {
+        # 在此定义原始的 flake 输出属性
+      };
+      systems = {
+        "x86_64-linux" = {};
+        # 其他需要构建的系统架构
+      };
+    };
+  };
+#+end_src
+
+* 顶层模块参数
+** _getSystem_
+- 功能：获取特定系统的配置
+- 用途：在模块中访问特定架构的 _perSystem_ 配置
+
+** _withSystem_
+- 功能：在特定系统上下文中执行操作
+- 用途：为指定系统架构创建闭包环境
+
+** _evalSystem_
+- 功能：类似 _getSystem_，但返回 _perSystem_ 选项的原始评估结果
+- 用途：需要访问未经处理的 _perSystem_ 评估数据时使用
+
+* 选项
+参见 [[file:docs/options.md][OPTIONS]]。
+

@@ -1,0 +1,14 @@
+[formatter.alejandra]
+command = "alejandra"
+includes = ["*.nix"]
+priority = 1
+
+[formatter.nixfmt]
+command = "nixfmt"
+includes = ["*.nix"]
+priority = 2
+
+[formatter.toml-sort]
+command = "toml-sort"
+includes = ["*.toml"]
+options = ["-i"]

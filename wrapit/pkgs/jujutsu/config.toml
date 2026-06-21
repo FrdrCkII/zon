@@ -1,0 +1,32 @@
+[aliases]
+amend = ["describe", "-m"]
+c = ["commit"]
+ci = ["commit", "--interactive"]
+dmain = ["diff", "-r", "main"]
+e = ["edit"]
+i = ["git", "init", "--colocate"]
+l = ["log", "-T", "builtin_log_compact"]
+lf = ["log", "-r", "all()"]
+log-recent = ["log", "-r", "default() & recent()"]
+mb = ["bookmark", "set", "-r", "@"]
+nb = ["bookmark", "create", "-r", "@-"]
+pull = ["git", "fetch"]
+push = ["git", "push", "--allow-new"]
+pushall = ["git", "push", "--all"]
+r = ["rebase"]
+rebase-main = ["rebase", "-d", "main"]
+s = ["squash"]
+si = ["squash", "--interactive"]
+squash-desc = ["squash", "::@", "-d", "@"]
+tug = [
+  "bookmark",
+  "move",
+  "--from",
+  "closest_bookmark(@-)",
+  "--to",
+  "@-"
+]
+upmain = ["bookmark", "set", "main"]
+
+[revset-aliases]
+"closest_bookmark(to)" = "heads(::to & bookmarks())"

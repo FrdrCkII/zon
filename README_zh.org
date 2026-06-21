@@ -1,0 +1,32 @@
+#+title: README
+#+author: FrdrCkII
+
+本仓库为单一仓库（monorepo），包含一些用于创建nixos配置的工具与库。关于许可声明
+与仓库结构，请查看 [[file:LICENSE_zh.org][LICENSE]]。
+
+* Falake
+/Falake/ 是一个受到 [[https://flake.parts][flake-parts]] 启发的配置库，专门针对不使用 _flakes_ 的情况重新
+编写。
+- 在这个子项目的文件夹中查看[[file:falake/README_zh.org][详细说明]]。
+- [[https://flake.parts/][flake-parts]] 有一些脱离 _flakes_ 的[[https://github.com/hercules-ci/flake-parts/issues/329][尝试]]，不过在他们开始之前这个项目就已经动工了。
+
+* Nixlock
+/Nixlock/ 是一个简单的 _Rust_ 程序，主要提供了类似 _flakes_ / [[https://github.com/andir/npins][npins]] 的输入锁定功
+能。 /Nixlock/ 非常灵活，得益于 _nix_ 与 _nixpkgs_ 提供的工具链， /nixlock/ 可以
+嵌入任何脚本或程序，并且利用 _Rust_ 的 _async_ 与 _tokio_ 异步的执行它们。
+- 在这个子项目的文件夹中查看[[file:nixlock/README_zh.org][详细说明]]。
+- 嵌入脚本的想法受到了 [[https://nixtamal.toast.al][nixtamal]] 的启发，但 /nixlock/ 进一步扩展了这个想法。
+- 默认使用 _guix_ 风格的 channel.nix 作为锁文件。
+
+* Wrapit
+/Wrapit/ 是一个 _nixpkgs_ 叠加层，提供一些包装软件的函数。主要受到
+[[https://github.com/viperML/wrapper-manager][wrapper-manager]] 启发，但是不使用 _NixOS_ 模块系统。
+- 在这个子项目的文件夹中查看[[file:wrapit/README_zh.org][详细说明]]。
+
+* Zonfig
+/Zonfig/ 是一个 [[https://github.com/mightyiam/dendritic][dendritic-pattern]] 配置框架，但在具体实现的设计理念上与现有框架有
+所不同。 /Zonfig/ 专注于一次创建一个配置而不是一次创建多个配置，这有助于提高特定
+情况下的评估速度，例如 _nix flake show_ 命令。并且 /zonfig/ 主要使用 _NixOS_ 模
+块系统的内置功能而不是 [[https://github.com/vic/den][den]] 风格的函数库，因此拥有更易于理解的模型与错误消息。
+- 在这个子项目的文件夹中查看[[file:zonfig/README_zh.org][详细说明]]。
+

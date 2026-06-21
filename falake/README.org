@@ -1,0 +1,108 @@
+#+title: README (falake)
+#+author: FrdrCkII
+
+/Falake/ is a lightweight Nix module system inspired by [[https://flake.parts/][flake-parts]], but
+specifically rewritten for non-_flakes_ scenarios, thus enabling you to write
+flake-parts-like structured configurations in traditional Nix projects.
+
+* Installation
+
+/Falake/ can be obtained in the following ways:
+
+1. Add /falake/ to the _inputs_ of _flake.nix_
+2. Directly import _default.nix_ in a traditional Nix project
+
+* Basic Usage
+
+By referencing /falake/ via Flakes, or directly importing _default.nix_, you get
+the following attribute:
+
+#+begin_src nix-ts
+  { lib = { eval = <CODE>; mkFalake = <CODE>; }; }
+#+end_src
+
+- _eval_ : Returns the raw evaluation result, suitable for debugging.
+- _mkFalake_ : Returns a clean, ready-to-use attribute set for building the
+  final configuration.
+
+These two similar functions both accept three arguments:
+  - _nixpkgs_ : The path to nixpkgs
+  - _specialArgs_ : An attribute set whose contents will be passed to all Falake
+    modules
+  - _module_ : A module that serves as the entry point for /falake/ modules
+
+* Quick Start
+
+** Using in a Flakes Project
+
+#+begin_src nix-ts
+  # flake.nix
+  {
+    inputs = {
+      falake.url = "...";
+    };
+    
+    outputs = { falake, nixpkgs, ... } @ inputs:
+    falake.lib.mkFalake {
+      nixpkgs = nixpkgs.sourceInfo.outPath;
+      specialArgs = { };
+      module = {...}: {
+        imports = [
+          # Import your modules here
+        ];
+        outputs = {
+          # Define raw flake output attributes here
+        };
+        systems = {
+          "x86_64-linux" = {};
+          # Other system architectures to build for
+        };
+      };
+    };
+  }
+#+end_src
+
+** Using in a Non-Flakes Project
+
+#+begin_src nix-ts
+  # default.nix
+  let
+    pins = import ./npins;
+    inherit (pins) nixpkgs falake;
+  in
+  (import falake).lib.mkFalake {
+    nixpkgs = nixpkgs;
+    specialArgs = { };
+    module = {...}: {
+      imports = [
+        # Import your modules here
+      ];
+      outputs = {
+        # Define raw flake output attributes here
+      };
+      systems = {
+        "x86_64-linux" = {};
+        # Other system architectures to build for
+      };
+    };
+  };
+#+end_src
+
+* Top-level Module Arguments
+** _getSystem_
+- Function: Get the configuration for a specific system
+- Usage: Access the _perSystem_ configuration for a specific architecture within
+  a module
+
+** _withSystem_
+- Function: Execute operations in a specific system context
+- Usage: Create a closure environment for a specified system architecture
+
+** _evalSystem_
+- Function: Similar to _getSystem_, but returns the raw evaluation result of the
+  _perSystem_ options
+- Usage: Use when you need to access the unprocessed _perSystem_ evaluation data
+
+* Options
+See [[file:docs/options.md][OPTIONS]].
+

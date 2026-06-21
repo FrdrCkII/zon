@@ -1,0 +1,41 @@
+#+title: README
+#+author: FrdrCkII
+
+This repository is a monorepo containing tools and libraries for creating NixOS
+configurations.  For licensing information and repository structure, please see
+[[file:LICNESE.org][LICENSE]].
+
+* Falake
+/Falake/ is a configuration library inspired by [[https://flake.parts][flake-parts]], specifically
+rewritten for situations where _flakes_ are not used.
+- See [[file:falake/README.org][detailed description]] in this subproject's folder.
+- [[https://flake.parts/][flake-parts]] has some [[https://github.com/hercules-ci/flake-parts/issues/329][attempts]] to move away from _flakes_, but this project was
+  already underway before they started.
+
+* Nixlock
+/Nixlock/ is a simple _Rust_ program that primarily provides input locking
+functionality similar to _flakes_ / [[https://github.com/andir/npins][npins]].  /Nixlock/ is highly flexible. Thanks
+to the toolchain provided by _nix_ and _nixpkgs_, /nixlock/ can be embedded into
+any script or program, and execute them asynchronously using _Rust_'s _async_
+and _tokio_.
+- See [[file:nixlock/README.org][detailed description]] in this subproject's folder.
+- The idea of embedding scripts was inspired by [[https://nixtamal.toast.al][nixtamal]], but /nixlock/ expands
+  upon it.
+- Uses a _guix_-style channel.nix as the lock file.
+
+* Wrapit
+/Wrapit/ is a _nixpkgs_ overlay that provides functions for wrapping software.
+It is mainly inspired by [[https://github.com/viperML/wrapper-manager][wrapper-manager]], but does not use the _NixOS_ module
+system.
+- See [[file:wrapit/README.org][detailed description]] in this subproject's folder.
+
+* Zonfig
+/Zonfig/ is a [[https://github.com/mightyiam/dendritic][dendritic-pattern]] configuration framework, but its design
+philosophy differs from existing frameworks in implementation.  /Zonfig/ focuses
+on creating one configuration at a time rather than multiple configurations,
+which helps improve evaluation speed in certain scenarios, such as the _nix
+flake show_ command.  Moreover, /zonfig/ primarily uses the built-in features of
+_NixOS_ module system instead of a function library in the style of [[https://github.com/vic/den][den]], thus
+providing a more understandable model and error messages.
+- See [[file:zonfig/README.org][detailed description]] in this subproject's folder.
+
