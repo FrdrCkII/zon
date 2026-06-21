@@ -7,8 +7,10 @@ let
       option,
     }:
     {
-      subModules.outputs = lib.singleton {
+      outputs.imports = lib.singleton {
+        _class = "outputs";
         _file = file;
+
         options = {
           ${name} = lib.mkOption {
             type = lib.types.attrsWith {
@@ -23,8 +25,11 @@ let
           };
         };
       };
-      perSystem = { ... }: {
+
+      perSystem.imports = lib.singleton {
+        _class = "perSystem";
         _file = file;
+
         options.${name} = option;
       };
     };

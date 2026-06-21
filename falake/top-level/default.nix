@@ -12,12 +12,13 @@ lib.evalModules {
   class = "falake";
   modules = [
     module
-    ./nixpkgs.nix
+    (lib.modules.importApply ./nixpkgs.nix { inherit nixpkgs; })
     ./outputs.nix
-    ./perSystem.nix
-    ./withSystem.nix
+    ../outputs
+    ./systems.nix
+    ../perSystem
   ];
   specialArgs = lib.recursiveUpdate specialArgs {
-    inherit nixpkgs falake;
+    inherit falake;
   };
 }

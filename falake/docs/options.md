@@ -1,11 +1,11 @@
-## allPkgs
+## allSystems
 
-The system-specific config for each of systems\.
+All the system types to enumerate in the flake output subattributes\.
 
 
 
 *Type:*
-attribute set of unspecified value *(read only)*
+lazy attribute set of (submodule)
 
 
 
@@ -20,16 +20,58 @@ attribute set of unspecified value *(read only)*
 
 
 
-## allSystems
+## allSystems\.\<name>\.buildPlatform
 
 
 
-The system-specific config for each of systems\.
+Specifies the platform on which NixOS should be built\.
+By default, NixOS is built on the system where it runs, but you can
+change where it’s built\. Setting this option will cause NixOS to be
+cross-compiled\.
+
+For instance, if you’re doing distributed multi-platform deployment,
+or if you’re building machines, you can set this to match your
+development system and/or build farm\.
 
 
 
 *Type:*
-lazy attribute set of unspecified value *(read only)*
+string or (attribute set)
+
+
+
+*Default:*
+
+```nix
+config.nixpkgs.hostPlatform
+```
+
+
+
+*Example:*
+
+```nix
+{
+  system = "x86_64-linux";
+}
+```
+
+*Declared by:*
+ - [top-level/nixpkgs\.nix](../top-level/nixpkgs.nix)
+
+
+
+## allSystems\.\<name>\.config
+
+
+
+Global configuration for Nixpkgs\.
+The complete list of [Nixpkgs configuration options](https://nixos\.org/manual/nixpkgs/unstable/\#sec-config-options-reference) is in the [Nixpkgs manual section on global configuration](https://nixos\.org/manual/nixpkgs/unstable/\#chap-packageconfig)\.
+
+
+
+*Type:*
+nixpkgs config
 
 
 
@@ -39,32 +81,154 @@ lazy attribute set of unspecified value *(read only)*
 { }
 ```
 
+
+
+*Example:*
+
+```nix
+{ allowBroken = true; allowUnfree = true; }
+
+```
+
 *Declared by:*
- - [top-level/perSystem\.nix](../top-level/perSystem.nix)
+ - [top-level/nixpkgs\.nix](../top-level/nixpkgs.nix)
 
 
 
-## evalSystems
+## allSystems\.\<name>\.hostPlatform
 
 
 
-The system-specific evaluation for each of systems\.
+Specifies the platform where the NixOS configuration will run\.
+
+To cross-compile, set also ` nixpkgs.buildPlatform `\.
 
 
 
 *Type:*
-lazy attribute set of unspecified value *(read only)*
+unspecified value
 
 
 
 *Default:*
 
 ```nix
-{ }
+"‹name›"
+```
+
+
+
+*Example:*
+
+```nix
+{
+  system = "aarch64-linux";
+}
 ```
 
 *Declared by:*
- - [top-level/perSystem\.nix](../top-level/perSystem.nix)
+ - [top-level/nixpkgs\.nix](../top-level/nixpkgs.nix)
+
+
+
+## allSystems\.\<name>\.inheritTop
+
+
+
+Whether to inherit ` overlays ` and ` config ` from the top
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+
+```nix
+true
+```
+
+*Declared by:*
+ - [top-level/nixpkgs\.nix](../top-level/nixpkgs.nix)
+
+
+
+## allSystems\.\<name>\.name
+
+
+
+The names used in functions like ` perSystem ` and ` withSystem `
+
+
+
+*Type:*
+string
+
+
+
+*Default:*
+
+```nix
+"‹name›"
+```
+
+*Declared by:*
+ - [top-level/nixpkgs\.nix](../top-level/nixpkgs.nix)
+
+
+
+## allSystems\.\<name>\.overlays
+
+
+
+List of overlays to apply to Nixpkgs\.
+This option allows modifying the Nixpkgs package set accessed through the ` pkgs ` module argument\.
+
+For details, see the [Overlays chapter in the Nixpkgs manual](https://nixos\.org/manual/nixpkgs/stable/\#chap-overlays)\.
+
+If the ` nixpkgs.pkgs ` option is set, overlays specified using ` nixpkgs.overlays ` will be applied after the overlays that were already included in ` nixpkgs.pkgs `\.
+
+
+
+*Type:*
+list of (nixpkgs overlay)
+
+
+
+*Default:*
+
+```nix
+[ ]
+```
+
+*Declared by:*
+ - [top-level/nixpkgs\.nix](../top-level/nixpkgs.nix)
+
+
+
+## debug
+
+
+
+Show debug info\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+
+```nix
+false
+```
+
+*Declared by:*
+ - [top-level/nixpkgs\.nix](../top-level/nixpkgs.nix)
 
 
 
@@ -72,12 +236,13 @@ lazy attribute set of unspecified value *(read only)*
 
 
 
-The configuration for nixpkgs\.
+Global configuration for Nixpkgs\.
+The complete list of [Nixpkgs configuration options](https://nixos\.org/manual/nixpkgs/unstable/\#sec-config-options-reference) is in the [Nixpkgs manual section on global configuration](https://nixos\.org/manual/nixpkgs/unstable/\#chap-packageconfig)\.
 
 
 
 *Type:*
-attribute set of unspecified value
+nixpkgs config
 
 
 
@@ -85,6 +250,15 @@ attribute set of unspecified value
 
 ```nix
 { }
+```
+
+
+
+*Example:*
+
+```nix
+{ allowBroken = true; allowUnfree = true; }
+
 ```
 
 *Declared by:*
@@ -96,7 +270,12 @@ attribute set of unspecified value
 
 
 
-Nixpkgs overlays
+List of overlays to apply to Nixpkgs\.
+This option allows modifying the Nixpkgs package set accessed through the ` pkgs ` module argument\.
+
+For details, see the [Overlays chapter in the Nixpkgs manual](https://nixos\.org/manual/nixpkgs/stable/\#chap-overlays)\.
+
+If the ` nixpkgs.pkgs ` option is set, overlays specified using ` nixpkgs.overlays ` will be applied after the overlays that were already included in ` nixpkgs.pkgs `\.
 
 
 
@@ -120,19 +299,23 @@ list of (nixpkgs overlay)
 
 
 
-Path to nixpkgs
+Path to nixpkgs\.
+
+By default, the value \<nixpkgs> used is impure\.
+If you want to do a pure evaluation, don’t set this option directly; instead,
+set ` nixpkgs ` in the initialization function ` mkFalake `\.
 
 
 
 *Type:*
-absolute path
+absolute path *(read only)*
 
 
 
 *Default:*
 
 ```nix
-/run/current-system/inputs/nixpkgs
+"<nixpkgs>"
 ```
 
 *Declared by:*
@@ -144,19 +327,32 @@ absolute path
 
 
 
-The ` outputs ` option after removing duplicates
+Usually, the ` outputs ` option generates some meaningless values (e\.g\. {}/\[]/null)
+because an option has to have a default value\.
+
+This option is used to clean up that noise\.
 
 
 
 *Type:*
-attribute set *(read only)*
+lazy attribute set of unspecified value *(read only)*
 
 
 
 *Default:*
 
 ```nix
-{ }
+{
+  apps = { };
+  checks = { };
+  devShells = { };
+  formatter = { };
+  legacyPackages = { };
+  nixosConfigurations = { };
+  nixosModules = { };
+  overlays = { };
+  packages = { };
+}
 ```
 
 *Declared by:*
@@ -190,330 +386,6 @@ open submodule of lazy attribute set of raw value
 
 
 
-## outputs\.packages
-
-
-
-See ` perSystem.packages ` for description and examples\.
-
-
-
-*Type:*
-lazy attribute set of lazy attribute set of package
-
-
-
-*Default:*
-
-```nix
-{ }
-```
-
-*Declared by:*
- - [perSystem/packages\.nix](../perSystem/packages.nix)
-
-
-
-## outputs\.apps
-
-
-
-See ` perSystem.apps ` for description and examples\.
-
-
-
-*Type:*
-lazy attribute set of lazy attribute set of (submodule)
-
-
-
-*Default:*
-
-```nix
-{ }
-```
-
-*Declared by:*
- - [perSystem/apps\.nix](../perSystem/apps.nix)
-
-
-
-## outputs\.apps\.\<system>\.\<name>\.meta
-
-
-
-Metadata information about the app\.
-Standardized in Nix at [https://github\.com/NixOS/nix/pull/11297](https://github\.com/NixOS/nix/pull/11297)\.
-
-Note: ` nix flake check ` is only aware of the ` description ` attribute in ` meta `\.
-
-
-
-*Type:*
-lazy attribute set of raw value
-
-
-
-*Default:*
-
-```nix
-{ }
-```
-
-*Declared by:*
- - [perSystem/apps\.nix](../perSystem/apps.nix)
-
-
-
-## outputs\.apps\.\<system>\.\<name>\.program
-
-
-
-A path to an executable or a derivation with ` meta.mainProgram `\.
-
-
-
-*Type:*
-string or package convertible to it
-
-*Declared by:*
- - [perSystem/apps\.nix](../perSystem/apps.nix)
-
-
-
-## outputs\.apps\.\<system>\.\<name>\.type
-
-
-
-A type tag for ` apps ` consumers\.
-
-
-
-*Type:*
-value “app” (singular enum)
-
-
-
-*Default:*
-
-```nix
-"app"
-```
-
-*Declared by:*
- - [perSystem/apps\.nix](../perSystem/apps.nix)
-
-
-
-## outputs\.checks
-
-
-
-See ` perSystem.checks ` for description and examples\.
-
-
-
-*Type:*
-lazy attribute set of lazy attribute set of package
-
-
-
-*Default:*
-
-```nix
-{ }
-```
-
-*Declared by:*
- - [perSystem/checks\.nix](../perSystem/checks.nix)
-
-
-
-## outputs\.devShells
-
-
-
-See ` perSystem.devShells ` for description and examples\.
-
-
-
-*Type:*
-lazy attribute set of lazy attribute set of package
-
-
-
-*Default:*
-
-```nix
-{ }
-```
-
-*Declared by:*
- - [perSystem/devShells\.nix](../perSystem/devShells.nix)
-
-
-
-## outputs\.formatter
-
-
-
-See ` perSystem.formatter ` for description and examples\.
-
-
-
-*Type:*
-lazy attribute set of (null or package)
-
-
-
-*Default:*
-
-```nix
-{ }
-```
-
-*Declared by:*
- - [perSystem/formatter\.nix](../perSystem/formatter.nix)
-
-
-
-## outputs\.legacyPackages
-
-
-
-See ` perSystem.legacyPackages ` for description and examples\.
-
-
-
-*Type:*
-lazy attribute set of lazy attribute set of raw value
-
-
-
-*Default:*
-
-```nix
-{ }
-```
-
-*Declared by:*
- - [perSystem/legacyPackages\.nix](../perSystem/legacyPackages.nix)
-
-
-
-## outputs\.nixosConfigurations
-
-
-
-Instantiated NixOS configurations\. Used by ` nixos-rebuild `\.
-
-` nixosConfigurations ` is for specific machines\. If you want to expose
-reusable configurations, add them to [` nixosModules `](\#opt-flake\.nixosModules)
-in the form of modules (no ` lib.nixosSystem `), so that you can reference
-them in this or another flake’s ` nixosConfigurations `\.
-
-
-
-*Type:*
-lazy attribute set of raw value
-
-
-
-*Default:*
-
-```nix
-{ }
-```
-
-
-
-*Example:*
-
-```nix
-{
-  my-machine = inputs.nixpkgs.lib.nixosSystem {
-    # system is not needed with freshly generated hardware-configuration.nix
-    # system = "x86_64-linux";  # or set nixpkgs.hostPlatform in a module.
-    modules = [
-      ./my-machine/nixos-configuration.nix
-      config.nixosModules.my-module
-    ];
-  };
-}
-
-```
-
-*Declared by:*
- - [outputs/nixosConfigurations\.nix](../outputs/nixosConfigurations.nix)
-
-
-
-## outputs\.nixosModules
-
-
-
-NixOS modules\.
-
-You may use this for reusable pieces of configuration, service modules, etc\.
-
-
-
-*Type:*
-lazy attribute set of module
-
-
-
-*Default:*
-
-```nix
-{ }
-```
-
-*Declared by:*
- - [outputs/nixosModules\.nix](../outputs/nixosModules.nix)
-
-
-
-## outputs\.overlays
-
-
-
-An attribute set of [overlays](https://nixos\.org/manual/nixpkgs/stable/\#chap-overlays)\.
-
-Note that the overlays themselves are not mergeable\. While overlays
-can be composed, the order of composition is significant, but the
-module system does not guarantee sufficiently deterministic
-definition ordering, across versions and when changing ` imports `\.
-
-
-
-*Type:*
-lazy attribute set of function that evaluates to a(n) function that evaluates to a(n) lazy attribute set of unspecified value
-
-
-
-*Default:*
-
-```nix
-{ }
-```
-
-
-
-*Example:*
-
-```nix
-{
-  default = final: prev: {};
-}
-
-```
-
-*Declared by:*
- - [outputs/overlays\.nix](../outputs/overlays.nix)
-
-
-
 ## perSystem
 
 
@@ -534,174 +406,6 @@ module
 ```
 
 *Declared by:*
- - [top-level/perSystem\.nix](../top-level/perSystem.nix)
-
-
-
-## subModules\.outputs
-
-
-
-Extra subModule list for ` outputs `\.
-
-
-
-*Type:*
-list of module
-
-
-
-*Default:*
-
-```nix
-[ ]
-```
-
-*Declared by:*
- - [top-level/outputs\.nix](../top-level/outputs.nix)
-
-
-
-## systems
-
-
-
-All the system types to enumerate in the flake output subattributes\.
-
-
-
-*Type:*
-attribute set of (submodule)
-
-
-
-*Default:*
-
-```nix
-{ }
-```
-
-*Declared by:*
- - [top-level/nixpkgs\.nix](../top-level/nixpkgs.nix)
-
-
-
-## systems\.\<name>\.config
-
-
-
-The configuration for nixpkgs\.
-
-
-
-*Type:*
-attribute set of anything
-
-
-
-*Default:*
-
-```nix
-{ }
-```
-
-*Declared by:*
- - [top-level/subSystem\.nix](../top-level/subSystem.nix)
-
-
-
-## systems\.\<name>\.crossSystem
-
-
-
-The cross system for nixpkgs\.
-
-
-
-*Type:*
-null or string
-
-
-
-*Default:*
-
-```nix
-"‹name›"
-```
-
-*Declared by:*
- - [top-level/subSystem\.nix](../top-level/subSystem.nix)
-
-
-
-## systems\.\<name>\.localSystem
-
-
-
-The local system for nixpkgs\.
-
-
-
-*Type:*
-string
-
-
-
-*Default:*
-
-```nix
-"‹name›"
-```
-
-*Declared by:*
- - [top-level/subSystem\.nix](../top-level/subSystem.nix)
-
-
-
-## systems\.\<name>\.name
-
-
-
-The names used in functions like ` perSystem ` and ` withSystem `
-
-
-
-*Type:*
-string
-
-
-
-*Default:*
-
-```nix
-"‹name›"
-```
-
-*Declared by:*
- - [top-level/subSystem\.nix](../top-level/subSystem.nix)
-
-
-
-## systems\.\<name>\.overlays
-
-
-
-Nixpkgs overlays
-
-
-
-*Type:*
-list of (nixpkgs overlay)
-
-
-
-*Default:*
-
-```nix
-[ ]
-```
-
-*Declared by:*
- - [top-level/subSystem\.nix](../top-level/subSystem.nix)
+ - [top-level/systems\.nix](../top-level/systems.nix)
 
 

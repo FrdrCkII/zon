@@ -1,28 +1,35 @@
 { lib, ... }: {
-  options = {
-    overlays = lib.mkOption {
-      # uniq -> ordered: https://github.com/NixOS/nixpkgs/issues/147052
-      # also update description when done
-      type = with lib.types; lazyAttrsOf (uniq (functionTo (functionTo (lazyAttrsOf unspecified))));
-      # This eta expansion exists for the sole purpose of making nix flake check happy.
-      apply = lib.mapAttrs (
-        _k: f: final: prev:
-        f final prev
-      );
-      default = { };
-      example = lib.literalExpression ''
-        {
-          default = final: prev: {};
-        }
-      '';
-      description = ''
-        An attribute set of [overlays](https://nixos.org/manual/nixpkgs/stable/#chap-overlays).
+  _class = "falake";
 
-        Note that the overlays themselves are not mergeable. While overlays
-        can be composed, the order of composition is significant, but the
-        module system does not guarantee sufficiently deterministic
-        definition ordering, across versions and when changing `imports`.
-      '';
+  config.outputs.imports = lib.singleton {
+    _class = "outputs";
+    _file = ./overlays.nix;
+
+    options = {
+      overlays = lib.mkOption {
+        # uniq -> ordered: https://github.com/NixOS/nixpkgs/issues/147052
+        # also update description when done
+        type = with lib.types; lazyAttrsOf (uniq (functionTo (functionTo (lazyAttrsOf unspecified))));
+        # This eta expansion exists for the sole purpose of making nix flake check happy.
+        apply = lib.mapAttrs (
+          _k: f: final: prev:
+          f final prev
+        );
+        default = { };
+        example = lib.literalExpression ''
+          {
+            default = final: prev: {};
+          }
+        '';
+        description = ''
+          An attribute set of [overlays](https://nixos.org/manual/nixpkgs/stable/#chap-overlays).
+
+          Note that the overlays themselves are not mergeable. While overlays
+          can be composed, the order of composition is significant, but the
+          module system does not guarantee sufficiently deterministic
+          definition ordering, across versions and when changing `imports`.
+        '';
+      };
     };
   };
 }

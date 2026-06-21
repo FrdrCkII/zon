@@ -4,24 +4,34 @@
   ...
 }:
 {
-  options = {
-    subModules = {
-      outputs = lib.mkOption {
-        type = lib.types.listOf lib.types.deferredModule;
-        default = [ ];
-        description = "Extra subModule list for {option}`outputs`.";
-      };
-    };
+  _class = "falake";
 
+  options = {
     outputs = lib.mkOption {
+      default = { };
       type = lib.types.submoduleWith {
         class = "outputs";
-        modules = [ ../outputs ] ++ config.subModules.outputs;
         specialArgs = {
           topConfig = config;
         };
+        modules = lib.singleton {
+          _class = "outputs";
+          _file = ./outputs.nix;
+
+          freeformType = lib.types.lazyAttrsOf (
+            lib.types.unique {
+              message = ''
+                No option has been declared for this flake output attribute, so its definitions can't be merged automatically.
+                Possible solutions:
+                  - Load a module that defines this flake output attribute
+                  - Declare an option for this flake output attribute
+                  - Make sure the output attribute is spelled correctly
+                  - Define the value only once, with a single definition in a single module
+              '';
+            } lib.types.raw
+          );
+        };
       };
-      default = { };
       description = ''
         Raw flake output attributes. Any attribute can be set here, but some
         attributes are represented by options, to provide appropriate
@@ -30,15 +40,16 @@
     };
 
     out = lib.mkOption {
-      type = lib.types.attrs;
-      description = ''
-        The `outputs` option after removing duplicates
-      '';
       readOnly = true;
-    };
-  };
+      default = config.outputs;
+      type = lib.types.lazyAttrsOf lib.types.unspecified;
+      apply = v: lib.filterAttrs (_: v: !(v == null || v == { } || v == [ ])) v;
+      description = ''
+        Usually, the `outputs` option generates some meaningless values (e.g. {}/[]/null)
+        because an option has to have a default value.
 
-  config = {
-    out = lib.filterAttrs (_: v: !(v == null || (builtins.isAttrs v && v == { }))) config.outputs;
+        This option is used to clean up that noise.
+      '';
+    };
   };
 }
