@@ -25,6 +25,10 @@ in
         type = lib.types.bool;
         default = true;
       };
+      syslog = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+      };
       doc = lib.mkOption {
         type = lib.types.bool;
         default = true;
@@ -67,6 +71,7 @@ in
         ++ lib.optional cfg.defaultPackages ./nixos-packages.nix
         ++ lib.optional cfg.disableCoredump ./nixos-coredump.nix
         ++ lib.optional cfg.overlayfsEtc ./nixos-etc.nix
+        ++ lib.optional cfg.syslog ./nixos-syslog.nix
         ++ lib.optional cfg.doc ./nixos-doc.nix
         ++ lib.optional cfg.xdgPath ./nixos-xdg.nix
         ++ lib.optional cfg.extra ./nixos-extra.nix;
