@@ -16,7 +16,7 @@ let
   docsOptRaw =
     builtins.readFile
       (pkgs.nixosOptionsDoc {
-        options = result.options;
+        inherit (result) options;
       }).optionsCommonMark;
 
   docsOpt =

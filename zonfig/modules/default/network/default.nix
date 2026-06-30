@@ -38,8 +38,7 @@ in
   config = lib.mkIf cfg.enable {
     iNeedDirectories = {
       host =
-        [ ]
-        ++ lib.optional (cfg.wireless == "iwd") "/var/lib/iwd"
+        lib.optional (cfg.wireless == "iwd") "/var/lib/iwd"
         ++ lib.optional (cfg.wireless == "nm-wpa") "/var/lib/NetworkManager"
         ++ lib.optional (cfg.wireless == "nm-iwd") "/var/lib/NetworkManager";
     };

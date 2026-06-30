@@ -1,4 +1,4 @@
-{ ... }: {
+_: {
   config = {
     environment.sessionVariables = {
       XDG_CACHE_HOME = "$HOME/.cache";

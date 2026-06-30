@@ -1,16 +1,9 @@
-{ ... }: {
+_: {
   config = {
     services = {
       journald = {
         storage = "volatile";
         forwardToSyslog = true;
-        extraConfig = ''
-          SystemMaxUse=500M
-          RuntimeMaxUse=200M
-          SystemKeepFree=1G
-          RuntimeKeepFree=500M
-          MaxFileSec=1week
-        '';
       };
 
       rsyslogd = {

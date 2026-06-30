@@ -183,7 +183,7 @@
       apply = lib.mapAttrs (
         n: v:
         let
-          isCross = !(v.buildPlatform == v.hostPlatform);
+          isCross = v.buildPlatform != v.hostPlatform;
 
           systemArgs =
             if isCross then

@@ -41,14 +41,14 @@ in
               ];
               specialArgs = {
                 inherit system;
-                pkgs = system.pkgs;
+                inherit (system) pkgs;
               };
               modules = [
                 module
               ];
             };
         in
-        lib.mapAttrs (n: v: eval v) config.allSystems;
+        lib.mapAttrs (n: eval) config.allSystems;
       description = ''
         A function from system to flake-like attributes omitting the `<system>` attribute.
       '';

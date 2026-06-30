@@ -28,8 +28,7 @@ in
   config = lib.mkIf cfg.enable {
     outModules = {
       nixos.imports =
-        [ ]
-        ++ lib.optional (cfg.package == "sudo") ./nixos-sudo.nix
+        lib.optional (cfg.package == "sudo") ./nixos-sudo.nix
         ++ lib.optional (cfg.package == "sudo-rs") ./nixos-sudo-rs.nix
         ++ lib.optional (cfg.package == "doas") ./nixos-doas.nix;
     };

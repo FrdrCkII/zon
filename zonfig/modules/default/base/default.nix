@@ -27,7 +27,7 @@ in
       };
       syslog = lib.mkOption {
         type = lib.types.bool;
-        default = true;
+        default = false;
       };
       doc = lib.mkOption {
         type = lib.types.bool;
@@ -63,8 +63,7 @@ in
 
     outModules = {
       nixos.imports =
-        [ ]
-        ++ lib.optionals cfg.default [
+        lib.optionals cfg.default [
           ./nixos-default.nix
           ./nixos-unfree.nix
         ]

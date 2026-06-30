@@ -57,8 +57,7 @@
 
   config = {
     out.imports =
-      [ ]
-      ++ lib.optionals (config.nodeTarget == [ ]) [
+      lib.optionals (config.nodeTarget == [ ]) [
         config.outModules.${config.rootTarget} or { }
         config.extraModules.${config.rootTarget} or { }
       ]

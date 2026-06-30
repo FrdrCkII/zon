@@ -11,7 +11,7 @@ in
     outModules = {
       nixos = {
         nixpkgs = {
-          config = cfg.config;
+          inherit (cfg) config;
           overlays = lib.mkBefore cfg.overlays;
         };
       };

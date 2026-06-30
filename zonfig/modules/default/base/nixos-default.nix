@@ -72,6 +72,16 @@
 
       userborn.enable = true;
 
+      journald = {
+        extraConfig = ''
+          SystemMaxUse=500M
+          RuntimeMaxUse=200M
+          SystemKeepFree=1G
+          RuntimeKeepFree=500M
+          MaxFileSec=1week
+        '';
+      };
+
       seatd = {
         enable = lib.mkDefault true;
         group = "video";

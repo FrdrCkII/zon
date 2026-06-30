@@ -1,4 +1,4 @@
-{ ... }: {
+_: {
   config = {
     services.displayManager.emptty = {
       enable = true;

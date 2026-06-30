@@ -28,8 +28,7 @@ in
 
   config = lib.mkIf cfg.enable {
     nixpkgs.overlays =
-      [ ]
-      ++ lib.optional (cfg.implementation == "nix-latest") (import ./nixpkgs-nix-latest.nix)
+      lib.optional (cfg.implementation == "nix-latest") (import ./nixpkgs-nix-latest.nix)
       ++ lib.optional (cfg.implementation == "lix") (import ./nixpkgs-lix.nix)
       ++ lib.optional (cfg.implementation == "lix-latest") (import ./nixpkgs-lix-latest.nix);
 
