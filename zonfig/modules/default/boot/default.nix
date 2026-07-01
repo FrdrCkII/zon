@@ -29,6 +29,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    os.boot.loader = lib.mkIf (config.rootTarget == "finix") (lib.mkForce "limine");
+
     outModules = {
       nixos.imports = [
         ./nixos-default.nix
@@ -38,6 +40,11 @@ in
       ++ lib.optional (cfg.loader == "limine" && cfg.secureBoot) ./nixos-limine-sb.nix
       ++ lib.optional (cfg.loader == "systemd-boot") ./nixos-sd.nix
       ++ lib.optional (cfg.loader == "systemd-boot" && cfg.secureBoot) ./nixos-sd-sb.nix;
+
+      finix.imports = [
+        ./finix-default.nix
+      ]
+      ++ lib.optional (cfg.loader == "limine") ./finix-limine.nix;
     };
   };
 }

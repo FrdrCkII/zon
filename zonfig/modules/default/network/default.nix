@@ -36,6 +36,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    os.network.wireless = lib.mkIf (config.rootTarget == "finix") (lib.mkForce "iwd");
+
     iNeedDirectories = {
       host =
         lib.optional (cfg.wireless == "iwd") "/var/lib/iwd"
@@ -51,6 +53,11 @@ in
       ++ lib.optional (cfg.wireless == "iwd") ./nixos-iwd.nix
       ++ lib.optional (cfg.wireless == "nm-wpa") ./nixos-nm-wpa.nix
       ++ lib.optional (cfg.wireless == "nm-iwd") ./nixos-nm-iwd.nix;
+
+      finix.imports = [
+        ./finix-default.nix
+      ]
+      ++ lib.optional (cfg.wireless == "iwd") ./finix-iwd.nix;
     };
   };
 }

@@ -21,18 +21,6 @@ in
         type = lib.types.bool;
         default = false;
       };
-      overlayfsEtc = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-      };
-      syslog = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
-      doc = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-      };
       xdgPath = lib.mkOption {
         type = lib.types.bool;
         default = true;
@@ -40,6 +28,21 @@ in
       extra = lib.mkOption {
         type = lib.types.bool;
         default = true;
+      };
+
+      nixos = {
+        overlayfsEtc = lib.mkOption {
+          type = lib.types.bool;
+          default = true;
+        };
+        syslog = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+        };
+        doc = lib.mkOption {
+          type = lib.types.bool;
+          default = true;
+        };
       };
     };
   };
@@ -69,11 +72,18 @@ in
         ]
         ++ lib.optional cfg.defaultPackages ./nixos-packages.nix
         ++ lib.optional cfg.disableCoredump ./nixos-coredump.nix
-        ++ lib.optional cfg.overlayfsEtc ./nixos-etc.nix
-        ++ lib.optional cfg.syslog ./nixos-syslog.nix
-        ++ lib.optional cfg.doc ./nixos-doc.nix
         ++ lib.optional cfg.xdgPath ./nixos-xdg.nix
-        ++ lib.optional cfg.extra ./nixos-extra.nix;
+        ++ lib.optional cfg.extra ./nixos-extra.nix
+        ++ lib.optional cfg.nixos.overlayfsEtc ./nixos-etc.nix
+        ++ lib.optional cfg.nixos.syslog ./nixos-syslog.nix
+        ++ lib.optional cfg.nixos.doc ./nixos-doc.nix;
+
+      finix.imports =
+        lib.optional cfg.default ./finix-default
+        ++ lib.optional cfg.defaultPackages ./finix-packages.nix
+        ++ lib.optional cfg.disableCoredump ./finix-coredump.nix
+        ++ lib.optional cfg.xdgPath ./finix-xdg.nix
+        ++ lib.optional cfg.extra ./finix-extra.nix;
     };
   };
 }

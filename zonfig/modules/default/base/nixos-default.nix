@@ -1,4 +1,9 @@
-{ lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}:
+{
   config = {
     boot = {
       kernel.sysctl = {
@@ -28,32 +33,14 @@
     };
 
     environment = {
-      defaultPackages = lib.mkForce [ ];
-      variables = {
+      defaultPackages = lib.mkForce [
+        pkgs.git
+        pkgs.nano
+      ];
+      sessionVariables = {
         EDITOR = lib.mkDefault "nano";
         VISUAL = lib.mkDefault "nano";
-      };
-      sessionVariables = {
         LIBSEAT_BACKEND = "seatd";
-      };
-    };
-
-    programs = {
-      nano = {
-        enable = lib.mkDefault true;
-      };
-
-      git = {
-        enable = lib.mkDefault true;
-        config = {
-          init = {
-            defaultBranch = "main";
-          };
-          url = {
-            "https://github.com/".insteadOf = lib.singleton "gh:";
-            "https://codeberg.org/".insteadOf = lib.singleton "cb:";
-          };
-        };
       };
     };
 
@@ -100,7 +87,6 @@
     };
 
     systemd = {
-      tpm2.enable = false;
       oomd.enable = false;
     };
   };
