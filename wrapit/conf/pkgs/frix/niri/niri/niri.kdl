@@ -135,9 +135,6 @@ binds {
     Mod+E {
         spawn "emacs"
     }
-    Mod+W {
-        spawn-sh "LC_MESSAGES='en_US.UTF-8' iwmenu -l custom --launcher-command 'wmenu -p iwmenu'"
-    }
     Mod+V {
         spawn-sh "cliphist list | wmenu -p cliphist | cliphist decode | wl-copy"
     }

@@ -1,7 +1,15 @@
 position = "top"
-height = 24
-layer = "background"
+height = 20
+layer = "overlay"
+anchor_to_edges = false
 exclusive_zone = false
 
 [[center]]
 type = "tray"
+
+[[center]]
+type = "workspaces"
+
+[[center]]
+type = "clock"
+format = "%H:%M"

@@ -227,9 +227,9 @@
   :hook
   ((rust-ts-mode . eglot-ensure)
    (nix-ts-mode . eglot-ensure)
-   ;; 兼容非 ts 模式
-   (rust-mode . eglot-ensure)
-   (nix-mode . eglot-ensure))
+   (toml-ts-mode . eglot-ensure)
+   (json-ts-mode . eglot-ensure)
+   (css-ts-mode . eglot-ensure))
   :config
   (setq eglot-server-programs
         '(((rust-ts-mode rust-mode) . ("rust-analyzer"))

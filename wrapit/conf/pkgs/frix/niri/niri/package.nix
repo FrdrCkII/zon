@@ -6,7 +6,6 @@
   pwvucontrol,
   swaylock,
   procps,
-  iwmenu,
   wl-clipboard,
   cliphist,
   fyi,
@@ -27,7 +26,6 @@ wrapit.wrapthem.override {
     pwvucontrol
     swaylock
     procps
-    iwmenu
     wl-clipboard
     cliphist
     fyi
