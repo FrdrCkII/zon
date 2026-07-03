@@ -235,22 +235,9 @@
         '(((rust-ts-mode rust-mode) . ("rust-analyzer"))
           ((nix-ts-mode nix-mode) . ("nil"))))
   (setq eglot-code-action-indications '(eldoc-hint))
-  ;; 自定义 TAB 行为：补全 / 缩进 / 格式化
-  (defun eglot-for-tab-command ()
-    (interactive)
-    (cond ((yas-active-snippets)
-           (yas-next-field-or-maybe-expand))
-          ((save-excursion
-             (beginning-of-line)
-             (looking-at-p "[ \t]*$"))
-           (indent-for-tab-command))
-          (t (eglot-format)
-             (when (use-region-p)
-               (deactivate-mark)))))
   :bind (:map eglot-mode-map
               ("C-c r" . eglot-rename)
-              ("C-c f" . eglot-format)
-              ("TAB"   . eglot-for-tab-command)))   ; 绑定 TAB 键
+              ("C-c f" . eglot-format)))
 
 ;; 补全前端
 (use-package corfu
