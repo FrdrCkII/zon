@@ -1,0 +1,1086 @@
+{
+	default_bind 127.0.0.1
+	auto_https off
+}
+github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+www.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a www.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a www.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+gist.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a gist.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a gist.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+codeload.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a codeload.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a codeload.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+api.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a api.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a api.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+lfs.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a lfs.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a lfs.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+redirect.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a redirect.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a redirect.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+copilot.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a copilot.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a copilot.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+services.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a services.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a services.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+community.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a community.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a community.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+education.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a education.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a education.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+enterprise.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a enterprise.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a enterprise.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+classroom.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a classroom.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a classroom.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+central.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a central.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a central.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+collector.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a collector.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a collector.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+raw.githubusercontent.com, *.githubusercontent.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a raw.githubusercontent.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a raw.githubusercontent.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+analytics.githubassets.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a analytics.githubassets.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a analytics.githubassets.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+lab.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a lab.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a lab.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+assets-cdn.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a assets-cdn.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a assets-cdn.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+www.github.io, *.github.io {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a www.github.io 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a www.github.io 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+pages.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a pages.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a pages.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+resources.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a resources.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a resources.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+developer.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a developer.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a developer.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+partner.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a partner.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a partner.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+desktop.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a desktop.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a desktop.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+guides.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a guides.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a guides.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+support.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a support.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a support.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+git-lfs.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a git-lfs.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a git-lfs.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+docs.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a docs.github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a docs.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+www.githubassets.com, *.githubassets.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a www.githubassets.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a www.githubassets.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+pixiv.net, *.pixiv.net {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		to 210.140.139.152:443
+		to 210.140.139.155:443
+		to 210.140.139.158:443
+		to 210.140.139.161:443
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+fanbox.cc, *.fanbox.cc {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		to 210.140.139.152:443
+		to 210.140.139.155:443
+		to 210.140.139.158:443
+		to 210.140.139.161:443
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+lc-event.pixiv.net {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		to 210.140.139.185:443
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+i.pximg.net {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		to 210.140.139.135:443
+		to 210.140.139.132:443
+		to 210.140.139.137:443
+		to 210.140.139.134:443
+		to 210.140.139.131:443
+		to 210.140.139.130:443
+		to 210.140.139.129:443
+		to 210.140.139.136:443
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+pixiv.pximg.net, *.pximg.net {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		to 210.140.139.135:443
+		to 210.140.139.132:443
+		to 210.140.139.137:443
+		to 210.140.139.134:443
+		to 210.140.139.131:443
+		to 210.140.139.133:443
+		to 210.140.139.130:443
+		to 210.140.139.129:443
+		to 210.140.139.136:443
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+a.pixiv.org, *.pixiv.org {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		to 210.140.139.183:443
+		to 210.140.139.184:443
+		to 210.140.139.182:443
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+api.fanbox.cc {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		to 104.18.41.140:443
+		to 172.64.146.116:443
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+		header_up Range {http.request.header.Range}
+		header_up If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+steamcommunity.com, *.steamcommunity.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	@forum expression path_regexp('.*(discussions|comment|forum).*')
+	handle @forum {
+		reverse_proxy {
+			dynamic multi {
+				a str001.steam302.xyz 443 {
+					resolvers 127.0.0.1:5365
+					refresh 10s
+				}
+				a str001.steam302.xyz 443 {
+					resolvers 127.0.0.1:5370
+					refresh 10s
+				}
+			}
+			dynamic multi {
+				a str002.steam302.xyz 443 {
+					resolvers 127.0.0.1:5365
+					refresh 10s
+				}
+				a str002.steam302.xyz 443 {
+					resolvers 127.0.0.1:5370
+					refresh 10s
+				}
+			}
+			dynamic multi {
+				a str003.steam302.xyz 443 {
+					resolvers 127.0.0.1:5365
+					refresh 10s
+				}
+				a str003.steam302.xyz 443 {
+					resolvers 127.0.0.1:5370
+					refresh 10s
+				}
+			}
+			dynamic multi {
+				a str004.steam302.xyz 443 {
+					resolvers 127.0.0.1:5365
+					refresh 10s
+				}
+				a str004.steam302.xyz 443 {
+					resolvers 127.0.0.1:5370
+					refresh 10s
+				}
+			}
+			max_fails 2
+			fail_duration 10s
+			lb_policy random
+			header_up Host "steamcommunity.com"
+			header_up Range {http.request.header.Range}
+			header_up If-Range {http.request.header.If-Range}
+			header_up User-Agent "{http.request.header.User-Agent} Googlebot/2.1 (+http://www.google.com/bot.html)"
+			header_up X-Real-IP {http.request.remote.host}
+			transport http {
+				tls
+				tls_insecure_skip_verify
+				tls_server_name statuspage.akamaized.net
+			}
+		}
+	}
+	handle {
+		reverse_proxy {
+			# 静态 IP 列表
+			to 23.51.204.175:443 23.1.179.144:443 96.7.99.225:443
+			to 104.69.160.135:443 104.71.154.102:443 104.76.74.15:443
+			to 104.91.87.202:443 118.215.187.181:443 173.222.146.99:443
+			to 184.85.112.102:443 184.87.103.42:443 23.36.106.129:443
+			to 23.41.142.46:443 23.51.142.168:443
+			max_fails 2
+			fail_duration 10s
+			lb_policy random
+			header_up Host {http.request.host}
+			header_up Range {http.request.header.Range}
+			header_up If-Range {http.request.header.If-Range}
+			header_up User-Agent {http.request.header.User-Agent}
+			header_up X-Real-IP {http.request.remote.host}
+			transport http {
+				tls
+				tls_insecure_skip_verify
+				tls_server_name ""
+			}
+		}
+	}
+}

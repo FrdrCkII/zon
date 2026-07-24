@@ -30,3 +30,6 @@
 块系统的内置功能而不是 [[https://github.com/vic/den][den]] 风格的函数库，因此拥有更易于理解的模型与错误消息。
 - 在这个子项目的文件夹中查看[[file:zonfig/README_zh.org][详细说明]]。
 
+* conf
+我的个人nixos配置，使用上述项目构建。
+

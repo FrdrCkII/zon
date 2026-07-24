@@ -1,0 +1,3863 @@
+{
+  "apps": {
+    "http": {
+      "servers": {
+        "srv0": {
+          "automatic_https": {
+            "disable": true
+          },
+          "listen": [
+            "127.0.0.1:443"
+          ],
+          "routes": [
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "analytics.githubassets.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "analytics.githubassets.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "analytics.githubassets.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "enterprise.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "enterprise.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "enterprise.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "assets-cdn.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "assets-cdn.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "assets-cdn.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "community.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "community.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "community.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "education.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "education.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "education.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "classroom.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "classroom.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "classroom.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "collector.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "collector.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "collector.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "resources.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "resources.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "resources.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "developer.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "developer.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "developer.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "codeload.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "codeload.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "codeload.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "redirect.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "redirect.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "redirect.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "services.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "services.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "services.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "copilot.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "copilot.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "copilot.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "central.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "central.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "central.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "partner.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "partner.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "partner.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "desktop.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "desktop.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "desktop.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "support.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "support.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "support.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "git-lfs.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "git-lfs.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "git-lfs.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          },
+                          "upstreams": [
+                            {
+                              "dial": "210.140.139.185:443"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "lc-event.pixiv.net"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "guides.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "guides.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "guides.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "pages.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "pages.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "pages.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "gist.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "gist.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "gist.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "docs.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "docs.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "docs.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "www.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "www.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "www.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "api.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "api.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "api.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "lfs.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "lfs.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "lfs.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "lab.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "lab.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "lab.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          },
+                          "upstreams": [
+                            {
+                              "dial": "104.18.41.140:443"
+                            },
+                            {
+                              "dial": "172.64.146.116:443"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "api.fanbox.cc"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          },
+                          "upstreams": [
+                            {
+                              "dial": "210.140.139.135:443"
+                            },
+                            {
+                              "dial": "210.140.139.132:443"
+                            },
+                            {
+                              "dial": "210.140.139.137:443"
+                            },
+                            {
+                              "dial": "210.140.139.134:443"
+                            },
+                            {
+                              "dial": "210.140.139.131:443"
+                            },
+                            {
+                              "dial": "210.140.139.130:443"
+                            },
+                            {
+                              "dial": "210.140.139.129:443"
+                            },
+                            {
+                              "dial": "210.140.139.136:443"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "i.pximg.net"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "raw.githubusercontent.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "raw.githubusercontent.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "raw.githubusercontent.com",
+                    "*.githubusercontent.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "www.githubassets.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "www.githubassets.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "www.githubassets.com",
+                    "*.githubassets.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "group": "group34",
+                      "handle": [
+                        {
+                          "handler": "subroute",
+                          "routes": [
+                            {
+                              "handle": [
+                                {
+                                  "dynamic_upstreams": {
+                                    "source": "multi",
+                                    "sources": [
+                                      {
+                                        "name": "str004.steam302.xyz",
+                                        "port": "443",
+                                        "refresh": 10000000000,
+                                        "resolver": {
+                                          "addresses": [
+                                            "127.0.0.1:5365"
+                                          ]
+                                        },
+                                        "source": "a"
+                                      },
+                                      {
+                                        "name": "str004.steam302.xyz",
+                                        "port": "443",
+                                        "refresh": 10000000000,
+                                        "resolver": {
+                                          "addresses": [
+                                            "127.0.0.1:5370"
+                                          ]
+                                        },
+                                        "source": "a"
+                                      }
+                                    ]
+                                  },
+                                  "handler": "reverse_proxy",
+                                  "headers": {
+                                    "request": {
+                                      "set": {
+                                        "Host": [
+                                          "steamcommunity.com"
+                                        ],
+                                        "If-Range": [
+                                          "{http.request.header.If-Range}"
+                                        ],
+                                        "Range": [
+                                          "{http.request.header.Range}"
+                                        ],
+                                        "User-Agent": [
+                                          "{http.request.header.User-Agent} Googlebot/2.1 (+http://www.google.com/bot.html)"
+                                        ],
+                                        "X-Real-Ip": [
+                                          "{http.request.remote.host}"
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  "health_checks": {
+                                    "passive": {
+                                      "fail_duration": 10000000000,
+                                      "max_fails": 2
+                                    }
+                                  },
+                                  "load_balancing": {
+                                    "selection_policy": {
+                                      "policy": "random"
+                                    }
+                                  },
+                                  "transport": {
+                                    "protocol": "http",
+                                    "tls": {
+                                      "insecure_skip_verify": true,
+                                      "server_name": "statuspage.akamaized.net"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "match": [
+                        {
+                          "expression": {
+                            "expr": "path_regexp('.*(discussions|comment|forum).*')",
+                            "name": "forum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "group": "group34",
+                      "handle": [
+                        {
+                          "handler": "subroute",
+                          "routes": [
+                            {
+                              "handle": [
+                                {
+                                  "handler": "reverse_proxy",
+                                  "headers": {
+                                    "request": {
+                                      "set": {
+                                        "Host": [
+                                          "{http.request.host}"
+                                        ],
+                                        "If-Range": [
+                                          "{http.request.header.If-Range}"
+                                        ],
+                                        "Range": [
+                                          "{http.request.header.Range}"
+                                        ],
+                                        "User-Agent": [
+                                          "{http.request.header.User-Agent}"
+                                        ],
+                                        "X-Real-Ip": [
+                                          "{http.request.remote.host}"
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  "health_checks": {
+                                    "passive": {
+                                      "fail_duration": 10000000000,
+                                      "max_fails": 2
+                                    }
+                                  },
+                                  "load_balancing": {
+                                    "selection_policy": {
+                                      "policy": "random"
+                                    }
+                                  },
+                                  "transport": {
+                                    "protocol": "http",
+                                    "tls": {
+                                      "insecure_skip_verify": true
+                                    }
+                                  },
+                                  "upstreams": [
+                                    {
+                                      "dial": "23.51.204.175:443"
+                                    },
+                                    {
+                                      "dial": "23.1.179.144:443"
+                                    },
+                                    {
+                                      "dial": "96.7.99.225:443"
+                                    },
+                                    {
+                                      "dial": "104.69.160.135:443"
+                                    },
+                                    {
+                                      "dial": "104.71.154.102:443"
+                                    },
+                                    {
+                                      "dial": "104.76.74.15:443"
+                                    },
+                                    {
+                                      "dial": "104.91.87.202:443"
+                                    },
+                                    {
+                                      "dial": "118.215.187.181:443"
+                                    },
+                                    {
+                                      "dial": "173.222.146.99:443"
+                                    },
+                                    {
+                                      "dial": "184.85.112.102:443"
+                                    },
+                                    {
+                                      "dial": "184.87.103.42:443"
+                                    },
+                                    {
+                                      "dial": "23.36.106.129:443"
+                                    },
+                                    {
+                                      "dial": "23.41.142.46:443"
+                                    },
+                                    {
+                                      "dial": "23.51.142.168:443"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "steamcommunity.com",
+                    "*.steamcommunity.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          },
+                          "upstreams": [
+                            {
+                              "dial": "210.140.139.135:443"
+                            },
+                            {
+                              "dial": "210.140.139.132:443"
+                            },
+                            {
+                              "dial": "210.140.139.137:443"
+                            },
+                            {
+                              "dial": "210.140.139.134:443"
+                            },
+                            {
+                              "dial": "210.140.139.131:443"
+                            },
+                            {
+                              "dial": "210.140.139.133:443"
+                            },
+                            {
+                              "dial": "210.140.139.130:443"
+                            },
+                            {
+                              "dial": "210.140.139.129:443"
+                            },
+                            {
+                              "dial": "210.140.139.136:443"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "pixiv.pximg.net",
+                    "*.pximg.net"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "www.github.io",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "www.github.io",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "www.github.io",
+                    "*.github.io"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          },
+                          "upstreams": [
+                            {
+                              "dial": "210.140.139.183:443"
+                            },
+                            {
+                              "dial": "210.140.139.184:443"
+                            },
+                            {
+                              "dial": "210.140.139.182:443"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "a.pixiv.org",
+                    "*.pixiv.org"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          },
+                          "upstreams": [
+                            {
+                              "dial": "210.140.139.152:443"
+                            },
+                            {
+                              "dial": "210.140.139.155:443"
+                            },
+                            {
+                              "dial": "210.140.139.158:443"
+                            },
+                            {
+                              "dial": "210.140.139.161:443"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "pixiv.net",
+                    "*.pixiv.net"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "If-Range": [
+                                  "{http.request.header.If-Range}"
+                                ],
+                                "Range": [
+                                  "{http.request.header.Range}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          },
+                          "upstreams": [
+                            {
+                              "dial": "210.140.139.152:443"
+                            },
+                            {
+                              "dial": "210.140.139.155:443"
+                            },
+                            {
+                              "dial": "210.140.139.158:443"
+                            },
+                            {
+                              "dial": "210.140.139.161:443"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "fanbox.cc",
+                    "*.fanbox.cc"
+                  ]
+                }
+              ],
+              "terminal": true
+            }
+          ],
+          "tls_connection_policies": [
+            {
+              "certificate_selection": {
+                "any_tag": [
+                  "cert0"
+                ]
+              },
+              "match": {
+                "sni": [
+                  "analytics.githubassets.com",
+                  "enterprise.github.com",
+                  "assets-cdn.github.com",
+                  "community.github.com",
+                  "education.github.com",
+                  "classroom.github.com",
+                  "collector.github.com",
+                  "resources.github.com",
+                  "developer.github.com",
+                  "codeload.github.com",
+                  "redirect.github.com",
+                  "services.github.com",
+                  "copilot.github.com",
+                  "central.github.com",
+                  "partner.github.com",
+                  "desktop.github.com",
+                  "support.github.com",
+                  "git-lfs.github.com",
+                  "lc-event.pixiv.net",
+                  "guides.github.com",
+                  "pages.github.com",
+                  "gist.github.com",
+                  "docs.github.com",
+                  "www.github.com",
+                  "api.github.com",
+                  "lfs.github.com",
+                  "lab.github.com",
+                  "api.fanbox.cc",
+                  "i.pximg.net",
+                  "github.com",
+                  "*.githubusercontent.com",
+                  "raw.githubusercontent.com",
+                  "*.githubassets.com",
+                  "www.githubassets.com",
+                  "*.steamcommunity.com",
+                  "steamcommunity.com",
+                  "*.pximg.net",
+                  "pixiv.pximg.net",
+                  "*.github.io",
+                  "www.github.io",
+                  "*.pixiv.org",
+                  "a.pixiv.org",
+                  "*.pixiv.net",
+                  "pixiv.net",
+                  "*.fanbox.cc",
+                  "fanbox.cc"
+                ]
+              }
+            },
+            {}
+          ]
+        }
+      }
+    },
+    "tls": {
+      "certificates": {
+        "load_files": [
+          {
+            "certificate": "/nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt",
+            "key": "/nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key",
+            "tags": [
+              "cert0"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

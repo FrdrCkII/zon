@@ -1,0 +1,6542 @@
+{
+  "hardware": {
+    "bios": {
+      "apm_info": {
+        "bios_flags": 0,
+        "enabled": false,
+        "sub_version": 0,
+        "supported": false,
+        "version": 0
+      },
+      "lba_support": false,
+      "low_memory_size": 0,
+      "pnp": false,
+      "pnp_id": 0,
+      "smbios_version": 776,
+      "vbe_info": {
+        "version": 0,
+        "video_memory": 0
+      }
+    },
+    "bluetooth": [
+      {
+        "attached_to": 69,
+        "base_class": {
+          "hex": "0115",
+          "name": "Bluetooth Device",
+          "value": 277
+        },
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "class_list": [
+          "usb",
+          "bluetooth"
+        ],
+        "detail": {
+          "device_class": {
+            "hex": "00ef",
+            "name": "miscellaneous",
+            "value": 239
+          },
+          "device_protocol": 1,
+          "device_subclass": {
+            "hex": "0002",
+            "name": "comm",
+            "value": 2
+          },
+          "interface_alternate_setting": 1,
+          "interface_association": {
+            "first_interface": 0,
+            "function_class": {
+              "hex": "00e0",
+              "name": "wireless",
+              "value": 224
+            },
+            "function_protocol": 1,
+            "function_subclass": {
+              "hex": "0001",
+              "name": "audio",
+              "value": 1
+            },
+            "interface_count": 3
+          },
+          "interface_class": {
+            "hex": "00e0",
+            "name": "wireless",
+            "value": 224
+          },
+          "interface_number": 2,
+          "interface_protocol": 1,
+          "interface_subclass": {
+            "hex": "0001",
+            "name": "audio",
+            "value": 1
+          }
+        },
+        "device": {
+          "hex": "3602",
+          "name": "Wireless_Device",
+          "value": 13826
+        },
+        "driver": "btusb",
+        "driver_module": "btusb",
+        "driver_modules": [
+          "btusb"
+        ],
+        "drivers": [
+          "btusb"
+        ],
+        "hotplug": "usb",
+        "index": 70,
+        "model": "MediaTek Wireless_Device",
+        "module_alias": "usb:v13D3p3602d0100dcEFdsc02dp01icE0isc01ip01in02",
+        "resources": [
+          {
+            "bits": 0,
+            "handshake": 0,
+            "parity": 0,
+            "speed": 480000000,
+            "stop_bits": 0,
+            "type": "baud"
+          }
+        ],
+        "revision": {
+          "hex": "0000",
+          "name": "1.00",
+          "value": 0
+        },
+        "serial": "000000000",
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "sysfs_bus_id": "3-14:1.2",
+        "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-14/3-14:1.2",
+        "vendor": {
+          "hex": "13d3",
+          "name": "MediaTek Inc.",
+          "value": 5075
+        }
+      },
+      {
+        "attached_to": 69,
+        "base_class": {
+          "hex": "0115",
+          "name": "Bluetooth Device",
+          "value": 277
+        },
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "class_list": [
+          "usb",
+          "bluetooth"
+        ],
+        "detail": {
+          "device_class": {
+            "hex": "00ef",
+            "name": "miscellaneous",
+            "value": 239
+          },
+          "device_protocol": 1,
+          "device_subclass": {
+            "hex": "0002",
+            "name": "comm",
+            "value": 2
+          },
+          "interface_alternate_setting": 0,
+          "interface_association": {
+            "first_interface": 0,
+            "function_class": {
+              "hex": "00e0",
+              "name": "wireless",
+              "value": 224
+            },
+            "function_protocol": 1,
+            "function_subclass": {
+              "hex": "0001",
+              "name": "audio",
+              "value": 1
+            },
+            "interface_count": 3
+          },
+          "interface_class": {
+            "hex": "00e0",
+            "name": "wireless",
+            "value": 224
+          },
+          "interface_number": 0,
+          "interface_protocol": 1,
+          "interface_subclass": {
+            "hex": "0001",
+            "name": "audio",
+            "value": 1
+          }
+        },
+        "device": {
+          "hex": "3602",
+          "name": "Wireless_Device",
+          "value": 13826
+        },
+        "driver": "btusb",
+        "driver_module": "btusb",
+        "driver_modules": [
+          "btusb"
+        ],
+        "drivers": [
+          "btusb"
+        ],
+        "hotplug": "usb",
+        "index": 73,
+        "model": "MediaTek Wireless_Device",
+        "module_alias": "usb:v13D3p3602d0100dcEFdsc02dp01icE0isc01ip01in00",
+        "resources": [
+          {
+            "bits": 0,
+            "handshake": 0,
+            "parity": 0,
+            "speed": 480000000,
+            "stop_bits": 0,
+            "type": "baud"
+          }
+        ],
+        "revision": {
+          "hex": "0000",
+          "name": "1.00",
+          "value": 0
+        },
+        "serial": "000000000",
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "sysfs_bus_id": "3-14:1.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-14/3-14:1.0",
+        "vendor": {
+          "hex": "13d3",
+          "name": "MediaTek Inc.",
+          "value": 5075
+        }
+      },
+      {
+        "attached_to": 69,
+        "base_class": {
+          "hex": "0115",
+          "name": "Bluetooth Device",
+          "value": 277
+        },
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "class_list": [
+          "usb",
+          "bluetooth"
+        ],
+        "detail": {
+          "device_class": {
+            "hex": "00ef",
+            "name": "miscellaneous",
+            "value": 239
+          },
+          "device_protocol": 1,
+          "device_subclass": {
+            "hex": "0002",
+            "name": "comm",
+            "value": 2
+          },
+          "interface_alternate_setting": 0,
+          "interface_association": {
+            "first_interface": 0,
+            "function_class": {
+              "hex": "00e0",
+              "name": "wireless",
+              "value": 224
+            },
+            "function_protocol": 1,
+            "function_subclass": {
+              "hex": "0001",
+              "name": "audio",
+              "value": 1
+            },
+            "interface_count": 3
+          },
+          "interface_class": {
+            "hex": "00e0",
+            "name": "wireless",
+            "value": 224
+          },
+          "interface_number": 1,
+          "interface_protocol": 1,
+          "interface_subclass": {
+            "hex": "0001",
+            "name": "audio",
+            "value": 1
+          }
+        },
+        "device": {
+          "hex": "3602",
+          "name": "Wireless_Device",
+          "value": 13826
+        },
+        "driver": "btusb",
+        "driver_module": "btusb",
+        "driver_modules": [
+          "btusb"
+        ],
+        "drivers": [
+          "btusb"
+        ],
+        "hotplug": "usb",
+        "index": 80,
+        "model": "MediaTek Wireless_Device",
+        "module_alias": "usb:v13D3p3602d0100dcEFdsc02dp01icE0isc01ip01in01",
+        "resources": [
+          {
+            "bits": 0,
+            "handshake": 0,
+            "parity": 0,
+            "speed": 480000000,
+            "stop_bits": 0,
+            "type": "baud"
+          }
+        ],
+        "revision": {
+          "hex": "0000",
+          "name": "1.00",
+          "value": 0
+        },
+        "serial": "000000000",
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "sysfs_bus_id": "3-14:1.1",
+        "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-14/3-14:1.1",
+        "vendor": {
+          "hex": "13d3",
+          "name": "MediaTek Inc.",
+          "value": 5075
+        }
+      }
+    ],
+    "bridge": [
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0006",
+          "name": "Bridge",
+          "value": 6
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
+        "detail": {
+          "command": 1031,
+          "function": 1,
+          "header_type": 1,
+          "prog_if": 0,
+          "secondary_bus": 3
+        },
+        "device": {
+          "hex": "7eca",
+          "value": 32458
+        },
+        "driver": "pcieport",
+        "driver_module": "pcieportdrv",
+        "driver_modules": [
+          "pcieportdrv"
+        ],
+        "drivers": [
+          "pcieport"
+        ],
+        "index": 28,
+        "model": "Intel PCI bridge",
+        "module_alias": "pci:v00008086d00007ECAsv00001043sd000088EFbc06sc04i00",
+        "pci_interface": {
+          "hex": "0000",
+          "name": "Normal decode",
+          "value": 0
+        },
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 0,
+          "number": 6
+        },
+        "sub_class": {
+          "hex": "0004",
+          "name": "PCI bridge",
+          "value": 4
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:00:06.1",
+        "sysfs_id": "/devices/pci0000:00/0000:00:06.1",
+        "sysfs_iommu_group_id": 4,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0006",
+          "name": "Bridge",
+          "value": 6
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
+        "detail": {
+          "command": 1031,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "ae0d",
+          "value": 44557
+        },
+        "index": 29,
+        "model": "Intel ISA bridge",
+        "module_alias": "pci:v00008086d0000AE0Dsv00001043sd000088EFbc06sc01i00",
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 0,
+          "number": 31
+        },
+        "sub_class": {
+          "hex": "0001",
+          "name": "ISA bridge",
+          "value": 1
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:00:1f.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:1f.0",
+        "sysfs_iommu_group_id": 13,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 60,
+        "base_class": {
+          "hex": "0006",
+          "name": "Bridge",
+          "value": 6
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
+        "detail": {
+          "command": 7,
+          "function": 0,
+          "header_type": 1,
+          "prog_if": 0,
+          "secondary_bus": 136
+        },
+        "device": {
+          "hex": "e2f1",
+          "value": 58097
+        },
+        "driver": "pcieport",
+        "driver_module": "pcieportdrv",
+        "driver_modules": [
+          "pcieportdrv"
+        ],
+        "drivers": [
+          "pcieport"
+        ],
+        "index": 32,
+        "model": "Intel PCI bridge",
+        "module_alias": "pci:v00008086d0000E2F1sv00008086sd00000000bc06sc04i00",
+        "pci_interface": {
+          "hex": "0000",
+          "name": "Normal decode",
+          "value": 0
+        },
+        "slot": {
+          "bus": 134,
+          "number": 2
+        },
+        "sub_class": {
+          "hex": "0004",
+          "name": "PCI bridge",
+          "value": 4
+        },
+        "sub_device": {
+          "hex": "0000",
+          "value": 0
+        },
+        "sub_vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        },
+        "sysfs_bus_id": "0000:86:02.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:1c.3/0000:85:00.0/0000:86:02.0",
+        "sysfs_iommu_group_id": 32,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0006",
+          "name": "Bridge",
+          "value": 6
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
+        "detail": {
+          "command": 1031,
+          "function": 2,
+          "header_type": 1,
+          "prog_if": 0,
+          "secondary_bus": 132
+        },
+        "device": {
+          "hex": "7f3a",
+          "value": 32570
+        },
+        "driver": "pcieport",
+        "driver_module": "pcieportdrv",
+        "driver_modules": [
+          "pcieportdrv"
+        ],
+        "drivers": [
+          "pcieport"
+        ],
+        "index": 33,
+        "model": "Intel PCI bridge",
+        "module_alias": "pci:v00008086d00007F3Asv00001043sd000088EFbc06sc04i00",
+        "pci_interface": {
+          "hex": "0000",
+          "name": "Normal decode",
+          "value": 0
+        },
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 128,
+          "number": 28
+        },
+        "sub_class": {
+          "hex": "0004",
+          "name": "PCI bridge",
+          "value": 4
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:80:1c.2",
+        "sysfs_id": "/devices/pci0000:80/0000:80:1c.2",
+        "sysfs_iommu_group_id": 24,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0006",
+          "name": "Bridge",
+          "value": 6
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
+        "detail": {
+          "command": 1031,
+          "function": 0,
+          "header_type": 1,
+          "prog_if": 0,
+          "secondary_bus": 1
+        },
+        "device": {
+          "hex": "7ecc",
+          "value": 32460
+        },
+        "driver": "pcieport",
+        "driver_module": "pcieportdrv",
+        "driver_modules": [
+          "pcieportdrv"
+        ],
+        "drivers": [
+          "pcieport"
+        ],
+        "index": 34,
+        "model": "Intel PCI bridge",
+        "module_alias": "pci:v00008086d00007ECCsv00001043sd000088EFbc06sc04i00",
+        "pci_interface": {
+          "hex": "0000",
+          "name": "Normal decode",
+          "value": 0
+        },
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 0,
+          "number": 1
+        },
+        "sub_class": {
+          "hex": "0004",
+          "name": "PCI bridge",
+          "value": 4
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:00:01.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:01.0",
+        "sysfs_iommu_group_id": 1,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0006",
+          "name": "Bridge",
+          "value": 6
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
+        "detail": {
+          "command": 1031,
+          "function": 0,
+          "header_type": 1,
+          "prog_if": 0,
+          "secondary_bus": 130
+        },
+        "device": {
+          "hex": "7f38",
+          "value": 32568
+        },
+        "driver": "pcieport",
+        "driver_module": "pcieportdrv",
+        "driver_modules": [
+          "pcieportdrv"
+        ],
+        "drivers": [
+          "pcieport"
+        ],
+        "index": 37,
+        "model": "Intel PCI bridge",
+        "module_alias": "pci:v00008086d00007F38sv00001043sd000088EFbc06sc04i00",
+        "pci_interface": {
+          "hex": "0000",
+          "name": "Normal decode",
+          "value": 0
+        },
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 128,
+          "number": 28
+        },
+        "sub_class": {
+          "hex": "0004",
+          "name": "PCI bridge",
+          "value": 4
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:80:1c.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:1c.0",
+        "sysfs_iommu_group_id": 22,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0006",
+          "name": "Bridge",
+          "value": 6
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
+        "detail": {
+          "command": 1027,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "7f04",
+          "value": 32516
+        },
+        "index": 40,
+        "model": "Intel ISA bridge",
+        "module_alias": "pci:v00008086d00007F04sv00001043sd000088EFbc06sc01i00",
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 128,
+          "number": 31
+        },
+        "sub_class": {
+          "hex": "0001",
+          "name": "ISA bridge",
+          "value": 1
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:80:1f.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:1f.0",
+        "sysfs_iommu_group_id": 27,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0006",
+          "name": "Bridge",
+          "value": 6
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
+        "detail": {
+          "command": 1031,
+          "function": 0,
+          "header_type": 1,
+          "prog_if": 0,
+          "secondary_bus": 4
+        },
+        "device": {
+          "hex": "7ec4",
+          "value": 32452
+        },
+        "driver": "pcieport",
+        "driver_module": "pcieportdrv",
+        "driver_modules": [
+          "pcieportdrv"
+        ],
+        "drivers": [
+          "pcieport"
+        ],
+        "index": 41,
+        "model": "Intel PCI bridge",
+        "module_alias": "pci:v00008086d00007EC4sv00001043sd000088EFbc06sc04i00",
+        "pci_interface": {
+          "hex": "0000",
+          "name": "Normal decode",
+          "value": 0
+        },
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 0,
+          "number": 7
+        },
+        "sub_class": {
+          "hex": "0004",
+          "name": "PCI bridge",
+          "value": 4
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:00:07.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:07.0",
+        "sysfs_iommu_group_id": 5,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 60,
+        "base_class": {
+          "hex": "0006",
+          "name": "Bridge",
+          "value": 6
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
+        "detail": {
+          "command": 7,
+          "function": 0,
+          "header_type": 1,
+          "prog_if": 0,
+          "secondary_bus": 135
+        },
+        "device": {
+          "hex": "e2f0",
+          "value": 58096
+        },
+        "driver": "pcieport",
+        "driver_module": "pcieportdrv",
+        "driver_modules": [
+          "pcieportdrv"
+        ],
+        "drivers": [
+          "pcieport"
+        ],
+        "index": 45,
+        "model": "Intel PCI bridge",
+        "module_alias": "pci:v00008086d0000E2F0sv00008086sd00000000bc06sc04i00",
+        "pci_interface": {
+          "hex": "0000",
+          "name": "Normal decode",
+          "value": 0
+        },
+        "slot": {
+          "bus": 134,
+          "number": 1
+        },
+        "sub_class": {
+          "hex": "0004",
+          "name": "PCI bridge",
+          "value": 4
+        },
+        "sub_device": {
+          "hex": "0000",
+          "value": 0
+        },
+        "sub_vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        },
+        "sysfs_bus_id": "0000:86:01.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:1c.3/0000:85:00.0/0000:86:01.0",
+        "sysfs_iommu_group_id": 31,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0006",
+          "name": "Bridge",
+          "value": 6
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
+        "detail": {
+          "command": 6,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "7d1b",
+          "value": 32027
+        },
+        "index": 46,
+        "model": "Intel Host bridge",
+        "module_alias": "pci:v00008086d00007D1Bsv00001043sd000088EFbc06sc00i00",
+        "revision": {
+          "hex": "0001",
+          "value": 1
+        },
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Host bridge",
+          "value": 0
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:00:00.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:00.0",
+        "sysfs_iommu_group_id": 0,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0006",
+          "name": "Bridge",
+          "value": 6
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
+        "detail": {
+          "command": 1031,
+          "function": 0,
+          "header_type": 1,
+          "prog_if": 0,
+          "secondary_bus": 129
+        },
+        "device": {
+          "hex": "7f40",
+          "value": 32576
+        },
+        "driver": "pcieport",
+        "driver_module": "pcieportdrv",
+        "driver_modules": [
+          "pcieportdrv"
+        ],
+        "drivers": [
+          "pcieport"
+        ],
+        "index": 48,
+        "model": "Intel PCI bridge",
+        "module_alias": "pci:v00008086d00007F40sv00001043sd000088EFbc06sc04i00",
+        "pci_interface": {
+          "hex": "0000",
+          "name": "Normal decode",
+          "value": 0
+        },
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 128,
+          "number": 27
+        },
+        "sub_class": {
+          "hex": "0004",
+          "name": "PCI bridge",
+          "value": 4
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:80:1b.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:1b.0",
+        "sysfs_iommu_group_id": 21,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0006",
+          "name": "Bridge",
+          "value": 6
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
+        "detail": {
+          "command": 1031,
+          "function": 3,
+          "header_type": 1,
+          "prog_if": 0,
+          "secondary_bus": 133
+        },
+        "device": {
+          "hex": "7f3b",
+          "value": 32571
+        },
+        "driver": "pcieport",
+        "driver_module": "pcieportdrv",
+        "driver_modules": [
+          "pcieportdrv"
+        ],
+        "drivers": [
+          "pcieport"
+        ],
+        "index": 51,
+        "model": "Intel PCI bridge",
+        "module_alias": "pci:v00008086d00007F3Bsv00001043sd000088EFbc06sc04i00",
+        "pci_interface": {
+          "hex": "0000",
+          "name": "Normal decode",
+          "value": 0
+        },
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 128,
+          "number": 28
+        },
+        "sub_class": {
+          "hex": "0004",
+          "name": "PCI bridge",
+          "value": 4
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:80:1c.3",
+        "sysfs_id": "/devices/pci0000:80/0000:80:1c.3",
+        "sysfs_iommu_group_id": 25,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0006",
+          "name": "Bridge",
+          "value": 6
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
+        "detail": {
+          "command": 1031,
+          "function": 0,
+          "header_type": 1,
+          "prog_if": 0,
+          "secondary_bus": 2
+        },
+        "device": {
+          "hex": "ae4d",
+          "value": 44621
+        },
+        "driver": "pcieport",
+        "driver_module": "pcieportdrv",
+        "driver_modules": [
+          "pcieportdrv"
+        ],
+        "drivers": [
+          "pcieport"
+        ],
+        "index": 52,
+        "model": "Intel PCI bridge",
+        "module_alias": "pci:v00008086d0000AE4Dsv00001043sd000088EFbc06sc04i00",
+        "pci_interface": {
+          "hex": "0000",
+          "name": "Normal decode",
+          "value": 0
+        },
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 0,
+          "number": 6
+        },
+        "sub_class": {
+          "hex": "0004",
+          "name": "PCI bridge",
+          "value": 4
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:00:06.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:06.0",
+        "sysfs_iommu_group_id": 3,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0006",
+          "name": "Bridge",
+          "value": 6
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
+        "detail": {
+          "command": 1031,
+          "function": 1,
+          "header_type": 1,
+          "prog_if": 0,
+          "secondary_bus": 131
+        },
+        "device": {
+          "hex": "7f39",
+          "value": 32569
+        },
+        "driver": "pcieport",
+        "driver_module": "pcieportdrv",
+        "driver_modules": [
+          "pcieportdrv"
+        ],
+        "drivers": [
+          "pcieport"
+        ],
+        "index": 55,
+        "model": "Intel PCI bridge",
+        "module_alias": "pci:v00008086d00007F39sv00001043sd000088EFbc06sc04i00",
+        "pci_interface": {
+          "hex": "0000",
+          "name": "Normal decode",
+          "value": 0
+        },
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 128,
+          "number": 28
+        },
+        "sub_class": {
+          "hex": "0004",
+          "name": "PCI bridge",
+          "value": 4
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:80:1c.1",
+        "sysfs_id": "/devices/pci0000:80/0000:80:1c.1",
+        "sysfs_iommu_group_id": 23,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0006",
+          "name": "Bridge",
+          "value": 6
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
+        "detail": {
+          "command": 1031,
+          "function": 1,
+          "header_type": 1,
+          "prog_if": 0,
+          "secondary_bus": 46
+        },
+        "device": {
+          "hex": "7ec5",
+          "value": 32453
+        },
+        "driver": "pcieport",
+        "driver_module": "pcieportdrv",
+        "driver_modules": [
+          "pcieportdrv"
+        ],
+        "drivers": [
+          "pcieport"
+        ],
+        "index": 58,
+        "model": "Intel PCI bridge",
+        "module_alias": "pci:v00008086d00007EC5sv00001043sd000088EFbc06sc04i00",
+        "pci_interface": {
+          "hex": "0000",
+          "name": "Normal decode",
+          "value": 0
+        },
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 0,
+          "number": 7
+        },
+        "sub_class": {
+          "hex": "0004",
+          "name": "PCI bridge",
+          "value": 4
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:00:07.1",
+        "sysfs_id": "/devices/pci0000:00/0000:00:07.1",
+        "sysfs_iommu_group_id": 6,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 51,
+        "base_class": {
+          "hex": "0006",
+          "name": "Bridge",
+          "value": 6
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
+        "detail": {
+          "command": 7,
+          "function": 0,
+          "header_type": 1,
+          "prog_if": 0,
+          "secondary_bus": 134
+        },
+        "device": {
+          "hex": "e2ff",
+          "value": 58111
+        },
+        "driver": "pcieport",
+        "driver_module": "pcieportdrv",
+        "driver_modules": [
+          "pcieportdrv"
+        ],
+        "drivers": [
+          "pcieport"
+        ],
+        "index": 60,
+        "model": "Intel PCI bridge",
+        "module_alias": "pci:v00008086d0000E2FFsv00000000sd00000000bc06sc04i00",
+        "pci_interface": {
+          "hex": "0000",
+          "name": "Normal decode",
+          "value": 0
+        },
+        "revision": {
+          "hex": "0001",
+          "value": 1
+        },
+        "slot": {
+          "bus": 133,
+          "number": 0
+        },
+        "sub_class": {
+          "hex": "0004",
+          "name": "PCI bridge",
+          "value": 4
+        },
+        "sysfs_bus_id": "0000:85:00.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:1c.3/0000:85:00.0",
+        "sysfs_iommu_group_id": 30,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0006",
+          "name": "Bridge",
+          "value": 6
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "bridge"
+        ],
+        "detail": {
+          "command": 1031,
+          "function": 0,
+          "header_type": 1,
+          "prog_if": 0,
+          "secondary_bus": 137
+        },
+        "device": {
+          "hex": "7f30",
+          "value": 32560
+        },
+        "driver": "pcieport",
+        "driver_module": "pcieportdrv",
+        "driver_modules": [
+          "pcieportdrv"
+        ],
+        "drivers": [
+          "pcieport"
+        ],
+        "index": 62,
+        "model": "Intel PCI bridge",
+        "module_alias": "pci:v00008086d00007F30sv00001043sd000088EFbc06sc04i00",
+        "pci_interface": {
+          "hex": "0000",
+          "name": "Normal decode",
+          "value": 0
+        },
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 128,
+          "number": 29
+        },
+        "sub_class": {
+          "hex": "0004",
+          "name": "PCI bridge",
+          "value": 4
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:80:1d.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:1d.0",
+        "sysfs_iommu_group_id": 26,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      }
+    ],
+    "cpu": [
+      {
+        "address_sizes": {
+          "physical": "0x2e",
+          "virtual": "0x30"
+        },
+        "architecture": "x86_64",
+        "bogo": 7756,
+        "bugs": [
+          "spectre_v1",
+          "spectre_v2",
+          "spec_store_bypass",
+          "swapgs",
+          "bhi",
+          "spectre_v2_user",
+          "vmscape"
+        ],
+        "cache": 30720,
+        "cache_alignment": 64,
+        "clflush_size": 64,
+        "cores": 20,
+        "cpuid_level": 35,
+        "family": 6,
+        "features": [
+          "fpu",
+          "vme",
+          "de",
+          "pse",
+          "tsc",
+          "msr",
+          "pae",
+          "mce",
+          "cx8",
+          "apic",
+          "sep",
+          "mtrr",
+          "pge",
+          "mca",
+          "cmov",
+          "pat",
+          "pse36",
+          "clflush",
+          "dts",
+          "acpi",
+          "mmx",
+          "fxsr",
+          "sse",
+          "sse2",
+          "ss",
+          "ht",
+          "tm",
+          "pbe",
+          "syscall",
+          "nx",
+          "pdpe1gb",
+          "rdtscp",
+          "lm",
+          "constant_tsc",
+          "art",
+          "arch_perfmon",
+          "pebs",
+          "bts",
+          "rep_good",
+          "nopl",
+          "xtopology",
+          "nonstop_tsc",
+          "cpuid",
+          "aperfmperf",
+          "tsc_known_freq",
+          "pni",
+          "pclmulqdq",
+          "dtes64",
+          "monitor",
+          "ds_cpl",
+          "vmx",
+          "smx",
+          "est",
+          "tm2",
+          "ssse3",
+          "sdbg",
+          "fma",
+          "cx16",
+          "xtpr",
+          "pdcm",
+          "pcid",
+          "sse4_1",
+          "sse4_2",
+          "x2apic",
+          "movbe",
+          "popcnt",
+          "tsc_deadline_timer",
+          "aes",
+          "xsave",
+          "avx",
+          "f16c",
+          "rdrand",
+          "lahf_lm",
+          "abm",
+          "3dnowprefetch",
+          "cpuid_fault",
+          "ssbd",
+          "ibrs",
+          "ibpb",
+          "stibp",
+          "ibrs_enhanced",
+          "tpr_shadow",
+          "flexpriority",
+          "ept",
+          "vpid",
+          "ept_ad",
+          "fsgsbase",
+          "tsc_adjust",
+          "bmi1",
+          "avx2",
+          "smep",
+          "bmi2",
+          "erms",
+          "invpcid",
+          "rdt_a",
+          "rdseed",
+          "adx",
+          "smap",
+          "clflushopt",
+          "clwb",
+          "intel_pt",
+          "sha_ni",
+          "xsaveopt",
+          "xsavec",
+          "xgetbv1",
+          "xsaves",
+          "split_lock_detect",
+          "user_shstk",
+          "avx_vnni",
+          "lass",
+          "lam",
+          "wbnoinvd",
+          "dtherm",
+          "ida",
+          "arat",
+          "pln",
+          "pts",
+          "hwp",
+          "hwp_notify",
+          "hwp_act_window",
+          "hwp_epp",
+          "hwp_pkg_req",
+          "hfi",
+          "vnmi",
+          "umip",
+          "pku",
+          "ospke",
+          "waitpkg",
+          "gfni",
+          "vaes",
+          "vpclmulqdq",
+          "rdpid",
+          "bus_lock_detect",
+          "movdiri",
+          "movdir64b",
+          "fsrm",
+          "md_clear",
+          "serialize",
+          "arch_lbr",
+          "ibt",
+          "flush_l1d",
+          "arch_capabilities"
+        ],
+        "fpu": false,
+        "fpu_exception": false,
+        "model": 198,
+        "model_name": "Intel(R) Core(TM) Ultra 7 265K",
+        "page_size": 4096,
+        "physical_id": 0,
+        "power_management": [
+          ""
+        ],
+        "siblings": 20,
+        "stepping": 2,
+        "units": 128,
+        "vendor_name": "GenuineIntel",
+        "write_protect": false
+      }
+    ],
+    "disk": [
+      {
+        "attached_to": 39,
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "bus_type": {
+          "hex": "0096",
+          "name": "NVME",
+          "value": 150
+        },
+        "class_list": [
+          "disk",
+          "block_device",
+          "nvme"
+        ],
+        "device": {
+          "hex": "002a",
+          "name": "KIOXIA-EXCERIA PLUS G3 SSD",
+          "value": 42
+        },
+        "driver": "nvme",
+        "driver_module": "nvme",
+        "driver_modules": [
+          "nvme"
+        ],
+        "drivers": [
+          "nvme"
+        ],
+        "index": 66,
+        "model": "KIOXIA-EXCERIA PLUS G3 SSD",
+        "resources": [
+          {
+            "cylinders": 119233,
+            "geo_type": "logical",
+            "heads": 64,
+            "sectors": 32,
+            "size": "0x0",
+            "type": "disk_geo"
+          },
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 244190646,
+            "value_2": 4096
+          }
+        ],
+        "serial": "6FUKS0RKZ0E7",
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "sub_device": {
+          "hex": "00fb",
+          "value": 251
+        },
+        "sub_vendor": {
+          "hex": "1e0f",
+          "value": 7695
+        },
+        "sysfs_bus_id": "nvme0",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:01.0/0000:01:00.0/nvme/nvme0",
+        "sysfs_id": "/class/block/nvme0n1",
+        "unix_device_names": [
+          "/dev/disk/by-id/nvme-KIOXIA-EXCERIA_PLUS_G3_SSD_6FUKS0RKZ0E7",
+          "/dev/disk/by-id/nvme-KIOXIA-EXCERIA_PLUS_G3_SSD_6FUKS0RKZ0E7_1",
+          "/dev/disk/by-id/nvme-eui.00000000000000008ce38e0300b00bce",
+          "/dev/disk/by-path/pci-0000:01:00.0-nvme-1",
+          "/dev/nvme0n1"
+        ],
+        "vendor": {
+          "hex": "1e0f",
+          "value": 7695
+        }
+      },
+      {
+        "attached_to": 24,
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "bus_type": {
+          "hex": "0096",
+          "name": "NVME",
+          "value": 150
+        },
+        "class_list": [
+          "disk",
+          "block_device",
+          "nvme"
+        ],
+        "device": {
+          "hex": "002a",
+          "name": "KIOXIA-EXCERIA PLUS G3 SSD",
+          "value": 42
+        },
+        "driver": "nvme",
+        "driver_module": "nvme",
+        "driver_modules": [
+          "nvme"
+        ],
+        "drivers": [
+          "nvme"
+        ],
+        "index": 67,
+        "model": "KIOXIA-EXCERIA PLUS G3 SSD",
+        "resources": [
+          {
+            "cylinders": 119233,
+            "geo_type": "logical",
+            "heads": 64,
+            "sectors": 32,
+            "size": "0x0",
+            "type": "disk_geo"
+          },
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 244190646,
+            "value_2": 4096
+          }
+        ],
+        "serial": "5FLKS1VNZ0E7",
+        "slot": {
+          "bus": 0,
+          "number": 1
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "sub_device": {
+          "hex": "00fb",
+          "value": 251
+        },
+        "sub_vendor": {
+          "hex": "1e0f",
+          "value": 7695
+        },
+        "sysfs_bus_id": "nvme1",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:06.1/0000:03:00.0/nvme/nvme1",
+        "sysfs_id": "/class/block/nvme1n1",
+        "unix_device_names": [
+          "/dev/disk/by-id/nvme-KIOXIA-EXCERIA_PLUS_G3_SSD_5FLKS1VNZ0E7",
+          "/dev/disk/by-id/nvme-KIOXIA-EXCERIA_PLUS_G3_SSD_5FLKS1VNZ0E7_1",
+          "/dev/disk/by-id/nvme-eui.00000000000000008ce38e0300ae3edd",
+          "/dev/disk/by-path/pci-0000:03:00.0-nvme-1",
+          "/dev/nvme1n1"
+        ],
+        "vendor": {
+          "hex": "1e0f",
+          "value": 7695
+        }
+      },
+      {
+        "attached_to": 30,
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "bus_type": {
+          "hex": "0084",
+          "name": "SCSI",
+          "value": 132
+        },
+        "class_list": [
+          "disk",
+          "usb",
+          "scsi",
+          "block_device"
+        ],
+        "device": {
+          "hex": "1234",
+          "name": "ProductCode 3.0",
+          "value": 4660
+        },
+        "driver": "usb-storage",
+        "driver_module": "usb_storage",
+        "driver_modules": [
+          "sd_mod",
+          "usb_storage"
+        ],
+        "drivers": [
+          "sd",
+          "usb-storage"
+        ],
+        "index": 68,
+        "model": "VendorCo ProductCode 3.0",
+        "module_alias": "usb:v048Dp1234d0200dc00dsc00dp00ic08isc06ip50in00",
+        "resources": [
+          {
+            "bits": 0,
+            "handshake": 0,
+            "parity": 0,
+            "speed": 480000000,
+            "stop_bits": 0,
+            "type": "baud"
+          },
+          {
+            "cylinders": 16317,
+            "geo_type": "logical",
+            "heads": 255,
+            "sectors": 63,
+            "size": "0x0",
+            "type": "disk_geo"
+          },
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 262144000,
+            "value_2": 512
+          }
+        ],
+        "revision": {
+          "hex": "0000",
+          "name": "2.00",
+          "value": 0
+        },
+        "serial": "0317961063064173423",
+        "slot": {
+          "bus": 8,
+          "number": 0
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "sysfs_bus_id": "8:0:0:0",
+        "sysfs_device_link": "/devices/pci0000:80/0000:80:14.0/usb3/3-11/3-11.3/3-11.3:1.0/host8/target8:0:0/8:0:0:0",
+        "sysfs_id": "/class/block/sda",
+        "unix_device_name2": "/dev/sg0",
+        "unix_device_names": [
+          "/dev/disk/by-id/usb-VendorCo_ProductCode_3.0_0317961063064173423-0:0",
+          "/dev/disk/by-label/nixos-26.05-x86_64",
+          "/dev/disk/by-path/pci-0000:80:14.0-usb-0:11.3:1.0-scsi-0:0:0:0",
+          "/dev/disk/by-path/pci-0000:80:14.0-usbv2-0:11.3:1.0-scsi-0:0:0:0",
+          "/dev/disk/by-uuid/1980-01-01-00-00-00-00",
+          "/dev/sda"
+        ],
+        "vendor": {
+          "hex": "048d",
+          "name": "VendorCo",
+          "value": 1165
+        }
+      }
+    ],
+    "graphics_card": [
+      {
+        "attached_to": 45,
+        "base_class": {
+          "hex": "0003",
+          "name": "Display controller",
+          "value": 3
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "graphics_card",
+          "pci"
+        ],
+        "detail": {
+          "command": 6,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "e20b",
+          "value": 57867
+        },
+        "driver": "xe",
+        "driver_module": "xe",
+        "driver_modules": [
+          "xe"
+        ],
+        "drivers": [
+          "xe"
+        ],
+        "index": 50,
+        "model": "Intel VGA compatible controller",
+        "module_alias": "pci:v00008086d0000E20Bsv00006688sd00008069bc03sc00i00",
+        "pci_interface": {
+          "hex": "0000",
+          "name": "VGA",
+          "value": 0
+        },
+        "slot": {
+          "bus": 135,
+          "number": 0
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "VGA compatible controller",
+          "value": 0
+        },
+        "sub_device": {
+          "hex": "8069",
+          "value": 32873
+        },
+        "sub_vendor": {
+          "hex": "6688",
+          "value": 26248
+        },
+        "sysfs_bus_id": "0000:87:00.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:1c.3/0000:85:00.0/0000:86:01.0/0000:87:00.0",
+        "sysfs_iommu_group_id": 33,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      }
+    ],
+    "hub": [
+      {
+        "attached_to": 30,
+        "base_class": {
+          "hex": "010a",
+          "name": "Hub",
+          "value": 266
+        },
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "class_list": [
+          "usb",
+          "hub"
+        ],
+        "detail": {
+          "device_class": {
+            "hex": "0009",
+            "name": "hub",
+            "value": 9
+          },
+          "device_protocol": 1,
+          "device_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "interface_alternate_setting": 0,
+          "interface_class": {
+            "hex": "0009",
+            "name": "hub",
+            "value": 9
+          },
+          "interface_number": 0,
+          "interface_protocol": 0,
+          "interface_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          }
+        },
+        "device": {
+          "hex": "0002",
+          "name": "xHCI Host Controller",
+          "value": 2
+        },
+        "driver": "hub",
+        "driver_module": "usbcore",
+        "driver_modules": [
+          "usbcore"
+        ],
+        "drivers": [
+          "hub"
+        ],
+        "hotplug": "usb",
+        "index": 69,
+        "model": "Linux 7.1.1 xhci-hcd xHCI Host Controller",
+        "module_alias": "usb:v1D6Bp0002d0701dc09dsc00dp01ic09isc00ip00in00",
+        "resources": [
+          {
+            "bits": 0,
+            "handshake": 0,
+            "parity": 0,
+            "speed": 480000000,
+            "stop_bits": 0,
+            "type": "baud"
+          }
+        ],
+        "revision": {
+          "hex": "0000",
+          "name": "7.01",
+          "value": 0
+        },
+        "serial": "0000:80:14.0",
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "sysfs_bus_id": "3-0:1.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-0:1.0",
+        "vendor": {
+          "hex": "1d6b",
+          "name": "Linux 7.1.1 xhci-hcd",
+          "value": 7531
+        }
+      },
+      {
+        "attached_to": 69,
+        "base_class": {
+          "hex": "010a",
+          "name": "Hub",
+          "value": 266
+        },
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "class_list": [
+          "usb",
+          "hub"
+        ],
+        "detail": {
+          "device_class": {
+            "hex": "0009",
+            "name": "hub",
+            "value": 9
+          },
+          "device_protocol": 1,
+          "device_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "interface_alternate_setting": 0,
+          "interface_class": {
+            "hex": "0009",
+            "name": "hub",
+            "value": 9
+          },
+          "interface_number": 0,
+          "interface_protocol": 0,
+          "interface_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          }
+        },
+        "device": {
+          "hex": "0608",
+          "name": "USB2.0 Hub",
+          "value": 1544
+        },
+        "driver": "hub",
+        "driver_module": "usbcore",
+        "driver_modules": [
+          "usbcore"
+        ],
+        "drivers": [
+          "hub"
+        ],
+        "hotplug": "usb",
+        "index": 72,
+        "model": "USB2.0 Hub",
+        "module_alias": "usb:v05E3p0608d6070dc09dsc00dp01ic09isc00ip00in00",
+        "resources": [
+          {
+            "bits": 0,
+            "handshake": 0,
+            "parity": 0,
+            "speed": 480000000,
+            "stop_bits": 0,
+            "type": "baud"
+          }
+        ],
+        "revision": {
+          "hex": "0000",
+          "name": "60.70",
+          "value": 0
+        },
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "sysfs_bus_id": "3-4:1.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-4/3-4:1.0",
+        "vendor": {
+          "hex": "05e3",
+          "value": 1507
+        }
+      },
+      {
+        "attached_to": 30,
+        "base_class": {
+          "hex": "010a",
+          "name": "Hub",
+          "value": 266
+        },
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "class_list": [
+          "usb",
+          "hub"
+        ],
+        "detail": {
+          "device_class": {
+            "hex": "0009",
+            "name": "hub",
+            "value": 9
+          },
+          "device_protocol": 3,
+          "device_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "interface_alternate_setting": 0,
+          "interface_class": {
+            "hex": "0009",
+            "name": "hub",
+            "value": 9
+          },
+          "interface_number": 0,
+          "interface_protocol": 0,
+          "interface_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          }
+        },
+        "device": {
+          "hex": "0003",
+          "name": "xHCI Host Controller",
+          "value": 3
+        },
+        "driver": "hub",
+        "driver_module": "usbcore",
+        "driver_modules": [
+          "usbcore"
+        ],
+        "drivers": [
+          "hub"
+        ],
+        "hotplug": "usb",
+        "index": 74,
+        "model": "Linux 7.1.1 xhci-hcd xHCI Host Controller",
+        "module_alias": "usb:v1D6Bp0003d0701dc09dsc00dp03ic09isc00ip00in00",
+        "revision": {
+          "hex": "0000",
+          "name": "7.01",
+          "value": 0
+        },
+        "serial": "0000:80:14.0",
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "sysfs_bus_id": "4-0:1.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb4/4-0:1.0",
+        "vendor": {
+          "hex": "1d6b",
+          "name": "Linux 7.1.1 xhci-hcd",
+          "value": 7531
+        }
+      },
+      {
+        "attached_to": 69,
+        "base_class": {
+          "hex": "010a",
+          "name": "Hub",
+          "value": 266
+        },
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "class_list": [
+          "usb",
+          "hub"
+        ],
+        "detail": {
+          "device_class": {
+            "hex": "0009",
+            "name": "hub",
+            "value": 9
+          },
+          "device_protocol": 1,
+          "device_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "interface_alternate_setting": 0,
+          "interface_class": {
+            "hex": "0009",
+            "name": "hub",
+            "value": 9
+          },
+          "interface_number": 0,
+          "interface_protocol": 0,
+          "interface_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          }
+        },
+        "device": {
+          "hex": "0608",
+          "name": "USB2.0 Hub",
+          "value": 1544
+        },
+        "driver": "hub",
+        "driver_module": "usbcore",
+        "driver_modules": [
+          "usbcore"
+        ],
+        "drivers": [
+          "hub"
+        ],
+        "hotplug": "usb",
+        "index": 75,
+        "model": "USB2.0 Hub",
+        "module_alias": "usb:v05E3p0608d6070dc09dsc00dp01ic09isc00ip00in00",
+        "resources": [
+          {
+            "bits": 0,
+            "handshake": 0,
+            "parity": 0,
+            "speed": 480000000,
+            "stop_bits": 0,
+            "type": "baud"
+          }
+        ],
+        "revision": {
+          "hex": "0000",
+          "name": "60.70",
+          "value": 0
+        },
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "sysfs_bus_id": "3-11:1.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-11/3-11:1.0",
+        "vendor": {
+          "hex": "05e3",
+          "value": 1507
+        }
+      },
+      {
+        "attached_to": 26,
+        "base_class": {
+          "hex": "010a",
+          "name": "Hub",
+          "value": 266
+        },
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "class_list": [
+          "usb",
+          "hub"
+        ],
+        "detail": {
+          "device_class": {
+            "hex": "0009",
+            "name": "hub",
+            "value": 9
+          },
+          "device_protocol": 1,
+          "device_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "interface_alternate_setting": 0,
+          "interface_class": {
+            "hex": "0009",
+            "name": "hub",
+            "value": 9
+          },
+          "interface_number": 0,
+          "interface_protocol": 0,
+          "interface_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          }
+        },
+        "device": {
+          "hex": "0002",
+          "name": "xHCI Host Controller",
+          "value": 2
+        },
+        "driver": "hub",
+        "driver_module": "usbcore",
+        "driver_modules": [
+          "usbcore"
+        ],
+        "drivers": [
+          "hub"
+        ],
+        "hotplug": "usb",
+        "index": 78,
+        "model": "Linux 7.1.1 xhci-hcd xHCI Host Controller",
+        "module_alias": "usb:v1D6Bp0002d0701dc09dsc00dp01ic09isc00ip00in00",
+        "resources": [
+          {
+            "bits": 0,
+            "handshake": 0,
+            "parity": 0,
+            "speed": 480000000,
+            "stop_bits": 0,
+            "type": "baud"
+          }
+        ],
+        "revision": {
+          "hex": "0000",
+          "name": "7.01",
+          "value": 0
+        },
+        "serial": "0000:00:0d.0",
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "sysfs_bus_id": "1-0:1.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:0d.0/usb1/1-0:1.0",
+        "vendor": {
+          "hex": "1d6b",
+          "name": "Linux 7.1.1 xhci-hcd",
+          "value": 7531
+        }
+      },
+      {
+        "attached_to": 26,
+        "base_class": {
+          "hex": "010a",
+          "name": "Hub",
+          "value": 266
+        },
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "class_list": [
+          "usb",
+          "hub"
+        ],
+        "detail": {
+          "device_class": {
+            "hex": "0009",
+            "name": "hub",
+            "value": 9
+          },
+          "device_protocol": 3,
+          "device_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "interface_alternate_setting": 0,
+          "interface_class": {
+            "hex": "0009",
+            "name": "hub",
+            "value": 9
+          },
+          "interface_number": 0,
+          "interface_protocol": 0,
+          "interface_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          }
+        },
+        "device": {
+          "hex": "0003",
+          "name": "xHCI Host Controller",
+          "value": 3
+        },
+        "driver": "hub",
+        "driver_module": "usbcore",
+        "driver_modules": [
+          "usbcore"
+        ],
+        "drivers": [
+          "hub"
+        ],
+        "hotplug": "usb",
+        "index": 83,
+        "model": "Linux 7.1.1 xhci-hcd xHCI Host Controller",
+        "module_alias": "usb:v1D6Bp0003d0701dc09dsc00dp03ic09isc00ip00in00",
+        "revision": {
+          "hex": "0000",
+          "name": "7.01",
+          "value": 0
+        },
+        "serial": "0000:00:0d.0",
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "sysfs_bus_id": "2-0:1.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:0d.0/usb2/2-0:1.0",
+        "vendor": {
+          "hex": "1d6b",
+          "name": "Linux 7.1.1 xhci-hcd",
+          "value": 7531
+        }
+      }
+    ],
+    "keyboard": [
+      {
+        "attached_to": 69,
+        "base_class": {
+          "hex": "0108",
+          "name": "Keyboard",
+          "value": 264
+        },
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "class_list": [
+          "keyboard",
+          "usb"
+        ],
+        "detail": {
+          "device_class": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "device_protocol": 0,
+          "device_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "interface_alternate_setting": 0,
+          "interface_class": {
+            "hex": "0003",
+            "name": "hid",
+            "value": 3
+          },
+          "interface_number": 0,
+          "interface_protocol": 1,
+          "interface_subclass": {
+            "hex": "0001",
+            "name": "audio",
+            "value": 1
+          }
+        },
+        "device": {
+          "hex": "212a",
+          "name": "USB Keyboard",
+          "value": 8490
+        },
+        "driver": "usbhid",
+        "driver_info": {
+          "type": "keyboard",
+          "xkb_model": "pc104",
+          "xkb_rules": "xfree86"
+        },
+        "driver_module": "usbhid",
+        "driver_modules": [
+          "usbhid"
+        ],
+        "drivers": [
+          "usbhid"
+        ],
+        "hotplug": "usb",
+        "index": 81,
+        "model": "SEMICO USB Keyboard",
+        "module_alias": "usb:v1A2Cp212Ad0110dc00dsc00dp00ic03isc01ip01in00",
+        "resources": [
+          {
+            "bits": 0,
+            "handshake": 0,
+            "parity": 0,
+            "speed": 1500000,
+            "stop_bits": 0,
+            "type": "baud"
+          }
+        ],
+        "revision": {
+          "hex": "0000",
+          "name": "1.10",
+          "value": 0
+        },
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Keyboard",
+          "value": 0
+        },
+        "sysfs_bus_id": "3-6:1.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-6/3-6:1.0",
+        "unix_device_names": [
+          "/dev/input/by-id/usb-SEMICO_USB_Keyboard-event-kbd",
+          "/dev/input/by-path/pci-0000:80:14.0-usb-0:6:1.0-event-kbd",
+          "/dev/input/by-path/pci-0000:80:14.0-usbv2-0:6:1.0-event-kbd",
+          "/dev/input/event0"
+        ],
+        "vendor": {
+          "hex": "1a2c",
+          "name": "SEMICO",
+          "value": 6700
+        }
+      }
+    ],
+    "memory": [
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0101",
+          "name": "Internally Used Class",
+          "value": 257
+        },
+        "class_list": [
+          "memory"
+        ],
+        "index": 23,
+        "model": "Main Memory",
+        "resources": [
+          {
+            "range": 51539607552,
+            "type": "phys_mem"
+          }
+        ],
+        "sub_class": {
+          "hex": "0002",
+          "name": "Main Memory",
+          "value": 2
+        }
+      }
+    ],
+    "monitor": [
+      {
+        "attached_to": 50,
+        "base_class": {
+          "hex": "0100",
+          "name": "Monitor",
+          "value": 256
+        },
+        "class_list": [
+          "monitor"
+        ],
+        "detail": {
+          "clock": 232960,
+          "height": 1080,
+          "height_millimetres": 335,
+          "horizontal_flag": 43,
+          "horizontal_sync": {
+            "max": 135,
+            "min": 135
+          },
+          "horizontal_sync_timings": {
+            "disp": 1920,
+            "sync_end": 2000,
+            "sync_start": 1968,
+            "total": 2080
+          },
+          "manufacture_week": 15,
+          "manufacture_year": 2025,
+          "name": "DP",
+          "vendor": "",
+          "vertical_flag": 43,
+          "vertical_sync": {
+            "max": 120,
+            "min": 48
+          },
+          "vertical_sync_timings": {
+            "disp": 1080,
+            "sync_end": 1088,
+            "sync_start": 1083,
+            "total": 1120
+          },
+          "width": 1920,
+          "width_millimetres": 596
+        },
+        "device": {
+          "hex": "240a",
+          "name": "DP",
+          "value": 9226
+        },
+        "driver_info": {
+          "bandwidth": 0,
+          "height": 1080,
+          "horizontal_flag": 43,
+          "horizontal_sync": {
+            "max": 135,
+            "min": 135
+          },
+          "horizontal_sync_timings": {
+            "disp": 1920,
+            "sync_end": 2000,
+            "sync_start": 1968,
+            "total": 2080
+          },
+          "type": "display",
+          "vertical_flag": 43,
+          "vertical_sync": {
+            "max": 120,
+            "min": 48
+          },
+          "vertical_sync_timings": {
+            "disp": 1080,
+            "sync_end": 1088,
+            "sync_start": 1083,
+            "total": 1120
+          },
+          "width": 1920
+        },
+        "index": 65,
+        "model": "DP",
+        "resources": [
+          {
+            "height": 768,
+            "interlaced": false,
+            "type": "monitor",
+            "vertical_frequency": 60,
+            "width": 1024
+          },
+          {
+            "height": 768,
+            "interlaced": false,
+            "type": "monitor",
+            "vertical_frequency": 75,
+            "width": 1024
+          },
+          {
+            "height": 864,
+            "interlaced": false,
+            "type": "monitor",
+            "vertical_frequency": 75,
+            "width": 1152
+          },
+          {
+            "height": 1024,
+            "interlaced": false,
+            "type": "monitor",
+            "vertical_frequency": 60,
+            "width": 1280
+          },
+          {
+            "height": 1024,
+            "interlaced": false,
+            "type": "monitor",
+            "vertical_frequency": 75,
+            "width": 1280
+          },
+          {
+            "height": 900,
+            "interlaced": false,
+            "type": "monitor",
+            "vertical_frequency": 60,
+            "width": 1600
+          },
+          {
+            "height": 1080,
+            "interlaced": false,
+            "type": "monitor",
+            "vertical_frequency": 60,
+            "width": 1920
+          },
+          {
+            "height": 480,
+            "interlaced": false,
+            "type": "monitor",
+            "vertical_frequency": 60,
+            "width": 640
+          },
+          {
+            "height": 480,
+            "interlaced": false,
+            "type": "monitor",
+            "vertical_frequency": 75,
+            "width": 640
+          },
+          {
+            "height": 600,
+            "interlaced": false,
+            "type": "monitor",
+            "vertical_frequency": 60,
+            "width": 800
+          },
+          {
+            "height": 600,
+            "interlaced": false,
+            "type": "monitor",
+            "vertical_frequency": 75,
+            "width": 800
+          },
+          {
+            "type": "size",
+            "unit": "mm",
+            "value_1": 596,
+            "value_2": 335
+          }
+        ],
+        "serial": "1",
+        "sub_class": {
+          "hex": "0002",
+          "name": "LCD Monitor",
+          "value": 2
+        },
+        "vendor": {
+          "hex": "206c",
+          "value": 8300
+        }
+      }
+    ],
+    "mouse": [
+      {
+        "attached_to": 69,
+        "base_class": {
+          "hex": "0105",
+          "name": "Mouse",
+          "value": 261
+        },
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "class_list": [
+          "mouse",
+          "usb"
+        ],
+        "compat_device": "Generic USB Mouse",
+        "compat_vendor": "Unknown",
+        "detail": {
+          "device_class": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "device_protocol": 0,
+          "device_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "interface_alternate_setting": 0,
+          "interface_class": {
+            "hex": "0003",
+            "name": "hid",
+            "value": 3
+          },
+          "interface_number": 1,
+          "interface_protocol": 2,
+          "interface_subclass": {
+            "hex": "0001",
+            "name": "audio",
+            "value": 1
+          }
+        },
+        "device": {
+          "hex": "212a",
+          "name": "USB Keyboard",
+          "value": 8490
+        },
+        "driver": "usbhid",
+        "driver_info": {
+          "buttons": -1,
+          "db_entry_0": [
+            "explorerps/2",
+            "exps2"
+          ],
+          "gpm": "exps2",
+          "type": "mouse",
+          "wheels": -1,
+          "xf86": "explorerps/2"
+        },
+        "driver_module": "usbhid",
+        "driver_modules": [
+          "usbhid"
+        ],
+        "drivers": [
+          "usbhid"
+        ],
+        "hotplug": "usb",
+        "index": 71,
+        "model": "SEMICO USB Keyboard",
+        "module_alias": "usb:v1A2Cp212Ad0110dc00dsc00dp00ic03isc01ip02in01",
+        "resources": [
+          {
+            "bits": 0,
+            "handshake": 0,
+            "parity": 0,
+            "speed": 1500000,
+            "stop_bits": 0,
+            "type": "baud"
+          }
+        ],
+        "revision": {
+          "hex": "0000",
+          "name": "1.10",
+          "value": 0
+        },
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "sub_class": {
+          "hex": "0003",
+          "name": "USB Mouse",
+          "value": 3
+        },
+        "sysfs_bus_id": "3-6:1.1",
+        "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-6/3-6:1.1",
+        "unix_device_names": [
+          "/dev/input/event1"
+        ],
+        "vendor": {
+          "hex": "1a2c",
+          "name": "SEMICO",
+          "value": 6700
+        }
+      },
+      {
+        "attached_to": 75,
+        "base_class": {
+          "hex": "0105",
+          "name": "Mouse",
+          "value": 261
+        },
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "class_list": [
+          "mouse",
+          "usb"
+        ],
+        "compat_device": "Generic USB Mouse",
+        "compat_vendor": "Unknown",
+        "detail": {
+          "device_class": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "device_protocol": 0,
+          "device_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "interface_alternate_setting": 0,
+          "interface_class": {
+            "hex": "0003",
+            "name": "hid",
+            "value": 3
+          },
+          "interface_number": 0,
+          "interface_protocol": 2,
+          "interface_subclass": {
+            "hex": "0001",
+            "name": "audio",
+            "value": 1
+          }
+        },
+        "device": {
+          "hex": "0005",
+          "name": "USB OPTICAL MOUSE",
+          "value": 5
+        },
+        "driver": "usbhid",
+        "driver_info": {
+          "buttons": -1,
+          "db_entry_0": [
+            "explorerps/2",
+            "exps2"
+          ],
+          "gpm": "exps2",
+          "type": "mouse",
+          "wheels": -1,
+          "xf86": "explorerps/2"
+        },
+        "driver_module": "usbhid",
+        "driver_modules": [
+          "usbhid"
+        ],
+        "drivers": [
+          "usbhid"
+        ],
+        "hotplug": "usb",
+        "index": 82,
+        "model": "YSPRINGTECH USB OPTICAL MOUSE",
+        "module_alias": "usb:v10C4p0005d0000dc00dsc00dp00ic03isc01ip02in00",
+        "resources": [
+          {
+            "bits": 0,
+            "handshake": 0,
+            "parity": 0,
+            "speed": 1500000,
+            "stop_bits": 0,
+            "type": "baud"
+          }
+        ],
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "sub_class": {
+          "hex": "0003",
+          "name": "USB Mouse",
+          "value": 3
+        },
+        "sysfs_bus_id": "3-11.4:1.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-11/3-11.4/3-11.4:1.0",
+        "unix_device_name2": "/dev/input/mouse0",
+        "unix_device_names": [
+          "/dev/input/mice"
+        ],
+        "vendor": {
+          "hex": "10c4",
+          "name": "YSPRINGTECH",
+          "value": 4292
+        }
+      }
+    ],
+    "network_controller": [
+      {
+        "attached_to": 33,
+        "base_class": {
+          "hex": "0002",
+          "name": "Network controller",
+          "value": 2
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "network_controller",
+          "pci"
+        ],
+        "detail": {
+          "command": 1031,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "8125",
+          "value": 33061
+        },
+        "driver": "r8169",
+        "driver_module": "r8169",
+        "driver_modules": [
+          "r8169"
+        ],
+        "drivers": [
+          "r8169"
+        ],
+        "index": 27,
+        "model": "Ethernet controller",
+        "module_alias": "pci:v000010ECd00008125sv00001043sd000088E1bc02sc00i00",
+        "resources": [
+          {
+            "address": 98,
+            "type": "hwaddr"
+          },
+          {
+            "access": "read_write",
+            "base": 12288,
+            "enabled": true,
+            "range": 256,
+            "type": "io"
+          },
+          {
+            "address": 98,
+            "type": "phwaddr"
+          }
+        ],
+        "revision": {
+          "hex": "000c",
+          "value": 12
+        },
+        "slot": {
+          "bus": 132,
+          "number": 0
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Ethernet controller",
+          "value": 0
+        },
+        "sub_device": {
+          "hex": "88e1",
+          "value": 35041
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:84:00.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:1c.2/0000:84:00.0",
+        "sysfs_iommu_group_id": 29,
+        "unix_device_names": [
+          "enp132s0"
+        ],
+        "vendor": {
+          "hex": "10ec",
+          "value": 4332
+        }
+      },
+      {
+        "attached_to": 55,
+        "base_class": {
+          "hex": "0002",
+          "name": "Network controller",
+          "value": 2
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "network_controller",
+          "pci"
+        ],
+        "detail": {
+          "command": 1030,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "7925",
+          "value": 31013
+        },
+        "driver": "mt7925e",
+        "driver_module": "mt7925e",
+        "driver_modules": [
+          "mt7925e"
+        ],
+        "drivers": [
+          "mt7925e"
+        ],
+        "index": 35,
+        "model": "Network controller",
+        "module_alias": "pci:v000014C3d00007925sv00001A3Bsd00006000bc02sc80i00",
+        "resources": [
+          {
+            "address": 99,
+            "type": "hwaddr"
+          },
+          {
+            "address": 99,
+            "type": "phwaddr"
+          }
+        ],
+        "slot": {
+          "bus": 131,
+          "number": 0
+        },
+        "sub_class": {
+          "hex": "0080",
+          "name": "Network controller",
+          "value": 128
+        },
+        "sub_device": {
+          "hex": "6000",
+          "value": 24576
+        },
+        "sub_vendor": {
+          "hex": "1a3b",
+          "value": 6715
+        },
+        "sysfs_bus_id": "0000:83:00.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:1c.1/0000:83:00.0",
+        "sysfs_iommu_group_id": 28,
+        "unix_device_names": [
+          "wlan0"
+        ],
+        "vendor": {
+          "hex": "14c3",
+          "value": 5315
+        }
+      }
+    ],
+    "network_interface": [
+      {
+        "attached_to": 27,
+        "base_class": {
+          "hex": "0107",
+          "name": "Network Interface",
+          "value": 263
+        },
+        "class_list": [
+          "network_interface"
+        ],
+        "driver": "r8169",
+        "driver_module": "r8169",
+        "driver_modules": [
+          "r8169"
+        ],
+        "drivers": [
+          "r8169"
+        ],
+        "index": 84,
+        "model": "Ethernet network interface",
+        "resources": [
+          {
+            "address": 98,
+            "type": "hwaddr"
+          },
+          {
+            "address": 98,
+            "type": "phwaddr"
+          }
+        ],
+        "sub_class": {
+          "hex": "0001",
+          "name": "Ethernet",
+          "value": 1
+        },
+        "sysfs_device_link": "/devices/pci0000:80/0000:80:1c.2/0000:84:00.0",
+        "sysfs_id": "/class/net/enp132s0",
+        "unix_device_names": [
+          "enp132s0"
+        ]
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0107",
+          "name": "Network Interface",
+          "value": 263
+        },
+        "class_list": [
+          "network_interface"
+        ],
+        "index": 85,
+        "model": "Loopback network interface",
+        "sub_class": {
+          "hex": "0000",
+          "name": "Loopback",
+          "value": 0
+        },
+        "sysfs_id": "/class/net/lo",
+        "unix_device_names": [
+          "lo"
+        ]
+      },
+      {
+        "attached_to": 35,
+        "base_class": {
+          "hex": "0107",
+          "name": "Network Interface",
+          "value": 263
+        },
+        "class_list": [
+          "network_interface"
+        ],
+        "driver": "mt7925e",
+        "driver_module": "mt7925e",
+        "driver_modules": [
+          "mt7925e"
+        ],
+        "drivers": [
+          "mt7925e"
+        ],
+        "index": 86,
+        "model": "WLAN network interface",
+        "resources": [
+          {
+            "address": 99,
+            "type": "hwaddr"
+          },
+          {
+            "address": 99,
+            "type": "phwaddr"
+          }
+        ],
+        "sub_class": {
+          "hex": "000a",
+          "name": "WLAN",
+          "value": 10
+        },
+        "sysfs_device_link": "/devices/pci0000:80/0000:80:1c.1/0000:83:00.0",
+        "sysfs_id": "/class/net/wlan0",
+        "unix_device_names": [
+          "wlan0"
+        ]
+      }
+    ],
+    "pci": [
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0008",
+          "name": "Generic system peripheral",
+          "value": 8
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "unknown"
+        ],
+        "detail": {
+          "command": 0,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "ae4c",
+          "value": 44620
+        },
+        "index": 25,
+        "label": "Intel GNA Device",
+        "model": "Intel System peripheral",
+        "module_alias": "pci:v00008086d0000AE4Csv00001043sd000088EFbc08sc80i00",
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 0,
+          "number": 8
+        },
+        "sub_class": {
+          "hex": "0080",
+          "name": "System peripheral",
+          "value": 128
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:00:08.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:08.0",
+        "sysfs_iommu_group_id": 7,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "000c",
+          "name": "Serial bus controller",
+          "value": 12
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "unknown"
+        ],
+        "detail": {
+          "command": 3,
+          "function": 4,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "7f23",
+          "value": 32547
+        },
+        "driver": "i801_smbus",
+        "driver_module": "i2c_i801",
+        "driver_modules": [
+          "i2c_i801"
+        ],
+        "drivers": [
+          "i801_smbus"
+        ],
+        "index": 31,
+        "label": "SMBus Controller",
+        "model": "Intel SMBus",
+        "module_alias": "pci:v00008086d00007F23sv00001043sd000088EFbc0Csc05i00",
+        "resources": [
+          {
+            "access": "read_write",
+            "base": 16384,
+            "enabled": true,
+            "range": 32,
+            "type": "io"
+          }
+        ],
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 128,
+          "number": 31
+        },
+        "sub_class": {
+          "hex": "0005",
+          "name": "SMBus",
+          "value": 5
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:80:1f.4",
+        "sysfs_id": "/devices/pci0000:80/0000:80:1f.4",
+        "sysfs_iommu_group_id": 27,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0011",
+          "name": "Signal processing controller",
+          "value": 17
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "unknown"
+        ],
+        "detail": {
+          "command": 6,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "ad03",
+          "value": 44291
+        },
+        "driver": "proc_thermal_pci",
+        "driver_module": "processor_thermal_device_pci",
+        "driver_modules": [
+          "processor_thermal_device_pci"
+        ],
+        "drivers": [
+          "proc_thermal_pci"
+        ],
+        "index": 38,
+        "model": "Intel Signal processing controller",
+        "module_alias": "pci:v00008086d0000AD03sv00001043sd000088EFbc11sc80i00",
+        "revision": {
+          "hex": "0001",
+          "value": 1
+        },
+        "slot": {
+          "bus": 0,
+          "number": 4
+        },
+        "sub_class": {
+          "hex": "0080",
+          "name": "Signal processing controller",
+          "value": 128
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:00:04.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:04.0",
+        "sysfs_iommu_group_id": 2,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "000c",
+          "name": "Serial bus controller",
+          "value": 12
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "unknown"
+        ],
+        "detail": {
+          "command": 1026,
+          "function": 5,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "ae23",
+          "value": 44579
+        },
+        "index": 42,
+        "model": "Intel Serial bus controller",
+        "module_alias": "pci:v00008086d0000AE23sv00001043sd000088EFbc0Csc80i00",
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 0,
+          "number": 31
+        },
+        "sub_class": {
+          "hex": "0080",
+          "value": 128
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:00:1f.5",
+        "sysfs_id": "/devices/pci0000:00/0000:00:1f.5",
+        "sysfs_iommu_group_id": 13,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0000",
+          "name": "Unclassified device",
+          "value": 0
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "unknown"
+        ],
+        "detail": {
+          "command": 0,
+          "function": 5,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "7f2f",
+          "value": 32559
+        },
+        "index": 43,
+        "model": "Intel Unclassified device",
+        "module_alias": "pci:v00008086d00007F2Fsv00001043sd000088EFbc00sc00i00",
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 128,
+          "number": 20
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Unclassified device",
+          "value": 0
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:80:14.5",
+        "sysfs_id": "/devices/pci0000:80/0000:80:14.5",
+        "sysfs_iommu_group_id": 17,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0007",
+          "name": "Communication controller",
+          "value": 7
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "unknown"
+        ],
+        "detail": {
+          "command": 1030,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "7f68",
+          "value": 32616
+        },
+        "driver": "mei_me",
+        "driver_module": "mei_me",
+        "driver_modules": [
+          "mei_me"
+        ],
+        "drivers": [
+          "mei_me"
+        ],
+        "index": 47,
+        "model": "Intel Communication controller",
+        "module_alias": "pci:v00008086d00007F68sv00001043sd000088EFbc07sc80i00",
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 128,
+          "number": 22
+        },
+        "sub_class": {
+          "hex": "0080",
+          "name": "Communication controller",
+          "value": 128
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:80:16.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:16.0",
+        "sysfs_iommu_group_id": 19,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "000c",
+          "name": "Serial bus controller",
+          "value": 12
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "unknown"
+        ],
+        "detail": {
+          "command": 1026,
+          "function": 5,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "7f24",
+          "value": 32548
+        },
+        "driver": "intel-spi",
+        "driver_module": "spi_intel_pci",
+        "driver_modules": [
+          "spi_intel_pci"
+        ],
+        "drivers": [
+          "intel-spi"
+        ],
+        "index": 49,
+        "model": "Intel Serial bus controller",
+        "module_alias": "pci:v00008086d00007F24sv00001043sd000088EFbc0Csc80i00",
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 128,
+          "number": 31
+        },
+        "sub_class": {
+          "hex": "0080",
+          "value": 128
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:80:1f.5",
+        "sysfs_id": "/devices/pci0000:80/0000:80:1f.5",
+        "sysfs_iommu_group_id": 27,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0012",
+          "value": 18
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "unknown"
+        ],
+        "detail": {
+          "command": 1030,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "ad1d",
+          "value": 44317
+        },
+        "driver": "intel_vpu",
+        "driver_module": "intel_vpu",
+        "driver_modules": [
+          "intel_vpu"
+        ],
+        "drivers": [
+          "intel_vpu"
+        ],
+        "index": 53,
+        "model": "unknown unknown",
+        "module_alias": "pci:v00008086d0000AD1Dsv00001043sd000088EFbc12sc00i00",
+        "revision": {
+          "hex": "0001",
+          "value": 1
+        },
+        "slot": {
+          "bus": 0,
+          "number": 11
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:00:0b.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:0b.0",
+        "sysfs_iommu_group_id": 9,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "000c",
+          "name": "Serial bus controller",
+          "value": 12
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "unknown"
+        ],
+        "detail": {
+          "command": 6,
+          "function": 2,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "7f4e",
+          "value": 32590
+        },
+        "driver": "intel-lpss",
+        "driver_module": "intel_lpss_pci",
+        "driver_modules": [
+          "intel_lpss_pci"
+        ],
+        "drivers": [
+          "intel-lpss"
+        ],
+        "index": 56,
+        "model": "Intel Serial bus controller",
+        "module_alias": "pci:v00008086d00007F4Esv00001043sd000088EFbc0Csc80i00",
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 128,
+          "number": 21
+        },
+        "sub_class": {
+          "hex": "0080",
+          "value": 128
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:80:15.2",
+        "sysfs_id": "/devices/pci0000:80/0000:80:15.2",
+        "sysfs_iommu_group_id": 18,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "000c",
+          "name": "Serial bus controller",
+          "value": 12
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "unknown"
+        ],
+        "detail": {
+          "command": 6,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "7f4c",
+          "value": 32588
+        },
+        "driver": "intel-lpss",
+        "driver_module": "intel_lpss_pci",
+        "driver_modules": [
+          "intel_lpss_pci"
+        ],
+        "drivers": [
+          "intel-lpss"
+        ],
+        "index": 59,
+        "model": "Intel Serial bus controller",
+        "module_alias": "pci:v00008086d00007F4Csv00001043sd000088EFbc0Csc80i00",
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 128,
+          "number": 21
+        },
+        "sub_class": {
+          "hex": "0080",
+          "value": 128
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:80:15.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:15.0",
+        "sysfs_iommu_group_id": 18,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0005",
+          "name": "Memory controller",
+          "value": 5
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "unknown"
+        ],
+        "detail": {
+          "command": 2,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "ae7f",
+          "value": 44671
+        },
+        "driver": "intel_pmc_ssram_telemetry",
+        "driver_module": "intel_pmc_ssram_telemetry",
+        "driver_modules": [
+          "intel_pmc_ssram_telemetry"
+        ],
+        "drivers": [
+          "intel_pmc_ssram_telemetry"
+        ],
+        "index": 61,
+        "label": "USB Controller",
+        "model": "Intel RAM memory",
+        "module_alias": "pci:v00008086d0000AE7Fsv00001043sd000088EFbc05sc00i00",
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 0,
+          "number": 20
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "RAM memory",
+          "value": 0
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:00:14.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:14.0",
+        "sysfs_iommu_group_id": 12,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0011",
+          "name": "Signal processing controller",
+          "value": 17
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "pci",
+          "unknown"
+        ],
+        "detail": {
+          "command": 2,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "ad0d",
+          "value": 44301
+        },
+        "driver": "intel_vsec",
+        "driver_module": "intel_vsec",
+        "driver_modules": [
+          "intel_vsec"
+        ],
+        "drivers": [
+          "intel_vsec"
+        ],
+        "index": 64,
+        "model": "Intel Signal processing controller",
+        "module_alias": "pci:v00008086d0000AD0Dsv00001043sd000088EFbc11sc80i00",
+        "revision": {
+          "hex": "0001",
+          "value": 1
+        },
+        "slot": {
+          "bus": 0,
+          "number": 10
+        },
+        "sub_class": {
+          "hex": "0080",
+          "name": "Signal processing controller",
+          "value": 128
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:00:0a.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:0a.0",
+        "sysfs_iommu_group_id": 8,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      }
+    ],
+    "sound": [
+      {
+        "attached_to": 32,
+        "base_class": {
+          "hex": "0004",
+          "name": "Multimedia controller",
+          "value": 4
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "sound",
+          "pci"
+        ],
+        "detail": {
+          "command": 1030,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "e2f7",
+          "value": 58103
+        },
+        "driver": "snd_hda_intel",
+        "driver_module": "snd_hda_intel",
+        "driver_modules": [
+          "snd_hda_intel"
+        ],
+        "drivers": [
+          "snd_hda_intel"
+        ],
+        "index": 44,
+        "model": "Intel Multimedia controller",
+        "module_alias": "pci:v00008086d0000E2F7sv00006688sd00008069bc04sc03i00",
+        "slot": {
+          "bus": 136,
+          "number": 0
+        },
+        "sub_class": {
+          "hex": "0003",
+          "value": 3
+        },
+        "sub_device": {
+          "hex": "8069",
+          "value": 32873
+        },
+        "sub_vendor": {
+          "hex": "6688",
+          "value": 26248
+        },
+        "sysfs_bus_id": "0000:88:00.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:1c.3/0000:85:00.0/0000:86:02.0/0000:88:00.0",
+        "sysfs_iommu_group_id": 34,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0004",
+          "name": "Multimedia controller",
+          "value": 4
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "sound",
+          "pci"
+        ],
+        "detail": {
+          "command": 1030,
+          "function": 3,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "7f50",
+          "value": 32592
+        },
+        "driver": "snd_hda_intel",
+        "driver_module": "snd_hda_intel",
+        "driver_modules": [
+          "snd_hda_intel"
+        ],
+        "drivers": [
+          "snd_hda_intel"
+        ],
+        "index": 54,
+        "label": "Intel HD Audio",
+        "model": "Intel Multimedia controller",
+        "module_alias": "pci:v00008086d00007F50sv00001043sd000087FBbc04sc03i00",
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 128,
+          "number": 31
+        },
+        "sub_class": {
+          "hex": "0003",
+          "value": 3
+        },
+        "sub_device": {
+          "hex": "87fb",
+          "value": 34811
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:80:1f.3",
+        "sysfs_id": "/devices/pci0000:80/0000:80:1f.3",
+        "sysfs_iommu_group_id": 27,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      }
+    ],
+    "storage_controller": [
+      {
+        "attached_to": 28,
+        "base_class": {
+          "hex": "0001",
+          "name": "Mass storage controller",
+          "value": 1
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "storage_controller",
+          "pci"
+        ],
+        "detail": {
+          "command": 1030,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 2,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "002a",
+          "value": 42
+        },
+        "driver": "nvme",
+        "driver_module": "nvme",
+        "driver_modules": [
+          "nvme"
+        ],
+        "drivers": [
+          "nvme"
+        ],
+        "index": 24,
+        "model": "Mass storage controller",
+        "module_alias": "pci:v00001E0Fd0000002Asv00001E0Fsd000000FBbc01sc08i02",
+        "pci_interface": {
+          "hex": "0002",
+          "value": 2
+        },
+        "revision": {
+          "hex": "0001",
+          "value": 1
+        },
+        "slot": {
+          "bus": 3,
+          "number": 0
+        },
+        "sub_class": {
+          "hex": "0008",
+          "value": 8
+        },
+        "sub_device": {
+          "hex": "00fb",
+          "value": 251
+        },
+        "sub_vendor": {
+          "hex": "1e0f",
+          "value": 7695
+        },
+        "sysfs_bus_id": "0000:03:00.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:06.1/0000:03:00.0",
+        "sysfs_iommu_group_id": 15,
+        "vendor": {
+          "hex": "1e0f",
+          "value": 7695
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0001",
+          "name": "Mass storage controller",
+          "value": 1
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "storage_controller",
+          "pci"
+        ],
+        "detail": {
+          "command": 1031,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 1,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "7f62",
+          "value": 32610
+        },
+        "driver": "ahci",
+        "driver_module": "ahci",
+        "driver_modules": [
+          "ahci"
+        ],
+        "drivers": [
+          "ahci"
+        ],
+        "index": 36,
+        "label": "SATA Controller",
+        "model": "Intel Mass storage controller",
+        "module_alias": "pci:v00008086d00007F62sv00001043sd000088EFbc01sc06i01",
+        "pci_interface": {
+          "hex": "0001",
+          "value": 1
+        },
+        "resources": [
+          {
+            "access": "read_write",
+            "base": 16416,
+            "enabled": true,
+            "range": 32,
+            "type": "io"
+          },
+          {
+            "access": "read_write",
+            "base": 16448,
+            "enabled": true,
+            "range": 4,
+            "type": "io"
+          },
+          {
+            "access": "read_write",
+            "base": 16464,
+            "enabled": true,
+            "range": 8,
+            "type": "io"
+          }
+        ],
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 128,
+          "number": 23
+        },
+        "sub_class": {
+          "hex": "0006",
+          "value": 6
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:80:17.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:17.0",
+        "sysfs_iommu_group_id": 20,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 34,
+        "base_class": {
+          "hex": "0001",
+          "name": "Mass storage controller",
+          "value": 1
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "storage_controller",
+          "pci"
+        ],
+        "detail": {
+          "command": 1030,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 2,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "002a",
+          "value": 42
+        },
+        "driver": "nvme",
+        "driver_module": "nvme",
+        "driver_modules": [
+          "nvme"
+        ],
+        "drivers": [
+          "nvme"
+        ],
+        "index": 39,
+        "model": "Mass storage controller",
+        "module_alias": "pci:v00001E0Fd0000002Asv00001E0Fsd000000FBbc01sc08i02",
+        "pci_interface": {
+          "hex": "0002",
+          "value": 2
+        },
+        "revision": {
+          "hex": "0001",
+          "value": 1
+        },
+        "slot": {
+          "bus": 1,
+          "number": 0
+        },
+        "sub_class": {
+          "hex": "0008",
+          "value": 8
+        },
+        "sub_device": {
+          "hex": "00fb",
+          "value": 251
+        },
+        "sub_vendor": {
+          "hex": "1e0f",
+          "value": 7695
+        },
+        "sysfs_bus_id": "0000:01:00.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:01.0/0000:01:00.0",
+        "sysfs_iommu_group_id": 14,
+        "vendor": {
+          "hex": "1e0f",
+          "value": 7695
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "0001",
+          "name": "Mass storage controller",
+          "value": 1
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "storage_controller",
+          "pci"
+        ],
+        "detail": {
+          "command": 2,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 0,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "ad0b",
+          "value": 44299
+        },
+        "index": 57,
+        "label": "RAID Controller",
+        "model": "Intel RAID bus controller",
+        "module_alias": "pci:v00008086d0000AD0Bsv00001043sd000088EFbc01sc04i00",
+        "slot": {
+          "bus": 0,
+          "number": 14
+        },
+        "sub_class": {
+          "hex": "0004",
+          "name": "RAID bus controller",
+          "value": 4
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:00:0e.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:0e.0",
+        "sysfs_iommu_group_id": 11,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      }
+    ],
+    "system": {
+      "form_factor": "desktop"
+    },
+    "usb": [
+      {
+        "attached_to": 69,
+        "base_class": {
+          "hex": "0000",
+          "name": "Unclassified device",
+          "value": 0
+        },
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "class_list": [
+          "usb",
+          "unknown"
+        ],
+        "detail": {
+          "device_class": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "device_protocol": 0,
+          "device_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "interface_alternate_setting": 0,
+          "interface_class": {
+            "hex": "0003",
+            "name": "hid",
+            "value": 3
+          },
+          "interface_number": 2,
+          "interface_protocol": 0,
+          "interface_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          }
+        },
+        "device": {
+          "hex": "19af",
+          "name": "AURA LED Controller",
+          "value": 6575
+        },
+        "driver": "usbhid",
+        "driver_module": "usbhid",
+        "driver_modules": [
+          "usbhid"
+        ],
+        "drivers": [
+          "usbhid"
+        ],
+        "hotplug": "usb",
+        "index": 77,
+        "model": "AsusTek AURA LED Controller",
+        "module_alias": "usb:v0B05p19AFd0100dc00dsc00dp00ic03isc00ip00in02",
+        "resources": [
+          {
+            "bits": 0,
+            "handshake": 0,
+            "parity": 0,
+            "speed": 12000000,
+            "stop_bits": 0,
+            "type": "baud"
+          }
+        ],
+        "revision": {
+          "hex": "0000",
+          "name": "1.00",
+          "value": 0
+        },
+        "serial": "9876543210",
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Unclassified device",
+          "value": 0
+        },
+        "sysfs_bus_id": "3-2:1.2",
+        "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-2/3-2:1.2",
+        "vendor": {
+          "hex": "0b05",
+          "name": "AsusTek Computer Inc.",
+          "value": 2821
+        }
+      },
+      {
+        "attached_to": 69,
+        "base_class": {
+          "hex": "0000",
+          "name": "Unclassified device",
+          "value": 0
+        },
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "class_list": [
+          "usb",
+          "unknown"
+        ],
+        "detail": {
+          "device_class": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "device_protocol": 0,
+          "device_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "interface_alternate_setting": 0,
+          "interface_class": {
+            "hex": "00ff",
+            "name": "vendor_spec",
+            "value": 255
+          },
+          "interface_number": 0,
+          "interface_protocol": 255,
+          "interface_subclass": {
+            "hex": "00ff",
+            "name": "vendor_spec",
+            "value": 255
+          }
+        },
+        "device": {
+          "hex": "19af",
+          "name": "AURA LED Controller",
+          "value": 6575
+        },
+        "hotplug": "usb",
+        "index": 79,
+        "model": "AsusTek AURA LED Controller",
+        "module_alias": "usb:v0B05p19AFd0100dc00dsc00dp00icFFiscFFipFFin00",
+        "resources": [
+          {
+            "bits": 0,
+            "handshake": 0,
+            "parity": 0,
+            "speed": 12000000,
+            "stop_bits": 0,
+            "type": "baud"
+          }
+        ],
+        "revision": {
+          "hex": "0000",
+          "name": "1.00",
+          "value": 0
+        },
+        "serial": "9876543210",
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Unclassified device",
+          "value": 0
+        },
+        "sysfs_bus_id": "3-2:1.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-2/3-2:1.0",
+        "vendor": {
+          "hex": "0b05",
+          "name": "AsusTek Computer Inc.",
+          "value": 2821
+        }
+      }
+    ],
+    "usb_controller": [
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "000c",
+          "name": "Serial bus controller",
+          "value": 12
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "usb_controller",
+          "pci"
+        ],
+        "detail": {
+          "command": 1030,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 48,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "7ec0",
+          "value": 32448
+        },
+        "driver": "xhci_hcd",
+        "driver_module": "xhci_pci",
+        "driver_modules": [
+          "xhci_pci"
+        ],
+        "drivers": [
+          "xhci_hcd"
+        ],
+        "index": 26,
+        "model": "Intel USB Controller",
+        "module_alias": "pci:v00008086d00007EC0sv00001043sd000088EFbc0Csc03i30",
+        "pci_interface": {
+          "hex": "0030",
+          "value": 48
+        },
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 0,
+          "number": 13
+        },
+        "sub_class": {
+          "hex": "0003",
+          "name": "USB Controller",
+          "value": 3
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:00:0d.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:0d.0",
+        "sysfs_iommu_group_id": 10,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "000c",
+          "name": "Serial bus controller",
+          "value": 12
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "usb_controller",
+          "pci"
+        ],
+        "detail": {
+          "command": 1030,
+          "function": 0,
+          "header_type": 0,
+          "prog_if": 48,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "7f6e",
+          "value": 32622
+        },
+        "driver": "xhci_hcd",
+        "driver_module": "xhci_pci",
+        "driver_modules": [
+          "xhci_pci"
+        ],
+        "drivers": [
+          "xhci_hcd"
+        ],
+        "index": 30,
+        "model": "Intel USB Controller",
+        "module_alias": "pci:v00008086d00007F6Esv00001043sd000088EFbc0Csc03i30",
+        "pci_interface": {
+          "hex": "0030",
+          "value": 48
+        },
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 128,
+          "number": 20
+        },
+        "sub_class": {
+          "hex": "0003",
+          "name": "USB Controller",
+          "value": 3
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:80:14.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:14.0",
+        "sysfs_iommu_group_id": 16,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      },
+      {
+        "attached_to": 0,
+        "base_class": {
+          "hex": "000c",
+          "name": "Serial bus controller",
+          "value": 12
+        },
+        "bus_type": {
+          "hex": "0004",
+          "name": "PCI",
+          "value": 4
+        },
+        "class_list": [
+          "usb_controller",
+          "pci"
+        ],
+        "detail": {
+          "command": 1031,
+          "function": 2,
+          "header_type": 0,
+          "prog_if": 64,
+          "secondary_bus": 0
+        },
+        "device": {
+          "hex": "7ec2",
+          "value": 32450
+        },
+        "driver": "thunderbolt",
+        "driver_module": "thunderbolt",
+        "driver_modules": [
+          "thunderbolt"
+        ],
+        "drivers": [
+          "thunderbolt"
+        ],
+        "index": 63,
+        "model": "Intel USB Controller",
+        "module_alias": "pci:v00008086d00007EC2sv00001043sd000088EFbc0Csc03i40",
+        "pci_interface": {
+          "hex": "0040",
+          "value": 64
+        },
+        "revision": {
+          "hex": "0010",
+          "value": 16
+        },
+        "slot": {
+          "bus": 0,
+          "number": 13
+        },
+        "sub_class": {
+          "hex": "0003",
+          "name": "USB Controller",
+          "value": 3
+        },
+        "sub_device": {
+          "hex": "88ef",
+          "value": 35055
+        },
+        "sub_vendor": {
+          "hex": "1043",
+          "value": 4163
+        },
+        "sysfs_bus_id": "0000:00:0d.2",
+        "sysfs_id": "/devices/pci0000:00/0000:00:0d.2",
+        "sysfs_iommu_group_id": 10,
+        "vendor": {
+          "hex": "8086",
+          "name": "Intel Corporation",
+          "value": 32902
+        }
+      }
+    ]
+  },
+  "smbios": {
+    "bios": {
+      "date": "07/18/2025",
+      "features": [
+        "PCI supported",
+        "BIOS flashable",
+        "BIOS shadowing allowed",
+        "CD boot supported",
+        "Selectable boot supported",
+        "BIOS ROM socketed",
+        "EDD spec supported",
+        "ACPI supported",
+        "BIOS Boot Spec supported"
+      ],
+      "handle": 0,
+      "rom_size": 16777216,
+      "start_address": "0xf0000",
+      "vendor": "American Megatrends Inc.",
+      "version": "2207"
+    },
+    "board": {
+      "board_type": {
+        "hex": "000a",
+        "name": "Motherboard",
+        "value": 10
+      },
+      "chassis": 3,
+      "features": [
+        "Hosting Board",
+        "Replaceable"
+      ],
+      "handle": 2,
+      "location": "Default string",
+      "manufacturer": "ASUSTeK COMPUTER INC.",
+      "product": "PRIME Z890-P WIFI",
+      "version": "Rev 1.xx"
+    },
+    "cache": [
+      {
+        "associativity": {
+          "hex": "0009",
+          "name": "Other",
+          "value": 9
+        },
+        "cache_type": {
+          "hex": "0004",
+          "name": "Data",
+          "value": 4
+        },
+        "ecc": {
+          "hex": "0004",
+          "name": "Parity",
+          "value": 4
+        },
+        "enabled": true,
+        "handle": 27,
+        "level": 0,
+        "location": {
+          "hex": "0000",
+          "name": "Internal",
+          "value": 0
+        },
+        "mode": {
+          "hex": "0001",
+          "name": "Write Back",
+          "value": 1
+        },
+        "size_current": 384,
+        "size_max": 384,
+        "socket": "L1 Cache",
+        "socketed": false,
+        "speed": 0,
+        "sram_type_current": [
+          "Synchronous"
+        ],
+        "sram_type_supported": [
+          "Synchronous"
+        ]
+      },
+      {
+        "associativity": {
+          "hex": "0008",
+          "name": "16-way Set-Associative",
+          "value": 8
+        },
+        "cache_type": {
+          "hex": "0003",
+          "name": "Instruction",
+          "value": 3
+        },
+        "ecc": {
+          "hex": "0004",
+          "name": "Parity",
+          "value": 4
+        },
+        "enabled": true,
+        "handle": 28,
+        "level": 0,
+        "location": {
+          "hex": "0000",
+          "name": "Internal",
+          "value": 0
+        },
+        "mode": {
+          "hex": "0001",
+          "name": "Write Back",
+          "value": 1
+        },
+        "size_current": 512,
+        "size_max": 512,
+        "socket": "L1 Cache",
+        "socketed": false,
+        "speed": 0,
+        "sram_type_current": [
+          "Synchronous"
+        ],
+        "sram_type_supported": [
+          "Synchronous"
+        ]
+      },
+      {
+        "associativity": {
+          "hex": "0009",
+          "name": "Other",
+          "value": 9
+        },
+        "cache_type": {
+          "hex": "0005",
+          "name": "Unified",
+          "value": 5
+        },
+        "ecc": {
+          "hex": "0005",
+          "name": "Single-bit",
+          "value": 5
+        },
+        "enabled": true,
+        "handle": 29,
+        "level": 1,
+        "location": {
+          "hex": "0000",
+          "name": "Internal",
+          "value": 0
+        },
+        "mode": {
+          "hex": "0001",
+          "name": "Write Back",
+          "value": 1
+        },
+        "size_current": 24576,
+        "size_max": 24576,
+        "socket": "L2 Cache",
+        "socketed": false,
+        "speed": 0,
+        "sram_type_current": [
+          "Synchronous"
+        ],
+        "sram_type_supported": [
+          "Synchronous"
+        ]
+      },
+      {
+        "associativity": {
+          "hex": "0001",
+          "name": "Other",
+          "value": 1
+        },
+        "cache_type": {
+          "hex": "0005",
+          "name": "Unified",
+          "value": 5
+        },
+        "ecc": {
+          "hex": "0006",
+          "name": "Multi-bit",
+          "value": 6
+        },
+        "enabled": true,
+        "handle": 30,
+        "level": 2,
+        "location": {
+          "hex": "0000",
+          "name": "Internal",
+          "value": 0
+        },
+        "mode": {
+          "hex": "0001",
+          "name": "Write Back",
+          "value": 1
+        },
+        "size_current": 30720,
+        "size_max": 30720,
+        "socket": "L3 Cache",
+        "socketed": false,
+        "speed": 0,
+        "sram_type_current": [
+          "Synchronous"
+        ],
+        "sram_type_supported": [
+          "Synchronous"
+        ]
+      },
+      {
+        "associativity": {
+          "hex": "0007",
+          "name": "8-way Set-Associative",
+          "value": 7
+        },
+        "cache_type": {
+          "hex": "0004",
+          "name": "Data",
+          "value": 4
+        },
+        "ecc": {
+          "hex": "0004",
+          "name": "Parity",
+          "value": 4
+        },
+        "enabled": true,
+        "handle": 31,
+        "level": 0,
+        "location": {
+          "hex": "0000",
+          "name": "Internal",
+          "value": 0
+        },
+        "mode": {
+          "hex": "0001",
+          "name": "Write Back",
+          "value": 1
+        },
+        "size_current": 384,
+        "size_max": 384,
+        "socket": "L1 Cache",
+        "socketed": false,
+        "speed": 0,
+        "sram_type_current": [
+          "Synchronous"
+        ],
+        "sram_type_supported": [
+          "Synchronous"
+        ]
+      },
+      {
+        "associativity": {
+          "hex": "0007",
+          "name": "8-way Set-Associative",
+          "value": 7
+        },
+        "cache_type": {
+          "hex": "0003",
+          "name": "Instruction",
+          "value": 3
+        },
+        "ecc": {
+          "hex": "0004",
+          "name": "Parity",
+          "value": 4
+        },
+        "enabled": true,
+        "handle": 32,
+        "level": 0,
+        "location": {
+          "hex": "0000",
+          "name": "Internal",
+          "value": 0
+        },
+        "mode": {
+          "hex": "0001",
+          "name": "Write Back",
+          "value": 1
+        },
+        "size_current": 768,
+        "size_max": 768,
+        "socket": "L1 Cache",
+        "socketed": false,
+        "speed": 0,
+        "sram_type_current": [
+          "Synchronous"
+        ],
+        "sram_type_supported": [
+          "Synchronous"
+        ]
+      },
+      {
+        "associativity": {
+          "hex": "0008",
+          "name": "16-way Set-Associative",
+          "value": 8
+        },
+        "cache_type": {
+          "hex": "0005",
+          "name": "Unified",
+          "value": 5
+        },
+        "ecc": {
+          "hex": "0005",
+          "name": "Single-bit",
+          "value": 5
+        },
+        "enabled": true,
+        "handle": 33,
+        "level": 1,
+        "location": {
+          "hex": "0000",
+          "name": "Internal",
+          "value": 0
+        },
+        "mode": {
+          "hex": "0001",
+          "name": "Write Back",
+          "value": 1
+        },
+        "size_current": 12288,
+        "size_max": 12288,
+        "socket": "L2 Cache",
+        "socketed": false,
+        "speed": 0,
+        "sram_type_current": [
+          "Synchronous"
+        ],
+        "sram_type_supported": [
+          "Synchronous"
+        ]
+      },
+      {
+        "associativity": {
+          "hex": "0001",
+          "name": "Other",
+          "value": 1
+        },
+        "cache_type": {
+          "hex": "0005",
+          "name": "Unified",
+          "value": 5
+        },
+        "ecc": {
+          "hex": "0006",
+          "name": "Multi-bit",
+          "value": 6
+        },
+        "enabled": true,
+        "handle": 34,
+        "level": 2,
+        "location": {
+          "hex": "0000",
+          "name": "Internal",
+          "value": 0
+        },
+        "mode": {
+          "hex": "0001",
+          "name": "Write Back",
+          "value": 1
+        },
+        "size_current": 30720,
+        "size_max": 30720,
+        "socket": "L3 Cache",
+        "socketed": false,
+        "speed": 0,
+        "sram_type_current": [
+          "Synchronous"
+        ],
+        "sram_type_supported": [
+          "Synchronous"
+        ]
+      }
+    ],
+    "chassis": [
+      {
+        "bootup_state": {
+          "hex": "0003",
+          "name": "Safe",
+          "value": 3
+        },
+        "chassis_type": {
+          "hex": "0003",
+          "name": "Desktop",
+          "value": 3
+        },
+        "handle": 3,
+        "lock_present": false,
+        "manufacturer": "Default string",
+        "oem": "0x0",
+        "power_state": {
+          "hex": "0003",
+          "name": "Safe",
+          "value": 3
+        },
+        "security_state": {
+          "hex": "0003",
+          "name": "None",
+          "value": 3
+        },
+        "thermal_state": {
+          "hex": "0003",
+          "name": "Safe",
+          "value": 3
+        },
+        "version": "Default string"
+      }
+    ],
+    "config": {
+      "handle": 5,
+      "options": [
+        "SMI:00B26C",
+        "Default string",
+        "Default string",
+        "Default string"
+      ]
+    },
+    "group_associations": [
+      {
+        "handle": 103,
+        "handles": [
+          0
+        ],
+        "name": "$MEI"
+      },
+      {
+        "handle": 105,
+        "handles": [
+          98784247830,
+          103079215127,
+          107374182424,
+          111669149721,
+          420906795034,
+          279172874338
+        ],
+        "name": "Firmware Version Info"
+      }
+    ],
+    "language": [
+      {
+        "handle": 101,
+        "languages": [
+          "en|US|iso8859-1",
+          "fr|FR|iso8859-1",
+          "zh|TW|unicode",
+          "zh|CN|unicode",
+          "ja|JP|unicode",
+          "de|DE|iso8859-1",
+          "es|ES|iso8859-1",
+          "ru|RU|iso8859-5",
+          "ko|KR|unicode"
+        ]
+      }
+    ],
+    "memory_array": [
+      {
+        "ecc": {
+          "hex": "0003",
+          "name": "None",
+          "value": 3
+        },
+        "error_handle": 65534,
+        "handle": 14,
+        "location": {
+          "hex": "0003",
+          "name": "Motherboard",
+          "value": 3
+        },
+        "max_size": "0x8000000",
+        "slots": 4,
+        "usage": {
+          "hex": "0003",
+          "name": "System memory",
+          "value": 3
+        }
+      }
+    ],
+    "memory_array_mapped_address": [
+      {
+        "array_handle": 14,
+        "end_address": "0xc00000000",
+        "handle": 19,
+        "part_width": 2,
+        "start_address": "0x0"
+      }
+    ],
+    "memory_device": [
+      {
+        "array_handle": 14,
+        "bank_location": "BANK 0",
+        "ecc_bits": 0,
+        "error_handle": 65534,
+        "form_factor": {
+          "hex": "0002",
+          "name": "Unknown",
+          "value": 2
+        },
+        "handle": 15,
+        "location": "Controller0-ChannelA-DIMM0",
+        "manufacturer": "",
+        "memory_type": {
+          "hex": "0002",
+          "name": "Unknown",
+          "value": 2
+        },
+        "memory_type_details": null,
+        "part_number": "",
+        "set": 0,
+        "size": 0,
+        "speed": 0,
+        "width": 0
+      },
+      {
+        "array_handle": 14,
+        "bank_location": "BANK 0",
+        "ecc_bits": 0,
+        "error_handle": 65534,
+        "form_factor": {
+          "hex": "0009",
+          "name": "DIMM",
+          "value": 9
+        },
+        "handle": 16,
+        "location": "Controller0-ChannelA-DIMM1",
+        "manufacturer": "0x0B92",
+        "memory_type": {
+          "hex": "0022",
+          "name": "Other",
+          "value": 34
+        },
+        "memory_type_details": [
+          "Synchronous"
+        ],
+        "part_number": "",
+        "set": 0,
+        "size": 25165824,
+        "speed": 4800,
+        "width": 64
+      },
+      {
+        "array_handle": 14,
+        "bank_location": "BANK 1",
+        "ecc_bits": 0,
+        "error_handle": 65534,
+        "form_factor": {
+          "hex": "0002",
+          "name": "Unknown",
+          "value": 2
+        },
+        "handle": 17,
+        "location": "Controller0-ChannelB-DIMM0",
+        "manufacturer": "",
+        "memory_type": {
+          "hex": "0002",
+          "name": "Unknown",
+          "value": 2
+        },
+        "memory_type_details": null,
+        "part_number": "",
+        "set": 0,
+        "size": 0,
+        "speed": 0,
+        "width": 0
+      },
+      {
+        "array_handle": 14,
+        "bank_location": "BANK 1",
+        "ecc_bits": 0,
+        "error_handle": 65534,
+        "form_factor": {
+          "hex": "0009",
+          "name": "DIMM",
+          "value": 9
+        },
+        "handle": 18,
+        "location": "Controller0-ChannelB-DIMM1",
+        "manufacturer": "0x0B92",
+        "memory_type": {
+          "hex": "0022",
+          "name": "Other",
+          "value": 34
+        },
+        "memory_type_details": [
+          "Synchronous"
+        ],
+        "part_number": "",
+        "set": 0,
+        "size": 25165824,
+        "speed": 4800,
+        "width": 64
+      }
+    ],
+    "memory_device_mapped_address": [
+      {
+        "array_map_handle": 19,
+        "end_address": "0x600000000",
+        "handle": 20,
+        "interleave_depth": 0,
+        "interleave_position": 0,
+        "memory_device_handle": 16,
+        "row_position": 255,
+        "start_address": "0x0"
+      },
+      {
+        "array_map_handle": 19,
+        "end_address": "0xc00000000",
+        "handle": 21,
+        "interleave_depth": 0,
+        "interleave_position": 0,
+        "memory_device_handle": 18,
+        "row_position": 255,
+        "start_address": "0x600000000"
+      }
+    ],
+    "onboard": [
+      {
+        "devices": [
+          {
+            "enabled": false,
+            "name": "Onboard IGD",
+            "type": {
+              "hex": "0003",
+              "name": "Video",
+              "value": 3
+            }
+          },
+          {
+            "enabled": true,
+            "name": "Intel GNA Device",
+            "type": {
+              "hex": "0001",
+              "name": "Other",
+              "value": 1
+            }
+          },
+          {
+            "enabled": true,
+            "name": "Intel HD Audio",
+            "type": {
+              "hex": "0007",
+              "name": "Sound",
+              "value": 7
+            }
+          },
+          {
+            "enabled": true,
+            "name": "SATA Controller",
+            "type": {
+              "hex": "0009",
+              "name": "Other",
+              "value": 9
+            }
+          },
+          {
+            "enabled": true,
+            "name": "RAID Controller",
+            "type": {
+              "hex": "0001",
+              "name": "Other",
+              "value": 1
+            }
+          },
+          {
+            "enabled": true,
+            "name": "USB Controller",
+            "type": {
+              "hex": "0001",
+              "name": "Other",
+              "value": 1
+            }
+          },
+          {
+            "enabled": true,
+            "name": "SMBus Controller",
+            "type": {
+              "hex": "0001",
+              "name": "Other",
+              "value": 1
+            }
+          },
+          {
+            "enabled": false,
+            "name": "RTL8125 2.5GbE Controller",
+            "type": {
+              "hex": "0005",
+              "name": "Ethernet",
+              "value": 5
+            }
+          }
+        ],
+        "handle": 47
+      }
+    ],
+    "port_connector": [
+      {
+        "external_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "external_reference_designator": "HDMI_DP",
+        "handle": 57,
+        "internal_reference_designator": "None",
+        "port_type": {
+          "hex": "001c",
+          "name": "Video Port",
+          "value": 28
+        }
+      },
+      {
+        "external_connector_type": {
+          "hex": "0012",
+          "name": "Access Bus [USB]",
+          "value": 18
+        },
+        "external_reference_designator": "U10G_16",
+        "handle": 58,
+        "internal_reference_designator": "None",
+        "port_type": {
+          "hex": "0010",
+          "name": "USB",
+          "value": 16
+        }
+      },
+      {
+        "external_connector_type": {
+          "hex": "0023",
+          "name": "Other",
+          "value": 35
+        },
+        "external_reference_designator": "TBT4_C",
+        "handle": 59,
+        "internal_reference_designator": "None",
+        "port_type": {
+          "hex": "0010",
+          "name": "USB",
+          "value": 16
+        }
+      },
+      {
+        "external_reference_designator": "BIOS_FLBK",
+        "handle": 60,
+        "internal_reference_designator": "None",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_connector_type": {
+          "hex": "0012",
+          "name": "Access Bus [USB]",
+          "value": 18
+        },
+        "external_reference_designator": "USB_3_E7",
+        "handle": 61,
+        "internal_reference_designator": "None",
+        "port_type": {
+          "hex": "0010",
+          "name": "USB",
+          "value": 16
+        }
+      },
+      {
+        "external_connector_type": {
+          "hex": "000b",
+          "name": "RJ-45",
+          "value": 11
+        },
+        "external_reference_designator": "LAN_USB_E34",
+        "handle": 62,
+        "internal_reference_designator": "None",
+        "port_type": {
+          "hex": "001f",
+          "name": "Network Port",
+          "value": 31
+        }
+      },
+      {
+        "external_connector_type": {
+          "hex": "0012",
+          "name": "Access Bus [USB]",
+          "value": 18
+        },
+        "external_reference_designator": "U5G_56",
+        "handle": 63,
+        "internal_reference_designator": "None",
+        "port_type": {
+          "hex": "0010",
+          "name": "USB",
+          "value": 16
+        }
+      },
+      {
+        "external_connector_type": {
+          "hex": "001f",
+          "name": "Mini-jack [headphones]",
+          "value": 31
+        },
+        "external_reference_designator": "AUDIO",
+        "handle": 64,
+        "internal_reference_designator": "None",
+        "port_type": {
+          "hex": "001d",
+          "name": "Audio Port",
+          "value": 29
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 65,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "M.2(WIFI)",
+        "port_type": {
+          "hex": "001f",
+          "name": "Network Port",
+          "value": 31
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 66,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "SPDIF_OUT",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 67,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "F_AUDIO",
+        "port_type": {
+          "hex": "001d",
+          "name": "Audio Port",
+          "value": 29
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 68,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "COM",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 69,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "COM_DEBUG",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 70,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "USB_E12",
+        "port_type": {
+          "hex": "0010",
+          "name": "USB",
+          "value": 16
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 71,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "USB_E56",
+        "port_type": {
+          "hex": "0010",
+          "name": "USB",
+          "value": 16
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 72,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "U5G_910",
+        "port_type": {
+          "hex": "0010",
+          "name": "USB",
+          "value": 16
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 73,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "TPM",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 74,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "U5G_78",
+        "port_type": {
+          "hex": "0010",
+          "name": "USB",
+          "value": 16
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 75,
+        "internal_connector_type": {
+          "hex": "0023",
+          "name": "Other",
+          "value": 35
+        },
+        "internal_reference_designator": "U10G_C1",
+        "port_type": {
+          "hex": "0010",
+          "name": "USB",
+          "value": 16
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 76,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "RGB_HEADER",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 77,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "ADD_GEN2_1",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 78,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "ADD_GEN2_2",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 79,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "ADD_GEN2_3",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 80,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "TB(USB4)_HEADER",
+        "port_type": {
+          "hex": "0023",
+          "name": "Other",
+          "value": 35
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 81,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "F_PANEL",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 82,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "SMBUS",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 83,
+        "internal_connector_type": {
+          "hex": "0022",
+          "name": "Other",
+          "value": 34
+        },
+        "internal_reference_designator": "SATA6G_1",
+        "port_type": {
+          "hex": "0020",
+          "name": "Other",
+          "value": 32
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 84,
+        "internal_connector_type": {
+          "hex": "0022",
+          "name": "Other",
+          "value": 34
+        },
+        "internal_reference_designator": "SATA6G_2",
+        "port_type": {
+          "hex": "0020",
+          "name": "Other",
+          "value": 32
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 85,
+        "internal_connector_type": {
+          "hex": "0022",
+          "name": "Other",
+          "value": 34
+        },
+        "internal_reference_designator": "SATA6G_3",
+        "port_type": {
+          "hex": "0020",
+          "name": "Other",
+          "value": 32
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 86,
+        "internal_connector_type": {
+          "hex": "0022",
+          "name": "Other",
+          "value": 34
+        },
+        "internal_reference_designator": "SATA6G_4",
+        "port_type": {
+          "hex": "0020",
+          "name": "Other",
+          "value": 32
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 87,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "ATX_PWR",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 88,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "CPU_12V_1",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 89,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "CPU_12V_2",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 90,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "CPU_OPT",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 91,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "AIO_PUMP",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 92,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "CPU_FAN",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 93,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "CHA_FAN1",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 94,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "CHA_FAN2",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 95,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "CHA_FAN3",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      },
+      {
+        "external_reference_designator": "None",
+        "handle": 96,
+        "internal_connector_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        },
+        "internal_reference_designator": "CHA_FAN4",
+        "port_type": {
+          "hex": "00ff",
+          "name": "Other",
+          "value": 255
+        }
+      }
+    ],
+    "processor": [
+      {
+        "cache_handle_l1": 32,
+        "cache_handle_l2": 33,
+        "cache_handle_l3": 34,
+        "clock_ext": 100,
+        "clock_max": 8500,
+        "handle": 35,
+        "manufacturer": "Intel(R) Corporation",
+        "part": "To Be Filled By O.E.M.",
+        "processor_family": {
+          "hex": "00fe",
+          "name": "Other",
+          "value": 254
+        },
+        "processor_status": {
+          "hex": "0001",
+          "name": "Enabled",
+          "value": 1
+        },
+        "processor_type": {
+          "hex": "0003",
+          "name": "CPU",
+          "value": 3
+        },
+        "socket": "LGA1851",
+        "socket_populated": true,
+        "socket_type": {
+          "hex": "0055",
+          "name": "Other",
+          "value": 85
+        },
+        "version": "Intel(R) Core(TM) Ultra 7 265K"
+      }
+    ],
+    "slot": [
+      {
+        "bus_width": {
+          "hex": "000d",
+          "name": "Other",
+          "value": 13
+        },
+        "designation": "PCIEX16(G5)",
+        "features": [
+          "3.3 V",
+          "PME#"
+        ],
+        "handle": 48,
+        "id": 0,
+        "length": {
+          "hex": "0004",
+          "name": "Long",
+          "value": 4
+        },
+        "slot_type": {
+          "hex": "00c3",
+          "name": "Other",
+          "value": 195
+        },
+        "usage": {
+          "hex": "0003",
+          "name": "Available",
+          "value": 3
+        }
+      },
+      {
+        "bus_width": {
+          "hex": "0008",
+          "name": "Other",
+          "value": 8
+        },
+        "designation": "PCIEX16(G4)_1",
+        "features": [
+          "3.3 V",
+          "PME#"
+        ],
+        "handle": 49,
+        "id": 1,
+        "length": {
+          "hex": "0004",
+          "name": "Long",
+          "value": 4
+        },
+        "slot_type": {
+          "hex": "00b9",
+          "name": "Other",
+          "value": 185
+        },
+        "usage": {
+          "hex": "0004",
+          "name": "In Use",
+          "value": 4
+        }
+      },
+      {
+        "bus_width": {
+          "hex": "000a",
+          "name": "Other",
+          "value": 10
+        },
+        "designation": "PCIEX16(G4)_2",
+        "features": [
+          "3.3 V",
+          "PME#"
+        ],
+        "handle": 50,
+        "id": 2,
+        "length": {
+          "hex": "0003",
+          "name": "Short",
+          "value": 3
+        },
+        "slot_type": {
+          "hex": "00bb",
+          "name": "Other",
+          "value": 187
+        },
+        "usage": {
+          "hex": "0005",
+          "name": "Other",
+          "value": 5
+        }
+      },
+      {
+        "bus_width": {
+          "hex": "000a",
+          "name": "Other",
+          "value": 10
+        },
+        "designation": "PCIEX16(G4)_3",
+        "features": [
+          "3.3 V",
+          "PME#"
+        ],
+        "handle": 51,
+        "id": 3,
+        "length": {
+          "hex": "0003",
+          "name": "Short",
+          "value": 3
+        },
+        "slot_type": {
+          "hex": "00bb",
+          "name": "Other",
+          "value": 187
+        },
+        "usage": {
+          "hex": "0003",
+          "name": "Available",
+          "value": 3
+        }
+      },
+      {
+        "bus_width": {
+          "hex": "000a",
+          "name": "Other",
+          "value": 10
+        },
+        "designation": "M.2_1",
+        "features": [
+          "3.3 V",
+          "PME#"
+        ],
+        "handle": 52,
+        "id": 4,
+        "length": {
+          "hex": "0003",
+          "name": "Short",
+          "value": 3
+        },
+        "slot_type": {
+          "hex": "0017",
+          "name": "Other",
+          "value": 23
+        },
+        "usage": {
+          "hex": "0004",
+          "name": "In Use",
+          "value": 4
+        }
+      },
+      {
+        "bus_width": {
+          "hex": "000a",
+          "name": "Other",
+          "value": 10
+        },
+        "designation": "M.2_2",
+        "features": [
+          "3.3 V",
+          "PME#"
+        ],
+        "handle": 53,
+        "id": 5,
+        "length": {
+          "hex": "0003",
+          "name": "Short",
+          "value": 3
+        },
+        "slot_type": {
+          "hex": "0017",
+          "name": "Other",
+          "value": 23
+        },
+        "usage": {
+          "hex": "0004",
+          "name": "In Use",
+          "value": 4
+        }
+      },
+      {
+        "bus_width": {
+          "hex": "000a",
+          "name": "Other",
+          "value": 10
+        },
+        "designation": "M.2_3",
+        "features": [
+          "3.3 V",
+          "PME#"
+        ],
+        "handle": 54,
+        "id": 6,
+        "length": {
+          "hex": "0003",
+          "name": "Short",
+          "value": 3
+        },
+        "slot_type": {
+          "hex": "0017",
+          "name": "Other",
+          "value": 23
+        },
+        "usage": {
+          "hex": "0005",
+          "name": "Other",
+          "value": 5
+        }
+      },
+      {
+        "bus_width": {
+          "hex": "000a",
+          "name": "Other",
+          "value": 10
+        },
+        "designation": "M.2_4",
+        "features": [
+          "3.3 V",
+          "PME#"
+        ],
+        "handle": 55,
+        "id": 7,
+        "length": {
+          "hex": "0003",
+          "name": "Short",
+          "value": 3
+        },
+        "slot_type": {
+          "hex": "0017",
+          "name": "Other",
+          "value": 23
+        },
+        "usage": {
+          "hex": "0005",
+          "name": "Other",
+          "value": 5
+        }
+      },
+      {
+        "bus_width": {
+          "hex": "0008",
+          "name": "Other",
+          "value": 8
+        },
+        "designation": "M.2(WIFI)",
+        "features": [
+          "3.3 V",
+          "PME#"
+        ],
+        "handle": 56,
+        "id": 8,
+        "length": {
+          "hex": "0003",
+          "name": "Short",
+          "value": 3
+        },
+        "slot_type": {
+          "hex": "0015",
+          "name": "Other",
+          "value": 21
+        },
+        "usage": {
+          "hex": "0004",
+          "name": "In Use",
+          "value": 4
+        }
+      }
+    ],
+    "system": {
+      "handle": 1,
+      "manufacturer": "ASUS",
+      "product": "System Product Name",
+      "version": "System Version",
+      "wake_up": {
+        "hex": "0006",
+        "name": "Power Switch",
+        "value": 6
+      }
+    }
+  },
+  "system": "x86_64-linux",
+  "uefi": {
+    "platform_size": 64,
+    "supported": true
+  },
+  "version": 1,
+  "virtualisation": "none"
+}

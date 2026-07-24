@@ -103,6 +103,9 @@
 (dolist (mode '(org-mode-hook term-mode-hook shell-mode-hook eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
+;; 末尾换行
+(setq require-final-newline t)
+
 ;; 缩进
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)

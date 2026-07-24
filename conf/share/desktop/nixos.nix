@@ -1,0 +1,83 @@
+{ pkgs, ... }:
+let
+  mkDesktopEntry =
+    name: text:
+    pkgs.writeTextFile {
+      inherit name text;
+      destination = "/share/wayland-sessions/${name}.desktop";
+      derivationArgs = {
+        passthru.providedSessions = [ name ];
+      };
+    };
+in
+{
+  programs = {
+    uwsm.enable = true;
+    thunar = {
+      enable = true;
+      plugins = [
+        pkgs.thunar-archive-plugin
+        pkgs.thunar-volman
+        pkgs.tumbler
+      ];
+    };
+  };
+  services.displayManager.sessionPackages = [
+    (mkDesktopEntry "niri" ''
+      [Desktop Entry]
+      Name=Niri
+      Comment=Niri
+      Exec=/run/current-system/sw/bin/niri-desktop
+      Type=Application
+    '')
+  ];
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = [
+        pkgs.xdg-desktop-portal-wlr
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-gnome
+      ];
+      config = {
+        niri = {
+          default = [
+            "gnome"
+            "gtk"
+          ];
+          "org.freedesktop.impl.portal.Settings" = [ "darkman" ];
+          "org.freedesktop.impl.portal.Access" = "gtk";
+          "org.freedesktop.impl.portal.FileChooser" = "gtk";
+          "org.freedesktop.impl.portal.Notification" = "gtk";
+          "org.freedesktop.impl.portal.Secret" = "gnome-keyring";
+        };
+      };
+    };
+    mime.defaultApplications = {
+      "inode/directory" = "thunar.desktop";
+    };
+  };
+  security = {
+    pam.services.swaylock = { };
+  };
+  environment = {
+    etc = {
+      "niri/config.kdl".source = pkgs.frix.niri.niri.configFile;
+    };
+    systemPackages = [
+      pkgs.frix.niri.niri
+    ];
+    sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+      MOZ_ENABLE_WAYLAND = "1";
+      QT_QPA_PLATFORM = "wayland";
+      GDK_BACKEND = "wayland,x11";
+      SDL_VIDEODRIVER = "wayland,x11,windows";
+      SDL_VIDEO_DRIVER = "wayland,x11,windows";
+      CLUTTER_BACKEND = "wayland";
+      WLR_RENDERER_ALLOW_SOFTWARE = "1";
+      WLR_NO_HARDWARE_CURSORS = "1";
+      WLR_RENDERER = "vulkan";
+    };
+  };
+}

@@ -1,0 +1,1 @@
+(import ./trans.nix { }).run

@@ -3,6 +3,7 @@
   inputsMeta,
   extraArgs,
   outputFun,
+  ...
 }:
 let
   mkInputs =
@@ -33,10 +34,13 @@ let
       // {
         inherit sourceInfo;
       };
+
   inputsWithFollows = builtins.mapAttrs (name: value: mkInputs name value) inputs;
+
   inputsWithSelf = inputsWithFollows // {
     self = extraArgs // { inputs = inputsWithFollows; } // { inherit outputs; } // outputs;
   };
+
   outputs = outputFun inputsWithSelf;
 in
 outputs

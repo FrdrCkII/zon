@@ -39,3 +39,5 @@ _NixOS_ module system instead of a function library in the style of [[https://gi
 providing a more understandable model and error messages.
 - See [[file:zonfig/README.org][detailed description]] in this subproject's folder.
 
+* conf
+My personal NixOS configuration, built using the projects mentioned above.
