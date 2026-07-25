@@ -1,13 +1,13 @@
 {
-  inputs,
+  channels,
   protons,
   ...
 }:
 protons.proton-bin.override {
-  src = "${inputs.dwproton}";
+  src = "${channels.inputs.dwproton}";
   pname = "proton-dw-bin";
   steamDisplayName = "DW-Proton";
   version = builtins.head (
-    builtins.match ".*/(dwproton-[^/]+)\\.tar\\.xz" (import ../../channels.nix).locked.dwproton.lock.url
+    builtins.match ".*/(dwproton-[^/]+)\\.tar\\.xz" channels.channels.locked.dwproton.lock.url
   );
 }

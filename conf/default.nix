@@ -38,9 +38,8 @@ zon.nixlock.lib.withInputs {
               inputs.zon.nixlock.overlays.nixlock
               inputs.zon.wrapit.overlays.wrapit
               inputs.zon.wrapit.overlays.extra
-              inputs.zon.wrapit.overlays.conf
-              (_: _: { inherit inputs; })
-              (import ./overlay.nix)
+              (import ./channels-overlay.nix inputs)
+              (import ./overlay)
             ];
           };
         };
