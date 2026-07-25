@@ -737,7 +737,6 @@ let
         { meta, ... }:
         writeBashBin [ ] ''
           NIX_URL=$(curl -s '${meta.url}' | \
-            grep -o 'https://[^"]*\.tar\...' | \
             grep '${meta.grep}' | \
             head -n1)
           echo '${

@@ -109,10 +109,10 @@ binds {
         fullscreen-window
     }
     Mod+N {
-        set-column-width "+10%"
+        set-column-width "-10%"
     }
     Mod+M {
-        set-column-width "-10%"
+        set-column-width "+10%"
     }
     Mod+Q {
         close-window

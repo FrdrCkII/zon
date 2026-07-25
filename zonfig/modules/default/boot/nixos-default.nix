@@ -9,7 +9,6 @@
       consoleLogLevel = lib.mkDefault 3;
       kernelParams = [
         "udev.log_level=${toString config.boot.consoleLogLevel}"
-        "nowatchdog"
       ];
       loader = {
         timeout = lib.mkDefault 3;

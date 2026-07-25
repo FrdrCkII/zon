@@ -42,10 +42,6 @@
     gtk-font-name=monospace 12
     gtk-cursor-theme-name=Vanilla-DMZ-AA
     gtk-cursor-theme-size=16
-    gtk-toolbar-style=GTK_TOOLBAR_BOTH_HORIZ
-    gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
-    gtk-button-images=0
-    gtk-menu-images=0
     gtk-enable-event-sounds=1
     gtk-enable-input-feedback-sounds=0
     gtk-xft-antialias=1

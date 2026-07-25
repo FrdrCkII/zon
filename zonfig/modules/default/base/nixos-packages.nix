@@ -2,6 +2,7 @@
   config = {
     environment = {
       systemPackages = [
+        pkgs.coreutils
         pkgs.coreutils-full
         pkgs.findutils
         pkgs.diffutils
@@ -9,12 +10,18 @@
         pkgs.gnugrep
         pkgs.gawk
         pkgs.gnumake
-        pkgs.just
         pkgs.binutils
         pkgs.gcc
+        pkgs.clang
+        pkgs.llvm
+        pkgs.lld
         pkgs.pkg-config
         pkgs.cmake
         pkgs.git
+        pkgs.flex
+        pkgs.bison
+        pkgs.perl
+        pkgs.just
         pkgs.yazi
         pkgs.wget
         pkgs.curl

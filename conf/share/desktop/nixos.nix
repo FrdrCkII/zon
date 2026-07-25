@@ -12,7 +12,6 @@ let
 in
 {
   programs = {
-    uwsm.enable = true;
     thunar = {
       enable = true;
       plugins = [
@@ -22,15 +21,19 @@ in
       ];
     };
   };
-  services.displayManager.sessionPackages = [
-    (mkDesktopEntry "niri" ''
-      [Desktop Entry]
-      Name=Niri
-      Comment=Niri
-      Exec=/run/current-system/sw/bin/niri-desktop
-      Type=Application
-    '')
-  ];
+
+  services = {
+    displayManager.sessionPackages = [
+      (mkDesktopEntry "niri" ''
+        [Desktop Entry]
+        Name=Niri
+        Comment=Niri
+        Exec=/run/current-system/sw/bin/niri-session
+        Type=Application
+      '')
+    ];
+  };
+
   xdg = {
     portal = {
       enable = true;
@@ -57,9 +60,12 @@ in
       "inode/directory" = "thunar.desktop";
     };
   };
+
   security = {
     pam.services.swaylock = { };
+    soteria.enable = true;
   };
+
   environment = {
     etc = {
       "niri/config.kdl".source = pkgs.frix.niri.niri.configFile;
