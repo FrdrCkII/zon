@@ -57,15 +57,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -155,15 +163,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -253,15 +269,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -351,15 +375,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -449,15 +481,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -547,15 +587,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -645,15 +693,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -743,15 +799,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -841,15 +905,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -939,15 +1011,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -1037,15 +1117,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -1135,15 +1223,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -1233,15 +1329,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -1331,15 +1435,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -1429,15 +1541,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -1527,15 +1647,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -1625,15 +1753,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -1723,15 +1859,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -1794,15 +1938,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -1897,15 +2049,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -1995,15 +2155,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -2093,15 +2261,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -2191,15 +2367,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -2263,7 +2447,7 @@
                             "source": "multi",
                             "sources": [
                               {
-                                "name": "www.github.com",
+                                "name": "api.github.com",
                                 "port": "443",
                                 "refresh": 10000000000,
                                 "resolver": {
@@ -2274,7 +2458,7 @@
                                 "source": "a"
                               },
                               {
-                                "name": "www.github.com",
+                                "name": "api.github.com",
                                 "port": "443",
                                 "refresh": 10000000000,
                                 "resolver": {
@@ -2289,113 +2473,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
-                              "set": {
-                                "Host": [
-                                  "{http.request.host}"
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
                                 ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
-                                ],
-                                "User-Agent": [
-                                  "{http.request.header.User-Agent}"
-                                ],
-                                "X-Real-Ip": [
-                                  "{http.request.remote.host}"
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
                                 ]
-                              }
-                            }
-                          },
-                          "health_checks": {
-                            "passive": {
-                              "fail_duration": 10000000000,
-                              "max_fails": 2
-                            }
-                          },
-                          "load_balancing": {
-                            "selection_policy": {
-                              "policy": "random"
-                            }
-                          },
-                          "transport": {
-                            "protocol": "http",
-                            "tls": {
-                              "insecure_skip_verify": true
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "match": [
-                {
-                  "host": [
-                    "www.github.com"
-                  ]
-                }
-              ],
-              "terminal": true
-            },
-            {
-              "handle": [
-                {
-                  "handler": "subroute",
-                  "routes": [
-                    {
-                      "handle": [
-                        {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
-                          "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "api.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
                               },
-                              {
-                                "name": "api.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
-                          },
-                          "handler": "reverse_proxy",
-                          "headers": {
-                            "request": {
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -2485,15 +2579,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -2583,15 +2685,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -2654,15 +2764,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -2733,15 +2851,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -2831,104 +2957,6 @@
                             "source": "multi",
                             "sources": [
                               {
-                                "name": "github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
-                          },
-                          "handler": "reverse_proxy",
-                          "headers": {
-                            "request": {
-                              "set": {
-                                "Host": [
-                                  "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
-                                ],
-                                "User-Agent": [
-                                  "{http.request.header.User-Agent}"
-                                ],
-                                "X-Real-Ip": [
-                                  "{http.request.remote.host}"
-                                ]
-                              }
-                            }
-                          },
-                          "health_checks": {
-                            "passive": {
-                              "fail_duration": 10000000000,
-                              "max_fails": 2
-                            }
-                          },
-                          "load_balancing": {
-                            "selection_policy": {
-                              "policy": "random"
-                            }
-                          },
-                          "transport": {
-                            "protocol": "http",
-                            "tls": {
-                              "insecure_skip_verify": true
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "match": [
-                {
-                  "host": [
-                    "github.com"
-                  ]
-                }
-              ],
-              "terminal": true
-            },
-            {
-              "handle": [
-                {
-                  "handler": "subroute",
-                  "routes": [
-                    {
-                      "handle": [
-                        {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
-                          "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
                                 "name": "raw.githubusercontent.com",
                                 "port": "443",
                                 "refresh": 10000000000,
@@ -2955,15 +2983,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -2988,7 +3024,8 @@
                           "transport": {
                             "protocol": "http",
                             "tls": {
-                              "insecure_skip_verify": true
+                              "insecure_skip_verify": true,
+                              "server_name": "{http.request.host}"
                             }
                           }
                         }
@@ -3054,15 +3091,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -3125,7 +3170,7 @@
                       ]
                     },
                     {
-                      "group": "group34",
+                      "group": "group32",
                       "handle": [
                         {
                           "handler": "subroute",
@@ -3163,15 +3208,23 @@
                                   "handler": "reverse_proxy",
                                   "headers": {
                                     "request": {
+                                      "replace": {
+                                        "@has_if_range": [
+                                          {
+                                            "replace": "{http.request.header.If-Range}",
+                                            "search_regexp": "If-Range"
+                                          }
+                                        ],
+                                        "@has_range": [
+                                          {
+                                            "replace": "{http.request.header.Range}",
+                                            "search_regexp": "Range"
+                                          }
+                                        ]
+                                      },
                                       "set": {
                                         "Host": [
                                           "steamcommunity.com"
-                                        ],
-                                        "If-Range": [
-                                          "{http.request.header.If-Range}"
-                                        ],
-                                        "Range": [
-                                          "{http.request.header.Range}"
                                         ],
                                         "User-Agent": [
                                           "{http.request.header.User-Agent} Googlebot/2.1 (+http://www.google.com/bot.html)"
@@ -3216,7 +3269,7 @@
                       ]
                     },
                     {
-                      "group": "group34",
+                      "group": "group32",
                       "handle": [
                         {
                           "handler": "subroute",
@@ -3227,15 +3280,23 @@
                                   "handler": "reverse_proxy",
                                   "headers": {
                                     "request": {
+                                      "replace": {
+                                        "@has_if_range": [
+                                          {
+                                            "replace": "{http.request.header.If-Range}",
+                                            "search_regexp": "If-Range"
+                                          }
+                                        ],
+                                        "@has_range": [
+                                          {
+                                            "replace": "{http.request.header.Range}",
+                                            "search_regexp": "Range"
+                                          }
+                                        ]
+                                      },
                                       "set": {
                                         "Host": [
                                           "{http.request.host}"
-                                        ],
-                                        "If-Range": [
-                                          "{http.request.header.If-Range}"
-                                        ],
-                                        "Range": [
-                                          "{http.request.header.Range}"
                                         ],
                                         "User-Agent": [
                                           "{http.request.header.User-Agent}"
@@ -3347,15 +3408,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -3475,15 +3544,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -3544,18 +3621,133 @@
                           ]
                         },
                         {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
                                 ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
                                 ],
-                                "Range": [
-                                  "{http.request.header.Range}"
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "github.com",
+                    "*.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -3630,15 +3822,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -3716,15 +3916,23 @@
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
                               "set": {
                                 "Host": [
                                   "{http.request.host}"
-                                ],
-                                "If-Range": [
-                                  "{http.request.header.If-Range}"
-                                ],
-                                "Range": [
-                                  "{http.request.header.Range}"
                                 ],
                                 "User-Agent": [
                                   "{http.request.header.User-Agent}"
@@ -3815,13 +4023,11 @@
                   "pages.github.com",
                   "gist.github.com",
                   "docs.github.com",
-                  "www.github.com",
                   "api.github.com",
                   "lfs.github.com",
                   "lab.github.com",
                   "api.fanbox.cc",
                   "i.pximg.net",
-                  "github.com",
                   "*.githubusercontent.com",
                   "raw.githubusercontent.com",
                   "*.githubassets.com",
@@ -3832,6 +4038,8 @@
                   "pixiv.pximg.net",
                   "*.github.io",
                   "www.github.io",
+                  "*.github.com",
+                  "github.com",
                   "*.pixiv.org",
                   "a.pixiv.org",
                   "*.pixiv.net",

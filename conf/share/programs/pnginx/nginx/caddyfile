@@ -2,62 +2,6 @@
 	default_bind 127.0.0.1
 	auto_https off
 }
-github.com {
-	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
-	reverse_proxy {
-		dynamic multi {
-			a github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
-		}
-		max_fails 2
-		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
-		header_up User-Agent {http.request.header.User-Agent}
-		header_up X-Real-IP {http.request.remote.host}
-		transport http {
-			tls
-			tls_insecure_skip_verify
-		}
-	}
-}
-www.github.com {
-	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
-	reverse_proxy {
-		dynamic multi {
-			a www.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a www.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
-		}
-		max_fails 2
-		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
-		header_up User-Agent {http.request.header.User-Agent}
-		header_up X-Real-IP {http.request.remote.host}
-		transport http {
-			tls
-			tls_insecure_skip_verify
-		}
-	}
-}
 gist.github.com {
 	encode zstd
 	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
@@ -76,8 +20,16 @@ gist.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -104,8 +56,16 @@ codeload.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -132,8 +92,16 @@ api.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -160,8 +128,16 @@ lfs.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -188,8 +164,16 @@ redirect.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -216,8 +200,16 @@ copilot.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -244,8 +236,16 @@ services.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -272,8 +272,16 @@ community.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -300,8 +308,16 @@ education.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -328,8 +344,16 @@ enterprise.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -356,8 +380,16 @@ classroom.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -384,8 +416,16 @@ central.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -412,64 +452,16 @@ collector.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
-		header_up User-Agent {http.request.header.User-Agent}
-		header_up X-Real-IP {http.request.remote.host}
-		transport http {
-			tls
-			tls_insecure_skip_verify
+
+		@has_range {
+			header Range *
 		}
-	}
-}
-raw.githubusercontent.com, *.githubusercontent.com {
-	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
-	reverse_proxy {
-		dynamic multi {
-			a raw.githubusercontent.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a raw.githubusercontent.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
 		}
-		max_fails 2
-		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
-		header_up User-Agent {http.request.header.User-Agent}
-		header_up X-Real-IP {http.request.remote.host}
-		transport http {
-			tls
-			tls_insecure_skip_verify
-		}
-	}
-}
-analytics.githubassets.com {
-	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
-	reverse_proxy {
-		dynamic multi {
-			a analytics.githubassets.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a analytics.githubassets.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
-		}
-		max_fails 2
-		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -496,8 +488,16 @@ lab.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -524,36 +524,16 @@ assets-cdn.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
-		header_up User-Agent {http.request.header.User-Agent}
-		header_up X-Real-IP {http.request.remote.host}
-		transport http {
-			tls
-			tls_insecure_skip_verify
+
+		@has_range {
+			header Range *
 		}
-	}
-}
-www.github.io, *.github.io {
-	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
-	reverse_proxy {
-		dynamic multi {
-			a www.github.io 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a www.github.io 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
 		}
-		max_fails 2
-		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -580,8 +560,16 @@ pages.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -608,8 +596,16 @@ resources.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -636,8 +632,16 @@ developer.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -664,8 +668,16 @@ partner.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -692,8 +704,16 @@ desktop.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -720,8 +740,16 @@ guides.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -748,8 +776,16 @@ support.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -776,8 +812,16 @@ git-lfs.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -804,8 +848,124 @@ docs.github.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+analytics.githubassets.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a analytics.githubassets.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a analytics.githubassets.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+github.com, *.github.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a github.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+	}
+}
+www.github.io, *.github.io {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a www.github.io 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a www.github.io 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -832,13 +992,58 @@ www.githubassets.com, *.githubassets.com {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
 			tls
 			tls_insecure_skip_verify
+		}
+	}
+}
+raw.githubusercontent.com, *.githubusercontent.com {
+	encode zstd
+	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	reverse_proxy {
+		dynamic multi {
+			a raw.githubusercontent.com 443 {
+				resolvers 127.0.0.1:5365
+				refresh 10s
+			}
+			a raw.githubusercontent.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
+		}
+		max_fails 2
+		fail_duration 10s
+		lb_policy random
+		header_up Host {http.request.host}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+		transport http {
+			tls
+			tls_insecure_skip_verify
+			tls_server_name {http.request.host}
 		}
 	}
 }
@@ -854,8 +1059,16 @@ pixiv.net, *.pixiv.net {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -876,8 +1089,16 @@ fanbox.cc, *.fanbox.cc {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -895,8 +1116,16 @@ lc-event.pixiv.net {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -921,8 +1150,16 @@ i.pximg.net {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -948,8 +1185,16 @@ pixiv.pximg.net, *.pximg.net {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -969,8 +1214,16 @@ a.pixiv.org, *.pixiv.org {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -989,8 +1242,16 @@ api.fanbox.cc {
 		fail_duration 10s
 		lb_policy random
 		header_up Host {http.request.host}
-		header_up Range {http.request.header.Range}
-		header_up If-Range {http.request.header.If-Range}
+
+		@has_range {
+			header Range *
+		}
+		header_up @has_range Range {http.request.header.Range}
+		@has_if_range {
+			header If-Range *
+		}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
 		transport http {
@@ -1049,8 +1310,16 @@ steamcommunity.com, *.steamcommunity.com {
 			fail_duration 10s
 			lb_policy random
 			header_up Host "steamcommunity.com"
-			header_up Range {http.request.header.Range}
-			header_up If-Range {http.request.header.If-Range}
+
+			@has_range {
+				header Range *
+			}
+			header_up @has_range Range {http.request.header.Range}
+			@has_if_range {
+				header If-Range *
+			}
+			header_up @has_if_range If-Range {http.request.header.If-Range}
+
 			header_up User-Agent "{http.request.header.User-Agent} Googlebot/2.1 (+http://www.google.com/bot.html)"
 			header_up X-Real-IP {http.request.remote.host}
 			transport http {
@@ -1072,8 +1341,16 @@ steamcommunity.com, *.steamcommunity.com {
 			fail_duration 10s
 			lb_policy random
 			header_up Host {http.request.host}
-			header_up Range {http.request.header.Range}
-			header_up If-Range {http.request.header.If-Range}
+
+			@has_range {
+				header Range *
+			}
+			header_up @has_range Range {http.request.header.Range}
+			@has_if_range {
+				header If-Range *
+			}
+			header_up @has_if_range If-Range {http.request.header.If-Range}
+
 			header_up User-Agent {http.request.header.User-Agent}
 			header_up X-Real-IP {http.request.remote.host}
 			transport http {

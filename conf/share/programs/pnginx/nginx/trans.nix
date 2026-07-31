@@ -24,7 +24,7 @@ let
       }
     }'';
 
-  mkCaddyProxy =
+  mkCaddyProxyGithub =
     input:
     let
       argLength = builtins.length input;
@@ -51,8 +51,56 @@ let
           fail_duration 10s
           lb_policy random
           header_up Host {http.request.host}
-          header_up Range {http.request.header.Range}
-          header_up If-Range {http.request.header.If-Range}
+          
+          @has_range { header Range * }
+          header_up @has_range Range {http.request.header.Range}
+          @has_if_range { header If-Range * }
+          header_up @has_if_range If-Range {http.request.header.If-Range}
+          
+          header_up User-Agent {http.request.header.User-Agent}
+          header_up X-Real-IP {http.request.remote.host}
+          transport http {
+            tls
+            tls_insecure_skip_verify
+            tls_server_name {http.request.host}
+          }
+        }
+      }
+    '';
+
+  mkCaddyProxyPixiv =
+    input:
+    let
+      argLength = builtins.length input;
+      isNormal = builtins.isString input;
+
+      arg0 = if !isNormal then builtins.head input else input;
+      arg1 = if !isNormal && (argLength >= 2) then builtins.elemAt input 1 else null;
+      arg2 = if !isNormal && (argLength >= 3) then builtins.elemAt input 2 else null;
+
+      extra = if isNull arg1 then "" else ", " + (lib.concatMapStringsSep ", " (v: v) arg1);
+      allIp =
+        if isNull arg2 then
+          mkDynamicResolvers arg0
+        else
+          lib.concatMapStringsSep "\n  " (v: "to ${v}:443") arg2;
+    in
+    ''
+      ${arg0}${extra} {
+        encode zstd
+        tls ${./ca/pixiv.net.crt} ${./ca/pixiv.net.key}
+        reverse_proxy {
+          ${allIp}
+          max_fails 2
+          fail_duration 10s
+          lb_policy random
+          header_up Host {http.request.host}
+          
+          @has_range { header Range * }
+          header_up @has_range Range {http.request.header.Range}
+          @has_if_range { header If-Range * }
+          header_up @has_if_range If-Range {http.request.header.If-Range}
+          
           header_up User-Agent {http.request.header.User-Agent}
           header_up X-Real-IP {http.request.remote.host}
           transport http {
@@ -65,9 +113,7 @@ let
 
   caddyFile = pkgs.writeText "caddyfile" (
     caddyConfig (
-      (lib.concatMapStrings mkCaddyProxy [
-        "github.com"
-        "www.github.com"
+      (lib.concatMapStrings mkCaddyProxyPixiv [
         "gist.github.com"
         "codeload.github.com"
         "api.github.com"
@@ -81,17 +127,8 @@ let
         "classroom.github.com"
         "central.github.com"
         "collector.github.com"
-        [
-          "raw.githubusercontent.com"
-          [ "*.githubusercontent.com" ]
-        ]
-        "analytics.githubassets.com"
         "lab.github.com"
         "assets-cdn.github.com"
-        [
-          "www.github.io"
-          [ "*.github.io" ]
-        ]
         "pages.github.com"
         "resources.github.com"
         "developer.github.com"
@@ -101,11 +138,29 @@ let
         "support.github.com"
         "git-lfs.github.com"
         "docs.github.com"
+        "analytics.githubassets.com"
+        [
+          "github.com"
+          [ "*.github.com" ]
+        ]
+        [
+          "www.github.io"
+          [ "*.github.io" ]
+        ]
         [
           "www.githubassets.com"
           [ "*.githubassets.com" ]
         ]
+      ])
 
+      + (lib.concatMapStrings mkCaddyProxyGithub [
+        [
+          "raw.githubusercontent.com"
+          [ "*.githubusercontent.com" ]
+        ]
+      ])
+
+      + (lib.concatMapStrings mkCaddyProxyPixiv [
         [
           "pixiv.net"
           [ "*.pixiv.net" ]
@@ -180,6 +235,7 @@ let
           ]
         ]
       ])
+
       + ''
         steamcommunity.com, *.steamcommunity.com {
             encode zstd
@@ -195,8 +251,12 @@ let
                     fail_duration 10s
                     lb_policy random
                     header_up Host "steamcommunity.com"
-                    header_up Range {http.request.header.Range}
-                    header_up If-Range {http.request.header.If-Range}
+                    
+                    @has_range { header Range * }
+                    header_up @has_range Range {http.request.header.Range}
+                    @has_if_range { header If-Range * }
+                    header_up @has_if_range If-Range {http.request.header.If-Range}
+
                     header_up User-Agent "{http.request.header.User-Agent} Googlebot/2.1 (+http://www.google.com/bot.html)"
                     header_up X-Real-IP {http.request.remote.host}
                     transport http {
@@ -218,8 +278,12 @@ let
                     fail_duration 10s
                     lb_policy random
                     header_up Host {http.request.host}
-                    header_up Range {http.request.header.Range}
-                    header_up If-Range {http.request.header.If-Range}
+                    
+                    @has_range { header Range * }
+                    header_up @has_range Range {http.request.header.Range}
+                    @has_if_range { header If-Range * }
+                    header_up @has_if_range If-Range {http.request.header.If-Range}
+                    
                     header_up User-Agent {http.request.header.User-Agent}
                     header_up X-Real-IP {http.request.remote.host}
                     transport http {
