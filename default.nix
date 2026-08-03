@@ -1,7 +1,13 @@
 import ./modnix {
-  inputs = { };
-  config = { load }: {
-    falake = load ./falake;
-    modnix = load ./modnix;
-  };
+  outputs =
+    {
+      load,
+      init,
+      ...
+    }:
+    {
+      modnix = init;
+      wrapit = load ./wrapit;
+      zonfig = load ./zonfig;
+    };
 }

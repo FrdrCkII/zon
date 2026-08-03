@@ -1,5 +1,0 @@
-#+title: LICENSE
-#+author: FrdrCkII
-
-This project follows [[file:../LICENSE.md][GPLv3 or higher]].
-
