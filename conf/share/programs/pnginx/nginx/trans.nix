@@ -51,12 +51,12 @@ let
           fail_duration 10s
           lb_policy random
           header_up Host {http.request.host}
-          
+
           @has_range { header Range * }
           header_up @has_range Range {http.request.header.Range}
           @has_if_range { header If-Range * }
           header_up @has_if_range If-Range {http.request.header.If-Range}
-          
+
           header_up User-Agent {http.request.header.User-Agent}
           header_up X-Real-IP {http.request.remote.host}
           transport http {
@@ -95,12 +95,12 @@ let
           fail_duration 10s
           lb_policy random
           header_up Host {http.request.host}
-          
+
           @has_range { header Range * }
           header_up @has_range Range {http.request.header.Range}
           @has_if_range { header If-Range * }
           header_up @has_if_range If-Range {http.request.header.If-Range}
-          
+
           header_up User-Agent {http.request.header.User-Agent}
           header_up X-Real-IP {http.request.remote.host}
           transport http {
@@ -152,14 +152,12 @@ let
           [ "*.githubassets.com" ]
         ]
       ])
-
       + (lib.concatMapStrings mkCaddyProxyGithub [
         [
           "raw.githubusercontent.com"
           [ "*.githubusercontent.com" ]
         ]
       ])
-
       + (lib.concatMapStrings mkCaddyProxyPixiv [
         [
           "pixiv.net"
@@ -235,7 +233,6 @@ let
           ]
         ]
       ])
-
       + ''
         steamcommunity.com, *.steamcommunity.com {
             encode zstd
@@ -251,7 +248,7 @@ let
                     fail_duration 10s
                     lb_policy random
                     header_up Host "steamcommunity.com"
-                    
+
                     @has_range { header Range * }
                     header_up @has_range Range {http.request.header.Range}
                     @has_if_range { header If-Range * }
@@ -278,12 +275,12 @@ let
                     fail_duration 10s
                     lb_policy random
                     header_up Host {http.request.host}
-                    
+
                     @has_range { header Range * }
                     header_up @has_range Range {http.request.header.Range}
                     @has_if_range { header If-Range * }
                     header_up @has_if_range If-Range {http.request.header.If-Range}
-                    
+
                     header_up User-Agent {http.request.header.User-Agent}
                     header_up X-Real-IP {http.request.remote.host}
                     transport http {
