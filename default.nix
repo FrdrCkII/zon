@@ -1,13 +1,7 @@
 import ./modnix {
-  outputs =
-    {
-      load,
-      init,
-      ...
-    }:
-    {
-      modnix = init;
-      wrapit = load ./wrapit;
-      zonfig = load ./zonfig;
-    };
+  outputs = { mod, ... }: {
+    modnix = mod.init;
+    wrapit = mod.load ./wrapit;
+    zonfig = mod.load ./zonfig;
+  };
 }

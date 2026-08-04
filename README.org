@@ -2,17 +2,22 @@
 #+author: FrdrCkII
 
 This repository is a monorepo containing tools and libraries for creating NixOS
-configurations.  For licensing information and repository structure, please see
-[[file:LICNESE.org][LICENSE]].
+configurations.
 
-* Falake
+* Notice
+
+Note, this repository is undergoing a large-scale restructuring and cannot be used directly at the moment!
+
+* Projects
+
+** Falake
 /Falake/ is a configuration library inspired by [[https://flake.parts][flake-parts]], specifically
 rewritten for situations where _flakes_ are not used.
 - See [[file:falake/README.org][detailed description]] in this subproject's folder.
 - [[https://flake.parts/][flake-parts]] has some [[https://github.com/hercules-ci/flake-parts/issues/329][attempts]] to move away from _flakes_, but this project was
   already underway before they started.
 
-* Nixlock
+** Nixlock
 /Nixlock/ is a simple _Rust_ program that primarily provides input locking
 functionality similar to _flakes_ / [[https://github.com/andir/npins][npins]].  /Nixlock/ is highly flexible. Thanks
 to the toolchain provided by _nix_ and _nixpkgs_, /nixlock/ can be embedded into
@@ -23,13 +28,13 @@ and _tokio_.
   upon it.
 - Uses a _guix_-style channel.nix as the lock file.
 
-* Wrapit
+** Wrapit
 /Wrapit/ is a _nixpkgs_ overlay that provides functions for wrapping software.
 It is mainly inspired by [[https://github.com/viperML/wrapper-manager][wrapper-manager]], but does not use the _NixOS_ module
 system.
 - See [[file:wrapit/README.org][detailed description]] in this subproject's folder.
 
-* Zonfig
+** Zonfig
 /Zonfig/ is a [[https://github.com/mightyiam/dendritic][dendritic-pattern]] configuration framework, but its design
 philosophy differs from existing frameworks in implementation.  /Zonfig/ focuses
 on creating one configuration at a time rather than multiple configurations,
@@ -39,5 +44,63 @@ _NixOS_ module system instead of a function library in the style of [[https://gi
 providing a more understandable model and error messages.
 - See [[file:zonfig/README.org][detailed description]] in this subproject's folder.
 
-* conf
+** conf
 My personal NixOS configuration, built using the projects mentioned above.
+
+* License
+
+This repository is a monorepo. Unless otherwise explicitly stated by a
+subproject, the glue code within this repository and any subproject originally
+created by or fully owned by the maintainer are released under [[file:LICENSE.md][GPLv3 or higher]].
+Hereinafter, “default LICENSE” refers to [[file:LICENSE.md][GPLv3 or higher]].
+
+** Repository Structure
+- Any top-level directory whose name does not begin with "." or "_" is
+  considered an independent subproject.
+- All code that is not part of any subproject is considered glue code. Glue code
+  is released under the default LICENSE (GPLv3+).
+
+** Subproject LICENSE Declaration Rules
+1. If a subproject is originally created by or fully owned by the maintainer and
+   does not contain a =LICENSE*= file, it is released under the default LICENSE.
+2. If a subproject does not satisfy Rule 2 and lacks the aforementioned LICENSE
+   declaration file, then:
+   - The subproject may lack a valid LICENSE; all rights are reserved by default.
+   - This repository does not automatically grant any LICENSE for it.
+   - Such a subproject should be considered “LICENSE unknown”; do not use or 
+     distribute it, and contact the original copyright holder.
+   - This is likely a mistake; please contact the maintainer for removal as soon
+     as possible.
+3. All forked/imported third-party subprojects must retain their original
+   LICENSE, COPYING, NOTICE, and copyright notice files intact; their content
+   must not be deleted or modified.  If a subproject’s top-level directory lacks
+   a file matching the Rule 1 pattern, one of the following methods may be used
+   to create exactly one such file whose content accurately reflects the
+   original LICENSE:
+   - Create a note file that explicitly points to the real original LICENSE file 
+     (e.g., an org file containing text like):
+     #+begin_src org
+       This project follows [[file:path/to/LICENSE][LICENSE]].
+     #+end_src
+   - Rename a file such as COPYING to LICENSE (or to any filename matching the 
+     Rule 1 pattern).
+   - Create a LICENSE file whose content is equivalent to the original LICENSE 
+     file (e.g., by copying the full text).
+   - Create a symbolic link named LICENSE that points to the original LICENSE file.
+   If the subproject already contains a file matching the Rule 1 pattern, no 
+   additional action is required.
+4. If a subproject’s top-level directory contains a file matching the pattern
+   =LICENSE*= (case-insensitive), the subproject’s LICENSE is determined by that
+   file. In the event of a conflict between that file and this root-level
+   licensing statement, the subproject’s file takes precedence.
+
+** Aggregation Statement
+This repository is a mere aggregation of independent subprojects and glue code.
+Neither the glue code nor any subproject forms a derivative work with respect to
+another subproject or the glue code. Users must comply with the LICENSE terms of
+each individual component.
+
+** Disclaimer
+This document only records the known licensing information of the components
+within this repository. It does not constitute legal advice.
+

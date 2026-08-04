@@ -4,13 +4,19 @@
 本仓库为单一仓库（monorepo），包含一些用于创建nixos配置的工具与库。关于许可声明
 与仓库结构，请查看 [[file:LICENSE_zh.org][LICENSE]]。
 
-* Falake
+* 提醒
+
+注意，此仓库正在经历较大规模的重构，目前无法直接使用！
+
+* 项目
+
+** Falake
 /Falake/ 是一个受到 [[https://flake.parts][flake-parts]] 启发的配置库，专门针对不使用 _flakes_ 的情况重新
 编写。
 - 在这个子项目的文件夹中查看[[file:falake/README_zh.org][详细说明]]。
 - [[https://flake.parts/][flake-parts]] 有一些脱离 _flakes_ 的[[https://github.com/hercules-ci/flake-parts/issues/329][尝试]]，不过在他们开始之前这个项目就已经动工了。
 
-* Nixlock
+** Nixlock
 /Nixlock/ 是一个简单的 _Rust_ 程序，主要提供了类似 _flakes_ / [[https://github.com/andir/npins][npins]] 的输入锁定功
 能。 /Nixlock/ 非常灵活，得益于 _nix_ 与 _nixpkgs_ 提供的工具链， /nixlock/ 可以
 嵌入任何脚本或程序，并且利用 _Rust_ 的 _async_ 与 _tokio_ 异步的执行它们。
@@ -18,18 +24,58 @@
 - 嵌入脚本的想法受到了 [[https://nixtamal.toast.al][nixtamal]] 的启发，但 /nixlock/ 进一步扩展了这个想法。
 - 默认使用 _guix_ 风格的 channel.nix 作为锁文件。
 
-* Wrapit
+** Wrapit
 /Wrapit/ 是一个 _nixpkgs_ 叠加层，提供一些包装软件的函数。主要受到
 [[https://github.com/viperML/wrapper-manager][wrapper-manager]] 启发，但是不使用 _NixOS_ 模块系统。
 - 在这个子项目的文件夹中查看[[file:wrapit/README_zh.org][详细说明]]。
 
-* Zonfig
+** Zonfig
 /Zonfig/ 是一个 [[https://github.com/mightyiam/dendritic][dendritic-pattern]] 配置框架，但在具体实现的设计理念上与现有框架有
 所不同。 /Zonfig/ 专注于一次创建一个配置而不是一次创建多个配置，这有助于提高特定
 情况下的评估速度，例如 _nix flake show_ 命令。并且 /zonfig/ 主要使用 _NixOS_ 模
 块系统的内置功能而不是 [[https://github.com/vic/den][den]] 风格的函数库，因此拥有更易于理解的模型与错误消息。
 - 在这个子项目的文件夹中查看[[file:zonfig/README_zh.org][详细说明]]。
 
-* conf
+** conf
 我的个人nixos配置，使用上述项目构建。
 
+* 许可
+
+本仓库为单一仓库（monorepo），除非子项目另有明确声明，本仓库自身的胶水代码以及维
+护者原创或拥有完全版权的子项目，均以 [[file:LICENSE.md][GPLv3 or higher]] 发布。下文中提到的 “默认许
+可” 均指 [[file:LICENSE.md][GPLv3 or higher]] 。
+
+** 仓库结构
+- 任何不以 "." 或 "_" 开头的顶层文件夹，视为一个独立的子项目。
+- 不在任何子项目中的顶层代码，视为胶水代码。胶水代码默认许可（GPLv3+）发布。
+
+** 子项目许可的声明规则
+1. 若子项目的顶层文件夹内包含文件名为 =LICENSE*= 的文件（不区分大小写），则子项
+   目的许可以该文件为准。该文件与根许可说明冲突时，以子项目文件为准。
+2. 若子项目是维护者原创或拥有完全版权，且不包含 =LICENSE*= 文件，则该子项目以默
+   认许可发布。
+3. 若一个子项目不符合第二条规则，且没有上述许可声明文件，则：
+   - 该子项目可能缺乏有效许可，默认保留所有权利。
+   - 本仓库不会自动为其添加任何许可。
+   - 此时应认为该子项目“许可不明”，请勿使用或分发，并联系原始版权持有人。
+   - 这应该是一个错误，请尽快联系维护者删除。
+4. 所有分叉/引入的第三方子项目，均须完整保留其原始的 LICENSE、COPYING、NOTICE 及
+   版权声明文件，不得删除或修改其内容。若子项目顶层缺乏符合第一条模式的许可文件，
+   可采取以下任一方式使其存在唯一一个符合第一条规则的文件，且该文件内容须准确反
+   映原许可：
+   - 创建一个在说明中明确指向真实的原始许可文件的说明文件（例如包含类似如下文本
+     的org文件）:
+     #+begin_src org
+       This project follows [[file:path/to/LICENSE][LICENSE]].
+     #+end_src
+   - 将 COPYING 等文件重命名为 LICENSE（或任何符合第一条规则的文件名）。
+   - 创建一个内容与原始许可文件等效的 LICENSE 文件（例如复制全文）。
+   - 创建指向原始许可文件的软链接 LICENSE。
+   若子项目已包含符合第一条模式的许可文件，则无需额外操作。
+
+** 聚合声明
+本仓库是多个独立子项目及胶水代码的聚合。胶水代码与各子项目之间、各子项目之间均不
+构成衍生作品。使用者应分别遵守每个部分的许可条款。
+
+** 免责声明
+本文件仅用于记录本仓库内各组成部分的已知许可信息，不构成法律建议。
