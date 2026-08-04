@@ -10,10 +10,44 @@ let
       self =
         if builtins.isFunction expr then
           let
+            load = loadMod inputs root self;
+
+            loadDir =
+              dir:
+              builtins.mapAttrs (_: v: load v) (
+                builtins.listToAttrs (
+                  builtins.filter (
+                    v:
+                    builtins.isAttrs v (
+                      builtins.attrValues (
+                        builtins.mapAttrs (
+                          n: v:
+                          if builtins.match "^[._-]" || n == "mod.nix" n then
+                            null
+                          else if v == "directory" && builtins.pathExists "${dir}/${n}/mod.nix" then
+                            {
+                              name = n;
+                              value = "${dir}/${n}/mod.nix";
+                            }
+                          else if v == "regular" && builtins.match "\\.nix$" n then
+                            {
+                              name = builtins.head (builtins.match "^(.*)\\.nix$" n);
+                              value = "${dir}/${n}";
+                            }
+                          else
+                            null
+                        ) (builtins.readDir dir)
+                      )
+                    )
+                  )
+                )
+              );
+
             args = inputs // {
               inherit root super self;
-              load = loadMod inputs root self;
-              init = init;
+              mod = {
+                inherit init load loadDir;
+              };
             };
           in
           expr args
