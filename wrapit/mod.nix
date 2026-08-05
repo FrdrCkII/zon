@@ -1,12 +1,6 @@
-let
-  makeOverlay = path: final: prev: {
-    wrapit = prev.lib.filesystem.packagesFromDirectoryRecursive {
-      inherit (prev) callPackage;
-      directory = path;
-    };
-  };
-in
 {
-  wrapit = makeOverlay ./wrapit;
-  extra = makeOverlay ./extra;
+  outputs = { mod, ... }: {
+    wrapit = mod.loadDir (f: mod.load ({ mod, ... }: mod.load f)) ./wrapit;
+    extra = mod.loadDir ./extra;
+  };
 }

@@ -2,51 +2,86 @@ let
   loadMod =
     inputs: root: super: args:
     let
-      expr =
+      tryLoad =
+        path: import (if builtins.readFileType path == "directory" then path + "/mod.nix" else path);
+      tryEval =
+        args:
         if builtins.isPath args then
-          import (if builtins.readFileType args == "directory" then args + "/mod.nix" else args)
+          tryLoad args
+        else if builtins.isAttrs args && args ? __path && args.__isPath or false == true then
+          tryLoad args.__path
         else
           args;
+
+      expr = tryEval args;
       self =
         if builtins.isFunction expr then
           let
             load = loadMod inputs root self;
 
             loadDir =
-              dir:
+              load: dir:
               builtins.mapAttrs (_: v: load v) (
                 builtins.listToAttrs (
-                  builtins.filter (
-                    v:
-                    builtins.isAttrs v (
-                      builtins.attrValues (
-                        builtins.mapAttrs (
-                          n: v:
-                          if builtins.match "^[._-]" || n == "mod.nix" n then
-                            null
-                          else if v == "directory" && builtins.pathExists "${dir}/${n}/mod.nix" then
+                  builtins.filter (v: builtins.isAttrs v) (
+                    builtins.attrValues (
+                      builtins.mapAttrs (
+                        n: v:
+                        if builtins.match "^[._-]" n != null || n == "mod.nix" then
+                          null
+                        else if v == "directory" then
+                          if builtins.pathExists "${dir}/${n}/mod.nix" then
                             {
                               name = n;
-                              value = "${dir}/${n}/mod.nix";
-                            }
-                          else if v == "regular" && builtins.match "\\.nix$" n then
-                            {
-                              name = builtins.head (builtins.match "^(.*)\\.nix$" n);
-                              value = "${dir}/${n}";
+                              value = {
+                                __isPath = true;
+                                __path = "${dir}/${n}/mod.nix";
+                              };
                             }
                           else
-                            null
-                        ) (builtins.readDir dir)
-                      )
+                            {
+                              name = n;
+                              value = { mod, ... }: mod.loadDir "${dir}/${n}";
+                            }
+                        else if v == "regular" && builtins.match "^(.*)\\.nix$" n != null then
+                          {
+                            name = builtins.head (builtins.match "^(.*)\\.nix$" n);
+                            value = {
+                              __isPath = true;
+                              __path = "${dir}/${n}";
+                            };
+                          }
+                        else
+                          null
+                      ) (builtins.readDir dir)
                     )
                   )
                 )
               );
 
+            sub =
+              args:
+              let
+                expr = tryEval args;
+                inputs = expr.inputs or { };
+                outputs = expr.outputs or { };
+              in
+              init {
+                inherit outputs;
+                inputs = inputs // {
+                  crate = root;
+                };
+              };
+
             args = inputs // {
               inherit root super self;
               mod = {
-                inherit init load loadDir;
+                inherit
+                  init
+                  load
+                  loadDir
+                  sub
+                  ;
               };
             };
           in
@@ -76,9 +111,8 @@ let
       outputs ? { },
     }:
     let
-      root = loadMod inputs root { } outputs;
-      root' = makeOverrides inputs outputs root;
+      root = makeOverrides inputs outputs (loadMod inputs root { } outputs);
     in
-    root';
+    root;
 in
 init
