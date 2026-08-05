@@ -1,4 +1,4 @@
-config@{
+{
   lib,
   stdenvNoCC,
   makeBinaryWrapper,
@@ -20,7 +20,6 @@ config@{
   extraPrograms ? [ ],
   extraWrapArgs ? [ ],
   passthru ? { },
-  wrapit, # self
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   inherit name;
@@ -79,14 +78,6 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   passthru = passthru // {
     unwrapped = package;
-    config = lib.removeAttrs config [
-      "lib"
-      "stdenvNoCC"
-      "makeBinaryWrapper"
-      "hello"
-      "wrapit"
-    ];
-    wrap = args: wrapit.wrapit.override (finalAttrs.passthru.config // args);
   };
 
   meta = package.meta // {
