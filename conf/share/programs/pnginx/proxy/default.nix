@@ -4,6 +4,11 @@
   ...
 }:
 let
+  serverCA = ../ca/server.crt;
+  serverKey = ../ca/server.key;
+
+  tlsInfo = "tls ${serverCA} ${serverKey}";
+
   caddyConfig = config: ''
     {
       default_bind 127.0.0.1
@@ -44,7 +49,7 @@ let
     ''
       ${arg0}${extra} {
         encode zstd
-        tls ${./ca/pixiv.net.crt} ${./ca/pixiv.net.key}
+        ${tlsInfo}
         reverse_proxy {
           ${allIp}
           max_fails 2
@@ -88,7 +93,7 @@ let
     ''
       ${arg0}${extra} {
         encode zstd
-        tls ${./ca/pixiv.net.crt} ${./ca/pixiv.net.key}
+        ${tlsInfo}
         reverse_proxy {
           ${allIp}
           max_fails 2
@@ -236,7 +241,7 @@ let
       + ''
         steamcommunity.com, *.steamcommunity.com {
             encode zstd
-            tls ${./ca/pixiv.net.crt} ${./ca/pixiv.net.key}
+            ${tlsInfo}
             @forum expression path_regexp('.*(discussions|comment|forum).*')
             handle @forum {
                 reverse_proxy {
@@ -265,7 +270,6 @@ let
             }
             handle {
                 reverse_proxy {
-                    # 静态 IP 列表
                     to 23.51.204.175:443 23.1.179.144:443 96.7.99.225:443
                     to 104.69.160.135:443 104.71.154.102:443 104.76.74.15:443
                     to 104.91.87.202:443 118.215.187.181:443 173.222.146.99:443
@@ -296,13 +300,7 @@ let
   );
 in
 {
-  caddyJSON = pkgs.runCommand "caddy.json" { } ''
-    mkdir $out
-    cat ${caddyFile} > $out/caddyfile
-    ${lib.getExe pkgs.caddy} fmt --overwrite $out/caddyfile
-    ${lib.getExe pkgs.caddy} adapt --config $out/caddyfile --adapter caddyfile > $out/caddy.json
-  '';
-  run = pkgs.mkShell {
+  shell = pkgs.mkShell {
     shellHook = ''
       cat ${caddyFile} > ./caddyfile
       ${lib.getExe pkgs.caddy} fmt --overwrite ./caddyfile
@@ -310,4 +308,11 @@ in
       exit
     '';
   };
+
+  file = pkgs.runCommand "caddy-json" { } ''
+    mkdir $out
+    cat ${caddyFile} > $out/caddyfile
+    ${lib.getExe pkgs.caddy} fmt --overwrite $out/caddyfile
+    ${lib.getExe pkgs.caddy} adapt --config $out/caddyfile --adapter caddyfile > $out/caddy.json
+  '';
 }

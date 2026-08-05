@@ -1,5 +1,7 @@
 { pkgs, ... }:
 let
+  ca = ./ca;
+
   cacert =
     pkgs.runCommand "cacert"
       {
@@ -7,7 +9,7 @@ let
       }
       ''
         mkdir --parents $out
-        certutil -d sql:$out -A -t "C,," -n "Pnginx Local CA" -i ${./nginx/ca/rootCA.crt}
+        certutil -d sql:$out -A -t "C,," -n "Pnginx Local CA" -i ${ca}/rootCA.crt
       '';
 in
 {

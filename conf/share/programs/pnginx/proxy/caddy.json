@@ -4058,8 +4058,8 @@
       "certificates": {
         "load_files": [
           {
-            "certificate": "/nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt",
-            "key": "/nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key",
+            "certificate": "/nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt",
+            "key": "/nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key",
             "tags": [
               "cert0"
             ]

@@ -80,10 +80,10 @@
 (require 'use-package)
 
 (setq package-archives
-      '(("gnu" . "https://mirrors.cernet.edu.cn/elpa/gnu/")
-        ("nongnu" . "https://mirrors.cernet.edu.cn/elpa/nongnu/")
-        ("melpa" . "https://mirrors.cernet.edu.cn/elpa/melpa/")
-        ("org" . "https://mirrors.cernet.edu.cn/elpa/org/")))
+      '(("gnu"  . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+        ("nongnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
+        ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+        ("org" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 
 (package-initialize)
 (unless (package-installed-p 'use-package)
@@ -146,7 +146,7 @@
 (setq set-mark-command-repeat-pop t)
 (global-set-key (kbd "C-/") 'comment-line)
 (global-set-key (kbd "C-,") 'undo)
-(global-set-key (kbd "C-.") 'redo)   ; 需要 undo-redo 功能支持
+(global-set-key (kbd "C-.") 'redo)  ; 需要 undo-redo 功能支持
 
 ;; 窗口管理
 (setq window-combination-resize t)
@@ -175,17 +175,6 @@
   :config
   (setq which-key-idle-secondary-delay 0.05)
   (which-key-mode))
-
-;; 补全框架（如果你希望增强 minibuffer 补全，可以取消下面几行的注释）
-;; (use-package vertico
-;;   :init (vertico-mode))
-;; (use-package orderless
-;;   :custom (completion-styles '(orderless)))
-;; (use-package marginalia
-;;   :init (marginalia-mode))
-;; (use-package consult
-;;   :bind (("C-c s" . consult-line)
-;;          ("C-c i" . consult-imenu)))
 
 ;; 保存 minibuffer 历史
 (use-package savehist
@@ -273,6 +262,8 @@
   (org-modules nil)
   ;; 修正：nn-fold-string 应为字符或字符串
   (org-ellipsis (if (char-displayable-p ?⏷) " ⏷" "...")))
+
+(use-package ghostel)
 
 ;;; Theme & UI ;;;
 

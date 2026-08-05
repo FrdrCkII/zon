@@ -5,10 +5,11 @@
   ...
 }:
 let
-  pnginx = ./nginx;
-  smartdns = ./smartdns;
-  inherit (lib) getExe;
-  nginxPackage = pkgs.caddy;
+  ca = ./ca;
+  dns = ./dns;
+  proxy = ./proxy;
+  proxyPackage = pkgs.caddy;
+  proxyConfig = (import proxy { inherit pkgs lib; }).file;
 in
 {
   networking = {
@@ -27,9 +28,8 @@ in
           chain output {
             type nat hook output priority -190; policy accept;
             oif lo return
-            meta skuid ${toString config.users.users.pnginx.uid} ip protocol { tcp, udp } th dport 53 accept
+            meta skuid ${toString config.users.users.pproxy.uid} ip protocol { tcp, udp } th dport 53 accept
             meta skuid ${toString config.users.users.smartdns.uid} ip protocol { tcp, udp } th dport 53 accept
-            meta skuid ${toString config.users.users.adghome.uid} ip protocol { tcp, udp } th dport 53 accept
             ip protocol { tcp, udp } th dport 53 redirect to :53
           }
         '';
@@ -39,7 +39,7 @@ in
 
   environment = {
     systemPackages = [
-      nginxPackage
+      proxyPackage
       pkgs.openssl
       pkgs.netcat
       pkgs.bind
@@ -47,54 +47,39 @@ in
   };
 
   security = {
-    pki.certificateFiles = [ "${pnginx}/ca/rootCA.crt" ];
+    pki.certificateFiles = [ "${ca}/rootCA.crt" ];
   };
 
   users = {
-    groups.pnginx = { };
+    groups.pproxy = { };
     users = {
-      pnginx = {
+      pproxy = {
         isSystemUser = true;
-        group = "pnginx";
+        group = "pproxy";
         uid = 530;
       };
       smartdns = {
         isSystemUser = true;
-        group = "pnginx";
+        group = "pproxy";
         uid = 531;
-      };
-      adghome = {
-        isSystemUser = true;
-        group = "pnginx";
-        uid = 532;
       };
     };
   };
 
   systemd.services = {
-    adguardhome = {
-      serviceConfig = {
-        DynamicUser = lib.mkForce false;
-        User = "adghome";
-        Group = "pnginx";
-      };
-    };
-
-    pnginx = {
+    pproxy = {
       description = "Nginx Web Server";
       wantedBy = [ "multi-user.target" ];
       wants = [ "network-online.target" ];
       after = [ "network-online.target" ];
       serviceConfig = {
-        ExecStart = "${getExe nginxPackage} run --config ${
-          (import ./nginx/trans.nix { inherit pkgs lib; }).caddyJSON
-        }/caddy.json";
+        ExecStart = "${lib.getExe proxyPackage} run --config '${proxyConfig}/caddy.json'";
         Restart = "always";
         RestartSec = 2;
         TimeoutStopSec = 15;
         UMask = "0027";
-        User = "pnginx";
-        Group = "pnginx";
+        User = "pproxy";
+        Group = "pproxy";
         AmbientCapabilities = [
           "CAP_NET_BIND_SERVICE"
           "CAP_SYS_RESOURCE"
@@ -123,7 +108,7 @@ in
         pkgs.gzip
       ];
       serviceConfig = {
-        ExecStart = "${getExe pkgs.smartdns} -p - -c ${smartdns}/default.conf";
+        ExecStart = "${lib.getExe pkgs.smartdns} -p - -c ${dns}/smartdns.conf";
         Restart = "always";
         RestartSec = 2;
         TimeoutStopSec = 15;
@@ -135,7 +120,7 @@ in
         LogsDirectoryMode = "0750";
         UMask = "0077";
         User = "smartdns";
-        Group = "pnginx";
+        Group = "pproxy";
         AmbientCapabilities = [
           "CAP_NET_BIND_SERVICE"
           "CAP_SYS_RESOURCE"

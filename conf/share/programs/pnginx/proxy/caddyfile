@@ -4,7 +4,7 @@
 }
 gist.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a gist.github.com 443 {
@@ -40,7 +40,7 @@ gist.github.com {
 }
 codeload.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a codeload.github.com 443 {
@@ -76,7 +76,7 @@ codeload.github.com {
 }
 api.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a api.github.com 443 {
@@ -112,7 +112,7 @@ api.github.com {
 }
 lfs.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a lfs.github.com 443 {
@@ -148,7 +148,7 @@ lfs.github.com {
 }
 redirect.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a redirect.github.com 443 {
@@ -184,7 +184,7 @@ redirect.github.com {
 }
 copilot.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a copilot.github.com 443 {
@@ -220,7 +220,7 @@ copilot.github.com {
 }
 services.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a services.github.com 443 {
@@ -256,7 +256,7 @@ services.github.com {
 }
 community.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a community.github.com 443 {
@@ -292,7 +292,7 @@ community.github.com {
 }
 education.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a education.github.com 443 {
@@ -328,7 +328,7 @@ education.github.com {
 }
 enterprise.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a enterprise.github.com 443 {
@@ -364,7 +364,7 @@ enterprise.github.com {
 }
 classroom.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a classroom.github.com 443 {
@@ -400,7 +400,7 @@ classroom.github.com {
 }
 central.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a central.github.com 443 {
@@ -436,7 +436,7 @@ central.github.com {
 }
 collector.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a collector.github.com 443 {
@@ -472,7 +472,7 @@ collector.github.com {
 }
 lab.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a lab.github.com 443 {
@@ -508,7 +508,7 @@ lab.github.com {
 }
 assets-cdn.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a assets-cdn.github.com 443 {
@@ -544,7 +544,7 @@ assets-cdn.github.com {
 }
 pages.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a pages.github.com 443 {
@@ -580,7 +580,7 @@ pages.github.com {
 }
 resources.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a resources.github.com 443 {
@@ -616,7 +616,7 @@ resources.github.com {
 }
 developer.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a developer.github.com 443 {
@@ -652,7 +652,7 @@ developer.github.com {
 }
 partner.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a partner.github.com 443 {
@@ -688,7 +688,7 @@ partner.github.com {
 }
 desktop.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a desktop.github.com 443 {
@@ -724,7 +724,7 @@ desktop.github.com {
 }
 guides.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a guides.github.com 443 {
@@ -760,7 +760,7 @@ guides.github.com {
 }
 support.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a support.github.com 443 {
@@ -796,7 +796,7 @@ support.github.com {
 }
 git-lfs.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a git-lfs.github.com 443 {
@@ -832,7 +832,7 @@ git-lfs.github.com {
 }
 docs.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a docs.github.com 443 {
@@ -868,7 +868,7 @@ docs.github.com {
 }
 analytics.githubassets.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a analytics.githubassets.com 443 {
@@ -904,7 +904,7 @@ analytics.githubassets.com {
 }
 github.com, *.github.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a github.com 443 {
@@ -940,7 +940,7 @@ github.com, *.github.com {
 }
 www.github.io, *.github.io {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a www.github.io 443 {
@@ -976,7 +976,7 @@ www.github.io, *.github.io {
 }
 www.githubassets.com, *.githubassets.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a www.githubassets.com 443 {
@@ -1012,7 +1012,7 @@ www.githubassets.com, *.githubassets.com {
 }
 raw.githubusercontent.com, *.githubusercontent.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		dynamic multi {
 			a raw.githubusercontent.com 443 {
@@ -1049,7 +1049,7 @@ raw.githubusercontent.com, *.githubusercontent.com {
 }
 pixiv.net, *.pixiv.net {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		to 210.140.139.152:443
 		to 210.140.139.155:443
@@ -1079,7 +1079,7 @@ pixiv.net, *.pixiv.net {
 }
 fanbox.cc, *.fanbox.cc {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		to 210.140.139.152:443
 		to 210.140.139.155:443
@@ -1109,7 +1109,7 @@ fanbox.cc, *.fanbox.cc {
 }
 lc-event.pixiv.net {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		to 210.140.139.185:443
 		max_fails 2
@@ -1136,7 +1136,7 @@ lc-event.pixiv.net {
 }
 i.pximg.net {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		to 210.140.139.135:443
 		to 210.140.139.132:443
@@ -1170,7 +1170,7 @@ i.pximg.net {
 }
 pixiv.pximg.net, *.pximg.net {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		to 210.140.139.135:443
 		to 210.140.139.132:443
@@ -1205,7 +1205,7 @@ pixiv.pximg.net, *.pximg.net {
 }
 a.pixiv.org, *.pixiv.org {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		to 210.140.139.183:443
 		to 210.140.139.184:443
@@ -1234,7 +1234,7 @@ a.pixiv.org, *.pixiv.org {
 }
 api.fanbox.cc {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	reverse_proxy {
 		to 104.18.41.140:443
 		to 172.64.146.116:443
@@ -1262,7 +1262,7 @@ api.fanbox.cc {
 }
 steamcommunity.com, *.steamcommunity.com {
 	encode zstd
-	tls /nix/store/jsxdhrxk1xdkhfyqx2n792csqfpvff41-pixiv.net.crt /nix/store/d1cx47vp8x85jjmjnr43d1n08m3a1d7h-pixiv.net.key
+	tls /nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt /nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key
 	@forum expression path_regexp('.*(discussions|comment|forum).*')
 	handle @forum {
 		reverse_proxy {
@@ -1331,7 +1331,6 @@ steamcommunity.com, *.steamcommunity.com {
 	}
 	handle {
 		reverse_proxy {
-			# 静态 IP 列表
 			to 23.51.204.175:443 23.1.179.144:443 96.7.99.225:443
 			to 104.69.160.135:443 104.71.154.102:443 104.76.74.15:443
 			to 104.91.87.202:443 118.215.187.181:443 173.222.146.99:443
