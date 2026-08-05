@@ -1,0 +1,3 @@
+{
+  outputs = { mod, ... }: mod.loadDir ./.;
+}

@@ -20,10 +20,10 @@ let
             load = loadMod inputs root self;
 
             loadDir =
-              load: dir:
+              dir:
               builtins.mapAttrs (_: v: load v) (
                 builtins.listToAttrs (
-                  builtins.filter (v: builtins.isAttrs v) (
+                  builtins.filter (v: builtins.isAttrs v && v != { }) (
                     builtins.attrValues (
                       builtins.mapAttrs (
                         n: v:

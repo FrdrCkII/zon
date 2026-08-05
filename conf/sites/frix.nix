@@ -6,7 +6,7 @@
 {
   outputs = {
     nixosConfigurations = {
-      fx-is = inputs.zon.zonfig.lib.init {
+      fx-is = inputs.zon.zonfig.init {
         inherit inputs;
         specialArgs = { inherit inputs; };
 

@@ -1,4 +1,9 @@
 {
+  root,
+  super,
+  ...
+}:
+{
   zon,
   config,
   lib,
@@ -33,7 +38,7 @@ in
     root = lib.mkOption {
       type = lib.types.submoduleWith {
         modules = config.sharedModules ++ [
-          ./extendModules.nix
+          super.extendModules
         ];
         specialArgs = {
           inherit zon;
@@ -63,12 +68,11 @@ in
   };
 
   config = {
-    sharedModules = [
-      ../targets
-      (zon.modulesPath + "/core")
-    ]
-    ++ lib.optional config.builtinModules.default (zon.modulesPath + "/default")
-    ++ lib.optional config.builtinModules.desktop (zon.modulesPath + "/desktop");
+    sharedModules =
+      builtins.attrValues root.targets
+      ++ [ root.modules.core ]
+      ++ lib.optional config.builtinModules.default root.modules.default
+      ++ lib.optional config.builtinModules.desktop root.modules.desktop;
 
     outModules = [ config.root.out ] ++ (lib.mapAttrsToList (n: v: v.out) config.node);
 

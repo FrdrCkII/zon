@@ -1,7 +1,9 @@
 import ./modnix {
   outputs = { mod, ... }: {
+    falake = import ./falake;
     modnix = mod.init;
-    wrapit = mod.sub ./wrapit;
+    nixlock = import ./nixlock;
+    wrapit = import ./wrapit;
     zonfig = mod.sub ./zonfig;
   };
 }

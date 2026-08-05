@@ -1,3 +1,4 @@
+_:
 {
   zon,
   config,
@@ -5,10 +6,6 @@
   ...
 }:
 {
-  imports = [
-    ./nixpkgs.nix
-  ];
-
   options = {
     rootTarget = lib.mkOption {
       type = lib.types.enum [
