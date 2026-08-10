@@ -5,6 +5,7 @@
         packages = [
           pkgs.git
           pkgs.frix.jujutsu
+          pkgs.nixos-facter
           pkgs.yazi
           pkgs.just
           pkgs.age

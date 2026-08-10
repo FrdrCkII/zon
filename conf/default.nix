@@ -26,6 +26,7 @@ zon.nixlock.lib.withInputs {
         imports = [
           ./dev
           ./sites/frix.nix
+          ./sites/flix.nix
         ];
 
         config = {
