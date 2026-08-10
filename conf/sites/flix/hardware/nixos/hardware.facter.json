@@ -47,7 +47,7 @@
             "name": "comm",
             "value": 2
           },
-          "interface_alternate_setting": 0,
+          "interface_alternate_setting": 1,
           "interface_association": {
             "first_interface": 0,
             "function_class": {
@@ -81,8 +81,16 @@
           "name": "Wireless_Device",
           "value": 13701
         },
+        "driver": "btusb",
+        "driver_module": "btusb",
+        "driver_modules": [
+          "btusb"
+        ],
+        "drivers": [
+          "btusb"
+        ],
         "hotplug": "usb",
-        "index": 53,
+        "index": 52,
         "model": "MediaTek Wireless_Device",
         "module_alias": "usb:v13D3p3585d0100dcEFdsc02dp01icE0isc01ip01in02",
         "resources": [
@@ -184,7 +192,7 @@
           "btusb"
         ],
         "hotplug": "usb",
-        "index": 54,
+        "index": 53,
         "model": "MediaTek Wireless_Device",
         "module_alias": "usb:v13D3p3585d0100dcEFdsc02dp01icE0isc01ip01in00",
         "resources": [
@@ -713,7 +721,7 @@
         "sysfs_bus_id": "0000:00:06.0",
         "sysfs_id": "/devices/pci0000:00/0000:00:06.0",
         "unix_device_names": [
-          "/dev/input/event13"
+          "/dev/input/event1"
         ],
         "vendor": {
           "hex": "8086",
@@ -969,7 +977,7 @@
           "uvcvideo"
         ],
         "hotplug": "usb",
-        "index": 59,
+        "index": 58,
         "model": "SunplusIT Integrated Camera",
         "module_alias": "usb:v1BCFp28C4d0005dcEFdsc02dp01ic0Eisc02ip00in01",
         "resources": [
@@ -1233,6 +1241,7 @@
             "value_2": 512
           }
         ],
+        "rom_id": "0x80",
         "serial": "RAP9514113736P2202",
         "slot": {
           "bus": 0,
@@ -1264,89 +1273,6 @@
         "vendor": {
           "hex": "1d97",
           "value": 7575
-        }
-      },
-      {
-        "attached_to": 25,
-        "base_class": {
-          "hex": "0106",
-          "name": "Mass Storage Device",
-          "value": 262
-        },
-        "bus_type": {
-          "hex": "0084",
-          "name": "SCSI",
-          "value": 132
-        },
-        "class_list": [
-          "disk",
-          "usb",
-          "scsi",
-          "block_device"
-        ],
-        "device": {
-          "hex": "1666",
-          "name": "DataTraveler 3.0",
-          "value": 5734
-        },
-        "driver": "usb-storage",
-        "driver_module": "usb_storage",
-        "driver_modules": [
-          "sd_mod",
-          "usb_storage"
-        ],
-        "drivers": [
-          "sd",
-          "usb-storage"
-        ],
-        "index": 52,
-        "model": "Kingston DataTraveler 3.0",
-        "module_alias": "usb:v0951p1666d0110dc00dsc00dp00ic08isc06ip50in00",
-        "resources": [
-          {
-            "cylinders": 59120,
-            "geo_type": "logical",
-            "heads": 64,
-            "sectors": 32,
-            "size": "0x0",
-            "type": "disk_geo"
-          },
-          {
-            "type": "size",
-            "unit": "sectors",
-            "value_1": 121077760,
-            "value_2": 512
-          }
-        ],
-        "revision": {
-          "hex": "0000",
-          "name": "0000",
-          "value": 0
-        },
-        "serial": "0000000005",
-        "slot": {
-          "bus": 0,
-          "number": 0
-        },
-        "sub_class": {
-          "hex": "0000",
-          "name": "Disk",
-          "value": 0
-        },
-        "sysfs_bus_id": "0:0:0:0",
-        "sysfs_device_link": "/devices/pci0000:80/0000:80:14.0/usb2/2-3/2-3:1.0/host0/target0:0:0/0:0:0:0",
-        "sysfs_id": "/class/block/sda",
-        "unix_device_name2": "/dev/sg0",
-        "unix_device_names": [
-          "/dev/disk/by-id/usb-Kingston_DataTraveler_3.0_E0D55E62DBDE1A4067130210-0:0",
-          "/dev/disk/by-path/pci-0000:80:14.0-usb-0:3:1.0-scsi-0:0:0:0",
-          "/dev/disk/by-path/pci-0000:80:14.0-usbv3-0:3:1.0-scsi-0:0:0:0",
-          "/dev/sda"
-        ],
-        "vendor": {
-          "hex": "0951",
-          "name": "Kingston",
-          "value": 2385
         }
       }
     ],
@@ -1649,7 +1575,7 @@
           "hub"
         ],
         "hotplug": "usb",
-        "index": 60,
+        "index": 59,
         "model": "Linux 7.1.4 xhci-hcd xHCI Host Controller",
         "module_alias": "usb:v1D6Bp0003d0701dc09dsc00dp03ic09isc00ip00in00",
         "revision": {
@@ -1805,6 +1731,109 @@
     ],
     "mouse": [
       {
+        "attached_to": 56,
+        "base_class": {
+          "hex": "0105",
+          "name": "Mouse",
+          "value": 261
+        },
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "class_list": [
+          "mouse",
+          "usb"
+        ],
+        "compat_device": "Generic USB Mouse",
+        "compat_vendor": "Unknown",
+        "detail": {
+          "device_class": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "device_protocol": 0,
+          "device_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "interface_alternate_setting": 0,
+          "interface_class": {
+            "hex": "0003",
+            "name": "hid",
+            "value": 3
+          },
+          "interface_number": 0,
+          "interface_protocol": 2,
+          "interface_subclass": {
+            "hex": "0001",
+            "name": "audio",
+            "value": 1
+          }
+        },
+        "device": {
+          "hex": "0005",
+          "name": "USB OPTICAL MOUSE",
+          "value": 5
+        },
+        "driver": "usbhid",
+        "driver_info": {
+          "buttons": -1,
+          "db_entry_0": [
+            "explorerps/2",
+            "exps2"
+          ],
+          "gpm": "exps2",
+          "type": "mouse",
+          "wheels": -1,
+          "xf86": "explorerps/2"
+        },
+        "driver_module": "usbhid",
+        "driver_modules": [
+          "usbhid"
+        ],
+        "drivers": [
+          "usbhid"
+        ],
+        "hotplug": "usb",
+        "index": 54,
+        "model": "YSPRINGTECH USB OPTICAL MOUSE",
+        "module_alias": "usb:v10C4p0005d0000dc00dsc00dp00ic03isc01ip02in00",
+        "resources": [
+          {
+            "bits": 0,
+            "handshake": 0,
+            "parity": 0,
+            "speed": 1500000,
+            "stop_bits": 0,
+            "type": "baud"
+          }
+        ],
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "sub_class": {
+          "hex": "0003",
+          "name": "USB Mouse",
+          "value": 3
+        },
+        "sysfs_bus_id": "1-3:1.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb1/1-3/1-3:1.0",
+        "unix_device_name2": "/dev/input/mouse0",
+        "unix_device_names": [
+          "/dev/input/mice"
+        ],
+        "vendor": {
+          "hex": "10c4",
+          "name": "YSPRINGTECH",
+          "value": 4292
+        }
+      },
+      {
         "attached_to": 0,
         "base_class": {
           "hex": "0118",
@@ -1820,15 +1849,15 @@
           "hex": "528a",
           "value": 21130
         },
-        "index": 64,
+        "index": 63,
         "sub_class": {
           "hex": "0001",
           "name": "bus",
           "value": 1
         },
-        "sysfs_id": "/devices/pci0000:80/0000:80:19.0/i2c_designware.0/i2c-1/i2c-HTX528A:00/0018:0911:528A.0001/input/input9",
+        "sysfs_id": "/devices/pci0000:80/0000:80:19.0/i2c_designware.0/i2c-14/i2c-HTX528A:00/0018:0911:528A.0002/input/input23",
         "unix_device_names": [
-          "/dev/input/event7",
+          "/dev/input/event10",
           "/dev/input/ + handler"
         ],
         "vendor": {
@@ -1907,6 +1936,7 @@
               "11",
               "12",
               "13",
+              "14",
               "36",
               "40",
               "44",
@@ -1915,11 +1945,16 @@
               "56",
               "60",
               "64",
-              "149",
-              "153",
-              "157",
-              "161",
-              "165"
+              "100",
+              "104",
+              "108",
+              "112",
+              "116",
+              "120",
+              "124",
+              "128",
+              "132",
+              "136"
             ],
             "enc_modes": [
               "WEP40",
@@ -1941,6 +1976,7 @@
               "2.462",
               "2.467",
               "2.472",
+              "2.484",
               "5.18",
               "5.2",
               "5.22",
@@ -1949,11 +1985,16 @@
               "5.28",
               "5.3",
               "5.32",
-              "5.745",
-              "5.765",
-              "5.785",
-              "5.805",
-              "5.825"
+              "5.5",
+              "5.52",
+              "5.54",
+              "5.56",
+              "5.58",
+              "5.6",
+              "5.62",
+              "5.64",
+              "5.66",
+              "5.68"
             ],
             "type": "wlan"
           }
@@ -1978,7 +2019,7 @@
         "sysfs_bus_id": "0000:83:00.0",
         "sysfs_id": "/devices/pci0000:80/0000:80:1d.0/0000:83:00.0",
         "unix_device_names": [
-          "wlp131s0"
+          "wlan0"
         ],
         "vendor": {
           "hex": "14c3",
@@ -2083,7 +2124,7 @@
         "class_list": [
           "network_interface"
         ],
-        "index": 61,
+        "index": 60,
         "model": "Loopback network interface",
         "sub_class": {
           "hex": "0000",
@@ -2113,8 +2154,8 @@
         "drivers": [
           "mt7921e"
         ],
-        "index": 62,
-        "model": "Ethernet network interface",
+        "index": 61,
+        "model": "WLAN network interface",
         "resources": [
           {
             "address": 48,
@@ -2126,14 +2167,14 @@
           }
         ],
         "sub_class": {
-          "hex": "0001",
-          "name": "Ethernet",
-          "value": 1
+          "hex": "000a",
+          "name": "WLAN",
+          "value": 10
         },
         "sysfs_device_link": "/devices/pci0000:80/0000:80:1d.0/0000:83:00.0",
-        "sysfs_id": "/class/net/wlp131s0",
+        "sysfs_id": "/class/net/wlan0",
         "unix_device_names": [
-          "wlp131s0"
+          "wlan0"
         ]
       },
       {
@@ -2154,7 +2195,7 @@
         "drivers": [
           "r8169"
         ],
-        "index": 63,
+        "index": 62,
         "model": "Ethernet network interface",
         "resources": [
           {

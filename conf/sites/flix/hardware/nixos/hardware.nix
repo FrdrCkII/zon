@@ -63,6 +63,7 @@
 
   hardware = {
     facter = {
+      enable = true;
       reportPath = ./hardware.facter.json;
     };
 

@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   ...
@@ -16,25 +15,25 @@ in
     dhcpcd.extraConfig = "nohook resolv.conf";
     wireless.iwd.settings.Network.NameResolvingService = "none";
     networkmanager.dns = "none";
-    nftables.tables = {
-      dns-hijack = {
-        family = "inet";
-        content = ''
-          chain prerouting {
-            type nat hook prerouting priority -190; policy accept;
-            iif lo return
-            ip protocol { tcp, udp } th dport 53 redirect to :53
-          }
-          chain output {
-            type nat hook output priority -190; policy accept;
-            oif lo return
-            meta skuid ${toString config.users.users.pproxy.uid} ip protocol { tcp, udp } th dport 53 accept
-            meta skuid ${toString config.users.users.smartdns.uid} ip protocol { tcp, udp } th dport 53 accept
-            ip protocol { tcp, udp } th dport 53 redirect to :53
-          }
-        '';
-      };
-    };
+    # nftables.tables = {
+    #   dns-hijack = {
+    #     family = "inet";
+    #     content = ''
+    #       chain prerouting {
+    #         type nat hook prerouting priority -190; policy accept;
+    #         iif lo return
+    #         ip protocol { tcp, udp } th dport 53 redirect to :53
+    #       }
+    #       chain output {
+    #         type nat hook output priority -190; policy accept;
+    #         oif lo return
+    #         meta skuid ${toString config.users.users.pproxy.uid} ip protocol { tcp, udp } th dport 53 accept
+    #         meta skuid ${toString config.users.users.smartdns.uid} ip protocol { tcp, udp } th dport 53 accept
+    #         ip protocol { tcp, udp } th dport 53 redirect to :53
+    #       }
+    #     '';
+    #   };
+    # };
   };
 
   environment = {
@@ -56,12 +55,10 @@ in
       pproxy = {
         isSystemUser = true;
         group = "pproxy";
-        uid = 530;
       };
       smartdns = {
         isSystemUser = true;
         group = "pproxy";
-        uid = 531;
       };
     };
   };

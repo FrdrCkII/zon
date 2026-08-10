@@ -7,21 +7,6 @@ output "DP-2" {
 input {
     mod-key "Super"
     mod-key-nested "Alt"
-    touchpad {
-        off
-    }
-    trackpoint {
-        off
-    }
-    trackball {
-        off
-    }
-    tablet {
-        off
-    }
-    touch {
-        off
-    }
 }
 binds {
     Mod+H {

@@ -4,10 +4,10 @@
       # 不需要的驱动
       "amdgpu"
       "radeon"
-      "nouveau"
-      "nvidia"
-      "nvidia_drm"
-      "nvidia_modeset"
+      # "nouveau"
+      # "nvidia"
+      # "nvidia_drm"
+      # "nvidia_modeset"
 
       # 高危/老旧文件系统
       "adfs"
