@@ -36,7 +36,7 @@ zon.nixlock.lib.withInputs {
 
           nixpkgs = {
             overlays = [
-              inputs.zon.nixlock.overlays.nixlock
+              inputs.zon.nixlock.overlay
               inputs.zon.wrapit.overlays.wrapit
               inputs.zon.wrapit.overlays.extra
               (import ./channels-overlay.nix inputs)

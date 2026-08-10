@@ -1,4 +1,5 @@
 alias f := fmt
+alias fc := fmt-chmod
 
 fmt:
     @treefmt .
