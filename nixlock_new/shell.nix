@@ -1,6 +1,6 @@
 let
   pkgs = import <nixpkgs> {
-    overlays = [ (import ./default.nix).overlays.nixlock ];
+    overlays = [ (import ./overlay.nix) ];
   };
 in
 pkgs.mkShell {

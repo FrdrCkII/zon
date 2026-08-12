@@ -1,4 +1,13 @@
+let
+  overlay = final: prev: {
+    nixlock = prev.callPackage ./package.nix { };
+  };
+in
 {
-  overlay = import ./overlay.nix;
-  lib.withInputs = import ./with-inputs;
+  lib.withInputs = import ./nix/withInputs.nix;
+  overlay = overlay;
+  overlays = {
+    default = overlay;
+    nixlock = overlay;
+  };
 }
