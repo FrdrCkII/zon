@@ -10,8 +10,6 @@
     ];
 
     kernelParams = [
-      "xe.force_probe=e20b"
-      "i915.force_probe=!"
       "nmi_watchdog=1"
       "hardlockup_panic=1"
       "panic_timeout=10"
@@ -50,13 +48,10 @@
   environment = {
     systemPackages = [
       pkgs.nvtopPackages.intel
+      pkgs.nvtopPackages.nvidia
       pkgs.nixos-facter
     ];
     sessionVariables = {
-      LIBVA_DRIVER_NAME = "iHD";
-      __GLX_VENDOR_LIBRARY_NAME = "mesa";
-      MESA_VK_WSI_PRESENT_MODE = "immediate";
-      VDPAU_DRIVER = "va_gl";
       NIXOS_OZONE_WL = "1";
     };
   };
@@ -77,6 +72,8 @@
     cpu.intel = {
       updateMicrocode = true;
     };
+
+    nvidia.open = true;
 
     graphics = {
       extraPackages = [

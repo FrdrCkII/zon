@@ -57,7 +57,7 @@
       chrony.enable = true;
       timesyncd.enable = false;
 
-      userborn.enable = true;
+      # userborn.enable = true;
 
       journald = {
         extraConfig = ''

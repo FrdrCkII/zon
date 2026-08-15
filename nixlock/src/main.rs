@@ -1,276 +1,232 @@
-use anyhow::{Result, anyhow};
-use clap::{Parser, ValueEnum};
-use log::{LevelFilter, Log, Metadata, Record};
-use std::{fs::canonicalize, io::Write, path::PathBuf, process::Stdio};
-use tokio::{process::Command, runtime::Builder, task::JoinHandle, task::spawn};
+mod args;
+mod json;
+mod runf;
 
-#[derive(Parser)]
-#[command(name = "nixlock", version = "0.1.0", author = "FrdrCkII")]
-struct Rd {
-    #[arg(short = 'm', long = "mode", value_enum, default_value = "lock")]
-    mode: Mode,
-    #[arg(short = 'c', long = "config", default_value = "channels.nix")]
-    config: PathBuf,
-    /// Input to be updated (separated by spaces)
-    #[arg(short = 'u', long = "update", default_value = "")]
-    update: String,
-    /// Increase log verbosity (can be used multiple times: -v, -vv, -vvv ...)
-    #[arg(short = 'v', long = "verbose", action = clap::ArgAction::Count)]
-    verbose: u8,
+use crate::args::{Args, Update};
+use crate::json::{InputItem, InputValue};
+use anyhow::{Result, anyhow, bail};
+use serde_json::Value;
+use std::{
+    collections::{BTreeMap, HashMap},
+    env,
+    sync::Arc,
+};
+use tokio::spawn;
+
+type LockedMap = HashMap<String, LockedItem>;
+type LockedItem = HashMap<String, String>;
+
+const TYPES: &str = include_str!("type.nix");
+
+fn main() -> Result<()> {
+    tokio::runtime::Builder::new_multi_thread()
+        .enable_all()
+        .build()?
+        .block_on(async_main())
 }
 
-#[derive(Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ValueEnum)]
-enum Mode {
-    Lock,
-    Update,
-}
+async fn async_main() -> Result<()> {
+    let args = Arc::new(args::parse()?);
+    let locked_path = args.config.with_extension("lock");
 
-struct Logger {
-    max_level: LevelFilter,
-}
+    // 解析输入/锁定文件
+    let (inputs, locked) = {
+        let inputs = {
+            let nix_expr = format!(
+                r#"let types = {TYPES}; in types (import {})"#,
+                &args.config.to_string_lossy()
+            );
 
-impl Log for Logger {
-    fn enabled(&self, metadata: &Metadata) -> bool {
-        metadata.level() <= self.max_level
-    }
+            let nix_child = tokio::process::Command::new("nix")
+                .arg("eval")
+                .arg("--extra-experimental-features")
+                .arg("nix-command")
+                .arg("--impure")
+                .arg("--json")
+                .arg("--no-pretty")
+                .arg("--expr")
+                .arg(&nix_expr)
+                .kill_on_drop(true)
+                .stdin(std::process::Stdio::null())
+                .stdout(std::process::Stdio::piped())
+                .stderr(std::process::Stdio::inherit())
+                .spawn()?
+                .wait_with_output()
+                .await?;
 
-    fn flush(&self) {
-        std::io::stderr().flush().ok();
-    }
+            if nix_child.status.success() {
+                let stdout = std::str::from_utf8(&nix_child.stdout)?
+                    .trim()
+                    .trim_matches('"');
 
-    fn log(&self, record: &Record) {
-        if self.enabled(record.metadata()) {
-            let mut stderr = std::io::stderr().lock();
-            writeln!(
-                stderr,
-                "{} [{}] {}",
-                record.level(),
-                record.target(),
-                record.args()
-            )
-            .ok();
-        }
-    }
-}
-
-impl Logger {
-    fn init(verbosity: u8) -> Result<()> {
-        let level = match verbosity {
-            0 => LevelFilter::Warn,
-            1 => LevelFilter::Info,
-            2 => LevelFilter::Debug,
-            _ => LevelFilter::Trace,
-        };
-        let logger = Self { max_level: level };
-        log::set_boxed_logger(Box::new(logger))?;
-        log::set_max_level(level);
-        Ok(())
-    }
-}
-
-struct Pa {
-    name: String,
-    result: String,
-}
-
-impl Pa {
-    fn new(name: String, result: String) -> Self {
-        Pa { name, result }
-    }
-
-    fn to_nix_expr(&self) -> String {
-        format!("{} = {};", self.name, self.result)
-    }
-}
-
-struct Pas {
-    name: String,
-    pas: Vec<Pa>,
-}
-
-impl Pas {
-    fn new(name: String, size: usize) -> Self {
-        let s: Vec<Pa> = Vec::with_capacity(size);
-        Pas { name, pas: s }
-    }
-
-    fn to_nix_expr(&self) -> String {
-        let pas = self
-            .pas
-            .iter()
-            .map(|pa| pa.to_nix_expr())
-            .collect::<String>();
-        format!("{} = {{{}}};", self.name, pas)
-    }
-
-    fn to_nix_args(&self, current: usize) -> String {
-        let pas = self
-            .pas
-            .iter()
-            .take(current)
-            .map(|pa| pa.to_nix_expr())
-            .collect::<String>();
-        format!("{{{}}}", pas)
-    }
-}
-
-async fn run(expr: String) -> Result<String> {
-    let output = Command::new("nix")
-        .arg("run")
-        .arg("--impure")
-        .arg("--expr")
-        .arg(&expr)
-        .stdin(Stdio::null())
-        .stdout(Stdio::piped())
-        .stderr(Stdio::inherit())
-        .spawn()?
-        .wait_with_output()
-        .await?;
-    if output.status.success() {
-        Ok(std::str::from_utf8(&output.stdout)?
-            .trim()
-            .trim_start_matches('"')
-            .trim_end_matches('"')
-            .to_string())
-    } else {
-        log::debug!("nix cannot evaluate this expression:\n{}", &expr);
-        Err(anyhow!(format!(
-            "nix returned a non-zero exit code: {}",
-            output.status
-        )))
-    }
-}
-
-async fn eval(expr: String) -> Result<String> {
-    let output = Command::new("nix")
-        .arg("eval")
-        .arg("--impure")
-        .arg("--raw")
-        .arg("--expr")
-        .arg(&expr)
-        .stdin(Stdio::null())
-        .stdout(Stdio::piped())
-        .stderr(Stdio::inherit())
-        .spawn()?
-        .wait_with_output()
-        .await?;
-    if output.status.success() {
-        Ok(std::str::from_utf8(&output.stdout)?
-            .trim()
-            .trim_start_matches('"')
-            .trim_end_matches('"')
-            .to_string())
-    } else {
-        log::debug!("nix cannot run this derivation:\n{}", &expr);
-        Err(anyhow!(format!(
-            "nix returned a non-zero exit code: {}",
-            output.status
-        )))
-    }
-}
-
-async fn main_run(el: String, name: String) -> Result<Pas> {
-    let mut nix_const_c = 0;
-    let nix_const = eval(format!("{} eval.nllib.matchLen \"{}\"", el, name))
-        .await?
-        .parse::<u32>()?;
-    let mut results = Pas::new(name.to_owned(), nix_const as usize);
-    while nix_const > nix_const_c {
-        let phase_name = eval(format!(
-            "{} eval.nllib.matchPhaseName \"{}\" {}",
-            el, name, nix_const_c
-        ))
-        .await?;
-        let args = if nix_const_c == 0 {
-            "{}"
-        } else {
-            &results.to_nix_args(nix_const_c as usize)
-        };
-        let is_eval: bool = eval(format!(
-            "{} eval.nllib.matchPhaseIsEval \"{}\" {} ({})",
-            el, name, nix_const_c, args
-        ))
-        .await?
-        .parse::<bool>()?;
-        let result = if is_eval {
-            eval(format!(
-                "{} eval.nllib.matchEval \"{}\" {} ({})",
-                el, name, nix_const_c, args
-            ))
-            .await?
-        } else {
-            run(format!(
-                "{} eval.nllib.matchRun \"{}\" {} ({})",
-                el, name, nix_const_c, args
-            ))
-            .await?
-        };
-        log::info!("Get {}:{}:{}", name, phase_name, result);
-        results.pas.push(Pa::new(phase_name, result));
-        nix_const_c = nix_const_c + 1;
-    }
-    Ok(results)
-}
-
-async fn main_start() -> Result<()> {
-    let rd = Rd::parse();
-    let _ = Logger::init(rd.verbose)?;
-    let el = match rd.mode {
-        Mode::Lock => format!(
-            "let nl = {}; eval = nl ((import {}) // {{__mode = \"lock\"; __update = [];}}); in",
-            include_str!("nixlock.nix"),
-            canonicalize(rd.config)?.display().to_string()
-        ),
-        Mode::Update => {
-            if rd.update.is_empty() {
-                format!(
-                    "let nl = {}; eval = nl ((import {}) // {{__mode = \"update\"; __update = [];}}); in",
-                    include_str!("nixlock.nix"),
-                    canonicalize(rd.config)?.display().to_string()
-                )
+                InputValue::serde(&stdout)?
             } else {
-                format!(
-                    "let nl = {}; eval = nl ((import {}) // {{__mode = \"update\"; __update = [{}];}}); in",
-                    include_str!("nixlock.nix"),
-                    canonicalize(rd.config)?.display().to_string(),
-                    rd.update
-                        .split(' ')
-                        .enumerate()
-                        .map(|(_, s)| format!("\"{}\"", s))
-                        .collect::<String>()
-                )
+                bail!("nix cannot evaluate this config file!\n{nix_expr}")
             }
-        }
+        };
+        let locked: LockedMap = if locked_path.exists()
+            && let Ok(json_str) = std::fs::read_to_string(&locked_path)
+            && let Ok(locked) = serde_json::from_str(&json_str)
+        {
+            locked
+        } else {
+            HashMap::new()
+        };
+
+        (inputs, Arc::new(locked))
     };
-    let list: Vec<String> = eval(format!("{} eval.nllib.attrNames eval.inputs", el))
-        .await?
-        .split('"')
-        .enumerate()
-        .filter_map(|(i, s)| {
-            if i % 2 == 1 {
-                Some(s.to_string())
+
+    // 从nix构建额外包
+    let env_path = {
+        let packages = {
+            let packages = json::get_packages(&inputs)?;
+            let packages_expr = packages
+                .into_iter()
+                .map(|pkg| format!("pkgs.{pkg}"))
+                .collect::<Vec<String>>()
+                .join(" ");
+            let nix_expr = format!(
+                r#"let pkgs = import <nixpkgs> {{}}; in pkgs.buildEnv {{ name = "nixlock-pkgs"; ignoreCollisions = true; paths = [ {packages_expr} ]; }}"#
+            );
+
+            let nix_child = tokio::process::Command::new("nix")
+                .arg("build")
+                .arg("--extra-experimental-features")
+                .arg("nix-command")
+                .arg("--impure")
+                .arg("--no-link")
+                .arg("--json")
+                .arg("--no-pretty")
+                .arg("--expr")
+                .arg(&nix_expr)
+                .kill_on_drop(true)
+                .stdin(std::process::Stdio::null())
+                .stdout(std::process::Stdio::piped())
+                .stderr(std::process::Stdio::inherit())
+                .spawn()?
+                .wait_with_output()
+                .await?;
+
+            if nix_child.status.success() {
+                let stdout = std::str::from_utf8(&nix_child.stdout)?;
+                let stdout_json: Vec<Value> = serde_json::from_str(stdout)?;
+                stdout_json
+                    .get(0)
+                    .and_then(|item| item.get("outputs"))
+                    .and_then(|outputs| outputs.get("out"))
+                    .and_then(|out| out.as_str())
+                    .ok_or_else(|| anyhow!("missing `[0].outputs.out`"))?
+                    .to_owned()
             } else {
-                None
+                bail!("nix cannot build these packages!\n{nix_expr}")
             }
-        })
-        .collect();
-    let mut handles: Vec<JoinHandle<Result<Pas>>> = Vec::with_capacity(list.len());
-    let mut results: Vec<String> = Vec::with_capacity(handles.len());
-    for name in list.iter() {
-        handles.push(spawn(main_run(el.clone(), name.to_owned())));
-    }
-    for handle in handles {
-        let s = handle.await??.to_nix_expr();
-        results.push(s);
-    }
-    let results: String = results.into_iter().collect();
-    println!("{{{}}}", results);
+        };
+
+        let current = env::var("PATH").unwrap_or_default();
+        Arc::new(format!("{packages}/bin:{current}"))
+    };
+
+    // main
+    let results = {
+        let mut results: HashMap<String, HashMap<String, String>> =
+            HashMap::with_capacity(inputs.len());
+
+        let handles = inputs
+            .into_iter()
+            .map(|(name, input)| {
+                let args = args.clone();
+                let locked = locked.clone();
+                let env_path = env_path.clone();
+                spawn(async move {
+                    let name = name.to_owned();
+                    tasks_main(args, locked, env_path, name, input).await
+                })
+            })
+            .collect::<Vec<_>>();
+
+        for handle in handles {
+            let (name, result) = handle.await??;
+            results.insert(name, result);
+        }
+
+        let ordered = results
+            .into_iter()
+            .map(|(k, v)| (k, v.into_iter().collect::<BTreeMap<_, _>>()))
+            .collect::<BTreeMap<_, _>>();
+
+        serde_json::to_string(&ordered)?
+    };
+
+    std::fs::write(locked_path, results)?;
+
     Ok(())
 }
 
-fn main() -> Result<()> {
-    Builder::new_multi_thread()
-        .enable_all()
-        .build()?
-        .block_on(main_start())
+async fn tasks_main(
+    args: Arc<Args>,
+    locked: Arc<LockedMap>,
+    env_path: Arc<String>,
+    name: String,
+    input: InputItem,
+) -> Result<(String, HashMap<String, String>)> {
+    let order = json::resolve_dependency_order(&input)?;
+    let need_update = match &args.update {
+        Update::Lock => false,
+        Update::List(up) => up.is_empty() || up.contains(&name),
+    };
+
+    let locked = if let Some(input) = locked.get(&name) {
+        input
+    } else {
+        &HashMap::new()
+    };
+
+    let mut result: HashMap<String, String> = HashMap::new();
+    for (i, list) in order.into_iter().enumerate() {
+        for item in list {
+            let value = input.get(&item).ok_or(anyhow!(""))?;
+
+            if i == 0 {
+                if let InputValue::String(value_str) = value {
+                    result.insert(item, value_str.to_owned());
+                } else {
+                    bail!("");
+                }
+            } else {
+                let deps = value.get_deps();
+                let substitute = value.substitute_deps(&result);
+
+                match substitute {
+                    InputValue::String(value_str) => {
+                        result.insert(item, value_str.to_owned());
+                    }
+
+                    InputValue::Commands {
+                        commands, update, ..
+                    } => {
+                        let deps_change = deps.into_iter().all(|dep| {
+                            if let Some(lock) = locked.get(&dep)
+                                && let Some(new) = result.get(&dep)
+                            {
+                                lock != new
+                            } else {
+                                true
+                            }
+                        });
+
+                        if !(deps_change || (update && need_update))
+                            && let Some(value) = locked.get(&item)
+                        {
+                            result.insert(item, value.to_owned());
+                        } else {
+                            let run = runf::pipeline(commands, &env_path).await?;
+                            result.insert(item, run);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    Ok((name, result))
 }

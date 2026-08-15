@@ -1,3 +1,3 @@
 fn main() {
-    println!("cargo:rerun-if-changed=src/nixlock.nix");
+    println!("cargo:rerun-if-changed=src/type.nix");
 }

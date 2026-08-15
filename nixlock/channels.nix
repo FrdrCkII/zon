@@ -3,8 +3,6 @@ let
     type = "gitArchive";
     url = "https://v6.gh-proxy.org/https://github.com/${url}";
   };
-
-  locked = builtins.fromJSON (builtins.readFile ./channels.lock);
 in
 {
   inputs = {
@@ -25,12 +23,11 @@ in
     };
   };
 
-  inherit locked;
-  expr = builtins.mapAttrs (
+  locked = builtins.mapAttrs (
     n: v:
     builtins.fetchTarball {
-      inherit (v) url;
+      url = v.url;
       sha256 = v.hash;
     }
-  ) locked;
+  ) (builtins.fromJSON (builtins.readFile ./channels.lock));
 }

@@ -3,14 +3,15 @@
   rustPlatform,
 }:
 let
-  cargo = lib.importTOML ./Cargo.toml;
+  src-rust = ./.;
+  cargo = lib.importTOML (src-rust + "/Cargo.toml");
 in
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = cargo.package.name;
   version = cargo.package.version;
 
   src = lib.fileset.toSource {
-    root = ./.;
+    root = src-rust;
     fileset = lib.fileset.unions [
       ./src
       ./build.rs
@@ -20,10 +21,13 @@ rustPlatform.buildRustPackage (finalAttrs: {
   };
 
   cargoLock = {
-    lockFile = ./Cargo.lock;
+    lockFile = src-rust + "/Cargo.lock";
   };
 
   meta = {
     mainProgram = cargo.package.name;
+    description = "Simple prefetech tool";
+    license = lib.licenses.gpl3Plus;
+    platforms = lib.platforms.unix;
   };
 })

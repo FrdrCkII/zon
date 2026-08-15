@@ -8,6 +8,6 @@ protons.proton-bin.override {
   pname = "proton-dw-bin";
   steamDisplayName = "DW-Proton";
   version = builtins.head (
-    builtins.match ".*/(dwproton-[^/]+)\\.tar\\.xz" channels.channels.locked.dwproton.lock.url
+    builtins.match ".*/(dwproton-[^/]+)\\.tar\\.xz" channels.channels.locked.dwproton.url
   );
 }

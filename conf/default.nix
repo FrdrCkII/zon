@@ -2,8 +2,8 @@ let
   zon = import ../default.nix;
   channels = import ./channels.nix;
 in
-zon.nixlock.lib.withInputs {
-  inputs = (builtins.mapAttrs (n: v: v.expr) channels.locked) // {
+zon.withInputs {
+  inputs = channels.expr // {
     zon = (import ../default.nix) // {
       outPath = ../.;
     };

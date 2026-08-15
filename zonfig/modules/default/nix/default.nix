@@ -23,6 +23,11 @@ in
         ];
         default = "nix";
       };
+
+      rootless = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+      };
     };
   };
 
@@ -38,7 +43,8 @@ in
       ]
       ++ lib.optional (cfg.implementation == "nix-latest") ./nixos-nix-latest.nix
       ++ lib.optional (cfg.implementation == "lix") ./nixos-lix.nix
-      ++ lib.optional (cfg.implementation == "lix-latest") ./nixos-lix-latest.nix;
+      ++ lib.optional (cfg.implementation == "lix-latest") ./nixos-lix-latest.nix
+      ++ lib.optional cfg.rootless ./nixos-rootless.nix;
     };
   };
 }
