@@ -3,7 +3,7 @@ import ./modnix {
     falake = import ./falake;
     modnix = mod.init;
     nixlock = import ./nixlock;
-    withInputs = import ./withInputs;
+    withInputs = import ./with-inputs;
     wrapit = import ./wrapit;
     zonfig = mod.sub ./zonfig;
   };

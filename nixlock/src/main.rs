@@ -32,10 +32,8 @@ async fn async_main() -> Result<()> {
     // 解析输入/锁定文件
     let (inputs, locked) = {
         let inputs = {
-            let nix_expr = format!(
-                r#"let types = {TYPES}; in types (import {})"#,
-                &args.config.to_string_lossy()
-            );
+            let config = &args.config.to_string_lossy();
+            let nix_expr = format!(r#"let types = {TYPES}; in types (import {config})"#);
 
             let nix_child = tokio::process::Command::new("nix")
                 .arg("eval")
@@ -61,7 +59,7 @@ async fn async_main() -> Result<()> {
 
                 InputValue::serde(&stdout)?
             } else {
-                bail!("nix cannot evaluate this config file!\n{nix_expr}")
+                bail!("nix cannot evaluate the config file!")
             }
         };
         let locked: LockedMap = if locked_path.exists()

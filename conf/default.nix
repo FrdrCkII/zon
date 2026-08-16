@@ -9,15 +9,11 @@ zon.withInputs {
     };
   };
 
-  inputsMeta = channels.inputs // {
-    zon = { };
-  };
-
-  extraArgs = {
+  speacialArgs = {
     outPath = ./.;
   };
 
-  outputFun =
+  outputs =
     inputs:
     inputs.zon.falake.lib.mkFalake {
       nixpkgs = "${inputs.nixpkgs}";

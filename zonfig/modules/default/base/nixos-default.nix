@@ -51,8 +51,9 @@
 
     services = {
       udev.enable = true;
-      dbus.implementation = "broker";
+      udisks2.enable = true;
       libinput.enable = true;
+      dbus.implementation = "broker";
 
       chrony.enable = true;
       timesyncd.enable = false;
