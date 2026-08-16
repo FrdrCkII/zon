@@ -37,10 +37,6 @@ in
         isSystemUser = true;
         group = "pproxy";
       };
-      smartdns = {
-        isSystemUser = true;
-        group = "pproxy";
-      };
     };
   };
 
@@ -97,7 +93,7 @@ in
         LogsDirectory = "smartdns";
         LogsDirectoryMode = "0750";
         UMask = "0077";
-        User = "smartdns";
+        User = "pproxy";
         Group = "pproxy";
         AmbientCapabilities = [
           "CAP_NET_BIND_SERVICE"

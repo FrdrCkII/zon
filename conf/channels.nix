@@ -1,10 +1,11 @@
 let
+  locked = builtins.fromJSON (builtins.readFile ./channels.lock);
+in
+let
   github = url: {
     type = "gitArchive";
     url = "https://v6.gh-proxy.org/https://github.com/${url}";
   };
-
-  locked = builtins.fromJSON (builtins.readFile ./channels.lock);
 in
 {
   inputs = {
@@ -15,13 +16,6 @@ in
       type = "nixpkgsCn";
       url = "https://mirror.nju.edu.cn/nix-channels/releases";
       channel = "nixos-26.05@nixos-26.05";
-    };
-
-    dwproton = {
-      type = "forgejoRelease";
-      domain = "dawn.wine";
-      repo = "dawn-winery/dwproton";
-      grep = "x86_64.tar.xz";
     };
   };
 

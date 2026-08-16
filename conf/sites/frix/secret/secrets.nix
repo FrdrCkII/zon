@@ -6,4 +6,5 @@ in
 {
   "ssh/id_rsa".publicKeys = keys;
   "ssh/id_rsa.pub".publicKeys = keys;
+  "users/main.passwd".publicKeys = keys;
 }

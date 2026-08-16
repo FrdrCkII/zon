@@ -1,5 +1,7 @@
 final: prev:
-prev.lib.filesystem.packagesFromDirectoryRecursive {
-  inherit (prev) callPackage;
-  directory = ./pkgs;
-}
+prev.lib.recursiveUpdate prev (
+  prev.lib.filesystem.packagesFromDirectoryRecursive {
+    inherit (prev) callPackage;
+    directory = ./pkgs;
+  }
+)

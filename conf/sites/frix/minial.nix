@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -52,10 +53,12 @@
       main = {
         uid = 1000;
         isNormalUser = true;
+        autoSubUidGidRange = true;
         name = "main";
+        description = "Frederick Bana";
         home = "/home/main";
         createHome = true;
-        hashedPassword = "$y$j9T$2zl6H25Dy9.Mx3UntXthF1$qRER0IrNchc.qZQR7iPi/pWvx3/L7oAvP9ElGe/PefB";
+        hashedPasswordFile = config.age.secrets."users/main.passwd".path;
         extraGroups = [
           "wheel"
           "audio"
