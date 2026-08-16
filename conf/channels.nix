@@ -11,6 +11,7 @@ in
   inputs = {
     hjem = github "feel-co/hjem";
     agenix = github "ryantm/agenix";
+    nixos-core = github "manic-systems/nixos-core";
 
     nixpkgs = {
       type = "nixpkgsCn";

@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  lib,
   ...
 }:
 {
@@ -39,6 +40,12 @@
                 ../share/shell/bash.nix
                 ./frix/secret/nixos.nix
                 ./frix/minial.nix
+                inputs.nixos-core.nixosModules.nixos-core
+                {
+                  system.etc.overlay.enable = lib.mkForce false;
+                  services.userborn.enable = lib.mkForce false;
+                  system.nixos-core.enable = true;
+                }
               ];
               nixos-hjem = {
                 hjem = {
