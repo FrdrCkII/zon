@@ -1,7 +1,6 @@
 let
   locked = builtins.fromJSON (builtins.readFile ./channels.lock);
-in
-let
+
   github = url: {
     type = "gitArchive";
     url = "https://v6.gh-proxy.org/https://github.com/${url}";
@@ -12,6 +11,7 @@ in
     hjem = github "feel-co/hjem";
     agenix = github "ryantm/agenix";
     nixos-core = github "manic-systems/nixos-core";
+    ncro = github "manic-systems/ncro";
 
     nixpkgs = {
       type = "nixpkgsCn";

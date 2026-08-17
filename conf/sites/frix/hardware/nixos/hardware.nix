@@ -2,6 +2,7 @@
   system = {
     stateVersion = "26.05";
   };
+
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [
@@ -18,7 +19,7 @@
     ];
 
     tmp = {
-      useTmpfs = true;
+      cleanOnBoot = true;
     };
 
     initrd = {
@@ -57,7 +58,6 @@
       __GLX_VENDOR_LIBRARY_NAME = "mesa";
       MESA_VK_WSI_PRESENT_MODE = "immediate";
       VDPAU_DRIVER = "va_gl";
-      NIXOS_OZONE_WL = "1";
     };
   };
 
@@ -79,6 +79,7 @@
     };
 
     graphics = {
+      enable = true;
       extraPackages = [
         pkgs.intel-compute-runtime
         pkgs.intel-compute-runtime.drivers
@@ -91,6 +92,12 @@
         pkgs.pkgsi686Linux.intel-media-driver
       ];
     };
+  };
+
+  services = {
+    xserver.videoDrivers = [
+      "modsetting"
+    ];
   };
 
   nix.settings.system-features = [

@@ -11,14 +11,6 @@
         auto-optimise-store = lib.mkDefault true;
         builders-use-substitutes = lib.mkDefault true;
         use-xdg-base-directories = lib.mkDefault true;
-        trusted-users = [
-          "root"
-          "@wheel"
-        ];
-        allowed-users = [
-          "root"
-          "@wheel"
-        ];
         experimental-features = [
           "nix-command"
         ];

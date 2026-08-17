@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  lib,
   ...
 }:
 {
@@ -20,6 +21,7 @@
             ../share/programs/firefox
             ../share/programs/pnginx
             ./flix/hardware
+            ./frix/common
           ];
 
           evalArgs = {
@@ -39,6 +41,7 @@
                 ../share/shell/bash.nix
                 ./frix/secret/nixos.nix
                 ./frix/minial.nix
+                ./frix/raperl.nix
               ];
               nixos-hjem = {
                 hjem = {
@@ -56,11 +59,10 @@
                 loader = "systemd-boot";
               };
               network = {
-                wireless = "iwd";
+                wireless = "nm-iwd";
                 dns = null;
               };
               nix = {
-                # implementation = "lix";
                 implementation = "nix";
               };
             };

@@ -31,12 +31,330 @@
                             "source": "multi",
                             "sources": [
                               {
-                                "name": "analytics.githubassets.com",
+                                "name": "user-images.githubusercontent.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "user-images.githubusercontent.com",
                                 "port": "443",
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
                                     "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "user-images.githubusercontent.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "viewscreen.githubusercontent.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "viewscreen.githubusercontent.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "viewscreen.githubusercontent.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "avatars.githubusercontent.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "avatars.githubusercontent.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "avatars.githubusercontent.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "analytics.githubassets.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -47,7 +365,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -142,7 +460,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -153,7 +471,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -248,7 +566,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -259,7 +577,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -354,7 +672,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -365,7 +683,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -460,7 +778,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -471,7 +789,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -566,7 +884,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -577,7 +895,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -672,7 +990,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -683,7 +1001,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -778,7 +1096,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -789,7 +1107,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -884,7 +1202,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -895,7 +1213,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -990,7 +1308,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1001,7 +1319,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1096,7 +1414,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1107,7 +1425,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1202,7 +1520,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1213,7 +1531,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1308,7 +1626,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1319,7 +1637,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1414,7 +1732,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1425,7 +1743,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1520,7 +1838,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1531,7 +1849,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1626,7 +1944,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1637,7 +1955,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1732,7 +2050,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1743,7 +2061,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1838,7 +2156,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1849,7 +2167,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1935,6 +2253,33 @@
                           ]
                         },
                         {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "lc-event.pixiv.net",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "lc-event.pixiv.net",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
@@ -1981,12 +2326,7 @@
                             "tls": {
                               "insecure_skip_verify": true
                             }
-                          },
-                          "upstreams": [
-                            {
-                              "dial": "210.140.139.185:443"
-                            }
-                          ]
+                          }
                         }
                       ]
                     }
@@ -2028,7 +2368,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -2039,7 +2379,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -2134,7 +2474,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -2145,7 +2485,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -2235,12 +2575,118 @@
                             "source": "multi",
                             "sources": [
                               {
-                                "name": "gist.github.com",
+                                "name": "source.pixiv.net",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "source.pixiv.net",
                                 "port": "443",
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
                                     "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "random"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "source.pixiv.net"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "encodings": {
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd"
+                          ]
+                        },
+                        {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "gist.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -2251,7 +2697,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -2346,7 +2792,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -2357,7 +2803,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -2452,7 +2898,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -2463,7 +2909,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -2558,7 +3004,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -2569,7 +3015,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -2664,7 +3110,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -2675,7 +3121,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -2761,6 +3207,33 @@
                           ]
                         },
                         {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "api.fanbox.cc",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "api.fanbox.cc",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
@@ -2807,15 +3280,7 @@
                             "tls": {
                               "insecure_skip_verify": true
                             }
-                          },
-                          "upstreams": [
-                            {
-                              "dial": "104.18.41.140:443"
-                            },
-                            {
-                              "dial": "172.64.146.116:443"
-                            }
-                          ]
+                          }
                         }
                       ]
                     }
@@ -2848,6 +3313,33 @@
                           ]
                         },
                         {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "i.pximg.net",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "i.pximg.net",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
@@ -2894,33 +3386,7 @@
                             "tls": {
                               "insecure_skip_verify": true
                             }
-                          },
-                          "upstreams": [
-                            {
-                              "dial": "210.140.139.135:443"
-                            },
-                            {
-                              "dial": "210.140.139.132:443"
-                            },
-                            {
-                              "dial": "210.140.139.137:443"
-                            },
-                            {
-                              "dial": "210.140.139.134:443"
-                            },
-                            {
-                              "dial": "210.140.139.131:443"
-                            },
-                            {
-                              "dial": "210.140.139.130:443"
-                            },
-                            {
-                              "dial": "210.140.139.129:443"
-                            },
-                            {
-                              "dial": "210.140.139.136:443"
-                            }
-                          ]
+                          }
                         }
                       ]
                     }
@@ -2962,7 +3428,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -2973,7 +3439,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -3070,7 +3536,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -3081,7 +3547,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -3170,7 +3636,7 @@
                       ]
                     },
                     {
-                      "group": "group32",
+                      "group": "group36",
                       "handle": [
                         {
                           "handler": "subroute",
@@ -3187,7 +3653,7 @@
                                         "refresh": 10000000000,
                                         "resolver": {
                                           "addresses": [
-                                            "127.0.0.1:5365"
+                                            "127.0.0.1:5370"
                                           ]
                                         },
                                         "source": "a"
@@ -3198,7 +3664,7 @@
                                         "refresh": 10000000000,
                                         "resolver": {
                                           "addresses": [
-                                            "127.0.0.1:5370"
+                                            "127.0.0.1:5365"
                                           ]
                                         },
                                         "source": "a"
@@ -3269,7 +3735,7 @@
                       ]
                     },
                     {
-                      "group": "group32",
+                      "group": "group36",
                       "handle": [
                         {
                           "handler": "subroute",
@@ -3405,6 +3871,33 @@
                           ]
                         },
                         {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "pixiv.pximg.net",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "pixiv.pximg.net",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
@@ -3451,36 +3944,7 @@
                             "tls": {
                               "insecure_skip_verify": true
                             }
-                          },
-                          "upstreams": [
-                            {
-                              "dial": "210.140.139.135:443"
-                            },
-                            {
-                              "dial": "210.140.139.132:443"
-                            },
-                            {
-                              "dial": "210.140.139.137:443"
-                            },
-                            {
-                              "dial": "210.140.139.134:443"
-                            },
-                            {
-                              "dial": "210.140.139.131:443"
-                            },
-                            {
-                              "dial": "210.140.139.133:443"
-                            },
-                            {
-                              "dial": "210.140.139.130:443"
-                            },
-                            {
-                              "dial": "210.140.139.129:443"
-                            },
-                            {
-                              "dial": "210.140.139.136:443"
-                            }
-                          ]
+                          }
                         }
                       ]
                     }
@@ -3523,7 +3987,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -3534,7 +3998,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -3630,7 +4094,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -3641,7 +4105,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -3728,6 +4192,33 @@
                           ]
                         },
                         {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "a.pixiv.org",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "a.pixiv.org",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
@@ -3774,18 +4265,7 @@
                             "tls": {
                               "insecure_skip_verify": true
                             }
-                          },
-                          "upstreams": [
-                            {
-                              "dial": "210.140.139.183:443"
-                            },
-                            {
-                              "dial": "210.140.139.184:443"
-                            },
-                            {
-                              "dial": "210.140.139.182:443"
-                            }
-                          ]
+                          }
                         }
                       ]
                     }
@@ -3819,6 +4299,33 @@
                           ]
                         },
                         {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "pixiv.net",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "pixiv.net",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
@@ -3865,21 +4372,7 @@
                             "tls": {
                               "insecure_skip_verify": true
                             }
-                          },
-                          "upstreams": [
-                            {
-                              "dial": "210.140.139.152:443"
-                            },
-                            {
-                              "dial": "210.140.139.155:443"
-                            },
-                            {
-                              "dial": "210.140.139.158:443"
-                            },
-                            {
-                              "dial": "210.140.139.161:443"
-                            }
-                          ]
+                          }
                         }
                       ]
                     }
@@ -3913,6 +4406,33 @@
                           ]
                         },
                         {
+                          "dynamic_upstreams": {
+                            "source": "multi",
+                            "sources": [
+                              {
+                                "name": "fanbox.cc",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "fanbox.cc",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              }
+                            ]
+                          },
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
@@ -3959,21 +4479,7 @@
                             "tls": {
                               "insecure_skip_verify": true
                             }
-                          },
-                          "upstreams": [
-                            {
-                              "dial": "210.140.139.152:443"
-                            },
-                            {
-                              "dial": "210.140.139.155:443"
-                            },
-                            {
-                              "dial": "210.140.139.158:443"
-                            },
-                            {
-                              "dial": "210.140.139.161:443"
-                            }
-                          ]
+                          }
                         }
                       ]
                     }
@@ -4000,6 +4506,9 @@
               },
               "match": {
                 "sni": [
+                  "user-images.githubusercontent.com",
+                  "viewscreen.githubusercontent.com",
+                  "avatars.githubusercontent.com",
                   "analytics.githubassets.com",
                   "enterprise.github.com",
                   "assets-cdn.github.com",
@@ -4021,6 +4530,7 @@
                   "lc-event.pixiv.net",
                   "guides.github.com",
                   "pages.github.com",
+                  "source.pixiv.net",
                   "gist.github.com",
                   "docs.github.com",
                   "api.github.com",
@@ -4058,8 +4568,8 @@
       "certificates": {
         "load_files": [
           {
-            "certificate": "/nix/store/1wsin9gvscnas1ffchvhnq9yhc6zh3pl-server.crt",
-            "key": "/nix/store/8gh69jw4aa6xj5p3ilzci6gkmglzm8z9-server.key",
+            "certificate": "/nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt",
+            "key": "/nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key",
             "tags": [
               "cert0"
             ]

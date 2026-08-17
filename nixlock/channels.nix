@@ -26,7 +26,7 @@ in
   locked = builtins.mapAttrs (
     n: v:
     builtins.fetchTarball {
-      url = v.url;
+      inherit (v) url;
       sha256 = v.hash;
     }
   ) (builtins.fromJSON (builtins.readFile ./channels.lock));

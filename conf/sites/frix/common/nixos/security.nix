@@ -5,9 +5,9 @@
       "amdgpu"
       "radeon"
       "nouveau"
-      "nvidia"
-      "nvidia_drm"
-      "nvidia_modeset"
+      # "nvidia"
+      # "nvidia_drm"
+      # "nvidia_modeset"
 
       # 高危/老旧文件系统
       "adfs"

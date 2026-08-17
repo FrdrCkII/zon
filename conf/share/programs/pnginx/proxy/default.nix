@@ -20,11 +20,11 @@ let
   mkDynamicResolvers = domain: ''
     dynamic multi {
       a ${domain} 443 {
-        resolvers 127.0.0.1:5365
+        resolvers 127.0.0.1:5370
         refresh 10s
       }
       a ${domain} 443 {
-        resolvers 127.0.0.1:5370
+        resolvers 127.0.0.1:5365
         refresh 10s
       }
     }'';
@@ -143,18 +143,23 @@ let
         "support.github.com"
         "git-lfs.github.com"
         "docs.github.com"
-        "analytics.githubassets.com"
         [
           "github.com"
           [ "*.github.com" ]
         ]
-        [
-          "www.github.io"
-          [ "*.github.io" ]
-        ]
+
+        "analytics.githubassets.com"
+        "avatars.githubusercontent.com"
+        "viewscreen.githubusercontent.com"
+        "user-images.githubusercontent.com"
         [
           "www.githubassets.com"
           [ "*.githubassets.com" ]
+        ]
+
+        [
+          "www.github.io"
+          [ "*.github.io" ]
         ]
       ])
       + (lib.concatMapStrings mkCaddyProxyGithub [
@@ -164,78 +169,28 @@ let
         ]
       ])
       + (lib.concatMapStrings mkCaddyProxyPixiv [
+        "source.pixiv.net"
+        "lc-event.pixiv.net"
         [
           "pixiv.net"
           [ "*.pixiv.net" ]
-          [
-            "210.140.139.152"
-            "210.140.139.155"
-            "210.140.139.158"
-            "210.140.139.161"
-          ]
         ]
+
+        "api.fanbox.cc"
         [
           "fanbox.cc"
           [ "*.fanbox.cc" ]
-          [
-            "210.140.139.152"
-            "210.140.139.155"
-            "210.140.139.158"
-            "210.140.139.161"
-          ]
         ]
-        [
-          "lc-event.pixiv.net"
-          null
-          [
-            "210.140.139.185"
-          ]
-        ]
-        [
-          "i.pximg.net"
-          null
-          [
-            "210.140.139.135"
-            "210.140.139.132"
-            "210.140.139.137"
-            "210.140.139.134"
-            "210.140.139.131"
-            "210.140.139.130"
-            "210.140.139.129"
-            "210.140.139.136"
-          ]
-        ]
+
+        "i.pximg.net"
         [
           "pixiv.pximg.net"
           [ "*.pximg.net" ]
-          [
-            "210.140.139.135"
-            "210.140.139.132"
-            "210.140.139.137"
-            "210.140.139.134"
-            "210.140.139.131"
-            "210.140.139.133"
-            "210.140.139.130"
-            "210.140.139.129"
-            "210.140.139.136"
-          ]
         ]
+
         [
           "a.pixiv.org"
           [ "*.pixiv.org" ]
-          [
-            "210.140.139.183"
-            "210.140.139.184"
-            "210.140.139.182"
-          ]
-        ]
-        [
-          "api.fanbox.cc"
-          null
-          [
-            "104.18.41.140"
-            "172.64.146.116"
-          ]
         ]
       ])
       + ''

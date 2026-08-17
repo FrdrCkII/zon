@@ -1,7 +1,13 @@
-{ pkgs, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}:
+{
   system = {
     stateVersion = "26.05";
   };
+
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [
@@ -16,7 +22,7 @@
     ];
 
     tmp = {
-      useTmpfs = true;
+      cleanOnBoot = true;
     };
 
     initrd = {
@@ -47,13 +53,8 @@
 
   environment = {
     systemPackages = [
-      pkgs.nvtopPackages.intel
-      pkgs.nvtopPackages.nvidia
       pkgs.nixos-facter
     ];
-    sessionVariables = {
-      NIXOS_OZONE_WL = "1";
-    };
   };
 
   hardware = {
@@ -73,9 +74,8 @@
       updateMicrocode = true;
     };
 
-    nvidia.open = true;
-
     graphics = {
+      enable = true;
       extraPackages = [
         pkgs.intel-compute-runtime
         pkgs.intel-compute-runtime.drivers
@@ -88,6 +88,53 @@
         pkgs.pkgsi686Linux.intel-media-driver
       ];
     };
+
+    nvidia = {
+      open = true;
+      modesetting.enable = true;
+      nvidiaSettings = true;
+
+      prime = {
+        offload.enable = true;
+        offload.enableOffloadCmd = true;
+
+        intelBusId = "PCI:0@0:2:0";
+        nvidiaBusId = "PCI:1@0:0:0";
+      };
+
+      powerManagement = {
+        enable = true;
+        finegrained = false;
+      };
+    };
+  };
+
+  services = {
+    xserver.videoDrivers = [
+      "modsetting"
+      "nvidia"
+    ];
+
+    libinput = {
+      touchpad.tapping = true;
+    };
+  };
+
+  nixpkgs = {
+    allowUnfreePredicate = [
+      "nvidia-x11"
+      "nvidia-settings"
+    ];
+
+    overlays = lib.singleton (
+      final: prev: {
+        _cuda = prev._cuda // {
+          db = prev._cuda.db // {
+            redistUrlPrefix = "https://developer.download.nvidia.cn/compute";
+          };
+        };
+      }
+    );
   };
 
   nix.settings.system-features = [

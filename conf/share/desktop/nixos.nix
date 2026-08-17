@@ -78,8 +78,6 @@ in
       MOZ_ENABLE_WAYLAND = "1";
       QT_QPA_PLATFORM = "wayland";
       GDK_BACKEND = "wayland,x11";
-      SDL_VIDEODRIVER = "wayland,x11,windows";
-      SDL_VIDEO_DRIVER = "wayland,x11,windows";
       CLUTTER_BACKEND = "wayland";
       WLR_RENDERER_ALLOW_SOFTWARE = "1";
       WLR_NO_HARDWARE_CURSORS = "1";

@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   ...
@@ -58,11 +57,12 @@
         description = "Frederick Bana";
         home = "/home/main";
         createHome = true;
-        hashedPasswordFile = config.age.secrets."users/main.passwd".path;
+        hashedPassword = "$y$j9T$1QReWL3Eat8fKCOJXdjoH0$sQ8sCWsHvZm0E6jevhYRXhLZ8gqzU.qWdAkKBVWjDo7";
         extraGroups = [
           "wheel"
           "audio"
           "video"
+          "render"
           "keys"
         ];
         packages = [

@@ -3,8 +3,5 @@
     nixos.imports = [
       ./nixos
     ];
-    hjem.imports = [
-      ./hjem
-    ];
   };
 }
