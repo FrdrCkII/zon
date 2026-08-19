@@ -4,7 +4,7 @@ import ./modnix {
     modnix = mod.init;
     nixlock = import ./nixlock;
     withInputs = import ./with-inputs;
-    wrapit = mod.sub ./wrapit;
-    zonfig = mod.sub ./zonfig;
+    wrapit = mod.loadSub ./wrapit;
+    zonfig = mod.loadSub ./zonfig;
   };
 }

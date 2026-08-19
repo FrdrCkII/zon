@@ -17,18 +17,18 @@ let
     path:
     import (if builtins.readFileType path == "directory" then path + "/default.mod.nix" else path);
 
-  loadMod =
-    inputs: root: super: args:
-    let
-      resolve =
-        args:
-        if builtins.isPath args then
-          importPath args
-        else if isPathWrapper args then
-          importPath args.__path
-        else
-          args;
+  resolve =
+    args:
+    if builtins.isPath args then
+      importPath args
+    else if isPathWrapper args then
+      importPath args.__path
+    else
+      args;
 
+  loadMod = fix (
+    loadMod: init: inputs: root: super: args:
+    let
       expr = resolve args;
 
       self =
@@ -36,10 +36,10 @@ let
           expr
         else
           let
-            load = loadMod inputs root self;
+            load = loadMod init inputs root self;
 
-            loadDir =
-              dir:
+            loadDir = fix (
+              loadDir: dir:
               let
                 entries = builtins.readDir dir;
 
@@ -60,7 +60,7 @@ let
                       }
                   else if type == "regular" then
                     let
-                      m = builtins.match "^(.*)\\.nix$" name;
+                      m = builtins.match "^(.*)\\.mod.nix$" name;
                     in
                     if m == null then
                       null
@@ -76,9 +76,10 @@ let
                   builtins.map (name: entryToLoad name entries.${name}) (builtins.attrNames entries)
                 );
               in
-              builtins.mapAttrs (_: load) (builtins.listToAttrs loadable);
+              builtins.mapAttrs (_: load) (builtins.listToAttrs loadable)
+            );
 
-            sub =
+            loadSub =
               args:
               let
                 expr' = resolve args;
@@ -99,37 +100,42 @@ let
                   init
                   load
                   loadDir
-                  sub
+                  loadSub
                   ;
               };
             };
           in
           expr modArgs;
     in
-    self;
+    self
+  );
 
-  makeOverrides =
-    inputs: outputs: root:
-    root
-    // {
-      __inputs = inputs;
-      __override =
-        overlay:
-        let
-          inputs' = fix (final: inputs // (overlay final inputs));
-          result = fix (self': loadMod inputs' self' { } outputs);
-        in
-        makeOverrides inputs' outputs result;
-    };
-
-  init =
+  init = fix (
+    init:
     {
       inputs ? { },
       outputs ? { },
     }:
-    let
-      root = fix (self: makeOverrides inputs outputs (loadMod inputs self { } outputs));
-    in
-    root;
+    fix (
+      self:
+      (fix (
+        mkOverride: inputs: outputs: root:
+        root
+        // {
+          __inputs = inputs;
+          __override =
+            overlay:
+            let
+              inputsNew = fix (final: inputs // (overlay final inputs));
+              rootNew = fix (self': loadMod init inputsNew self' { } outputs);
+            in
+            mkOverride inputsNew outputs rootNew;
+        }
+      ))
+        inputs
+        outputs
+        (loadMod init inputs self { } outputs)
+    )
+  );
 in
 init
