@@ -3,9 +3,6 @@
     "http": {
       "servers": {
         "srv0": {
-          "automatic_https": {
-            "disable": true
-          },
           "listen": [
             "127.0.0.1:443"
           ],
@@ -18,15 +15,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -36,7 +24,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -47,7 +35,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -87,12 +75,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -124,15 +119,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -142,7 +128,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -153,7 +139,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -193,12 +179,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -230,15 +223,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -248,7 +232,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -259,7 +243,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -299,12 +283,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -336,15 +327,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -354,7 +336,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -365,7 +347,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -405,12 +387,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -442,15 +431,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -460,7 +440,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -471,7 +451,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -511,12 +491,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -548,15 +535,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -566,7 +544,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -577,7 +555,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -617,12 +595,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -654,15 +639,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -672,7 +648,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -683,7 +659,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -723,12 +699,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -760,15 +743,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -778,7 +752,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -789,7 +763,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -829,12 +803,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -866,15 +847,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -884,7 +856,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -895,7 +867,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -935,12 +907,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -972,15 +951,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -990,7 +960,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1001,7 +971,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1041,12 +1011,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -1078,15 +1055,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -1096,7 +1064,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1107,7 +1075,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1147,12 +1115,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -1184,15 +1159,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -1202,7 +1168,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1213,7 +1179,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1253,12 +1219,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -1290,15 +1263,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -1308,7 +1272,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1319,7 +1283,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1359,12 +1323,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -1396,15 +1367,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -1414,7 +1376,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1425,7 +1387,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1465,12 +1427,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -1502,15 +1471,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -1520,7 +1480,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1531,7 +1491,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1571,12 +1531,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -1608,15 +1575,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -1626,7 +1584,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1637,7 +1595,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1677,12 +1635,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -1714,15 +1679,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -1732,7 +1688,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1743,7 +1699,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1783,12 +1739,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -1820,15 +1783,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -1838,7 +1792,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1849,7 +1803,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1889,12 +1843,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -1926,15 +1887,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -1944,7 +1896,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -1955,7 +1907,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -1995,12 +1947,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -2032,15 +1991,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -2050,7 +2000,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -2061,7 +2011,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -2101,12 +2051,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -2138,15 +2095,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -2156,7 +2104,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -2167,7 +2115,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -2207,12 +2155,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -2244,42 +2199,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
-                          "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "lc-event.pixiv.net",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "lc-event.pixiv.net",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
-                          },
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
@@ -2313,20 +2232,33 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
                             "protocol": "http",
                             "tls": {
-                              "insecure_skip_verify": true
+                              "insecure_skip_verify": true,
+                              "server_name": "pixivision.net"
                             }
-                          }
+                          },
+                          "upstreams": [
+                            {
+                              "dial": "210.140.139.185:443"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -2350,15 +2282,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -2368,7 +2291,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -2379,7 +2302,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -2419,12 +2342,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -2456,15 +2386,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -2474,7 +2395,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -2485,7 +2406,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -2525,12 +2446,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -2562,36 +2490,27 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
                               {
-                                "name": "source.pixiv.net",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "source.pixiv.net",
+                                "name": "gist.github.com",
                                 "port": "443",
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
                                     "127.0.0.1:5365"
+                                  ]
+                                },
+                                "source": "a"
+                              },
+                              {
+                                "name": "gist.github.com",
+                                "port": "443",
+                                "refresh": 10000000000,
+                                "resolver": {
+                                  "addresses": [
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -2631,118 +2550,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
-                            }
-                          },
-                          "transport": {
-                            "protocol": "http",
-                            "tls": {
-                              "insecure_skip_verify": true
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "match": [
-                {
-                  "host": [
-                    "source.pixiv.net"
-                  ]
-                }
-              ],
-              "terminal": true
-            },
-            {
-              "handle": [
-                {
-                  "handler": "subroute",
-                  "routes": [
-                    {
-                      "handle": [
-                        {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
-                          "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "gist.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "gist.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
-                          },
-                          "handler": "reverse_proxy",
-                          "headers": {
-                            "request": {
-                              "replace": {
-                                "@has_if_range": [
-                                  {
-                                    "replace": "{http.request.header.If-Range}",
-                                    "search_regexp": "If-Range"
-                                  }
-                                ],
-                                "@has_range": [
-                                  {
-                                    "replace": "{http.request.header.Range}",
-                                    "search_regexp": "Range"
-                                  }
-                                ]
-                              },
-                              "set": {
-                                "Host": [
-                                  "{http.request.host}"
-                                ],
-                                "User-Agent": [
-                                  "{http.request.header.User-Agent}"
-                                ],
-                                "X-Real-Ip": [
-                                  "{http.request.remote.host}"
-                                ]
-                              }
-                            }
-                          },
-                          "health_checks": {
-                            "passive": {
-                              "fail_duration": 10000000000,
-                              "max_fails": 2
-                            }
-                          },
-                          "load_balancing": {
-                            "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -2774,15 +2594,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -2792,7 +2603,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -2803,7 +2614,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -2843,12 +2654,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -2880,14 +2698,112 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
                           },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "ip_hash"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true,
+                              "server_name": "pixivision.net"
+                            }
+                          },
+                          "upstreams": [
+                            {
+                              "dial": "210.140.139.135:443"
+                            },
+                            {
+                              "dial": "210.140.139.132:443"
+                            },
+                            {
+                              "dial": "210.140.139.137:443"
+                            },
+                            {
+                              "dial": "210.140.139.134:443"
+                            },
+                            {
+                              "dial": "210.140.139.131:443"
+                            },
+                            {
+                              "dial": "210.140.139.133:443"
+                            },
+                            {
+                              "dial": "210.140.139.130:443"
+                            },
+                            {
+                              "dial": "210.140.139.129:443"
+                            },
+                            {
+                              "dial": "210.140.139.136:443"
+                            }
                           ]
-                        },
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "pixiv.pximg.net"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
                         {
                           "dynamic_upstreams": {
                             "source": "multi",
@@ -2898,7 +2814,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -2909,7 +2825,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -2949,12 +2865,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -2986,15 +2909,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -3004,7 +2918,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -3015,7 +2929,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -3055,12 +2969,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -3092,15 +3013,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -3110,7 +3022,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -3121,7 +3033,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -3161,12 +3073,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -3198,31 +3117,11 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
                               {
-                                "name": "api.fanbox.cc",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "api.fanbox.cc",
+                                "name": "raw.githubusercontent.com",
                                 "port": "443",
                                 "refresh": 10000000000,
                                 "resolver": {
@@ -3231,197 +3130,7 @@
                                   ]
                                 },
                                 "source": "a"
-                              }
-                            ]
-                          },
-                          "handler": "reverse_proxy",
-                          "headers": {
-                            "request": {
-                              "replace": {
-                                "@has_if_range": [
-                                  {
-                                    "replace": "{http.request.header.If-Range}",
-                                    "search_regexp": "If-Range"
-                                  }
-                                ],
-                                "@has_range": [
-                                  {
-                                    "replace": "{http.request.header.Range}",
-                                    "search_regexp": "Range"
-                                  }
-                                ]
                               },
-                              "set": {
-                                "Host": [
-                                  "{http.request.host}"
-                                ],
-                                "User-Agent": [
-                                  "{http.request.header.User-Agent}"
-                                ],
-                                "X-Real-Ip": [
-                                  "{http.request.remote.host}"
-                                ]
-                              }
-                            }
-                          },
-                          "health_checks": {
-                            "passive": {
-                              "fail_duration": 10000000000,
-                              "max_fails": 2
-                            }
-                          },
-                          "load_balancing": {
-                            "selection_policy": {
-                              "policy": "random"
-                            }
-                          },
-                          "transport": {
-                            "protocol": "http",
-                            "tls": {
-                              "insecure_skip_verify": true
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "match": [
-                {
-                  "host": [
-                    "api.fanbox.cc"
-                  ]
-                }
-              ],
-              "terminal": true
-            },
-            {
-              "handle": [
-                {
-                  "handler": "subroute",
-                  "routes": [
-                    {
-                      "handle": [
-                        {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
-                          "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "i.pximg.net",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "i.pximg.net",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
-                          },
-                          "handler": "reverse_proxy",
-                          "headers": {
-                            "request": {
-                              "replace": {
-                                "@has_if_range": [
-                                  {
-                                    "replace": "{http.request.header.If-Range}",
-                                    "search_regexp": "If-Range"
-                                  }
-                                ],
-                                "@has_range": [
-                                  {
-                                    "replace": "{http.request.header.Range}",
-                                    "search_regexp": "Range"
-                                  }
-                                ]
-                              },
-                              "set": {
-                                "Host": [
-                                  "{http.request.host}"
-                                ],
-                                "User-Agent": [
-                                  "{http.request.header.User-Agent}"
-                                ],
-                                "X-Real-Ip": [
-                                  "{http.request.remote.host}"
-                                ]
-                              }
-                            }
-                          },
-                          "health_checks": {
-                            "passive": {
-                              "fail_duration": 10000000000,
-                              "max_fails": 2
-                            }
-                          },
-                          "load_balancing": {
-                            "selection_policy": {
-                              "policy": "random"
-                            }
-                          },
-                          "transport": {
-                            "protocol": "http",
-                            "tls": {
-                              "insecure_skip_verify": true
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "match": [
-                {
-                  "host": [
-                    "i.pximg.net"
-                  ]
-                }
-              ],
-              "terminal": true
-            },
-            {
-              "handle": [
-                {
-                  "handler": "subroute",
-                  "routes": [
-                    {
-                      "handle": [
-                        {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
-                          "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
                               {
                                 "name": "raw.githubusercontent.com",
                                 "port": "443",
@@ -3432,17 +3141,6 @@
                                   ]
                                 },
                                 "source": "a"
-                              },
-                              {
-                                "name": "raw.githubusercontent.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
                               }
                             ]
                           },
@@ -3479,12 +3177,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -3518,15 +3223,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -3536,7 +3232,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -3547,7 +3243,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -3587,12 +3283,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -3625,52 +3328,11 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "group": "group36",
-                      "handle": [
-                        {
                           "handler": "subroute",
                           "routes": [
                             {
                               "handle": [
                                 {
-                                  "dynamic_upstreams": {
-                                    "source": "multi",
-                                    "sources": [
-                                      {
-                                        "name": "str004.steam302.xyz",
-                                        "port": "443",
-                                        "refresh": 10000000000,
-                                        "resolver": {
-                                          "addresses": [
-                                            "127.0.0.1:5370"
-                                          ]
-                                        },
-                                        "source": "a"
-                                      },
-                                      {
-                                        "name": "str004.steam302.xyz",
-                                        "port": "443",
-                                        "refresh": 10000000000,
-                                        "resolver": {
-                                          "addresses": [
-                                            "127.0.0.1:5365"
-                                          ]
-                                        },
-                                        "source": "a"
-                                      }
-                                    ]
-                                  },
                                   "handler": "reverse_proxy",
                                   "headers": {
                                     "request": {
@@ -3704,12 +3366,19 @@
                                   "health_checks": {
                                     "passive": {
                                       "fail_duration": 10000000000,
-                                      "max_fails": 2
+                                      "max_fails": 2,
+                                      "unhealthy_latency": 1000000000,
+                                      "unhealthy_status": [
+                                        500,
+                                        502,
+                                        503,
+                                        504
+                                      ]
                                     }
                                   },
                                   "load_balancing": {
                                     "selection_policy": {
-                                      "policy": "random"
+                                      "policy": "ip_hash"
                                     }
                                   },
                                   "transport": {
@@ -3718,7 +3387,21 @@
                                       "insecure_skip_verify": true,
                                       "server_name": "statuspage.akamaized.net"
                                     }
-                                  }
+                                  },
+                                  "upstreams": [
+                                    {
+                                      "dial": "str001.steam302.xyz:443"
+                                    },
+                                    {
+                                      "dial": "str002.steam302.xyz:443"
+                                    },
+                                    {
+                                      "dial": "str003.steam302.xyz:443"
+                                    },
+                                    {
+                                      "dial": "str004.steam302.xyz:443"
+                                    }
+                                  ]
                                 }
                               ]
                             }
@@ -3735,107 +3418,104 @@
                       ]
                     },
                     {
-                      "group": "group36",
                       "handle": [
                         {
-                          "handler": "subroute",
-                          "routes": [
-                            {
-                              "handle": [
-                                {
-                                  "handler": "reverse_proxy",
-                                  "headers": {
-                                    "request": {
-                                      "replace": {
-                                        "@has_if_range": [
-                                          {
-                                            "replace": "{http.request.header.If-Range}",
-                                            "search_regexp": "If-Range"
-                                          }
-                                        ],
-                                        "@has_range": [
-                                          {
-                                            "replace": "{http.request.header.Range}",
-                                            "search_regexp": "Range"
-                                          }
-                                        ]
-                                      },
-                                      "set": {
-                                        "Host": [
-                                          "{http.request.host}"
-                                        ],
-                                        "User-Agent": [
-                                          "{http.request.header.User-Agent}"
-                                        ],
-                                        "X-Real-Ip": [
-                                          "{http.request.remote.host}"
-                                        ]
-                                      }
-                                    }
-                                  },
-                                  "health_checks": {
-                                    "passive": {
-                                      "fail_duration": 10000000000,
-                                      "max_fails": 2
-                                    }
-                                  },
-                                  "load_balancing": {
-                                    "selection_policy": {
-                                      "policy": "random"
-                                    }
-                                  },
-                                  "transport": {
-                                    "protocol": "http",
-                                    "tls": {
-                                      "insecure_skip_verify": true
-                                    }
-                                  },
-                                  "upstreams": [
-                                    {
-                                      "dial": "23.51.204.175:443"
-                                    },
-                                    {
-                                      "dial": "23.1.179.144:443"
-                                    },
-                                    {
-                                      "dial": "96.7.99.225:443"
-                                    },
-                                    {
-                                      "dial": "104.69.160.135:443"
-                                    },
-                                    {
-                                      "dial": "104.71.154.102:443"
-                                    },
-                                    {
-                                      "dial": "104.76.74.15:443"
-                                    },
-                                    {
-                                      "dial": "104.91.87.202:443"
-                                    },
-                                    {
-                                      "dial": "118.215.187.181:443"
-                                    },
-                                    {
-                                      "dial": "173.222.146.99:443"
-                                    },
-                                    {
-                                      "dial": "184.85.112.102:443"
-                                    },
-                                    {
-                                      "dial": "184.87.103.42:443"
-                                    },
-                                    {
-                                      "dial": "23.36.106.129:443"
-                                    },
-                                    {
-                                      "dial": "23.41.142.46:443"
-                                    },
-                                    {
-                                      "dial": "23.51.142.168:443"
-                                    }
-                                  ]
-                                }
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
                               ]
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "ip_hash"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          },
+                          "upstreams": [
+                            {
+                              "dial": "23.51.204.175:443"
+                            },
+                            {
+                              "dial": "23.1.179.144:443"
+                            },
+                            {
+                              "dial": "96.7.99.225:443"
+                            },
+                            {
+                              "dial": "104.69.160.135:443"
+                            },
+                            {
+                              "dial": "104.71.154.102:443"
+                            },
+                            {
+                              "dial": "104.76.74.15:443"
+                            },
+                            {
+                              "dial": "104.91.87.202:443"
+                            },
+                            {
+                              "dial": "118.215.187.181:443"
+                            },
+                            {
+                              "dial": "173.222.146.99:443"
+                            },
+                            {
+                              "dial": "184.85.112.102:443"
+                            },
+                            {
+                              "dial": "184.87.103.42:443"
+                            },
+                            {
+                              "dial": "23.36.106.129:443"
+                            },
+                            {
+                              "dial": "23.41.142.46:443"
+                            },
+                            {
+                              "dial": "23.51.142.168:443"
                             }
                           ]
                         }
@@ -3862,42 +3542,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
-                          "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "pixiv.pximg.net",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "pixiv.pximg.net",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
-                          },
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
@@ -3931,12 +3575,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -3944,7 +3595,21 @@
                             "tls": {
                               "insecure_skip_verify": true
                             }
-                          }
+                          },
+                          "upstreams": [
+                            {
+                              "dial": "[2600:3c01::f03c:95ff:fe58:20d3]:443"
+                            },
+                            {
+                              "dial": "[2600:3c01::f03c:95ff:fee3:1156]:443"
+                            },
+                            {
+                              "dial": "96.126.98.220:443"
+                            },
+                            {
+                              "dial": "50.116.4.196:443"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -3954,8 +3619,8 @@
               "match": [
                 {
                   "host": [
-                    "pixiv.pximg.net",
-                    "*.pximg.net"
+                    "greasyfork.org",
+                    "*.greasyfork.org"
                   ]
                 }
               ],
@@ -3969,15 +3634,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -3987,7 +3643,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -3998,7 +3654,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -4038,12 +3694,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -4076,15 +3739,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
                           "dynamic_upstreams": {
                             "source": "multi",
                             "sources": [
@@ -4094,7 +3748,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -4105,7 +3759,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -4145,12 +3799,19 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
@@ -4183,14 +3844,110 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
                           },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "ip_hash"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true,
+                              "server_name": "pixivision.net"
+                            }
+                          },
+                          "upstreams": [
+                            {
+                              "dial": "210.140.139.135:443"
+                            },
+                            {
+                              "dial": "210.140.139.132:443"
+                            },
+                            {
+                              "dial": "210.140.139.137:443"
+                            },
+                            {
+                              "dial": "210.140.139.134:443"
+                            },
+                            {
+                              "dial": "210.140.139.131:443"
+                            },
+                            {
+                              "dial": "210.140.139.130:443"
+                            },
+                            {
+                              "dial": "210.140.139.129:443"
+                            },
+                            {
+                              "dial": "210.140.139.136:443"
+                            }
                           ]
-                        },
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "i.pximg.net",
+                    "*.pximg.net"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
                         {
                           "dynamic_upstreams": {
                             "source": "multi",
@@ -4201,7 +3958,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5370"
+                                    "127.0.0.1:5365"
                                   ]
                                 },
                                 "source": "a"
@@ -4212,7 +3969,7 @@
                                 "refresh": 10000000000,
                                 "resolver": {
                                   "addresses": [
-                                    "127.0.0.1:5365"
+                                    "127.0.0.1:5370"
                                   ]
                                 },
                                 "source": "a"
@@ -4252,18 +4009,26 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
                             "protocol": "http",
                             "tls": {
-                              "insecure_skip_verify": true
+                              "insecure_skip_verify": true,
+                              "server_name": "pixivision.net"
                             }
                           }
                         }
@@ -4290,42 +4055,6 @@
                     {
                       "handle": [
                         {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
-                          "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "pixiv.net",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "pixiv.net",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
-                          },
                           "handler": "reverse_proxy",
                           "headers": {
                             "request": {
@@ -4359,20 +4088,42 @@
                           "health_checks": {
                             "passive": {
                               "fail_duration": 10000000000,
-                              "max_fails": 2
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
                             }
                           },
                           "load_balancing": {
                             "selection_policy": {
-                              "policy": "random"
+                              "policy": "ip_hash"
                             }
                           },
                           "transport": {
                             "protocol": "http",
                             "tls": {
-                              "insecure_skip_verify": true
+                              "insecure_skip_verify": true,
+                              "server_name": "pixivision.net"
                             }
-                          }
+                          },
+                          "upstreams": [
+                            {
+                              "dial": "210.140.139.152:443"
+                            },
+                            {
+                              "dial": "210.140.139.155:443"
+                            },
+                            {
+                              "dial": "210.140.139.158:443"
+                            },
+                            {
+                              "dial": "210.140.139.161:443"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -4383,112 +4134,7 @@
                 {
                   "host": [
                     "pixiv.net",
-                    "*.pixiv.net"
-                  ]
-                }
-              ],
-              "terminal": true
-            },
-            {
-              "handle": [
-                {
-                  "handler": "subroute",
-                  "routes": [
-                    {
-                      "handle": [
-                        {
-                          "encodings": {
-                            "zstd": {}
-                          },
-                          "handler": "encode",
-                          "prefer": [
-                            "zstd"
-                          ]
-                        },
-                        {
-                          "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "fanbox.cc",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "fanbox.cc",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
-                          },
-                          "handler": "reverse_proxy",
-                          "headers": {
-                            "request": {
-                              "replace": {
-                                "@has_if_range": [
-                                  {
-                                    "replace": "{http.request.header.If-Range}",
-                                    "search_regexp": "If-Range"
-                                  }
-                                ],
-                                "@has_range": [
-                                  {
-                                    "replace": "{http.request.header.Range}",
-                                    "search_regexp": "Range"
-                                  }
-                                ]
-                              },
-                              "set": {
-                                "Host": [
-                                  "{http.request.host}"
-                                ],
-                                "User-Agent": [
-                                  "{http.request.header.User-Agent}"
-                                ],
-                                "X-Real-Ip": [
-                                  "{http.request.remote.host}"
-                                ]
-                              }
-                            }
-                          },
-                          "health_checks": {
-                            "passive": {
-                              "fail_duration": 10000000000,
-                              "max_fails": 2
-                            }
-                          },
-                          "load_balancing": {
-                            "selection_policy": {
-                              "policy": "random"
-                            }
-                          },
-                          "transport": {
-                            "protocol": "http",
-                            "tls": {
-                              "insecure_skip_verify": true
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "match": [
-                {
-                  "host": [
+                    "*.pixiv.net",
                     "fanbox.cc",
                     "*.fanbox.cc"
                   ]
@@ -4530,32 +4176,32 @@
                   "lc-event.pixiv.net",
                   "guides.github.com",
                   "pages.github.com",
-                  "source.pixiv.net",
                   "gist.github.com",
                   "docs.github.com",
+                  "pixiv.pximg.net",
                   "api.github.com",
                   "lfs.github.com",
                   "lab.github.com",
-                  "api.fanbox.cc",
-                  "i.pximg.net",
                   "*.githubusercontent.com",
                   "raw.githubusercontent.com",
                   "*.githubassets.com",
                   "www.githubassets.com",
                   "*.steamcommunity.com",
                   "steamcommunity.com",
-                  "*.pximg.net",
-                  "pixiv.pximg.net",
+                  "*.greasyfork.org",
+                  "greasyfork.org",
                   "*.github.io",
                   "www.github.io",
                   "*.github.com",
                   "github.com",
+                  "*.pximg.net",
+                  "i.pximg.net",
                   "*.pixiv.org",
                   "a.pixiv.org",
-                  "*.pixiv.net",
-                  "pixiv.net",
                   "*.fanbox.cc",
-                  "fanbox.cc"
+                  "*.pixiv.net",
+                  "fanbox.cc",
+                  "pixiv.net"
                 ]
               }
             },
@@ -4568,13 +4214,23 @@
       "certificates": {
         "load_files": [
           {
-            "certificate": "/nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt",
-            "key": "/nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key",
+            "certificate": "/nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt",
+            "key": "/nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key",
             "tags": [
               "cert0"
             ]
           }
         ]
+      }
+    }
+  },
+  "logging": {
+    "logs": {
+      "default": {
+        "encoder": {
+          "format": "console"
+        },
+        "level": "error"
       }
     }
   }

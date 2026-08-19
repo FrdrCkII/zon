@@ -1,265 +1,108 @@
 {
   pkgs ? import <nixpkgs> { },
-  lib ? import <nixpkgs/lib>,
+  lib ? pkgs.lib,
   ...
 }:
 let
   serverCA = ../ca/server.crt;
   serverKey = ../ca/server.key;
-
   tlsInfo = "tls ${serverCA} ${serverKey}";
 
-  caddyConfig = config: ''
-    {
-      default_bind 127.0.0.1
-      auto_https off
+  commonMatchers = ''
+    @has_range {
+        header Range *
     }
-    ${config}
+    @has_if_range {
+        header If-Range *
+    }
+  '';
+
+  commonProxySettings = ''
+    max_fails 2
+    fail_duration 10s
+    unhealthy_status 500 502 503 504
+    unhealthy_latency 1s
+    lb_policy ip_hash
+    header_up @has_range Range {http.request.header.Range}
+    header_up @has_if_range If-Range {http.request.header.If-Range}
+    header_up User-Agent {http.request.header.User-Agent}
+    header_up X-Real-IP {http.request.remote.host}
   '';
 
   mkDynamicResolvers = domain: ''
     dynamic multi {
-      a ${domain} 443 {
-        resolvers 127.0.0.1:5370
-        refresh 10s
-      }
-      a ${domain} 443 {
-        resolvers 127.0.0.1:5365
-        refresh 10s
-      }
-    }'';
+        a ${domain} 443 {
+            resolvers 127.0.0.1:5365
+            refresh 10s
+        }
+        a ${domain} 443 {
+            resolvers 127.0.0.1:5370
+            refresh 10s
+        }
+    }
+  '';
 
-  mkCaddyProxyGithub =
-    input:
+  mkStaticUpstreams = ips: lib.concatMapStringsSep "\n" (u: "to ${u}") (map (ip: "${ip}:443") ips);
+
+  mkProxySite =
+    {
+      domain,
+      altNames ? [ ],
+      ips ? null,
+      sni ? false,
+      handle ? "",
+    }:
     let
-      argLength = builtins.length input;
-      isNormal = builtins.isString input;
-
-      arg0 = if !isNormal then builtins.head input else input;
-      arg1 = if !isNormal && (argLength >= 2) then builtins.elemAt input 1 else null;
-      arg2 = if !isNormal && (argLength >= 3) then builtins.elemAt input 2 else null;
-
-      extra = if isNull arg1 then "" else ", " + (lib.concatMapStringsSep ", " (v: v) arg1);
-      allIp =
-        if isNull arg2 then
-          mkDynamicResolvers arg0
+      siteNames = lib.concatStringsSep ", " ([ domain ] ++ altNames);
+      upstreams = if ips == null then mkDynamicResolvers domain else mkStaticUpstreams ips;
+      sniLine =
+        if lib.isString sni then
+          ''"${sni}"''
+        else if sni then
+          "{http.request.host}"
         else
-          lib.concatMapStringsSep "\n  " (v: "to ${v}:443") arg2;
+          ''""'';
     in
     ''
-      ${arg0}${extra} {
-        encode zstd
+      ${siteNames} {
         ${tlsInfo}
+        ${commonMatchers}
+        ${handle}
         reverse_proxy {
-          ${allIp}
-          max_fails 2
-          fail_duration 10s
-          lb_policy random
+          ${upstreams}
           header_up Host {http.request.host}
-
-          @has_range { header Range * }
-          header_up @has_range Range {http.request.header.Range}
-          @has_if_range { header If-Range * }
-          header_up @has_if_range If-Range {http.request.header.If-Range}
-
-          header_up User-Agent {http.request.header.User-Agent}
-          header_up X-Real-IP {http.request.remote.host}
+          ${commonProxySettings}
           transport http {
-            tls
             tls_insecure_skip_verify
-            tls_server_name {http.request.host}
+            tls_server_name ${sniLine}
           }
         }
       }
     '';
 
-  mkCaddyProxyPixiv =
-    input:
-    let
-      argLength = builtins.length input;
-      isNormal = builtins.isString input;
+  sites =
+    (import ./sites/github.nix)
+    ++ (import ./sites/greasyfork.nix)
+    ++ (import ./sites/pixiv.nix)
+    ++ (import ./sites/steam.nix);
 
-      arg0 = if !isNormal then builtins.head input else input;
-      arg1 = if !isNormal && (argLength >= 2) then builtins.elemAt input 1 else null;
-      arg2 = if !isNormal && (argLength >= 3) then builtins.elemAt input 2 else null;
-
-      extra = if isNull arg1 then "" else ", " + (lib.concatMapStringsSep ", " (v: v) arg1);
-      allIp =
-        if isNull arg2 then
-          mkDynamicResolvers arg0
-        else
-          lib.concatMapStringsSep "\n  " (v: "to ${v}:443") arg2;
-    in
-    ''
-      ${arg0}${extra} {
-        encode zstd
-        ${tlsInfo}
-        reverse_proxy {
-          ${allIp}
-          max_fails 2
-          fail_duration 10s
-          lb_policy random
-          header_up Host {http.request.host}
-
-          @has_range { header Range * }
-          header_up @has_range Range {http.request.header.Range}
-          @has_if_range { header If-Range * }
-          header_up @has_if_range If-Range {http.request.header.If-Range}
-
-          header_up User-Agent {http.request.header.User-Agent}
-          header_up X-Real-IP {http.request.remote.host}
-          transport http {
-            tls
-            tls_insecure_skip_verify
-          }
-        }
-      }
-    '';
-
-  caddyFile = pkgs.writeText "caddyfile" (
-    caddyConfig (
-      (lib.concatMapStrings mkCaddyProxyPixiv [
-        "gist.github.com"
-        "codeload.github.com"
-        "api.github.com"
-        "lfs.github.com"
-        "redirect.github.com"
-        "copilot.github.com"
-        "services.github.com"
-        "community.github.com"
-        "education.github.com"
-        "enterprise.github.com"
-        "classroom.github.com"
-        "central.github.com"
-        "collector.github.com"
-        "lab.github.com"
-        "assets-cdn.github.com"
-        "pages.github.com"
-        "resources.github.com"
-        "developer.github.com"
-        "partner.github.com"
-        "desktop.github.com"
-        "guides.github.com"
-        "support.github.com"
-        "git-lfs.github.com"
-        "docs.github.com"
-        [
-          "github.com"
-          [ "*.github.com" ]
-        ]
-
-        "analytics.githubassets.com"
-        "avatars.githubusercontent.com"
-        "viewscreen.githubusercontent.com"
-        "user-images.githubusercontent.com"
-        [
-          "www.githubassets.com"
-          [ "*.githubassets.com" ]
-        ]
-
-        [
-          "www.github.io"
-          [ "*.github.io" ]
-        ]
-      ])
-      + (lib.concatMapStrings mkCaddyProxyGithub [
-        [
-          "raw.githubusercontent.com"
-          [ "*.githubusercontent.com" ]
-        ]
-      ])
-      + (lib.concatMapStrings mkCaddyProxyPixiv [
-        "source.pixiv.net"
-        "lc-event.pixiv.net"
-        [
-          "pixiv.net"
-          [ "*.pixiv.net" ]
-        ]
-
-        "api.fanbox.cc"
-        [
-          "fanbox.cc"
-          [ "*.fanbox.cc" ]
-        ]
-
-        "i.pximg.net"
-        [
-          "pixiv.pximg.net"
-          [ "*.pximg.net" ]
-        ]
-
-        [
-          "a.pixiv.org"
-          [ "*.pixiv.org" ]
-        ]
-      ])
-      + ''
-        steamcommunity.com, *.steamcommunity.com {
-            encode zstd
-            ${tlsInfo}
-            @forum expression path_regexp('.*(discussions|comment|forum).*')
-            handle @forum {
-                reverse_proxy {
-                    ${mkDynamicResolvers "str001.steam302.xyz"}
-                    ${mkDynamicResolvers "str002.steam302.xyz"}
-                    ${mkDynamicResolvers "str003.steam302.xyz"}
-                    ${mkDynamicResolvers "str004.steam302.xyz"}
-                    max_fails 2
-                    fail_duration 10s
-                    lb_policy random
-                    header_up Host "steamcommunity.com"
-
-                    @has_range { header Range * }
-                    header_up @has_range Range {http.request.header.Range}
-                    @has_if_range { header If-Range * }
-                    header_up @has_if_range If-Range {http.request.header.If-Range}
-
-                    header_up User-Agent "{http.request.header.User-Agent} Googlebot/2.1 (+http://www.google.com/bot.html)"
-                    header_up X-Real-IP {http.request.remote.host}
-                    transport http {
-                        tls
-                        tls_insecure_skip_verify
-                        tls_server_name statuspage.akamaized.net
-                    }
-                }
-            }
-            handle {
-                reverse_proxy {
-                    to 23.51.204.175:443 23.1.179.144:443 96.7.99.225:443
-                    to 104.69.160.135:443 104.71.154.102:443 104.76.74.15:443
-                    to 104.91.87.202:443 118.215.187.181:443 173.222.146.99:443
-                    to 184.85.112.102:443 184.87.103.42:443 23.36.106.129:443
-                    to 23.41.142.46:443 23.51.142.168:443
-                    max_fails 2
-                    fail_duration 10s
-                    lb_policy random
-                    header_up Host {http.request.host}
-
-                    @has_range { header Range * }
-                    header_up @has_range Range {http.request.header.Range}
-                    @has_if_range { header If-Range * }
-                    header_up @has_if_range If-Range {http.request.header.If-Range}
-
-                    header_up User-Agent {http.request.header.User-Agent}
-                    header_up X-Real-IP {http.request.remote.host}
-                    transport http {
-                        tls
-                        tls_insecure_skip_verify
-                        tls_server_name ""
-                    }
-                }
-            }
-        }
-      ''
-    )
-  );
+  caddyFile = pkgs.writeText "caddyfile" ''
+    {
+    	default_bind 127.0.0.1
+    	log {
+    		level error
+    		format console
+    	}
+    }
+    ${lib.concatMapStringsSep "\n" mkProxySite sites}
+  '';
 in
 {
   shell = pkgs.mkShell {
     shellHook = ''
       cat ${caddyFile} > ./caddyfile
       ${lib.getExe pkgs.caddy} fmt --overwrite ./caddyfile
-      ${lib.getExe pkgs.caddy} adapt --config ./caddyfile --adapter caddyfile | jq -S > caddy.json
+      ${lib.getExe pkgs.caddy} adapt --config ./caddyfile --adapter caddyfile | ${lib.getExe pkgs.jq} -S > caddy.json
       exit
     '';
   };

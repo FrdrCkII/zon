@@ -17,5 +17,5 @@ commonName = PPROXY
 basicConstraints = CA:FALSE
 keyUsage = digitalSignature, keyEncipherment
 extendedKeyUsage = serverAuth, clientAuth
-subjectAltName = IP:127.0.0.1, DNS:localhost, DNS:github.com, DNS:githubusercontent.com, DNS:githubassets.com, DNS:github.io, DNS:steamcommunity.com, DNS:pixiv.net, DNS:pixivsketch.net, DNS:pximg.net, DNS:*.github.com, DNS:*.githubusercontent.com, DNS:*.githubassets.com, DNS:*.github.io, DNS:*.steamcommunity.com, DNS:*.pixiv.net, DNS:*.pixivsketch.net, DNS:*.pximg.net
+subjectAltName = IP:127.0.0.1, DNS:localhost, DNS:github.com, DNS:githubusercontent.com, DNS:githubassets.com, DNS:github.io, DNS:steamcommunity.com, DNS:pixiv.net, DNS:pixivsketch.net, DNS:pximg.net, DNS:*.github.com, DNS:*.githubusercontent.com, DNS:*.githubassets.com, DNS:*.github.io, DNS:*.steamcommunity.com, DNS:*.pixiv.net, DNS:*.pixivsketch.net, DNS:*.pximg.net, DNS:greasyfork.org, DNS:*.greasyfork.org
 subjectKeyIdentifier = hash

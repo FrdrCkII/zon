@@ -1,1545 +1,1527 @@
 {
 	default_bind 127.0.0.1
-	auto_https off
+	log {
+		level error
+		format console
+	}
 }
 gist.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a gist.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a gist.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a gist.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 codeload.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a codeload.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a codeload.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a codeload.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 api.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a api.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a api.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a api.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 lfs.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a lfs.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a lfs.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a lfs.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 redirect.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a redirect.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a redirect.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a redirect.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 copilot.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a copilot.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a copilot.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a copilot.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 services.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a services.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a services.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a services.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 community.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a community.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a community.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a community.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 education.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a education.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a education.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a education.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 enterprise.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a enterprise.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a enterprise.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a enterprise.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 classroom.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a classroom.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a classroom.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a classroom.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 central.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a central.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a central.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a central.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 collector.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a collector.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a collector.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a collector.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 lab.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a lab.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a lab.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a lab.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 assets-cdn.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a assets-cdn.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a assets-cdn.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a assets-cdn.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 pages.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a pages.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a pages.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a pages.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 resources.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a resources.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a resources.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a resources.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 developer.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a developer.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a developer.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a developer.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 partner.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a partner.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a partner.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a partner.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 desktop.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a desktop.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a desktop.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a desktop.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 guides.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a guides.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a guides.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a guides.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 support.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a support.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a support.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a support.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 git-lfs.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a git-lfs.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a git-lfs.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a git-lfs.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 docs.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a docs.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a docs.github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a docs.github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 github.com, *.github.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a github.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a github.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 analytics.githubassets.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a analytics.githubassets.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a analytics.githubassets.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a analytics.githubassets.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 avatars.githubusercontent.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a avatars.githubusercontent.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a avatars.githubusercontent.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a avatars.githubusercontent.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 viewscreen.githubusercontent.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a viewscreen.githubusercontent.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a viewscreen.githubusercontent.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a viewscreen.githubusercontent.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 user-images.githubusercontent.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a user-images.githubusercontent.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a user-images.githubusercontent.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a user-images.githubusercontent.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 www.githubassets.com, *.githubassets.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a www.githubassets.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a www.githubassets.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
-		}
-		max_fails 2
-		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
-		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
-		header_up @has_if_range If-Range {http.request.header.If-Range}
-
-		header_up User-Agent {http.request.header.User-Agent}
-		header_up X-Real-IP {http.request.remote.host}
-		transport http {
-			tls
-			tls_insecure_skip_verify
-		}
-	}
-}
-www.github.io, *.github.io {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
-	reverse_proxy {
-		dynamic multi {
-			a www.github.io 443 {
+			a www.githubassets.com 443 {
 				resolvers 127.0.0.1:5370
 				refresh 10s
 			}
-			a www.github.io 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
 raw.githubusercontent.com, *.githubusercontent.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a raw.githubusercontent.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a raw.githubusercontent.com 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a raw.githubusercontent.com 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
 			tls_server_name {http.request.host}
 		}
 	}
 }
-source.pixiv.net {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+
+www.github.io, *.github.io {
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a source.pixiv.net 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
-			a source.pixiv.net 443 {
+			a www.github.io 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a www.github.io 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }
+
+greasyfork.org, *.greasyfork.org {
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
+	reverse_proxy {
+		to [2600:3c01::f03c:95ff:fe58:20d3]:443
+		to [2600:3c01::f03c:95ff:fee3:1156]:443
+		to 96.126.98.220:443
+		to 50.116.4.196:443
+		header_up Host {http.request.host}
+		max_fails 2
+		fail_duration 10s
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
+		header_up @has_range Range {http.request.header.Range}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+
+		transport http {
+			tls_insecure_skip_verify
+			tls_server_name ""
+		}
+	}
+}
+
 lc-event.pixiv.net {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
-		dynamic multi {
-			a lc-event.pixiv.net 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
-			a lc-event.pixiv.net 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-		}
+		to 210.140.139.185:443
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name "pixivision.net"
 		}
 	}
 }
-pixiv.net, *.pixiv.net {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+
+pixiv.net, *.pixiv.net, fanbox.cc, *.fanbox.cc {
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
-		dynamic multi {
-			a pixiv.net 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
-			a pixiv.net 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-		}
+		to 210.140.139.152:443
+		to 210.140.139.155:443
+		to 210.140.139.158:443
+		to 210.140.139.161:443
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name "pixivision.net"
 		}
 	}
 }
-api.fanbox.cc {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+
+pixiv.pximg.net {
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
-		dynamic multi {
-			a api.fanbox.cc 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
-			a api.fanbox.cc 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-		}
+		to 210.140.139.135:443
+		to 210.140.139.132:443
+		to 210.140.139.137:443
+		to 210.140.139.134:443
+		to 210.140.139.131:443
+		to 210.140.139.133:443
+		to 210.140.139.130:443
+		to 210.140.139.129:443
+		to 210.140.139.136:443
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name "pixivision.net"
 		}
 	}
 }
-fanbox.cc, *.fanbox.cc {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+
+i.pximg.net, *.pximg.net {
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
-		dynamic multi {
-			a fanbox.cc 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
-			a fanbox.cc 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-		}
+		to 210.140.139.135:443
+		to 210.140.139.132:443
+		to 210.140.139.137:443
+		to 210.140.139.134:443
+		to 210.140.139.131:443
+		to 210.140.139.130:443
+		to 210.140.139.129:443
+		to 210.140.139.136:443
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name "pixivision.net"
 		}
 	}
 }
-i.pximg.net {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
-	reverse_proxy {
-		dynamic multi {
-			a i.pximg.net 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
-			a i.pximg.net 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-		}
-		max_fails 2
-		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
 
-		@has_range {
-			header Range *
-		}
-		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
-		header_up @has_if_range If-Range {http.request.header.If-Range}
-
-		header_up User-Agent {http.request.header.User-Agent}
-		header_up X-Real-IP {http.request.remote.host}
-		transport http {
-			tls
-			tls_insecure_skip_verify
-		}
-	}
-}
-pixiv.pximg.net, *.pximg.net {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
-	reverse_proxy {
-		dynamic multi {
-			a pixiv.pximg.net 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
-			a pixiv.pximg.net 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-		}
-		max_fails 2
-		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
-		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
-		header_up @has_if_range If-Range {http.request.header.If-Range}
-
-		header_up User-Agent {http.request.header.User-Agent}
-		header_up X-Real-IP {http.request.remote.host}
-		transport http {
-			tls
-			tls_insecure_skip_verify
-		}
-	}
-}
 a.pixiv.org, *.pixiv.org {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	reverse_proxy {
 		dynamic multi {
-			a a.pixiv.org 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
 			a a.pixiv.org 443 {
 				resolvers 127.0.0.1:5365
 				refresh 10s
 			}
+			a a.pixiv.org 443 {
+				resolvers 127.0.0.1:5370
+				refresh 10s
+			}
 		}
+
+		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
-		lb_policy random
-		header_up Host {http.request.host}
-
-		@has_range {
-			header Range *
-		}
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
 		header_up @has_range Range {http.request.header.Range}
-		@has_if_range {
-			header If-Range *
-		}
 		header_up @has_if_range If-Range {http.request.header.If-Range}
-
 		header_up User-Agent {http.request.header.User-Agent}
 		header_up X-Real-IP {http.request.remote.host}
+
 		transport http {
-			tls
 			tls_insecure_skip_verify
+			tls_server_name "pixivision.net"
 		}
 	}
 }
+
 steamcommunity.com, *.steamcommunity.com {
-	encode zstd
-	tls /nix/store/gvanqpszzmndvji9fqcmjrzjdkj32xgq-server.crt /nix/store/7mcy5xlvhifppa82gamhc9sn0wiw4g3m-server.key
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
 	@forum expression path_regexp('.*(discussions|comment|forum).*')
 	handle @forum {
 		reverse_proxy {
-			dynamic multi {
-				a str001.steam302.xyz 443 {
-					resolvers 127.0.0.1:5370
-					refresh 10s
-				}
-				a str001.steam302.xyz 443 {
-					resolvers 127.0.0.1:5365
-					refresh 10s
-				}
-			}
-			dynamic multi {
-				a str002.steam302.xyz 443 {
-					resolvers 127.0.0.1:5370
-					refresh 10s
-				}
-				a str002.steam302.xyz 443 {
-					resolvers 127.0.0.1:5365
-					refresh 10s
-				}
-			}
-			dynamic multi {
-				a str003.steam302.xyz 443 {
-					resolvers 127.0.0.1:5370
-					refresh 10s
-				}
-				a str003.steam302.xyz 443 {
-					resolvers 127.0.0.1:5365
-					refresh 10s
-				}
-			}
-			dynamic multi {
-				a str004.steam302.xyz 443 {
-					resolvers 127.0.0.1:5370
-					refresh 10s
-				}
-				a str004.steam302.xyz 443 {
-					resolvers 127.0.0.1:5365
-					refresh 10s
-				}
-			}
+			to str001.steam302.xyz:443
+			to str002.steam302.xyz:443
+			to str003.steam302.xyz:443
+			to str004.steam302.xyz:443
+			header_up Host "steamcommunity.com"
 			max_fails 2
 			fail_duration 10s
-			lb_policy random
-			header_up Host "steamcommunity.com"
-
-			@has_range {
-				header Range *
-			}
+			unhealthy_status 500 502 503 504
+			unhealthy_latency 1s
+			lb_policy ip_hash
 			header_up @has_range Range {http.request.header.Range}
-			@has_if_range {
-				header If-Range *
-			}
 			header_up @has_if_range If-Range {http.request.header.If-Range}
+			header_up User-Agent {http.request.header.User-Agent}
+			header_up X-Real-IP {http.request.remote.host}
 
 			header_up User-Agent "{http.request.header.User-Agent} Googlebot/2.1 (+http://www.google.com/bot.html)"
-			header_up X-Real-IP {http.request.remote.host}
 			transport http {
-				tls
 				tls_insecure_skip_verify
 				tls_server_name statuspage.akamaized.net
 			}
 		}
 	}
-	handle {
-		reverse_proxy {
-			to 23.51.204.175:443 23.1.179.144:443 96.7.99.225:443
-			to 104.69.160.135:443 104.71.154.102:443 104.76.74.15:443
-			to 104.91.87.202:443 118.215.187.181:443 173.222.146.99:443
-			to 184.85.112.102:443 184.87.103.42:443 23.36.106.129:443
-			to 23.41.142.46:443 23.51.142.168:443
-			max_fails 2
-			fail_duration 10s
-			lb_policy random
-			header_up Host {http.request.host}
 
-			@has_range {
-				header Range *
-			}
-			header_up @has_range Range {http.request.header.Range}
-			@has_if_range {
-				header If-Range *
-			}
-			header_up @has_if_range If-Range {http.request.header.If-Range}
+	reverse_proxy {
+		to 23.51.204.175:443
+		to 23.1.179.144:443
+		to 96.7.99.225:443
+		to 104.69.160.135:443
+		to 104.71.154.102:443
+		to 104.76.74.15:443
+		to 104.91.87.202:443
+		to 118.215.187.181:443
+		to 173.222.146.99:443
+		to 184.85.112.102:443
+		to 184.87.103.42:443
+		to 23.36.106.129:443
+		to 23.41.142.46:443
+		to 23.51.142.168:443
+		header_up Host {http.request.host}
+		max_fails 2
+		fail_duration 10s
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
+		header_up @has_range Range {http.request.header.Range}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
 
-			header_up User-Agent {http.request.header.User-Agent}
-			header_up X-Real-IP {http.request.remote.host}
-			transport http {
-				tls
-				tls_insecure_skip_verify
-				tls_server_name ""
-			}
+		transport http {
+			tls_insecure_skip_verify
+			tls_server_name ""
 		}
 	}
 }

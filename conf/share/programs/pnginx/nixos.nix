@@ -42,7 +42,7 @@ in
 
   systemd.services = {
     pproxy = {
-      description = "Nginx Web Server";
+      description = "Proxy Server";
       wantedBy = [ "multi-user.target" ];
       wants = [ "network-online.target" ];
       after = [ "network-online.target" ];

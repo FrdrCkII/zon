@@ -103,7 +103,7 @@ in
           (ext (moz "privacy-pass") "{48748554-4c01-49e8-94af-79662bf34d50}")
           (ext (moz "chrome-mask") "chrome-mask@overengineer.dev")
           (ext (moz "kiss-translator") "{fb25c100-22ce-4d5a-be7e-75f3d6f0fc13}")
-          (ext (moz "tampermonkey") "firefox@tampermonkey.net")
+          (ext (moz "scriptcat") "{8e515334-52b5-4cc5-b4e8-675d50af677d}")
           (ext (moz "darkreader") "addon@darkreader.org")
           (ext (moz "markdown-reader-ext") "{f3ee08f8-d4d8-4095-8096-4bb784d082f9}")
           (ext (moz "aria2-extension") "baptistecdr@users.noreply.github.com")
