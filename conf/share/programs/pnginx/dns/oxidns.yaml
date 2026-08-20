@@ -1,0 +1,327 @@
+log:
+  level: warn
+
+api:
+  http: "127.0.0.1:8010"
+
+network:
+  outbound:
+    default: bootstrap
+    profiles:
+      bootstrap:
+        resolver:
+          nameservers:
+            - addr: udp://119.29.29.29:53
+            - addr: udp://119.28.28.28:53
+            - addr: udp://233.6.6.6:53
+            - addr: udp://233.5.5.5:53
+          ip_version: 4
+          timeout: 5s
+          proxy: none
+        proxy: none
+
+plugins:
+  # ---------- 定时更新订阅与规则 ----------
+  - tag: subscription_cron
+    type: cron
+    args:
+      timezone: Asia/Shanghai
+      jobs:
+        - name: refresh_rule_subscriptions
+          interval: 24h
+          executors:
+            - $subscription_refresh
+
+  - tag: subscription_refresh
+    type: sequence
+    args:
+      - exec: $subscription_download
+      - exec: $reload_rule_providers
+
+  - tag: subscription_download
+    type: download
+    args:
+      timeout: 60s
+      startup_if_missing: true
+      outbound: bootstrap
+      downloads:
+        - url: https://fastly.jsdelivr.net/gh/pmkol/easymosdns@rules/gfw_ip_list.txt
+          dir: ./rules
+          filename: gfw_ip.txt
+        - url: https://anti-ad.net/adguard.txt
+          dir: ./rules
+          filename: adguard.txt
+        - url: https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
+          dir: ./rules
+          filename: geosite.dat
+        - url: https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/geoip-only-cn-private.dat
+          dir: ./rules
+          filename: geoip.dat
+
+  - tag: reload_rule_providers
+    type: reload_provider
+    args:
+      - $geoip_cn
+      - $geosite_cn
+      - $geosite_no_cn
+      - $category_ads_all
+      - $ad_rules
+
+  # ---------- 规则提供者 ----------
+  - tag: gfw_ip
+    type: ip_set
+    args:
+      files:
+        - ./rules/gfw_ip.txt
+
+  - tag: ad_rules
+    type: adguard_rule
+    args:
+      files:
+        - ./rules/adguard.txt
+
+  - tag: geoip_cn
+    type: geoip
+    args:
+      file: ./rules/geoip.dat
+      selectors:
+        - cn
+
+  - tag: geosite_cn
+    type: geosite
+    args:
+      file: ./rules/geosite.dat
+      selectors:
+        - cn
+
+  - tag: geosite_no_cn
+    type: geosite
+    args:
+      file: ./rules/geosite.dat
+      selectors:
+        - geolocation-!cn
+
+  - tag: category_ads_all
+    type: geosite
+    args:
+      file: ./rules/geosite.dat
+      selectors:
+        - category-ads-all
+        - win-spy
+        # - win-update
+        - win-extra
+
+  # 本地反代域名
+  - tag: local_reverse_domains
+    type: domain_set
+    args:
+      exps:
+        - github.com
+        - githubusercontent.com
+        - githubassets.com
+        - github.io
+        - steamcommunity.com
+        - pixiv.net
+        - pixivsketch.net
+        - pximg.net
+        - greasyfork.org
+
+  - tag: ecscn
+    type: domain_set
+    args:
+      exps: []
+
+  - tag: ecs_noncn
+    type: domain_set
+    args:
+      exps: []
+
+  - tag: local_ptr
+    type: domain_set
+    args:
+      exps: []
+
+  - tag: hosts
+    type: hosts
+    args:
+      short_circuit: false
+
+  # ---------- 执行器 ----------
+  - tag: local_reverse_blackhole
+    type: black_hole
+    args:
+      ips:
+        - 127.0.0.1
+      short_circuit: true
+
+  - tag: ad_blackhole
+    type: black_hole
+    args:
+      ips:
+        - 0.0.0.0
+        - "::"
+      short_circuit: true
+
+  - tag: rate_limit
+    type: rate_limiter
+    args:
+      qps: 200
+      burst: 400
+      mask4: 32
+      mask6: 48
+
+  - tag: lazy_cache
+    type: cache
+    args:
+      size: 15000
+      short_circuit: false
+      lazy_cache_ttl: 86400
+      cache_negative: true
+      max_negative_ttl: 300
+      negative_ttl_without_soa: 60
+      max_positive_ttl: 3600
+      ecs_in_key: false
+      dump_file: ./rules/dns_cache.dump
+      dump_interval: 3600
+
+  - tag: query_recorder_main
+    type: query_recorder
+    args:
+      path: ./rules/query-recorder-main.sqlite
+      queue_size: 8192
+      batch_size: 256
+      flush_interval_ms: 200
+      memory_tail: 1024
+      retention_days: 3
+      cleanup_interval_hours: 1
+      
+  - tag: forward_remote
+    type: forward
+    args:
+      concurrent: 1
+      outbound: bootstrap
+      upstreams:
+        - addr: https://dns.google/dns-query
+        - addr: https://dns.cloudflare.com/dns-query
+
+  - tag: forward_local
+    type: forward
+    args:
+      concurrent: 1
+      outbound: bootstrap
+      upstreams:
+        - addr: https://doh.pub/dns-query
+        - addr: https://dns.alidns.com/dns-query
+
+  - tag: forward_bootstrap
+    type: forward
+    args:
+      concurrent: 1
+      upstreams:
+        - addr: udp://119.29.29.29:53
+        - addr: udp://119.28.28.28:53
+        - addr: udp://233.6.6.6:53
+        - addr: udp://233.5.5.5:53
+        
+  # ---------- 策略序列 ----------
+  - tag: block_seq
+    type: sequence
+    args:
+      - matches: qtype 65 255
+        exec: reject 0
+      - matches: qname $category_ads_all
+        exec: $ad_blackhole
+      - matches: qname $ad_rules
+        exec: $ad_blackhole
+      - matches: qname $local_ptr
+        exec: reject 3
+
+  - tag: local_seq
+    type: sequence
+    args:
+      - exec: $forward_local
+      - matches: has_resp
+        exec: accept
+      - exec: $forward_bootstrap
+      - matches: has_resp
+        exec: accept
+      - exec: ttl 300
+      
+  - tag: remote_seq
+    type: sequence
+    args:
+      - exec: prefer_ipv4
+      - exec: $forward_remote
+      - matches: has_resp
+        exec: accept
+      - exec: $forward_local
+      - matches: has_resp
+        exec: accept
+      - exec: $forward_bootstrap
+      - matches: has_resp
+        exec: accept
+      - exec: ttl 300
+
+  - tag: common_seq
+    type: sequence
+    args:
+      - exec: $query_recorder_main
+      - matches: "!$rate_limit"
+        exec: reject 3
+      - exec: $hosts
+      - matches: has_resp
+        exec: accept
+      - exec: jump block_seq
+      - exec: $lazy_cache
+      - matches: has_resp
+        exec: accept
+      - matches: qname $ecscn
+        exec: $forward_local
+      - matches: has_resp
+        exec: accept
+      - matches: qname $ecs_noncn
+        exec: $forward_remote
+      - matches: has_resp
+        exec: accept
+      - matches: qname $geosite_cn
+        exec: goto local_seq
+      # - matches: qname $geosite_no_cn
+      #   exec: goto remote_seq
+      - exec: goto local_seq
+
+  - tag: seq_53
+    type: sequence
+    args:
+      - matches: qname $local_reverse_domains
+        exec: $local_reverse_blackhole
+      - exec: goto common_seq
+
+  - tag: seq_5360
+    type: sequence
+    args:
+      - exec: goto common_seq
+
+  # ---------- 监听服务 ----------
+  - tag: udp_server_53
+    type: udp_server
+    args:
+      entry: seq_53
+      listen: "127.0.0.1:53"
+
+  - tag: tcp_server_53
+    type: tcp_server
+    args:
+      entry: seq_53
+      listen: "127.0.0.1:53"
+
+  - tag: udp_server_5360
+    type: udp_server
+    args:
+      entry: seq_5360
+      listen: "127.0.0.1:5360"
+
+  - tag: tcp_server_5360
+    type: tcp_server
+    args:
+      entry: seq_5360
+      listen: "127.0.0.1:5360"

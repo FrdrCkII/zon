@@ -30,15 +30,9 @@ let
   '';
 
   mkDynamicResolvers = domain: ''
-    dynamic multi {
-        a ${domain} 443 {
-            resolvers 127.0.0.1:5365
-            refresh 10s
-        }
-        a ${domain} 443 {
-            resolvers 127.0.0.1:5370
-            refresh 10s
-        }
+    dynamic a ${domain} 443 {
+      resolvers 127.0.0.1:5360
+      refresh 1s
     }
   '';
 

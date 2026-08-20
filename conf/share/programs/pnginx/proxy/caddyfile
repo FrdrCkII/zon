@@ -15,15 +15,9 @@ gist.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a gist.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a gist.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a gist.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -54,15 +48,9 @@ codeload.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a codeload.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a codeload.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a codeload.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -93,15 +81,9 @@ api.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a api.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a api.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a api.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -132,15 +114,9 @@ lfs.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a lfs.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a lfs.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a lfs.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -171,15 +147,9 @@ redirect.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a redirect.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a redirect.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a redirect.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -210,15 +180,9 @@ copilot.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a copilot.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a copilot.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a copilot.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -249,15 +213,9 @@ services.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a services.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a services.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a services.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -288,15 +246,9 @@ community.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a community.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a community.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a community.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -327,15 +279,9 @@ education.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a education.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a education.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a education.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -366,15 +312,9 @@ enterprise.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a enterprise.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a enterprise.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a enterprise.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -405,15 +345,9 @@ classroom.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a classroom.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a classroom.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a classroom.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -444,15 +378,9 @@ central.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a central.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a central.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a central.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -483,15 +411,9 @@ collector.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a collector.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a collector.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a collector.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -522,15 +444,9 @@ lab.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a lab.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a lab.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a lab.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -561,15 +477,9 @@ assets-cdn.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a assets-cdn.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a assets-cdn.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a assets-cdn.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -600,15 +510,9 @@ pages.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a pages.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a pages.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a pages.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -639,15 +543,9 @@ resources.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a resources.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a resources.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a resources.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -678,15 +576,9 @@ developer.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a developer.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a developer.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a developer.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -717,15 +609,9 @@ partner.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a partner.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a partner.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a partner.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -756,15 +642,9 @@ desktop.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a desktop.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a desktop.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a desktop.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -795,15 +675,9 @@ guides.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a guides.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a guides.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a guides.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -834,15 +708,9 @@ support.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a support.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a support.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a support.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -873,15 +741,9 @@ git-lfs.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a git-lfs.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a git-lfs.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a git-lfs.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -912,15 +774,9 @@ docs.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a docs.github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a docs.github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a docs.github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -951,15 +807,9 @@ github.com, *.github.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a github.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a github.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a github.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -990,15 +840,9 @@ analytics.githubassets.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a analytics.githubassets.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a analytics.githubassets.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a analytics.githubassets.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -1029,15 +873,9 @@ avatars.githubusercontent.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a avatars.githubusercontent.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a avatars.githubusercontent.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a avatars.githubusercontent.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -1068,15 +906,9 @@ viewscreen.githubusercontent.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a viewscreen.githubusercontent.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a viewscreen.githubusercontent.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a viewscreen.githubusercontent.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -1107,15 +939,9 @@ user-images.githubusercontent.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a user-images.githubusercontent.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a user-images.githubusercontent.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a user-images.githubusercontent.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -1146,15 +972,9 @@ www.githubassets.com, *.githubassets.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a www.githubassets.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a www.githubassets.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a www.githubassets.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -1185,15 +1005,9 @@ raw.githubusercontent.com, *.githubusercontent.com {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a raw.githubusercontent.com 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a raw.githubusercontent.com 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a raw.githubusercontent.com 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -1224,15 +1038,9 @@ www.github.io, *.github.io {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a www.github.io 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a www.github.io 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a www.github.io 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}
@@ -1429,15 +1237,9 @@ a.pixiv.org, *.pixiv.org {
 	}
 
 	reverse_proxy {
-		dynamic multi {
-			a a.pixiv.org 443 {
-				resolvers 127.0.0.1:5365
-				refresh 10s
-			}
-			a a.pixiv.org 443 {
-				resolvers 127.0.0.1:5370
-				refresh 10s
-			}
+		dynamic a a.pixiv.org 443 {
+			resolvers 127.0.0.1:5360
+			refresh 1s
 		}
 
 		header_up Host {http.request.host}

@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -9,104 +10,158 @@ let
   proxy = ./proxy;
   proxyPackage = pkgs.caddy;
   proxyConfig = (import proxy { inherit pkgs lib; }).file;
+  cfg = config.services.pproxy;
 in
 {
-  networking = {
-    dhcpcd.extraConfig = "nohook resolv.conf";
-    wireless.iwd.settings.Network.NameResolvingService = "none";
-    networkmanager.dns = "none";
+  options.services.pproxy = {
+    dns = lib.mkOption {
+      default = "smartdns";
+      type = lib.types.enum [
+        "smartdns"
+        "oxidns"
+      ];
+    };
   };
 
-  environment = {
-    systemPackages = [
-      proxyPackage
-      pkgs.openssl
-      pkgs.netcat
-      pkgs.bind
-    ];
-  };
+  config = {
+    networking = {
+      dhcpcd.extraConfig = "nohook resolv.conf";
+      wireless.iwd.settings.Network.NameResolvingService = "none";
+      networkmanager.dns = "none";
+    };
 
-  security = {
-    pki.certificateFiles = [ "${ca}/rootCA.crt" ];
-  };
+    environment = {
+      systemPackages = [
+        proxyPackage
+        pkgs.oxidns
+        pkgs.openssl
+        pkgs.netcat
+        pkgs.bind
+      ];
+    };
 
-  users = {
-    groups.pproxy = { };
+    security = {
+      pki.certificateFiles = [ "${ca}/rootCA.crt" ];
+    };
+
     users = {
+      groups.pproxy = { };
+      users = {
+        pproxy = {
+          isSystemUser = true;
+          group = "pproxy";
+        };
+      };
+    };
+
+    systemd.services = {
       pproxy = {
-        isSystemUser = true;
-        group = "pproxy";
+        description = "Proxy Server";
+        wantedBy = [ "multi-user.target" ];
+        wants = [ "network-online.target" ];
+        after = [ "network-online.target" ];
+        serviceConfig = {
+          ExecStart = "${lib.getExe proxyPackage} run --config '${proxyConfig}/caddy.json'";
+          Restart = "always";
+          RestartSec = 2;
+          TimeoutStopSec = 15;
+          UMask = "0027";
+          User = "pproxy";
+          Group = "pproxy";
+          AmbientCapabilities = [
+            "CAP_NET_BIND_SERVICE"
+            "CAP_SYS_RESOURCE"
+          ];
+          CapabilityBoundingSet = [
+            "CAP_NET_BIND_SERVICE"
+            "CAP_SYS_RESOURCE"
+          ];
+        };
+        unitConfig = {
+          StartLimitBurst = 5;
+          StartLimitInterval = 30;
+        };
       };
-    };
-  };
-
-  systemd.services = {
-    pproxy = {
-      description = "Proxy Server";
-      wantedBy = [ "multi-user.target" ];
-      wants = [ "network-online.target" ];
-      after = [ "network-online.target" ];
-      serviceConfig = {
-        ExecStart = "${lib.getExe proxyPackage} run --config '${proxyConfig}/caddy.json'";
-        Restart = "always";
-        RestartSec = 2;
-        TimeoutStopSec = 15;
-        UMask = "0027";
-        User = "pproxy";
-        Group = "pproxy";
-        AmbientCapabilities = [
-          "CAP_NET_BIND_SERVICE"
-          "CAP_SYS_RESOURCE"
+    }
+    // lib.optionalAttrs (cfg.dns == "smartdns") {
+      smartdns = {
+        description = "SmartDNS Server";
+        wantedBy = [ "multi-user.target" ];
+        wants = [ "nss-lookup.target" ];
+        after = [ "network.target" ];
+        before = [
+          "network-online.target"
+          "nss-lookup.target"
         ];
-        CapabilityBoundingSet = [
-          "CAP_NET_BIND_SERVICE"
-          "CAP_SYS_RESOURCE"
+        path = [
+          pkgs.gzip
         ];
+        serviceConfig = {
+          ExecStart = "${lib.getExe pkgs.smartdns} -p - -c ${dns}/smartdns.conf";
+          Restart = "always";
+          RestartSec = 2;
+          TimeoutStopSec = 15;
+          RuntimeDirectory = "smartdns";
+          RuntimeDirectoryMode = "0750";
+          CacheDirectory = "smartdns";
+          CacheDirectoryMode = "0750";
+          LogsDirectory = "smartdns";
+          LogsDirectoryMode = "0750";
+          UMask = "0077";
+          User = "pproxy";
+          Group = "pproxy";
+          AmbientCapabilities = [
+            "CAP_NET_BIND_SERVICE"
+            "CAP_SYS_RESOURCE"
+          ];
+          CapabilityBoundingSet = [
+            "CAP_NET_BIND_SERVICE"
+            "CAP_SYS_RESOURCE"
+          ];
+        };
+        unitConfig = {
+          StartLimitBurst = 0;
+          StartLimitIntervalSec = 60;
+        };
       };
-      unitConfig = {
-        StartLimitBurst = 5;
-        StartLimitInterval = 30;
-      };
-    };
-
-    smartdns = {
-      description = "SmartDNS Server";
-      wantedBy = [ "multi-user.target" ];
-      wants = [ "nss-lookup.target" ];
-      after = [ "network.target" ];
-      before = [
-        "network-online.target"
-        "nss-lookup.target"
-      ];
-      path = [
-        pkgs.gzip
-      ];
-      serviceConfig = {
-        ExecStart = "${lib.getExe pkgs.smartdns} -p - -c ${dns}/smartdns.conf";
-        Restart = "always";
-        RestartSec = 2;
-        TimeoutStopSec = 15;
-        RuntimeDirectory = "smartdns";
-        RuntimeDirectoryMode = "0750";
-        CacheDirectory = "smartdns";
-        CacheDirectoryMode = "0750";
-        LogsDirectory = "smartdns";
-        LogsDirectoryMode = "0750";
-        UMask = "0077";
-        User = "pproxy";
-        Group = "pproxy";
-        AmbientCapabilities = [
-          "CAP_NET_BIND_SERVICE"
-          "CAP_SYS_RESOURCE"
+    }
+    // lib.optionalAttrs (cfg.dns == "oxidns") {
+      oxidns = {
+        description = "Oxidns Server";
+        wantedBy = [ "multi-user.target" ];
+        wants = [ "nss-lookup.target" ];
+        after = [ "network.target" ];
+        before = [
+          "network-online.target"
+          "nss-lookup.target"
         ];
-        CapabilityBoundingSet = [
-          "CAP_NET_BIND_SERVICE"
-          "CAP_SYS_RESOURCE"
-        ];
-      };
-      unitConfig = {
-        StartLimitBurst = 0;
-        StartLimitIntervalSec = 60;
+        serviceConfig = {
+          ExecStart = "${lib.getExe pkgs.oxidns} start -c ${dns}/oxidns.yaml -d /var/cache/oxidns";
+          Restart = "always";
+          RestartSec = 2;
+          TimeoutStopSec = 15;
+          RuntimeDirectory = "oxidns";
+          RuntimeDirectoryMode = "0750";
+          CacheDirectory = "oxidns";
+          CacheDirectoryMode = "0750";
+          LogsDirectory = "oxidns";
+          LogsDirectoryMode = "0750";
+          UMask = "0077";
+          User = "pproxy";
+          Group = "pproxy";
+          AmbientCapabilities = [
+            "CAP_NET_BIND_SERVICE"
+            "CAP_SYS_RESOURCE"
+          ];
+          CapabilityBoundingSet = [
+            "CAP_NET_BIND_SERVICE"
+            "CAP_SYS_RESOURCE"
+          ];
+        };
+        unitConfig = {
+          StartLimitBurst = 0;
+          StartLimitIntervalSec = 60;
+        };
       };
     };
   };

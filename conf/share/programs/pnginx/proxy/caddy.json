@@ -16,31 +16,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "user-images.githubusercontent.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "user-images.githubusercontent.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "user-images.githubusercontent.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -120,31 +104,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "viewscreen.githubusercontent.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "viewscreen.githubusercontent.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "viewscreen.githubusercontent.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -224,31 +192,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "avatars.githubusercontent.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "avatars.githubusercontent.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "avatars.githubusercontent.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -328,31 +280,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "analytics.githubassets.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "analytics.githubassets.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "analytics.githubassets.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -432,31 +368,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "enterprise.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "enterprise.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "enterprise.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -536,31 +456,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "assets-cdn.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "assets-cdn.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "assets-cdn.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -640,31 +544,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "community.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "community.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "community.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -744,31 +632,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "education.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "education.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "education.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -848,31 +720,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "classroom.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "classroom.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "classroom.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -952,31 +808,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "collector.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "collector.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "collector.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -1056,31 +896,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "resources.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "resources.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "resources.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -1160,31 +984,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "developer.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "developer.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "developer.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -1264,31 +1072,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "codeload.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "codeload.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "codeload.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -1368,31 +1160,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "redirect.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "redirect.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "redirect.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -1472,31 +1248,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "services.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "services.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "services.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -1576,31 +1336,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "copilot.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "copilot.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "copilot.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -1680,31 +1424,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "central.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "central.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "central.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -1784,31 +1512,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "partner.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "partner.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "partner.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -1888,31 +1600,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "desktop.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "desktop.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "desktop.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -1992,31 +1688,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "support.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "support.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "support.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -2096,31 +1776,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "git-lfs.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "git-lfs.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "git-lfs.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -2283,31 +1947,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "guides.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "guides.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "guides.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -2387,31 +2035,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "pages.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "pages.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "pages.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -2491,31 +2123,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "gist.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "gist.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "gist.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -2595,31 +2211,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "docs.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "docs.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "docs.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -2806,31 +2406,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "api.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "api.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "api.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -2910,31 +2494,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "lfs.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "lfs.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "lfs.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -3014,31 +2582,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "lab.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "lab.github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "lab.github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -3118,31 +2670,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "raw.githubusercontent.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "raw.githubusercontent.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "raw.githubusercontent.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -3224,31 +2760,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "www.githubassets.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "www.githubassets.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "www.githubassets.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -3635,31 +3155,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "www.github.io",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "www.github.io",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "www.github.io",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -3740,31 +3244,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "github.com",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "github.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {
@@ -3950,31 +3438,15 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
-                            "source": "multi",
-                            "sources": [
-                              {
-                                "name": "a.pixiv.org",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5365"
-                                  ]
-                                },
-                                "source": "a"
-                              },
-                              {
-                                "name": "a.pixiv.org",
-                                "port": "443",
-                                "refresh": 10000000000,
-                                "resolver": {
-                                  "addresses": [
-                                    "127.0.0.1:5370"
-                                  ]
-                                },
-                                "source": "a"
-                              }
-                            ]
+                            "name": "a.pixiv.org",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
                           },
                           "handler": "reverse_proxy",
                           "headers": {

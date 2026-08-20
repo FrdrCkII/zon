@@ -1,7 +1,6 @@
 {
   inputs,
   config,
-  lib,
   ...
 }:
 {
@@ -96,6 +95,7 @@
         root = {
           extraModules = {
             nixos.imports = [
+              { services.pproxy.dns = "oxidns"; }
               ./frix/full.nix
             ];
           };
