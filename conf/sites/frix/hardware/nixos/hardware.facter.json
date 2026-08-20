@@ -20,7 +20,7 @@
     },
     "bluetooth": [
       {
-        "attached_to": 69,
+        "attached_to": 68,
         "base_class": {
           "hex": "0115",
           "name": "Bluetooth Device",
@@ -90,7 +90,7 @@
           "btusb"
         ],
         "hotplug": "usb",
-        "index": 70,
+        "index": 69,
         "model": "MediaTek Wireless_Device",
         "module_alias": "usb:v13D3p3602d0100dcEFdsc02dp01icE0isc01ip01in02",
         "resources": [
@@ -122,7 +122,7 @@
         }
       },
       {
-        "attached_to": 69,
+        "attached_to": 68,
         "base_class": {
           "hex": "0115",
           "name": "Bluetooth Device",
@@ -192,7 +192,7 @@
           "btusb"
         ],
         "hotplug": "usb",
-        "index": 73,
+        "index": 72,
         "model": "MediaTek Wireless_Device",
         "module_alias": "usb:v13D3p3602d0100dcEFdsc02dp01icE0isc01ip01in00",
         "resources": [
@@ -224,7 +224,7 @@
         }
       },
       {
-        "attached_to": 69,
+        "attached_to": 68,
         "base_class": {
           "hex": "0115",
           "name": "Bluetooth Device",
@@ -294,7 +294,7 @@
           "btusb"
         ],
         "hotplug": "usb",
-        "index": 80,
+        "index": 79,
         "model": "MediaTek Wireless_Device",
         "module_alias": "usb:v13D3p3602d0100dcEFdsc02dp01icE0isc01ip01in01",
         "resources": [
@@ -1861,99 +1861,6 @@
           "hex": "1e0f",
           "value": 7695
         }
-      },
-      {
-        "attached_to": 30,
-        "base_class": {
-          "hex": "0106",
-          "name": "Mass Storage Device",
-          "value": 262
-        },
-        "bus_type": {
-          "hex": "0084",
-          "name": "SCSI",
-          "value": 132
-        },
-        "class_list": [
-          "disk",
-          "usb",
-          "scsi",
-          "block_device"
-        ],
-        "device": {
-          "hex": "1234",
-          "name": "ProductCode 3.0",
-          "value": 4660
-        },
-        "driver": "usb-storage",
-        "driver_module": "usb_storage",
-        "driver_modules": [
-          "sd_mod",
-          "usb_storage"
-        ],
-        "drivers": [
-          "sd",
-          "usb-storage"
-        ],
-        "index": 68,
-        "model": "VendorCo ProductCode 3.0",
-        "module_alias": "usb:v048Dp1234d0200dc00dsc00dp00ic08isc06ip50in00",
-        "resources": [
-          {
-            "bits": 0,
-            "handshake": 0,
-            "parity": 0,
-            "speed": 480000000,
-            "stop_bits": 0,
-            "type": "baud"
-          },
-          {
-            "cylinders": 16317,
-            "geo_type": "logical",
-            "heads": 255,
-            "sectors": 63,
-            "size": "0x0",
-            "type": "disk_geo"
-          },
-          {
-            "type": "size",
-            "unit": "sectors",
-            "value_1": 262144000,
-            "value_2": 512
-          }
-        ],
-        "revision": {
-          "hex": "0000",
-          "name": "2.00",
-          "value": 0
-        },
-        "serial": "0317961063064173423",
-        "slot": {
-          "bus": 8,
-          "number": 0
-        },
-        "sub_class": {
-          "hex": "0000",
-          "name": "Disk",
-          "value": 0
-        },
-        "sysfs_bus_id": "8:0:0:0",
-        "sysfs_device_link": "/devices/pci0000:80/0000:80:14.0/usb3/3-11/3-11.3/3-11.3:1.0/host8/target8:0:0/8:0:0:0",
-        "sysfs_id": "/class/block/sda",
-        "unix_device_name2": "/dev/sg0",
-        "unix_device_names": [
-          "/dev/disk/by-id/usb-VendorCo_ProductCode_3.0_0317961063064173423-0:0",
-          "/dev/disk/by-label/nixos-26.05-x86_64",
-          "/dev/disk/by-path/pci-0000:80:14.0-usb-0:11.3:1.0-scsi-0:0:0:0",
-          "/dev/disk/by-path/pci-0000:80:14.0-usbv2-0:11.3:1.0-scsi-0:0:0:0",
-          "/dev/disk/by-uuid/1980-01-01-00-00-00-00",
-          "/dev/sda"
-        ],
-        "vendor": {
-          "hex": "048d",
-          "name": "VendorCo",
-          "value": 1165
-        }
       }
     ],
     "graphics_card": [
@@ -2084,8 +1991,8 @@
           "hub"
         ],
         "hotplug": "usb",
-        "index": 69,
-        "model": "Linux 7.1.1 xhci-hcd xHCI Host Controller",
+        "index": 68,
+        "model": "Linux 7.1.8 xhci-hcd xHCI Host Controller",
         "module_alias": "usb:v1D6Bp0002d0701dc09dsc00dp01ic09isc00ip00in00",
         "resources": [
           {
@@ -2111,12 +2018,12 @@
         "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-0:1.0",
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 7.1.1 xhci-hcd",
+          "name": "Linux 7.1.8 xhci-hcd",
           "value": 7531
         }
       },
       {
-        "attached_to": 69,
+        "attached_to": 68,
         "base_class": {
           "hex": "010a",
           "name": "Hub",
@@ -2171,7 +2078,7 @@
           "hub"
         ],
         "hotplug": "usb",
-        "index": 72,
+        "index": 71,
         "model": "USB2.0 Hub",
         "module_alias": "usb:v05E3p0608d6070dc09dsc00dp01ic09isc00ip00in00",
         "resources": [
@@ -2256,8 +2163,8 @@
           "hub"
         ],
         "hotplug": "usb",
-        "index": 74,
-        "model": "Linux 7.1.1 xhci-hcd xHCI Host Controller",
+        "index": 73,
+        "model": "Linux 7.1.8 xhci-hcd xHCI Host Controller",
         "module_alias": "usb:v1D6Bp0003d0701dc09dsc00dp03ic09isc00ip00in00",
         "revision": {
           "hex": "0000",
@@ -2273,12 +2180,12 @@
         "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb4/4-0:1.0",
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 7.1.1 xhci-hcd",
+          "name": "Linux 7.1.8 xhci-hcd",
           "value": 7531
         }
       },
       {
-        "attached_to": 69,
+        "attached_to": 68,
         "base_class": {
           "hex": "010a",
           "name": "Hub",
@@ -2333,7 +2240,7 @@
           "hub"
         ],
         "hotplug": "usb",
-        "index": 75,
+        "index": 74,
         "model": "USB2.0 Hub",
         "module_alias": "usb:v05E3p0608d6070dc09dsc00dp01ic09isc00ip00in00",
         "resources": [
@@ -2418,8 +2325,8 @@
           "hub"
         ],
         "hotplug": "usb",
-        "index": 78,
-        "model": "Linux 7.1.1 xhci-hcd xHCI Host Controller",
+        "index": 77,
+        "model": "Linux 7.1.8 xhci-hcd xHCI Host Controller",
         "module_alias": "usb:v1D6Bp0002d0701dc09dsc00dp01ic09isc00ip00in00",
         "resources": [
           {
@@ -2445,7 +2352,7 @@
         "sysfs_id": "/devices/pci0000:00/0000:00:0d.0/usb1/1-0:1.0",
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 7.1.1 xhci-hcd",
+          "name": "Linux 7.1.8 xhci-hcd",
           "value": 7531
         }
       },
@@ -2505,8 +2412,8 @@
           "hub"
         ],
         "hotplug": "usb",
-        "index": 83,
-        "model": "Linux 7.1.1 xhci-hcd xHCI Host Controller",
+        "index": 81,
+        "model": "Linux 7.1.8 xhci-hcd xHCI Host Controller",
         "module_alias": "usb:v1D6Bp0003d0701dc09dsc00dp03ic09isc00ip00in00",
         "revision": {
           "hex": "0000",
@@ -2522,14 +2429,14 @@
         "sysfs_id": "/devices/pci0000:00/0000:00:0d.0/usb2/2-0:1.0",
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 7.1.1 xhci-hcd",
+          "name": "Linux 7.1.8 xhci-hcd",
           "value": 7531
         }
       }
     ],
     "keyboard": [
       {
-        "attached_to": 69,
+        "attached_to": 68,
         "base_class": {
           "hex": "0108",
           "name": "Keyboard",
@@ -2589,7 +2496,7 @@
           "usbhid"
         ],
         "hotplug": "usb",
-        "index": 81,
+        "index": 80,
         "model": "SEMICO USB Keyboard",
         "module_alias": "usb:v1A2Cp212Ad0110dc00dsc00dp00ic03isc01ip01in00",
         "resources": [
@@ -2835,7 +2742,7 @@
     ],
     "mouse": [
       {
-        "attached_to": 69,
+        "attached_to": 68,
         "base_class": {
           "hex": "0105",
           "name": "Mouse",
@@ -2903,7 +2810,7 @@
           "usbhid"
         ],
         "hotplug": "usb",
-        "index": 71,
+        "index": 70,
         "model": "SEMICO USB Keyboard",
         "module_alias": "usb:v1A2Cp212Ad0110dc00dsc00dp00ic03isc01ip02in01",
         "resources": [
@@ -2933,7 +2840,7 @@
         "sysfs_bus_id": "3-6:1.1",
         "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-6/3-6:1.1",
         "unix_device_names": [
-          "/dev/input/event1"
+          "/dev/input/event3"
         ],
         "vendor": {
           "hex": "1a2c",
@@ -2942,7 +2849,7 @@
         }
       },
       {
-        "attached_to": 75,
+        "attached_to": 74,
         "base_class": {
           "hex": "0105",
           "name": "Mouse",
@@ -3010,7 +2917,7 @@
           "usbhid"
         ],
         "hotplug": "usb",
-        "index": 82,
+        "index": 75,
         "model": "YSPRINGTECH USB OPTICAL MOUSE",
         "module_alias": "usb:v10C4p0005d0000dc00dsc00dp00ic03isc01ip02in00",
         "resources": [
@@ -3032,8 +2939,8 @@
           "name": "USB Mouse",
           "value": 3
         },
-        "sysfs_bus_id": "3-11.4:1.0",
-        "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-11/3-11.4/3-11.4:1.0",
+        "sysfs_bus_id": "3-11.3:1.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-11/3-11.3/3-11.3:1.0",
         "unix_device_name2": "/dev/input/mouse0",
         "unix_device_names": [
           "/dev/input/mice"
@@ -3229,7 +3136,7 @@
         "drivers": [
           "r8169"
         ],
-        "index": 84,
+        "index": 82,
         "model": "Ethernet network interface",
         "resources": [
           {
@@ -3262,7 +3169,7 @@
         "class_list": [
           "network_interface"
         ],
-        "index": 85,
+        "index": 83,
         "model": "Loopback network interface",
         "sub_class": {
           "hex": "0000",
@@ -3292,7 +3199,7 @@
         "drivers": [
           "mt7925e"
         ],
-        "index": 86,
+        "index": 84,
         "model": "WLAN network interface",
         "resources": [
           {
@@ -4544,7 +4451,7 @@
     },
     "usb": [
       {
-        "attached_to": 69,
+        "attached_to": 68,
         "base_class": {
           "hex": "0000",
           "name": "Unclassified device",
@@ -4599,7 +4506,7 @@
           "usbhid"
         ],
         "hotplug": "usb",
-        "index": 77,
+        "index": 76,
         "model": "AsusTek AURA LED Controller",
         "module_alias": "usb:v0B05p19AFd0100dc00dsc00dp00ic03isc00ip00in02",
         "resources": [
@@ -4636,7 +4543,7 @@
         }
       },
       {
-        "attached_to": 69,
+        "attached_to": 68,
         "base_class": {
           "hex": "0000",
           "name": "Unclassified device",
@@ -4683,7 +4590,7 @@
           "value": 6575
         },
         "hotplug": "usb",
-        "index": 79,
+        "index": 78,
         "model": "AsusTek AURA LED Controller",
         "module_alias": "usb:v0B05p19AFd0100dc00dsc00dp00icFFiscFFipFFin00",
         "resources": [

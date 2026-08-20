@@ -20,7 +20,7 @@
     },
     "bluetooth": [
       {
-        "attached_to": 56,
+        "attached_to": 55,
         "base_class": {
           "hex": "0115",
           "name": "Bluetooth Device",
@@ -122,7 +122,7 @@
         }
       },
       {
-        "attached_to": 56,
+        "attached_to": 55,
         "base_class": {
           "hex": "0115",
           "name": "Bluetooth Device",
@@ -224,7 +224,7 @@
         }
       },
       {
-        "attached_to": 56,
+        "attached_to": 55,
         "base_class": {
           "hex": "0115",
           "name": "Bluetooth Device",
@@ -294,7 +294,7 @@
           "btusb"
         ],
         "hotplug": "usb",
-        "index": 57,
+        "index": 56,
         "model": "MediaTek Wireless_Device",
         "module_alias": "usb:v13D3p3585d0100dcEFdsc02dp01icE0isc01ip01in01",
         "resources": [
@@ -805,7 +805,7 @@
     ],
     "camera": [
       {
-        "attached_to": 56,
+        "attached_to": 55,
         "base_class": {
           "hex": "010f",
           "name": "Camera",
@@ -875,7 +875,7 @@
           "uvcvideo"
         ],
         "hotplug": "usb",
-        "index": 55,
+        "index": 54,
         "model": "SunplusIT Integrated Camera",
         "module_alias": "usb:v1BCFp28C4d0005dcEFdsc02dp01ic0Eisc01ip00in00",
         "resources": [
@@ -907,7 +907,7 @@
         }
       },
       {
-        "attached_to": 56,
+        "attached_to": 55,
         "base_class": {
           "hex": "010f",
           "name": "Camera",
@@ -977,7 +977,7 @@
           "uvcvideo"
         ],
         "hotplug": "usb",
-        "index": 58,
+        "index": 57,
         "model": "SunplusIT Integrated Camera",
         "module_alias": "usb:v1BCFp28C4d0005dcEFdsc02dp01ic0Eisc02ip00in01",
         "resources": [
@@ -1304,13 +1304,13 @@
           "hex": "2d19",
           "value": 11545
         },
-        "driver": "nouveau",
-        "driver_module": "nouveau",
+        "driver": "nvidia",
+        "driver_module": "nvidia",
         "driver_modules": [
-          "nouveau"
+          "nvidia"
         ],
         "drivers": [
-          "nouveau"
+          "nvidia"
         ],
         "index": 30,
         "model": "nVidia VGA compatible controller",
@@ -1488,8 +1488,8 @@
           "hub"
         ],
         "hotplug": "usb",
-        "index": 56,
-        "model": "Linux 7.1.4 xhci-hcd xHCI Host Controller",
+        "index": 55,
+        "model": "Linux 7.1.8 xhci-hcd xHCI Host Controller",
         "module_alias": "usb:v1D6Bp0002d0701dc09dsc00dp01ic09isc00ip00in00",
         "resources": [
           {
@@ -1515,7 +1515,7 @@
         "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb1/1-0:1.0",
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 7.1.4 xhci-hcd",
+          "name": "Linux 7.1.8 xhci-hcd",
           "value": 7531
         }
       },
@@ -1575,8 +1575,8 @@
           "hub"
         ],
         "hotplug": "usb",
-        "index": 59,
-        "model": "Linux 7.1.4 xhci-hcd xHCI Host Controller",
+        "index": 58,
+        "model": "Linux 7.1.8 xhci-hcd xHCI Host Controller",
         "module_alias": "usb:v1D6Bp0003d0701dc09dsc00dp03ic09isc00ip00in00",
         "revision": {
           "hex": "0000",
@@ -1592,7 +1592,7 @@
         "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb2/2-0:1.0",
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 7.1.4 xhci-hcd",
+          "name": "Linux 7.1.8 xhci-hcd",
           "value": 7531
         }
       }
@@ -1731,109 +1731,6 @@
     ],
     "mouse": [
       {
-        "attached_to": 56,
-        "base_class": {
-          "hex": "0105",
-          "name": "Mouse",
-          "value": 261
-        },
-        "bus_type": {
-          "hex": "0086",
-          "name": "USB",
-          "value": 134
-        },
-        "class_list": [
-          "mouse",
-          "usb"
-        ],
-        "compat_device": "Generic USB Mouse",
-        "compat_vendor": "Unknown",
-        "detail": {
-          "device_class": {
-            "hex": "0000",
-            "name": "per_interface",
-            "value": 0
-          },
-          "device_protocol": 0,
-          "device_subclass": {
-            "hex": "0000",
-            "name": "per_interface",
-            "value": 0
-          },
-          "interface_alternate_setting": 0,
-          "interface_class": {
-            "hex": "0003",
-            "name": "hid",
-            "value": 3
-          },
-          "interface_number": 0,
-          "interface_protocol": 2,
-          "interface_subclass": {
-            "hex": "0001",
-            "name": "audio",
-            "value": 1
-          }
-        },
-        "device": {
-          "hex": "0005",
-          "name": "USB OPTICAL MOUSE",
-          "value": 5
-        },
-        "driver": "usbhid",
-        "driver_info": {
-          "buttons": -1,
-          "db_entry_0": [
-            "explorerps/2",
-            "exps2"
-          ],
-          "gpm": "exps2",
-          "type": "mouse",
-          "wheels": -1,
-          "xf86": "explorerps/2"
-        },
-        "driver_module": "usbhid",
-        "driver_modules": [
-          "usbhid"
-        ],
-        "drivers": [
-          "usbhid"
-        ],
-        "hotplug": "usb",
-        "index": 54,
-        "model": "YSPRINGTECH USB OPTICAL MOUSE",
-        "module_alias": "usb:v10C4p0005d0000dc00dsc00dp00ic03isc01ip02in00",
-        "resources": [
-          {
-            "bits": 0,
-            "handshake": 0,
-            "parity": 0,
-            "speed": 1500000,
-            "stop_bits": 0,
-            "type": "baud"
-          }
-        ],
-        "slot": {
-          "bus": 0,
-          "number": 0
-        },
-        "sub_class": {
-          "hex": "0003",
-          "name": "USB Mouse",
-          "value": 3
-        },
-        "sysfs_bus_id": "1-3:1.0",
-        "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb1/1-3/1-3:1.0",
-        "unix_device_name2": "/dev/input/mouse0",
-        "unix_device_names": [
-          "/dev/input/mice"
-        ],
-        "vendor": {
-          "hex": "10c4",
-          "name": "YSPRINGTECH",
-          "value": 4292
-        }
-      },
-      {
         "attached_to": 0,
         "base_class": {
           "hex": "0118",
@@ -1849,15 +1746,15 @@
           "hex": "528a",
           "value": 21130
         },
-        "index": 63,
+        "index": 62,
         "sub_class": {
           "hex": "0001",
           "name": "bus",
           "value": 1
         },
-        "sysfs_id": "/devices/pci0000:80/0000:80:19.0/i2c_designware.0/i2c-14/i2c-HTX528A:00/0018:0911:528A.0002/input/input23",
+        "sysfs_id": "/devices/pci0000:80/0000:80:19.0/i2c_designware.0/i2c-13/i2c-HTX528A:00/0018:0911:528A.0001/input/input18",
         "unix_device_names": [
-          "/dev/input/event10",
+          "/dev/input/event13",
           "/dev/input/ + handler"
         ],
         "vendor": {
@@ -1936,7 +1833,6 @@
               "11",
               "12",
               "13",
-              "14",
               "36",
               "40",
               "44",
@@ -1945,16 +1841,11 @@
               "56",
               "60",
               "64",
-              "100",
-              "104",
-              "108",
-              "112",
-              "116",
-              "120",
-              "124",
-              "128",
-              "132",
-              "136"
+              "149",
+              "153",
+              "157",
+              "161",
+              "165"
             ],
             "enc_modes": [
               "WEP40",
@@ -1976,7 +1867,6 @@
               "2.462",
               "2.467",
               "2.472",
-              "2.484",
               "5.18",
               "5.2",
               "5.22",
@@ -1985,16 +1875,11 @@
               "5.28",
               "5.3",
               "5.32",
-              "5.5",
-              "5.52",
-              "5.54",
-              "5.56",
-              "5.58",
-              "5.6",
-              "5.62",
-              "5.64",
-              "5.66",
-              "5.68"
+              "5.745",
+              "5.765",
+              "5.785",
+              "5.805",
+              "5.825"
             ],
             "type": "wlan"
           }
@@ -2124,7 +2009,7 @@
         "class_list": [
           "network_interface"
         ],
-        "index": 60,
+        "index": 59,
         "model": "Loopback network interface",
         "sub_class": {
           "hex": "0000",
@@ -2154,7 +2039,7 @@
         "drivers": [
           "mt7921e"
         ],
-        "index": 61,
+        "index": 60,
         "model": "WLAN network interface",
         "resources": [
           {
@@ -2195,7 +2080,7 @@
         "drivers": [
           "r8169"
         ],
-        "index": 62,
+        "index": 61,
         "model": "Ethernet network interface",
         "resources": [
           {
@@ -3308,7 +3193,7 @@
           "pci"
         ],
         "detail": {
-          "command": 1030,
+          "command": 1026,
           "function": 0,
           "header_type": 0,
           "prog_if": 48,

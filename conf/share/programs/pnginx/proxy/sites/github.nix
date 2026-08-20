@@ -32,6 +32,7 @@
   { domain = "avatars.githubusercontent.com"; }
   { domain = "viewscreen.githubusercontent.com"; }
   { domain = "user-images.githubusercontent.com"; }
+  { domain = "release-assets.githubusercontent.com"; }
   {
     domain = "www.githubassets.com";
     altNames = [ "*.githubassets.com" ];

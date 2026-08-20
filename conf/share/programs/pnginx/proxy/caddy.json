@@ -16,6 +16,94 @@
                       "handle": [
                         {
                           "dynamic_upstreams": {
+                            "name": "release-assets.githubusercontent.com",
+                            "port": "443",
+                            "refresh": 1000000000,
+                            "resolver": {
+                              "addresses": [
+                                "127.0.0.1:5360"
+                              ]
+                            },
+                            "source": "a"
+                          },
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "ip_hash"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "release-assets.githubusercontent.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "dynamic_upstreams": {
                             "name": "user-images.githubusercontent.com",
                             "port": "443",
                             "refresh": 1000000000,
@@ -3624,6 +3712,7 @@
               },
               "match": {
                 "sni": [
+                  "release-assets.githubusercontent.com",
                   "user-images.githubusercontent.com",
                   "viewscreen.githubusercontent.com",
                   "avatars.githubusercontent.com",
