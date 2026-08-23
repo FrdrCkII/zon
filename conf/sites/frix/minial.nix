@@ -21,6 +21,7 @@
 
   environment = {
     systemPackages = [
+      pkgs.bluetui
       pkgs.nixlock
       pkgs._7zz-rar
       pkgs.unrar
