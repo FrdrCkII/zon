@@ -57,9 +57,9 @@ in
     systemd.services = {
       pproxy = {
         description = "Proxy Server";
-        wantedBy = [ "multi-user.target" ];
-        wants = [ "network-online.target" ];
-        after = [ "network-online.target" ];
+        wantedBy = lib.singleton "multi-user.target";
+        wants = lib.singleton "network-online.target";
+        after = lib.singleton "network-online.target";
         serviceConfig = {
           ExecStart = "${lib.getExe proxyPackage} run --config '${proxyConfig}/caddy.json'";
           Restart = "always";
@@ -82,13 +82,12 @@ in
           StartLimitInterval = 30;
         };
       };
-    }
-    // lib.optionalAttrs (cfg.dns == "smartdns") {
+
       smartdns = {
         description = "SmartDNS Server";
-        wantedBy = [ "multi-user.target" ];
-        wants = [ "nss-lookup.target" ];
-        after = [ "network.target" ];
+        wantedBy = lib.optional (cfg.dns == "smartdns") "multi-user.target";
+        wants = lib.singleton "nss-lookup.target";
+        after = lib.singleton "network.target";
         before = [
           "network-online.target"
           "nss-lookup.target"
@@ -128,9 +127,9 @@ in
     // lib.optionalAttrs (cfg.dns == "oxidns") {
       oxidns = {
         description = "Oxidns Server";
-        wantedBy = [ "multi-user.target" ];
-        wants = [ "nss-lookup.target" ];
-        after = [ "network.target" ];
+        wantedBy = lib.singleton "multi-user.target";
+        wants = lib.singleton "nss-lookup.target";
+        after = lib.singleton "network.target";
         before = [
           "network-online.target"
           "nss-lookup.target"

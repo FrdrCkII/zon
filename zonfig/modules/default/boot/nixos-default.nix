@@ -8,7 +8,6 @@
     boot = {
       consoleLogLevel = lib.mkDefault 3;
       kernelParams = [
-        "quiet"
         "udev.log_level=${toString config.boot.consoleLogLevel}"
         "systemd.show_status=auto"
       ];
