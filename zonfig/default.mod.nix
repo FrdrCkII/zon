@@ -1,3 +1,1 @@
-{
-  outputs = { mod, ... }: mod.loadDir ./.;
-}
+{ mod, ... }: mod.loadDir ./.
