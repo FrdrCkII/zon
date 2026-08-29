@@ -1,0 +1,7 @@
+{
+  outModules = {
+    nixos.imports = [
+      ./nixos
+    ];
+  };
+}

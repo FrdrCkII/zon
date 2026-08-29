@@ -1,0 +1,222 @@
+output "eDP-1" {
+    mode "2560x1600@180.000000"
+    scale 2.0
+    hot-corners {
+        off
+    }
+}
+input {
+    mod-key "Super"
+    mod-key-nested "Alt"
+}
+binds {
+    Mod+H {
+        focus-column-left
+    }
+    Mod+Left {
+        focus-column-left
+    }
+    Mod+WheelScrollDown cooldown-ms=150 {
+        focus-column-left
+    }
+
+    Mod+L {
+        focus-column-right
+    }
+    Mod+Right {
+        focus-column-right
+    }
+    Mod+WheelScrollUp cooldown-ms=150 {
+        focus-column-right
+    }
+
+    Mod+Ctrl+H {
+        move-column-left
+    }
+    Mod+Ctrl+Left {
+        move-column-left
+    }
+
+    Mod+Ctrl+L {
+        move-column-right
+    }
+    Mod+Ctrl+Right {
+        move-column-right
+    }
+
+    Mod+J {
+        focus-workspace-up
+    }
+    Mod+Up {
+        focus-workspace-up
+    }
+    Mod+Ctrl+WheelScrollUp cooldown-ms=150 {
+        focus-workspace-up
+    }
+
+    Mod+K {
+        focus-workspace-down
+    }
+    Mod+Down {
+        focus-workspace-down
+    }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 {
+        focus-workspace-down
+    }
+
+    Mod+Ctrl+J {
+        move-column-to-workspace-up
+    }
+    Mod+Ctrl+Up {
+        move-column-to-workspace-up
+    }
+    Mod+Ctrl+K {
+        move-column-to-workspace-down
+    }
+    Mod+Ctrl+Down {
+        move-column-to-workspace-down
+    }
+    Mod+Shift+J {
+        move-workspace-up
+    }
+    Mod+Shift+Up {
+        move-workspace-up
+    }
+    Mod+Shift+K {
+        move-workspace-down
+    }
+    Mod+Shift+Down {
+        move-workspace-down
+    }
+    Mod+F {
+        maximize-column
+    }
+    Mod+X {
+        fullscreen-window
+    }
+    Mod+N {
+        set-column-width "-10%"
+    }
+    Mod+M {
+        set-column-width "+10%"
+    }
+    Mod+Q {
+        close-window
+    }
+    Mod+Shift+Q {
+        quit
+    }
+    Mod+S {
+        spawn "swaylock" "-c" "000000"
+    }
+    Mod+A {
+        spawn "pkill" "-SIGUSR1" "waybar"
+    }
+    Mod+C {
+        spawn "wmenu-run" "-p" "run"
+    }
+    Mod+Z {
+        spawn "footclient"
+    }
+    Mod+E {
+        spawn "emacs"
+    }
+    Mod+V {
+        spawn-sh "cliphist list | wmenu -p cliphist | cliphist decode | wl-copy"
+    }
+    Mod+Space {
+        spawn "fcitx5-switch"
+    }
+    Mod+O {
+        spawn "pipeWire-volup"
+    }
+    Mod+P {
+        spawn "pipeWire-voldown"
+    }
+    Mod+I {
+        spawn "pipeWire-mute"
+    }
+}
+spawn-at-startup "mako"
+spawn-at-startup "aria2c" "--enable-rpc"
+spawn-at-startup "fcitx5" "-d"
+spawn-at-startup "foot" "--server"
+spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+spawn-at-startup "ironbar"
+spawn-at-startup "uwsm" "finalize"
+layout {
+    gaps 0
+    center-focused-column "never"
+    default-column-display "tabbed"
+    preset-window-heights {
+        proportion 1.0
+    }
+    preset-column-widths {
+        proportion 0.4
+        proportion 0.6
+        proportion 0.8
+        proportion 1.0
+    }
+    default-column-width {
+        proportion 1.0
+    }
+    border {
+        off
+    }
+    focus-ring {
+        off
+    }
+    shadow {
+        off
+    }
+    tab-indicator {
+        off
+    }
+    insert-hint {
+        off
+    }
+    background-color "#000000"
+}
+window-rule {
+    max-width 1920
+    max-height 1080
+    open-floating false
+    open-maximized false
+    open-maximized-to-edges false
+    open-fullscreen false
+    tiled-state true
+}
+layer-rule {
+    place-within-backdrop true
+}
+layer-rule {
+    match namespace="^wallpaper$"
+    place-within-backdrop false
+}
+animations {
+    off
+}
+overview {
+    backdrop-color "#000000"
+    workspace-shadow {
+        off
+    }
+}
+xwayland-satellite {
+   path "/run/current-system/sw/bin/xwayland-satellite"
+}
+prefer-no-csd
+cursor {
+    hide-when-typing
+    hide-after-inactive-ms 1500
+}
+hotkey-overlay {
+    skip-at-startup
+    hide-not-bound
+}
+clipboard {
+    disable-primary
+}
+environment {
+    LC_MESSAGES "zh_CN.UTF-8"
+}

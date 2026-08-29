@@ -20,6 +20,7 @@
             ../share/programs/firefox
             ../share/programs/pnginx
             ./flix/hardware
+            ./flix/common
             ./frix/common
           ];
 
