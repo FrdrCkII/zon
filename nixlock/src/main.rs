@@ -173,11 +173,8 @@ async fn tasks_main(
         Update::List(up) => up.is_empty() || up.contains(&name),
     };
 
-    let locked = if let Some(input) = locked.get(&name) {
-        input
-    } else {
-        &HashMap::new()
-    };
+    let empty = HashMap::new();
+    let locked = locked.get(&name).unwrap_or(&empty);
 
     let mut result: HashMap<String, String> = HashMap::new();
     for (i, list) in order.into_iter().enumerate() {
@@ -188,7 +185,7 @@ async fn tasks_main(
                 if let InputValue::String(value_str) = value {
                     result.insert(item, value_str.to_owned());
                 } else {
-                    bail!("");
+                    bail!("The first-level node '{}' must be a string type", item);
                 }
             } else {
                 let deps = value.get_deps();
@@ -202,7 +199,7 @@ async fn tasks_main(
                     InputValue::Commands {
                         commands, update, ..
                     } => {
-                        let deps_change = deps.into_iter().all(|dep| {
+                        let deps_change = deps.into_iter().any(|dep| {
                             if let Some(lock) = locked.get(&dep)
                                 && let Some(new) = result.get(&dep)
                             {

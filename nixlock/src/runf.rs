@@ -1,14 +1,18 @@
-use anyhow::{Result, anyhow};
+use anyhow::{Result, anyhow, bail};
 use tokio::io::{self, AsyncReadExt};
 use tokio::process::Command;
 
 pub async fn pipeline(commands: Vec<Vec<String>>, env_path: &str) -> Result<String> {
     let num_cmds = commands.len();
 
+    if commands.is_empty() {
+        bail!("The command list can't be empty");
+    }
+
     let mut children = Vec::with_capacity(num_cmds);
     for (i, cmd_args) in commands.into_iter().enumerate() {
         if cmd_args.is_empty() {
-            return Err(anyhow!("Command {} is empty", i));
+            bail!("Command {} is empty", i);
         }
 
         let program = &cmd_args[0];
@@ -78,7 +82,7 @@ pub async fn pipeline(commands: Vec<Vec<String>>, env_path: &str) -> Result<Stri
             .await
             .map_err(|e| anyhow!("Failed to wait for command {}: {}", i, e))?;
         if !status.success() {
-            return Err(anyhow!("Command {i} exited with status: {status}",));
+            bail!("Command {} exited with status: {}", i, status);
         }
     }
 
