@@ -9,7 +9,7 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_7_1;
     kernelModules = [
       "kvm-intel"
       "ntsync"

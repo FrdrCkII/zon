@@ -98,6 +98,7 @@ in
           (ext (moz "javascript-restrictor") "jsr@javascriptrestrictor")
           (ext (moz "localcdn-fork-of-decentraleyes") "{b86e4813-687a-43e6-ab65-0bde4ab75758}")
           (ext "https://f2.crxsoso.com/firefox/downloads/latest/ublock-origin/platform:2/ublock-origin.xpi" "uBlock0@raymondhill.net")
+          (ext "https://v6.gh-proxy.org/https://github.com/electricant/adblock-rust-manager/releases/latest/download/adblock-rust-manager.xpi" "adblock-rust-manager@local")
           (ext (moz "clearurls") "{74145f27-f039-47ce-a470-a662b129930a}")
           (ext (moz "ublacklist") "@ublacklist")
           (ext (moz "privacy-pass") "{48748554-4c01-49e8-94af-79662bf34d50}")

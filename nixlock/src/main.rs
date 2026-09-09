@@ -6,11 +6,9 @@ use crate::args::{Args, Update};
 use crate::json::{InputItem, InputValue};
 use anyhow::{Result, anyhow, bail};
 use serde_json::Value;
-use std::{
-    collections::{BTreeMap, HashMap},
-    env,
-    sync::Arc,
-};
+use std::collections::{BTreeMap, HashMap};
+use std::env;
+use std::sync::Arc;
 use tokio::spawn;
 
 type LockedMap = HashMap<String, LockedItem>;
@@ -152,7 +150,8 @@ async fn async_main() -> Result<()> {
             .map(|(k, v)| (k, v.into_iter().collect::<BTreeMap<_, _>>()))
             .collect::<BTreeMap<_, _>>();
 
-        serde_json::to_string(&ordered)?
+        let json_str = serde_json::to_string_pretty(&ordered)?;
+        format!("{json_str}\n")
     };
 
     std::fs::write(locked_path, results)?;
