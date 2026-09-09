@@ -159,6 +159,7 @@ let
         url,
         channel,
         hashType ? defaultHashType,
+        tarballType ? "zst",
         ...
       }:
       {
@@ -203,7 +204,7 @@ let
             ]
           ];
         };
-        url.String = "{mirror}/{rev}/nixexprs.tar.xz";
+        url.String = "{mirror}/{rev}/nixexprs.tar.${tarballType}";
         hash = commonHash { };
       };
 
