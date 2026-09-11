@@ -4,6 +4,9 @@
 		level error
 		format console
 	}
+	storage file_system {
+		root /var/lib/pproxy
+	}
 }
 gist.github.com {
 	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key

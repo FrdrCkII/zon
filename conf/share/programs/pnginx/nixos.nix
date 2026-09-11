@@ -65,6 +65,8 @@ in
           Restart = "always";
           RestartSec = 2;
           TimeoutStopSec = 15;
+          StateDirectory = "pproxy";
+          StateDirectoryMode = "0750";
           UMask = "0027";
           User = "pproxy";
           Group = "pproxy";
@@ -100,8 +102,6 @@ in
           Restart = "always";
           RestartSec = 2;
           TimeoutStopSec = 15;
-          RuntimeDirectory = "smartdns";
-          RuntimeDirectoryMode = "0750";
           CacheDirectory = "smartdns";
           CacheDirectoryMode = "0750";
           LogsDirectory = "smartdns";
@@ -139,12 +139,8 @@ in
           Restart = "always";
           RestartSec = 2;
           TimeoutStopSec = 15;
-          RuntimeDirectory = "oxidns";
-          RuntimeDirectoryMode = "0750";
           CacheDirectory = "oxidns";
           CacheDirectoryMode = "0750";
-          LogsDirectory = "oxidns";
-          LogsDirectoryMode = "0750";
           UMask = "0077";
           User = "pproxy";
           Group = "pproxy";

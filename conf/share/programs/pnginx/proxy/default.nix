@@ -87,6 +87,9 @@ let
     		level error
     		format console
     	}
+      storage file_system {
+        root /var/lib/pproxy
+      }
     }
     ${lib.concatMapStringsSep "\n" mkProxySite sites}
   '';

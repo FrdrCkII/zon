@@ -3794,5 +3794,9 @@
         "level": "error"
       }
     }
+  },
+  "storage": {
+    "module": "file_system",
+    "root": "/var/lib/pproxy"
   }
 }
