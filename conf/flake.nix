@@ -2,8 +2,7 @@
   description = "FrdrCkII's Nix Env";
   outputs = _: import ./default.nix;
   nixConfig = {
-    flake-registry = "/dev/null";
-    allow-import-from-derivation = true;
+    flake-registry = ./.empty.json;
     extra-experimental-features = [
       "nix-command"
       "flakes"

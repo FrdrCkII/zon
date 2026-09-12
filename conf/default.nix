@@ -35,6 +35,7 @@ zon.withInputs {
               inputs.zon.nixlock.overlay
               inputs.zon.wrapit.overlays.wrapit
               inputs.zon.wrapit.overlays.extra
+              inputs.zon.wrapit.overlays.conf
             ];
           };
         };

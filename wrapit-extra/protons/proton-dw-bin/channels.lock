@@ -1,0 +1,10 @@
+{
+  "dwproton": {
+    "domain": "dawn.wine",
+    "grep": "x86_64.tar.xz",
+    "hash": "sha256-NGyrXQcA+k87SnowFd41uq49luI32fZENTwFTma7NpI=",
+    "hashType": "sha256",
+    "repo": "dawn-winery/dwproton",
+    "url": "https://dawn.wine/dawn-winery/dwproton/releases/download/dwproton-11.0-12/dwproton-11.0-12-x86_64.tar.xz"
+  }
+}

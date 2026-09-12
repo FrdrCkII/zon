@@ -12,11 +12,4 @@ in
   };
 
   inherit locked;
-  expr = builtins.mapAttrs (
-    n: v:
-    builtins.fetchTarball {
-      inherit (v) url;
-      sha256 = v.hash;
-    }
-  ) locked;
 }
