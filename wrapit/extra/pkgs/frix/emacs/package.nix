@@ -3,8 +3,11 @@
   wrapit,
   emacs-pgtk,
   curl,
+  # LSP
   rust-analyzer,
   clang-tools,
+  jdt-language-server,
+  typescript-language-server,
   nixd,
   nil,
 }:
@@ -33,6 +36,8 @@ wrapit.emacs.override {
     curl
     rust-analyzer
     clang-tools
+    jdt-language-server
+    typescript-language-server
     nixd
     nil
   ];
