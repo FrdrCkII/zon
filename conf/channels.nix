@@ -16,7 +16,7 @@ in
     nixpkgs = {
       type = "nixpkgsCn";
       url = "https://mirror.nju.edu.cn/nix-channels/releases";
-      channel = "nixos-26.05@nixos-26.05";
+      channel = "nixos-unstable@nixos-";
     };
   };
 

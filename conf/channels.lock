@@ -8,20 +8,20 @@
     "url": "https://v6.gh-proxy.org/https://github.com/ryantm/agenix/archive/b027ee29d959fda4b60b57566d64c98a202e0feb.tar.gz"
   },
   "hjem": {
-    "hash": "sha256-qwppDYdtxqtDpI1iSp7bs8prOJ0KQSvhJchfROD04f0=",
+    "hash": "sha256-0nvWuRbgL4GEKpR8Y4wsB3kmsVgyd0cW8kLHc2BqlTc=",
     "hashType": "sha256",
     "ref": "HEAD",
     "repo": "https://v6.gh-proxy.org/https://github.com/feel-co/hjem",
-    "rev": "d248f0e4f7abd6e1f0eb9ace778dd7928481943e",
-    "url": "https://v6.gh-proxy.org/https://github.com/feel-co/hjem/archive/d248f0e4f7abd6e1f0eb9ace778dd7928481943e.tar.gz"
+    "rev": "e5e30b4320a8cbcd6cdfc65f044763669a8f0363",
+    "url": "https://v6.gh-proxy.org/https://github.com/feel-co/hjem/archive/e5e30b4320a8cbcd6cdfc65f044763669a8f0363.tar.gz"
   },
   "ncro": {
-    "hash": "sha256-Ixz0rc6rnDEgNG6Cw2LJRdKxGjMbdy9bC9ncjAU+SmA=",
+    "hash": "sha256-s/vFy7F+iaHM3zW31fAR/LeTwZWiVKxiMzR941qgg4A=",
     "hashType": "sha256",
     "ref": "HEAD",
     "repo": "https://v6.gh-proxy.org/https://github.com/manic-systems/ncro",
-    "rev": "a367692d67bed3225d64fed0fffefed141927fd3",
-    "url": "https://v6.gh-proxy.org/https://github.com/manic-systems/ncro/archive/a367692d67bed3225d64fed0fffefed141927fd3.tar.gz"
+    "rev": "2f28dcf17a62bed3cc4a9741914f9efb3ea363cb",
+    "url": "https://v6.gh-proxy.org/https://github.com/manic-systems/ncro/archive/2f28dcf17a62bed3cc4a9741914f9efb3ea363cb.tar.gz"
   },
   "nixos-core": {
     "hash": "sha256-UU72d6f9S0qBXaVTYL8vmLhIVuugSFONQL2zYQzcP30=",
@@ -32,11 +32,11 @@
     "url": "https://v6.gh-proxy.org/https://github.com/manic-systems/nixos-core/archive/c65bbdee8d52c1219a721a39b7427b82ea377b9f.tar.gz"
   },
   "nixpkgs": {
-    "channel": "nixos-26.05@nixos-26.05",
-    "hash": "sha256-HpUcFydtAyJ4v+HhQYitv0hXM/sAld/boLdsnSRiRPs=",
+    "channel": "nixos-unstable@nixos-",
+    "hash": "sha256-vWkSk5bbfTqdtMoSgD9FshACO8JCvXTFi+3cqEp0mH0=",
     "hashType": "sha256",
     "mirror": "https://mirror.nju.edu.cn/nix-channels/releases",
-    "rev": "nixos-26.05@nixos-26.05.9334.93108a538f07",
-    "url": "https://mirror.nju.edu.cn/nix-channels/releases/nixos-26.05@nixos-26.05.9334.93108a538f07/nixexprs.tar.zst"
+    "rev": "nixos-unstable@nixos-26.11pre1074753.b1b875982b17",
+    "url": "https://mirror.nju.edu.cn/nix-channels/releases/nixos-unstable@nixos-26.11pre1074753.b1b875982b17/nixexprs.tar.zst"
   }
 }

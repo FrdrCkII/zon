@@ -1,15 +1,10 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
-{
+{ pkgs, ... }: {
   system = {
-    stateVersion = "26.05";
+    stateVersion = "26.11";
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_7_1;
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [
       "kvm-intel"
       "ntsync"
@@ -78,7 +73,6 @@
       enable = true;
       extraPackages = [
         pkgs.intel-compute-runtime
-        pkgs.intel-compute-runtime.drivers
         pkgs.intel-media-driver
         pkgs.libvdpau-va-gl
         pkgs.vpl-gpu-rt
@@ -91,7 +85,12 @@
 
     nvidia = {
       open = true;
+      branch = "latest";
+
+      gsp.enable = true;
       modesetting.enable = true;
+
+      videoAcceleration = true;
       nvidiaSettings = true;
 
       prime = {
@@ -114,27 +113,14 @@
       "modsetting"
       "nvidia"
     ];
-
-    libinput = {
-      touchpad.tapping = true;
-    };
   };
 
   nixpkgs = {
     allowUnfreePredicate = [
       "nvidia-x11"
       "nvidia-settings"
+      "nvidia-kernel-modules"
     ];
-
-    overlays = lib.singleton (
-      final: prev: {
-        _cuda = prev._cuda // {
-          db = prev._cuda.db // {
-            redistUrlPrefix = "https://developer.download.nvidia.cn/compute";
-          };
-        };
-      }
-    );
   };
 
   nix.settings.system-features = [

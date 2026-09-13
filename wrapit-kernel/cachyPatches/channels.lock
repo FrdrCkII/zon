@@ -1,0 +1,10 @@
+{
+  "kernel-patches": {
+    "hash": "sha256-nyTYbf7SUaqLmgdbfc60DmO13F1ZgOdglnhsm6UeqrI=",
+    "hashType": "sha256",
+    "ref": "HEAD",
+    "repo": "https://v6.gh-proxy.org/https://github.com/CachyOS/kernel-patches",
+    "rev": "d5db2a953637445998d2b0e5ab52ea9c04860a24",
+    "url": "https://v6.gh-proxy.org/https://github.com/CachyOS/kernel-patches/archive/d5db2a953637445998d2b0e5ab52ea9c04860a24.tar.gz"
+  }
+}

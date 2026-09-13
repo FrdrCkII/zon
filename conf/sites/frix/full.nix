@@ -31,9 +31,13 @@
     pkgs.libreoffice
   ];
 
-  services.scx = {
-    enable = true;
-    package = pkgs.scx.rustscheds;
-    scheduler = "scx_rustland";
+  services = {
+    flatpak.enable = true;
+
+    scx = {
+      enable = true;
+      package = pkgs.scx.rustscheds;
+      scheduler = "scx_rustland";
+    };
   };
 }

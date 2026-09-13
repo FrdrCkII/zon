@@ -65,8 +65,8 @@
       "snd_aw2"
       "snd_intel8x0m"
       "snd_pcsp"
-      "usbkbd"
-      "usbmouse"
+      # "usbkbd"
+      # "usbmouse"
     ];
   };
 }

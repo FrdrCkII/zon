@@ -12,5 +12,9 @@
         ];
       };
     };
+
+    packages = {
+      cachy = pkgs.wLinuxPackages.cachy-flix;
+    };
   };
 }

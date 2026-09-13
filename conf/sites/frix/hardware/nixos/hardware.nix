@@ -82,7 +82,6 @@
       enable = true;
       extraPackages = [
         pkgs.intel-compute-runtime
-        pkgs.intel-compute-runtime.drivers
         pkgs.intel-media-driver
         pkgs.libvdpau-va-gl
         pkgs.vpl-gpu-rt

@@ -61,13 +61,13 @@
       userborn.enable = true;
 
       journald = {
-        extraConfig = ''
-          SystemMaxUse=500M
-          RuntimeMaxUse=200M
-          SystemKeepFree=1G
-          RuntimeKeepFree=500M
-          MaxFileSec=1week
-        '';
+        settings.Journal = {
+          SystemMaxUse = "500M";
+          RuntimeMaxUse = "200M";
+          SystemKeepFree = "1G";
+          RuntimeKeepFree = "500M";
+          MaxFileSec = "1week";
+        };
       };
 
       seatd = {
