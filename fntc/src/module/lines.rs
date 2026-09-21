@@ -1,8 +1,10 @@
+use std::collections::HashSet;
+
 use anyhow::{Result, anyhow, bail};
 
-pub fn replace_imports(text: &str, key: &str) -> Result<(String, Vec<String>)> {
+pub fn replace_imports(text: &str, key: &str) -> Result<(String, HashSet<String>)> {
     let mut out_lines = Vec::new();
-    let mut deps = Vec::new();
+    let mut deps: HashSet<String> = HashSet::new();
     let mut in_block = false;
 
     for line in text.lines() {
@@ -16,7 +18,7 @@ pub fn replace_imports(text: &str, key: &str) -> Result<(String, Vec<String>)> {
                 .map_err(|e| anyhow!("invalid @fntc m block line in '{}': {}: {}", key, line, e))?;
 
             out_lines.push(format!("{indent}{name} = _.\"{path}\";"));
-            deps.push(path);
+            deps.insert(path);
             continue;
         }
 
@@ -74,40 +76,4 @@ pub fn parse_import_line(line: &str) -> Result<(String, String, String)> {
     }
 
     Ok((indent, name.to_owned(), path.to_owned()))
-}
-
-pub fn render_attr(out: &mut String, key: &str, content: &str) {
-    let key = key.replace('\\', "\\\\").replace('"', "\\\"");
-
-    let content = content.trim_end_matches('\n');
-    let lines: Vec<&str> = content.lines().collect();
-
-    if lines.is_empty() {
-        out.push_str(&format!("    \"{key}\" = null;\n"));
-        return;
-    }
-
-    if lines[0].trim_start().starts_with('{') {
-        out.push_str(&format!("    \"{key}\" = {}\n", lines[0]));
-
-        for line in &lines[1..] {
-            out.push_str("    ");
-            out.push_str(line);
-            out.push('\n');
-        }
-    } else {
-        out.push_str(&format!("    \"{key}\" =\n"));
-
-        for line in &lines {
-            out.push_str("      ");
-            out.push_str(line);
-            out.push('\n');
-        }
-    }
-
-    if out.ends_with('\n') {
-        out.pop();
-    }
-
-    out.push_str(";\n");
 }

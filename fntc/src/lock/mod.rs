@@ -30,7 +30,7 @@ async fn async_main(parsed: Parsed) -> Result<()> {
     // 解析输入/锁定文件
     let (inputs, locked) = {
         let inputs = {
-            let config = &args.config.to_string_lossy();
+            let config = serde_json::to_string(&args.config.to_string_lossy())?;
             let nix_expr = format!(r#"let types = {TYPES}; in types (import {config})"#);
 
             let nix_child = tokio::process::Command::new("nix")

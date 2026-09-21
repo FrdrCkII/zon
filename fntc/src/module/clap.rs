@@ -118,6 +118,7 @@ pub fn parse(args: Vec<String>) -> Result<Parsed> {
 
             Flag::Search => {
                 parsed.search.push(absolute(PathBuf::from(&arg))?);
+                flag = Flag::None;
             }
 
             Flag::Output => {
