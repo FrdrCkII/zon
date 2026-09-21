@@ -33,10 +33,10 @@
   },
   "nixpkgs": {
     "channel": "nixos-unstable@nixos-",
-    "hash": "sha256-vWkSk5bbfTqdtMoSgD9FshACO8JCvXTFi+3cqEp0mH0=",
+    "hash": "sha256-BMbikTjbh5H7ac/OjwGoJrlooh4dgNqhs51ABM83M7g=",
     "hashType": "sha256",
     "mirror": "https://mirror.nju.edu.cn/nix-channels/releases",
-    "rev": "nixos-unstable@nixos-26.11pre1074753.b1b875982b17",
-    "url": "https://mirror.nju.edu.cn/nix-channels/releases/nixos-unstable@nixos-26.11pre1074753.b1b875982b17/nixexprs.tar.zst"
+    "rev": "nixos-unstable@nixos-26.11pre1076192.20b1ddd1aa5a",
+    "url": "https://mirror.nju.edu.cn/nix-channels/releases/nixos-unstable@nixos-26.11pre1076192.20b1ddd1aa5a/nixexprs.tar.zst"
   }
 }

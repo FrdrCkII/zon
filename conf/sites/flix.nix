@@ -65,6 +65,9 @@
               nix = {
                 implementation = "nix";
               };
+              sudo = {
+                package = "sudo-rs";
+              };
             };
 
             gui = {

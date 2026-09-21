@@ -23,6 +23,7 @@
     systemPackages = [
       pkgs.bluetui
       pkgs.nixlock
+      pkgs.fntc
       pkgs._7zz-rar
       pkgs.unrar
       pkgs.cage
@@ -64,12 +65,14 @@
           "audio"
           "video"
           "render"
+          "incus-admin"
           "keys"
         ];
         packages = [
           pkgs.frix.jujutsu
           pkgs.toml-sort
           pkgs.statix
+          pkgs.rsync
         ];
       };
     };

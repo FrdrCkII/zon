@@ -33,6 +33,7 @@ zon.withInputs {
           nixpkgs = {
             overlays = [
               inputs.zon.nixlock.overlay
+              inputs.zon.nixtools.overlay
               inputs.zon.wrapit.overlays.wrapit
               inputs.zon.wrapit.overlays.extra
               inputs.zon.wrapit.overlays.kernel

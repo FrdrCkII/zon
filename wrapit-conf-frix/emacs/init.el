@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;; Early Init ;;;
 
 ;; 目录设置

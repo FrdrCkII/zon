@@ -1,25 +1,54 @@
 { pkgs, ... }: {
   virtualisation = {
-    podman = {
+    incus = {
       enable = true;
-      dockerCompat = true;
+      preseed = {
+        networks = [
+          {
+            name = "incusbr0";
+            type = "bridge";
+            config = {
+              "ipv4.address" = "10.0.100.1/24";
+              "ipv4.nat" = "true";
+            };
+          }
+        ];
+        storage_pools = [
+          {
+            name = "default";
+            driver = "dir";
+            config.source = "/var/lib/incus/storage-pools/default";
+          }
+        ];
+        profiles = [
+          {
+            name = "default";
+            devices = {
+              eth0 = {
+                type = "nic";
+                name = "eth0";
+                network = "incusbr0";
+              };
+              root = {
+                type = "disk";
+                path = "/";
+                pool = "default";
+                size = "35GiB";
+              };
+            };
+          }
+        ];
+      };
     };
   };
 
-  environment = {
-    etc."containers/registries.conf.d/00-mirrors.conf".text = ''
-      [[registry]]
-      prefix = "docker.io"
-      location = "docker.io"
-      mirror = [
-        { location = "docker.m.daocloud.io" },
-        { location = "docker.1ms.run" }
-      ]
-    '';
+  networking.firewall.trustedInterfaces = [
+    "incusbr0"
+  ];
 
-    systemPackages = [
-      pkgs.distrobox
-    ];
+  programs.captive-browser = {
+    enable = true;
+    interface = "wlan0";
   };
 
   users.users.main.packages = [
