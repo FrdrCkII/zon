@@ -1,6 +1,5 @@
-use std::collections::HashSet;
-
 use anyhow::{Result, anyhow, bail};
+use std::collections::HashSet;
 
 pub fn replace_imports(text: &str, key: &str) -> Result<(String, HashSet<String>)> {
     let mut out_lines = Vec::new();
@@ -9,7 +8,7 @@ pub fn replace_imports(text: &str, key: &str) -> Result<(String, HashSet<String>
 
     for line in text.lines() {
         if in_block {
-            if line.trim() == "# @fntc m end" {
+            if matches_tokens(line, &["#", "@fntc", "m", "end"]) {
                 in_block = false;
                 continue;
             }
@@ -22,7 +21,7 @@ pub fn replace_imports(text: &str, key: &str) -> Result<(String, HashSet<String>
             continue;
         }
 
-        if line.trim() == "# @fntc m begin" {
+        if matches_tokens(line, &["#", "@fntc", "m", "begin"]) {
             in_block = true;
             continue;
         }
@@ -35,6 +34,16 @@ pub fn replace_imports(text: &str, key: &str) -> Result<(String, HashSet<String>
     }
 
     Ok((out_lines.join("\n"), deps))
+}
+
+fn matches_tokens(line: &str, expected: &[&str]) -> bool {
+    let mut tokens = line.split_whitespace();
+    for e in expected {
+        if tokens.next() != Some(*e) {
+            return false;
+        }
+    }
+    tokens.next().is_none()
 }
 
 pub fn parse_import_line(line: &str) -> Result<(String, String, String)> {
@@ -54,26 +63,36 @@ pub fn parse_import_line(line: &str) -> Result<(String, String, String)> {
         bail!("invalid import binding name: {name}");
     }
 
-    let rest = rest.trim_start();
-    let rest = rest
-        .strip_prefix("null;")
-        .ok_or_else(|| anyhow!("missing 'null;'"))?;
-    let rest = rest.trim_start();
-    let rest = rest
-        .strip_prefix("# @fntc m import <")
-        .ok_or_else(|| anyhow!("missing '# @fntc m import <'"))?;
+    let mut tokens = rest.split_whitespace();
 
-    let end = rest.find('>').ok_or_else(|| anyhow!("missing '>'"))?;
+    expect_token(&mut tokens, "null;")?;
+    expect_token(&mut tokens, "#")?;
+    expect_token(&mut tokens, "@fntc")?;
+    expect_token(&mut tokens, "m")?;
+    expect_token(&mut tokens, "import")?;
 
-    let path = &rest[..end];
+    let path_token = tokens.next().ok_or_else(|| anyhow!("missing '<path>'"))?;
+
+    let path = path_token
+        .strip_prefix('<')
+        .and_then(|s| s.strip_suffix('>'))
+        .ok_or_else(|| anyhow!("expected '<path>', got: {path_token}"))?;
+
     if path.is_empty() {
         bail!("empty import path");
     }
 
-    let after = rest[end + 1..].trim();
-    if !after.is_empty() {
-        bail!("unexpected text after import: {after}");
+    if let Some(extra) = tokens.next() {
+        bail!("unexpected text after import: {extra}");
     }
 
     Ok((indent, name.to_owned(), path.to_owned()))
+}
+
+fn expect_token(tokens: &mut std::str::SplitWhitespace, expected: &str) -> Result<()> {
+    match tokens.next() {
+        Some(t) if t == expected => Ok(()),
+        Some(t) => bail!("expected '{}', got: '{}'", expected, t),
+        None => bail!("missing '{}'", expected),
+    }
 }
