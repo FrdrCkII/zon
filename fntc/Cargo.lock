@@ -29,6 +29,26 @@ name = "fntc"
 version = "1.0.0"
 dependencies = [
  "anyhow",
+ "fntc_lock",
+ "fntc_module",
+]
+
+[[package]]
+name = "fntc_lock"
+version = "1.0.0"
+dependencies = [
+ "anyhow",
+ "libc",
+ "serde",
+ "serde_json",
+ "tokio",
+]
+
+[[package]]
+name = "fntc_module"
+version = "1.0.0"
+dependencies = [
+ "anyhow",
  "libc",
  "serde",
  "serde_json",

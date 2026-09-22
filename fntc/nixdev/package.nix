@@ -3,20 +3,20 @@
   rustPlatform,
 }:
 let
-  src-rust = ./.;
-  cargo = lib.importTOML (src-rust + "/Cargo.toml");
+  src-rust = ../.;
+  cargo = lib.importTOML (src-rust + /Cargo.toml);
 in
 rustPlatform.buildRustPackage (finalAttrs: {
-  pname = cargo.package.name;
-  version = cargo.package.version;
+  pname = cargo.workspace.package.name;
+  version = cargo.workspace.package.version;
 
   src = lib.fileset.toSource {
     root = src-rust;
     fileset = lib.fileset.unions [
-      ./src
-      ./build.rs
-      ./Cargo.lock
-      ./Cargo.toml
+      (src-rust + /crates)
+      (src-rust + /main-bin)
+      (src-rust + /Cargo.toml)
+      (src-rust + /Cargo.lock)
     ];
   };
 
@@ -25,9 +25,9 @@ rustPlatform.buildRustPackage (finalAttrs: {
   };
 
   meta = {
-    mainProgram = cargo.package.name;
+    mainProgram = cargo.workspace.package.name;
     description = "Frederick's nix project build tools collect";
-    license = lib.licenses.gpl3Plus;
+    license = lib.licenses.eupl12;
     platforms = lib.platforms.unix;
   };
 })

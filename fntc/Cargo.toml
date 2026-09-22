@@ -1,11 +1,25 @@
-[dependencies]
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+strip = true
+
+[workspace]
+members = ["crates/*", "main-bin"]
+resolver = "3"
+
+[workspace.dependencies]
 anyhow = "1.0.104"
+fntc_lock = {path = "./crates/lock"}
+fntc_module = {path = "./crates/module"}
 libc = "0.2.189"
 serde = {features = ["derive"], version = "1.0.229"}
 serde_json = {features = ["std"], version = "1.0.151"}
 tokio = {features = ["io-util", "process", "rt-multi-thread", "time"], version = "1.53.1"}
 
-[package]
+[workspace.package]
 edition = "2024"
+license = "EUPL-1.2"
 name = "fntc"
+rust-version = "1.98.0"
 version = "1.0.0"
