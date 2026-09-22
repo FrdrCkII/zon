@@ -1,8 +1,9 @@
 [dependencies]
 anyhow = "1.0.104"
+libc = "0.2.189"
 serde = {features = ["derive"], version = "1.0.229"}
 serde_json = {features = ["std"], version = "1.0.151"}
-tokio = {features = ["io-util", "process", "rt-multi-thread"], version = "1.53.1"}
+tokio = {features = ["io-util", "process", "rt-multi-thread", "time"], version = "1.53.1"}
 
 [package]
 edition = "2024"

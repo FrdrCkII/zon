@@ -29,6 +29,7 @@ name = "fntc"
 version = "1.0.0"
 dependencies = [
  "anyhow",
+ "libc",
  "serde",
  "serde_json",
  "tokio",
