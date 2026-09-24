@@ -36,6 +36,7 @@
       defaultPackages = lib.mkForce [
         pkgs.git
         pkgs.nano
+        pkgs.pulseaudio
       ];
       sessionVariables = {
         EDITOR = lib.mkDefault "nano";
