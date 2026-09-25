@@ -3,13 +3,20 @@
     networking = {
       wireless.enable = lib.mkForce false;
       networkmanager.enable = lib.mkForce false;
+
       wireless.iwd = {
         enable = true;
         settings = {
+          General = {
+            EnableNetworkConfiguration = false;
+          };
+
           Network = {
+            NameResolvingService = "none";
             EnableIPv6 = lib.mkDefault true;
             RoutePriorityOffset = lib.mkDefault 300;
           };
+
           Settings = {
             AutoConnect = lib.mkDefault true;
             AddressRandomization = lib.mkDefault "once";
@@ -17,6 +24,10 @@
           };
         };
       };
+    };
+
+    systemd.services = {
+      ead.enable = true;
     };
   };
 }

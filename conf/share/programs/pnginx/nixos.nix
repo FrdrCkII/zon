@@ -25,9 +25,9 @@ in
 
   config = {
     networking = {
-      dhcpcd.extraConfig = "nohook resolv.conf";
-      wireless.iwd.settings.Network.NameResolvingService = "none";
-      networkmanager.dns = "none";
+      nameservers = lib.mkBefore [
+        "127.0.0.53"
+      ];
     };
 
     environment = {

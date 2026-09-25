@@ -289,7 +289,7 @@ plugins:
       #   exec: goto remote_seq
       - exec: goto local_seq
 
-  - tag: seq_53
+  - tag: seq_5353
     type: sequence
     args:
       - matches: qname $local_reverse_domains
@@ -302,17 +302,17 @@ plugins:
       - exec: goto common_seq
 
   # ---------- 监听服务 ----------
-  - tag: udp_server_53
+  - tag: udp_server_5353
     type: udp_server
     args:
-      entry: seq_53
-      listen: "127.0.0.1:53"
+      entry: seq_5353
+      listen: "127.0.0.53:53"
 
-  - tag: tcp_server_53
+  - tag: tcp_server_5353
     type: tcp_server
     args:
-      entry: seq_53
-      listen: "127.0.0.1:53"
+      entry: seq_5353
+      listen: "127.0.0.53:53"
 
   - tag: udp_server_5360
     type: udp_server
