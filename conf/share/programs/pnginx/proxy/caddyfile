@@ -1,5 +1,6 @@
 {
 	default_bind 127.0.0.1
+	auto_https off
 	log {
 		level error
 		format console
@@ -1158,6 +1159,36 @@ lc-event.pixiv.net {
 	}
 }
 
+api.fanbox.cc {
+	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
+	@has_range {
+		header Range *
+	}
+	@has_if_range {
+		header If-Range *
+	}
+
+	reverse_proxy {
+		to 104.18.41.140:443
+		to 172.64.146.116:443
+		header_up Host {http.request.host}
+		max_fails 2
+		fail_duration 10s
+		unhealthy_status 500 502 503 504
+		unhealthy_latency 1s
+		lb_policy ip_hash
+		header_up @has_range Range {http.request.header.Range}
+		header_up @has_if_range If-Range {http.request.header.If-Range}
+		header_up User-Agent {http.request.header.User-Agent}
+		header_up X-Real-IP {http.request.remote.host}
+
+		transport http {
+			tls_insecure_skip_verify
+			tls_server_name ""
+		}
+	}
+}
+
 pixiv.net, *.pixiv.net, fanbox.cc, *.fanbox.cc {
 	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
 	@has_range {
@@ -1222,7 +1253,7 @@ pixiv.pximg.net {
 
 		transport http {
 			tls_insecure_skip_verify
-			tls_server_name "pixivision.net"
+			tls_server_name ""
 		}
 	}
 }
@@ -1258,12 +1289,12 @@ i.pximg.net, *.pximg.net {
 
 		transport http {
 			tls_insecure_skip_verify
-			tls_server_name "pixivision.net"
+			tls_server_name ""
 		}
 	}
 }
 
-a.pixiv.org, *.pixiv.org {
+a.pixiv.org, d.pixiv.org {
 	tls /nix/store/mgc9s9w34gjf8c2d1g5bnq376xqs0hj4-server.crt /nix/store/jzcs400vs7vz0iga8iqv2b4rb1hip7cy-server.key
 	@has_range {
 		header Range *
@@ -1273,11 +1304,9 @@ a.pixiv.org, *.pixiv.org {
 	}
 
 	reverse_proxy {
-		dynamic a a.pixiv.org 443 {
-			resolvers 127.0.0.1:5360
-			refresh 1s
-		}
-
+		to 210.140.139.183:443
+		to 210.140.139.184:443
+		to 210.140.139.182:443
 		header_up Host {http.request.host}
 		max_fails 2
 		fail_duration 10s
@@ -1291,7 +1320,7 @@ a.pixiv.org, *.pixiv.org {
 
 		transport http {
 			tls_insecure_skip_verify
-			tls_server_name "pixivision.net"
+			tls_server_name ""
 		}
 	}
 }

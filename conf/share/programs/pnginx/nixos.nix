@@ -10,6 +10,18 @@ let
   proxy = ./proxy;
   proxyPackage = pkgs.caddy;
   proxyConfig = (import proxy { inherit pkgs lib; }).file;
+
+  oxidnsConfig = pkgs.writeText "oxidns.yaml" (
+    lib.replaceStrings
+      [
+        "/etc/oxidns/server"
+      ]
+      [
+        "${ca}/server"
+      ]
+      (lib.readFile "${dns}/oxidns.yaml")
+  );
+
   cfg = config.services.pproxy;
 in
 {
@@ -24,12 +36,6 @@ in
   };
 
   config = {
-    networking = {
-      nameservers = lib.mkBefore [
-        "127.0.0.53"
-      ];
-    };
-
     environment = {
       systemPackages = [
         proxyPackage
@@ -135,7 +141,7 @@ in
           "nss-lookup.target"
         ];
         serviceConfig = {
-          ExecStart = "${lib.getExe pkgs.oxidns} start -c ${dns}/oxidns.yaml -d /var/cache/oxidns";
+          ExecStart = "${lib.getExe pkgs.oxidns} start -c ${oxidnsConfig} -d /var/cache/oxidns";
           Restart = "always";
           RestartSec = 2;
           TimeoutStopSec = 15;
@@ -158,6 +164,23 @@ in
           StartLimitIntervalSec = 60;
         };
       };
+    };
+
+    services.dnsmasq.settings = {
+      server = [
+        "127.0.0.1#5360"
+      ];
+      address = [
+        "/github.com/127.0.0.1"
+        "/githubusercontent.com/127.0.0.1"
+        "/githubassets.com/127.0.0.1"
+        "/github.io/127.0.0.1"
+        "/steamcommunity.com/127.0.0.1"
+        "/pixiv.net/127.0.0.1"
+        "/pixivsketch.net/127.0.0.1"
+        "/pximg.net/127.0.0.1"
+        "/greasyfork.org/127.0.0.1"
+      ];
     };
   };
 }

@@ -12,7 +12,7 @@
           };
 
           Network = {
-            NameResolvingService = "none";
+            NameResolvingService = "resolvconf";
             EnableIPv6 = lib.mkDefault true;
             RoutePriorityOffset = lib.mkDefault 300;
           };

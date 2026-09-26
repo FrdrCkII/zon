@@ -56,9 +56,7 @@
           port = 53;
           listen-address = "127.0.0.1";
           bind-interfaces = true;
-
           strict-order = true;
-          server = lib.remove "127.0.0.1" config.networking.nameservers;
         };
       };
     };

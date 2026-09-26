@@ -12,3 +12,7 @@ priority = 2
 command = "toml-sort"
 includes = ["*.toml"]
 options = ["-i"]
+
+[formatter.yaml]
+command = "yamlfmt"
+includes = ["*.yaml"]
