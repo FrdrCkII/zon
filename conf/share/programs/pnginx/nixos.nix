@@ -11,17 +11,6 @@ let
   proxyPackage = pkgs.caddy;
   proxyConfig = (import proxy { inherit pkgs lib; }).file;
 
-  oxidnsConfig = pkgs.writeText "oxidns.yaml" (
-    lib.replaceStrings
-      [
-        "/etc/oxidns/server"
-      ]
-      [
-        "${ca}/server"
-      ]
-      (lib.readFile "${dns}/oxidns.yaml")
-  );
-
   cfg = config.services.pproxy;
 in
 {
@@ -140,8 +129,13 @@ in
           "network-online.target"
           "nss-lookup.target"
         ];
+        environment = {
+          WORKDIR = "/var/cache/oxidns";
+          CA_CERT = "${ca}/server.crt";
+          CA_KEY = "${ca}/server.key";
+        };
         serviceConfig = {
-          ExecStart = "${lib.getExe pkgs.oxidns} start -c ${oxidnsConfig} -d /var/cache/oxidns";
+          ExecStart = "${lib.getExe pkgs.oxidns} start -c ${dns}/oxidns.yaml -d /var/cache/oxidns";
           Restart = "always";
           RestartSec = 2;
           TimeoutStopSec = 15;

@@ -1,28 +1,29 @@
+# ============================================================
+# OxiDNS 配置 - 本地 DNS 服务器最终版
+# 用途：本地 DNS 网关，支持 DoH/HTTP3，智能分流，IPv4/IPv6 双栈
+# ============================================================
 log:
+  # 生产环境使用 warn，排查问题时临时改为 info 或 debug
   level: "warn"
+runtime:
+  # 根据 CPU 核心数调整，4 核设备保持 4 即可
+  worker_threads: 4
 api:
+  # 管理 API 监听地址，用于 WebUI 和 probe 命令
   http: "127.0.0.1:8010"
+# ============================================================
+# 网络出站配置
+# ============================================================
 network:
   outbound:
-    default: "bootstrap"
+    default: "direct"
     profiles:
-      bootstrap:
-        resolver:
-          nameservers:
-            - addr: "udp://119.29.29.29:53"
-            - addr: "udp://119.28.28.28:53"
-            - addr: "udp://233.6.6.6:53"
-            - addr: "udp://233.5.5.5:53"
-            - addr: "udp://80.80.80.80:53"
-            - addr: "udp://80.80.81.81:53"
-            - addr: "udp://[2606:4700:4700::1111]:53"
-            - addr: "udp://[2606:4700:4700::1001]:53"
-            - addr: "udp://1.1.1.1:53"
-            - addr: "udp://1.0.0.1:53"
-          ip_version: 6
-          timeout: "5s"
-          proxy: "none"
+      direct:
+        resolver: "system"
         proxy: "none"
+# ============================================================
+# 插件定义
+# ============================================================
 plugins:
   # ---------- 定时更新订阅与规则 ----------
   - tag: "subscription_cron"
@@ -44,19 +45,18 @@ plugins:
     args:
       timeout: "60s"
       startup_if_missing: true
-      outbound: "bootstrap"
       downloads:
         - url: "https://cdn.jsdelivr.net/gh/pmkol/easymosdns@rules/gfw_ip_list.txt"
-          dir: "./rules"
+          dir: "${WORKDIR}/rules"
           filename: "gfw_ip.txt"
         - url: "https://anti-ad.net/adguard.txt"
-          dir: "./rules"
+          dir: "${WORKDIR}/rules"
           filename: "adguard.txt"
         - url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
-          dir: "./rules"
+          dir: "${WORKDIR}/rules"
           filename: "geosite.dat"
         - url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/geoip-only-cn-private.dat"
-          dir: "./rules"
+          dir: "${WORKDIR}/rules"
           filename: "geoip.dat"
   - tag: "reload_rule_providers"
     type: "reload_provider"
@@ -72,38 +72,39 @@ plugins:
     type: "ip_set"
     args:
       files:
-        - "./rules/gfw_ip.txt"
+        - "${WORKDIR}/rules/gfw_ip.txt"
   - tag: "ad_rules"
     type: "adguard_rule"
     args:
       files:
-        - "./rules/adguard.txt"
+        - "${WORKDIR}/rules/adguard.txt"
   - tag: "geoip_cn"
     type: "geoip"
     args:
-      file: "./rules/geoip.dat"
+      file: "${WORKDIR}/rules/geoip.dat"
       selectors:
         - "cn"
   - tag: "geosite_cn"
     type: "geosite"
     args:
-      file: "./rules/geosite.dat"
+      file: "${WORKDIR}/rules/geosite.dat"
       selectors:
         - "cn"
   - tag: "geosite_no_cn"
     type: "geosite"
     args:
-      file: "./rules/geosite.dat"
+      file: "${WORKDIR}/rules/geosite.dat"
       selectors:
         - "geolocation-!cn"
   - tag: "category_ads_all"
     type: "geosite"
     args:
-      file: "./rules/geosite.dat"
+      file: "${WORKDIR}/rules/geosite.dat"
       selectors:
         - "category-ads-all"
         - "win-spy"
         - "win-extra"
+  # 空规则集，用于后续按需填充 ECS 域名
   - tag: "ecscn"
     type: "domain_set"
     args:
@@ -112,6 +113,7 @@ plugins:
     type: "domain_set"
     args:
       exps: []
+  # 本地 PTR 反向解析规则，可按需添加内网网段
   - tag: "local_ptr"
     type: "domain_set"
     args:
@@ -128,13 +130,7 @@ plugins:
         - "0.0.0.0"
         - "::"
       short_circuit: true
-  - tag: "rate_limit"
-    type: "rate_limiter"
-    args:
-      qps: 200
-      burst: 400
-      mask4: 32
-      mask6: 48
+  # 已移除 rate_limiter，本地服务无需限速
   - tag: "lazy_cache"
     type: "cache"
     args:
@@ -145,69 +141,63 @@ plugins:
       max_negative_ttl: 300
       negative_ttl_without_soa: 60
       max_positive_ttl: 3600
+      # TTL < 60s 的正响应不入缓存，减少缓存抖动
       min_positive_ttl: 60
       ecs_in_key: false
-      dump_file: "./rules/dns_cache.dump"
+      dump_file: "${WORKDIR}/rules/dns_cache.dump"
       dump_interval: 7200
   - tag: "query_recorder_main"
     type: "query_recorder"
     args:
-      path: "./rules/query-recorder-main.sqlite"
+      path: "${WORKDIR}/rules/query-recorder-main.sqlite"
       queue_size: 8192
       batch_size: 512
       flush_interval_ms: 1000
       memory_tail: 1024
       retention_days: 3
       cleanup_interval_hours: 1
+  # 远程上游: 使用 TCP pipeline 直连，避免依赖 bootstrap 解析
   - tag: "forward_remote"
     type: "forward"
     args:
-      concurrent: 8
+      concurrent: 2
       response_selection: "prefer_positive"
-      outbound: "bootstrap"
       upstreams:
-        - addr: "https://dns.google/dns-query"
-        - addr: "https://dns.cloudflare.com/dns-query"
-        - addr: "https://cloudflare-dns.com/dns-query"
-        - addr: "https://1.1.1.1/dns-query"
-        - addr: "https://dns.quad9.net/dns-query"
-        - addr: "https://dns9.quad9.net/dns-query"
-        - addr: "https://doh.dns.sb/dns-query"
-        - addr: "https://doh.sb/dns-query"
-        - addr: "https://dns.sb/dns-query"
-        - addr: "https://doh.opendns.com/dns-query"
-        - addr: "https://dns.opendns.com/dns-query"
-        - addr: "https://doh.umbrella.com/dns-query"
-        - addr: "https://dns.umbrella.com/dns-query"
-        - addr: "https://dns.sse.cisco.com/dns-query"
-        - addr: "https://common.dot.dns.yandex.net/dns-query"
-        - addr: "https://unfiltered.adguard-dns.com/dns-query"
+        - addr: "tcp+pipeline://[2606:4700:4700::1111]:53"
+          dial_addr: "2606:4700:4700::1111"
+        - addr: "tcp+pipeline://[2a02:6b8:0:1::feed:0ff]:53"
+          dial_addr: "2a02:6b8:0:1::feed:0ff"
+  # 本地上游: 使用国内 DoH 服务
   - tag: "forward_local"
     type: "forward"
     args:
-      concurrent: 4
-      outbound: "bootstrap"
+      concurrent: 2
+      response_selection: "prefer_positive"
       upstreams:
         - addr: "https://doh.pub/dns-query"
+          bootstrap: "223.5.5.5:53"
+          bootstrap_version: 4
         - addr: "https://doh.360.cn/dns-query"
+          bootstrap: "223.5.5.5:53"
+          bootstrap_version: 4
         - addr: "https://dns.alidns.com/dns-query"
-        - addr: "https://223.5.5.5/dns-query"
-        - addr: "https://223.6.6.6/dns-query"
+          bootstrap: "223.5.5.5:53"
+          bootstrap_version: 4
+  # 兜底上游: 直接用 TCP 查询，避免依赖 bootstrap
   - tag: "forward_bootstrap"
     type: "forward"
     args:
-      concurrent: 4
+      concurrent: 2
+      response_selection: "prefer_positive"
       upstreams:
-        - addr: "udp://119.29.29.29:53"
-        - addr: "udp://119.28.28.28:53"
-        - addr: "udp://233.6.6.6:53"
-        - addr: "udp://233.5.5.5:53"
-        - addr: "udp://80.80.80.80:53"
-        - addr: "udp://80.80.81.81:53"
-        - addr: "udp://[2606:4700:4700::1111]:53"
-        - addr: "udp://[2606:4700:4700::1001]:53"
-        - addr: "udp://1.1.1.1:53"
-        - addr: "udp://1.0.0.1:53"
+        - addr: "tcp+pipeline://[2606:4700:4700::1111]:53"
+          dial_addr: "2606:4700:4700::1111"
+        - addr: "tcp+pipeline://[2a02:6b8:0:1::feed:0ff]:53"
+          dial_addr: "2a02:6b8:0:1::feed:0ff"
+        - addr: "udp://[2402:4e00:1::]:53"
+          dial_addr: "2402:4e00:1::"
+        - addr: "udp://[2400:3200:baba::1]:53"
+          dial_addr: "2400:3200:baba::1"
   # ---------- 策略序列 ----------
   - tag: "block_seq"
     type: "sequence"
@@ -233,7 +223,7 @@ plugins:
   - tag: "remote_seq"
     type: "sequence"
     args:
-      - exec: "prefer_ipv4"
+      - exec: "prefer_ipv6"
       - exec: "$forward_remote"
       - matches: "has_resp"
         exec: "accept"
@@ -244,10 +234,11 @@ plugins:
       - matches: "has_resp"
         exec: "accept"
       - exec: "ttl 300"
-  # ---------- 新增：二次分流序列 ----------
+  # 二次分流: 先本地解析，再按响应 IP 校验
   - tag: "local_then_check"
     type: "sequence"
     args:
+      - exec: "prefer_ipv6"
       - exec: "$forward_local"
       - matches: "has_resp"
         exec: "goto check_resp_ip"
@@ -258,18 +249,20 @@ plugins:
   - tag: "check_resp_ip"
     type: "sequence"
     args:
+      # 命中 gfw_ip 则丢弃响应，强制走远程
       - matches: "resp_ip $gfw_ip"
         exec: "drop_resp"
       - matches: "resp_ip $gfw_ip"
         exec: "goto remote_seq"
+      # 响应 IP 属于中国大陆则接受
       - matches: "resp_ip $geoip_cn"
         exec: "accept"
+      # 兜底: 非中国 IP 走远程
       - exec: "goto remote_seq"
   - tag: "common_seq"
     type: "sequence"
     args:
-      - matches: "!$rate_limit"
-        exec: "reject 3"
+      - exec: "$query_recorder_main"
       - exec: "$hosts"
       - matches: "has_resp"
         exec: "accept"
@@ -290,29 +283,39 @@ plugins:
       - matches: "qname $geosite_no_cn"
         exec: "goto remote_seq"
       - exec: "goto local_then_check"
-      - exec: "$query_recorder_main"
+  # ---------- 服务器 ----------
   - tag: "seq_5360"
     type: "sequence"
     args:
       - exec: "goto common_seq"
-  - tag: "udp_server_5360"
+  - tag: "udp_server_5360_v4"
     type: "udp_server"
     args:
       entry: "seq_5360"
       listen: "127.0.0.1:5360"
-  - tag: "tcp_server_5360"
+  - tag: "tcp_server_5360_v4"
     type: "tcp_server"
     args:
       entry: "seq_5360"
       listen: "127.0.0.1:5360"
+  - tag: "udp_server_5360_v6"
+    type: "udp_server"
+    args:
+      entry: "seq_5360"
+      listen: "[::1]:5360"
+  - tag: "tcp_server_5360_v6"
+    type: "tcp_server"
+    args:
+      entry: "seq_5360"
+      listen: "[::1]:5360"
+  # DoH 服务器: 为浏览器提供加密 DNS
   - tag: "doh_server"
     type: "http_server"
     args:
-      listen: ":8443"
-      cert: "/etc/oxidns/server.crt"
-      key: "/etc/oxidns/server.key"
+      listen: "[::1]:8443"
+      cert: "${CA_CERT}"
+      key: "${CA_KEY}"
       enable_http3: true
-      src_ip_header: "X-Forwarded-For"
       entries:
         - path: "/dns-query"
           exec: "seq_5360"
