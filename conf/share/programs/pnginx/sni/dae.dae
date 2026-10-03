@@ -1,0 +1,48 @@
+global {
+    wan_interface: "auto"
+    lan_interface: "auto"
+}
+
+dns {
+    upstream {
+        local: 'tcp+udp://127.0.0.1:5360'
+    }
+
+    routing {
+        request {
+            fallback: local
+        }
+    }
+}
+
+node {
+    sni_gate: 'socks5://127.0.0.1:10443'
+}
+
+group {
+    proxy_group {
+        policy: fixed(0)
+    }
+}
+
+routing {
+    pname(dae) -> must_direct
+    pname(sni-gate) -> must_direct
+
+    # DoH ECH
+    dport(443) && pname(oxidns) -> proxy_group
+    dport(443) && pname(smartdns) -> proxy_group
+    dport(443) && pname(pproxy) -> proxy_group
+
+    pname(oxidns) -> must_direct
+    pname(smartdns) -> must_direct
+    pname(caddy) -> must_direct
+    pname(pproxy) -> must_direct
+    
+    dip(224.0.0.0/3, 'ff00::/8') -> direct
+    dip(geoip:private) -> direct
+
+    # dport(443) -> proxy_group
+
+    fallback: proxy_group
+}
