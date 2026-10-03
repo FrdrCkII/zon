@@ -276,6 +276,7 @@
   (org-modules '(org-tempo org-protocol))
   ;; 只做一次判定即可，避免在无图形时也访问字符表
   (org-ellipsis (if (char-displayable-p ?⏷) " ⏷" "..."))
+  (org-support-shift-select t)
   :config
   (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
   (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
