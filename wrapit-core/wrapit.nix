@@ -46,27 +46,27 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   postWrapHook = "";
 
-  wrapArgs = [
-    "--set LD_LIBRARY_PATH '${lib.makeLibraryPath extraLibs}'"
-    "--prefix PATH : '${lib.makeBinPath extraPrograms}'"
-  ]
-  ++ lib.mapAttrsToList (n: v: "--set ${n} ${v}") set
-  ++ lib.mapAttrsToList (n: v: "--set-default ${n} ${v}") setDefault
-  ++ map (v: "--unset ${v}") unset
-  ++ lib.optional (lib.isString chdir) "--chdir ${chdir}"
-  ++ map (v: "--add-flag ${v}") addFlags
-  ++ map (v: "--add-flag ${v}") appendFlags
-  ++ lib.mapAttrsToList (n: v: "--prefix ${n} ${v}") prefix
-  ++ lib.mapAttrsToList (n: v: "--suffix ${n} ${v}") suffix
-  ++ lib.optional (lib.isString argv0) (
-    if argv0 == "inherit" then
-      "--inherit-argv0"
-    else if argv0 == "resolve" then
-      "--resolve-argv0"
-    else
-      "--argv0 ${argv0}"
-  )
-  ++ extraWrapArgs;
+  wrapArgs =
+    [ ]
+    ++ lib.optional (extraLibs != [ ]) "--set LD_LIBRARY_PATH '${lib.makeLibraryPath extraLibs}'"
+    ++ lib.optional (extraPrograms != [ ]) "--prefix PATH : '${lib.makeBinPath extraPrograms}'"
+    ++ lib.mapAttrsToList (n: v: "--set ${n} ${v}") set
+    ++ lib.mapAttrsToList (n: v: "--set-default ${n} ${v}") setDefault
+    ++ map (v: "--unset ${v}") unset
+    ++ lib.optional (lib.isString chdir) "--chdir ${chdir}"
+    ++ map (v: "--add-flag ${v}") addFlags
+    ++ map (v: "--add-flag ${v}") appendFlags
+    ++ lib.mapAttrsToList (n: v: "--prefix ${n} ${v}") prefix
+    ++ lib.mapAttrsToList (n: v: "--suffix ${n} ${v}") suffix
+    ++ lib.optional (lib.isString argv0) (
+      if argv0 == "inherit" then
+        "--inherit-argv0"
+      else if argv0 == "resolve" then
+        "--resolve-argv0"
+      else
+        "--argv0 ${argv0}"
+    )
+    ++ extraWrapArgs;
 
   buildCommand = ''
     ${finalAttrs.preWrapHook}

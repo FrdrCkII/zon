@@ -21,16 +21,16 @@ wrapit.emacs.override {
     ];
   };
   emacsPackages = epkgs: [
-    epkgs.org
-    epkgs.htmlize
-    epkgs.neotree
-    epkgs.diff-hl
+    # epkgs.org
+    # epkgs.htmlize
+    # epkgs.neotree
+    # epkgs.diff-hl
     epkgs.treesit-auto
     epkgs.treesit-grammars.with-all-grammars
-    epkgs.nix-ts-mode
-    epkgs.just-ts-mode
-    epkgs.apheleia
-    epkgs.corfu
+    # epkgs.nix-ts-mode
+    # epkgs.just-ts-mode
+    # epkgs.apheleia
+    # epkgs.corfu
   ];
   extraPrograms = [
     curl
