@@ -1,0 +1,19 @@
+[dependencies]
+anyhow = "1.0.104"
+clap = {features = ["derive"], version = "4.6.7"}
+log = {features = ["std"], version = "0.4.34"}
+serde = {features = ["derive"], version = "1.0.229"}
+serde_json = "1.0.151"
+tokio = {features = ["io-util", "process", "rt-multi-thread"], version = "1.53.1"}
+
+[package]
+edition = "2024"
+license = "EUPL-1.2"
+name = "fnlock"
+version = "0.1.0"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+strip = true
