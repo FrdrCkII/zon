@@ -59,8 +59,7 @@
                 loader = "systemd-boot";
               };
               network = {
-                wireless = "nm-iwd";
-                dns = null;
+                wireless = "iwd";
               };
               nix = {
                 implementation = "nix";

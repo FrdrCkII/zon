@@ -1701,7 +1701,7 @@
     ],
     "disk": [
       {
-        "attached_to": 39,
+        "attached_to": 24,
         "base_class": {
           "hex": "0106",
           "name": "Mass Storage Device",
@@ -1748,7 +1748,7 @@
             "value_2": 4096
           }
         ],
-        "serial": "6FUKS0RKZ0E7",
+        "serial": "5FLKS1VNZ0E7",
         "slot": {
           "bus": 0,
           "number": 0
@@ -1767,13 +1767,13 @@
           "value": 7695
         },
         "sysfs_bus_id": "nvme0",
-        "sysfs_device_link": "/devices/pci0000:00/0000:00:01.0/0000:01:00.0/nvme/nvme0",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:06.1/0000:03:00.0/nvme/nvme0",
         "sysfs_id": "/class/block/nvme0n1",
         "unix_device_names": [
-          "/dev/disk/by-id/nvme-KIOXIA-EXCERIA_PLUS_G3_SSD_6FUKS0RKZ0E7",
-          "/dev/disk/by-id/nvme-KIOXIA-EXCERIA_PLUS_G3_SSD_6FUKS0RKZ0E7_1",
-          "/dev/disk/by-id/nvme-eui.00000000000000008ce38e0300b00bce",
-          "/dev/disk/by-path/pci-0000:01:00.0-nvme-1",
+          "/dev/disk/by-id/nvme-KIOXIA-EXCERIA_PLUS_G3_SSD_5FLKS1VNZ0E7",
+          "/dev/disk/by-id/nvme-KIOXIA-EXCERIA_PLUS_G3_SSD_5FLKS1VNZ0E7_1",
+          "/dev/disk/by-id/nvme-eui.00000000000000008ce38e0300ae3edd",
+          "/dev/disk/by-path/pci-0000:03:00.0-nvme-1",
           "/dev/nvme0n1"
         ],
         "vendor": {
@@ -1782,7 +1782,7 @@
         }
       },
       {
-        "attached_to": 24,
+        "attached_to": 39,
         "base_class": {
           "hex": "0106",
           "name": "Mass Storage Device",
@@ -1829,7 +1829,7 @@
             "value_2": 4096
           }
         ],
-        "serial": "5FLKS1VNZ0E7",
+        "serial": "6FUKS0RKZ0E7",
         "slot": {
           "bus": 0,
           "number": 1
@@ -1848,13 +1848,13 @@
           "value": 7695
         },
         "sysfs_bus_id": "nvme1",
-        "sysfs_device_link": "/devices/pci0000:00/0000:00:06.1/0000:03:00.0/nvme/nvme1",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:01.0/0000:01:00.0/nvme/nvme1",
         "sysfs_id": "/class/block/nvme1n1",
         "unix_device_names": [
-          "/dev/disk/by-id/nvme-KIOXIA-EXCERIA_PLUS_G3_SSD_5FLKS1VNZ0E7",
-          "/dev/disk/by-id/nvme-KIOXIA-EXCERIA_PLUS_G3_SSD_5FLKS1VNZ0E7_1",
-          "/dev/disk/by-id/nvme-eui.00000000000000008ce38e0300ae3edd",
-          "/dev/disk/by-path/pci-0000:03:00.0-nvme-1",
+          "/dev/disk/by-id/nvme-KIOXIA-EXCERIA_PLUS_G3_SSD_6FUKS0RKZ0E7",
+          "/dev/disk/by-id/nvme-KIOXIA-EXCERIA_PLUS_G3_SSD_6FUKS0RKZ0E7_1",
+          "/dev/disk/by-id/nvme-eui.00000000000000008ce38e0300b00bce",
+          "/dev/disk/by-path/pci-0000:01:00.0-nvme-1",
           "/dev/nvme1n1"
         ],
         "vendor": {
@@ -1992,8 +1992,8 @@
         ],
         "hotplug": "usb",
         "index": 68,
-        "model": "Linux 7.1.8 xhci-hcd xHCI Host Controller",
-        "module_alias": "usb:v1D6Bp0002d0701dc09dsc00dp01ic09isc00ip00in00",
+        "model": "Linux 7.2.6 xhci-hcd xHCI Host Controller",
+        "module_alias": "usb:v1D6Bp0002d0702dc09dsc00dp01ic09isc00ip00in00",
         "resources": [
           {
             "bits": 0,
@@ -2006,7 +2006,7 @@
         ],
         "revision": {
           "hex": "0000",
-          "name": "7.01",
+          "name": "7.02",
           "value": 0
         },
         "serial": "0000:80:14.0",
@@ -2018,7 +2018,7 @@
         "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-0:1.0",
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 7.1.8 xhci-hcd",
+          "name": "Linux 7.2.6 xhci-hcd",
           "value": 7531
         }
       },
@@ -2164,11 +2164,11 @@
         ],
         "hotplug": "usb",
         "index": 73,
-        "model": "Linux 7.1.8 xhci-hcd xHCI Host Controller",
-        "module_alias": "usb:v1D6Bp0003d0701dc09dsc00dp03ic09isc00ip00in00",
+        "model": "Linux 7.2.6 xhci-hcd xHCI Host Controller",
+        "module_alias": "usb:v1D6Bp0003d0702dc09dsc00dp03ic09isc00ip00in00",
         "revision": {
           "hex": "0000",
-          "name": "7.01",
+          "name": "7.02",
           "value": 0
         },
         "serial": "0000:80:14.0",
@@ -2180,7 +2180,7 @@
         "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb4/4-0:1.0",
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 7.1.8 xhci-hcd",
+          "name": "Linux 7.2.6 xhci-hcd",
           "value": 7531
         }
       },
@@ -2240,7 +2240,7 @@
           "hub"
         ],
         "hotplug": "usb",
-        "index": 74,
+        "index": 75,
         "model": "USB2.0 Hub",
         "module_alias": "usb:v05E3p0608d6070dc09dsc00dp01ic09isc00ip00in00",
         "resources": [
@@ -2326,8 +2326,8 @@
         ],
         "hotplug": "usb",
         "index": 77,
-        "model": "Linux 7.1.8 xhci-hcd xHCI Host Controller",
-        "module_alias": "usb:v1D6Bp0002d0701dc09dsc00dp01ic09isc00ip00in00",
+        "model": "Linux 7.2.6 xhci-hcd xHCI Host Controller",
+        "module_alias": "usb:v1D6Bp0002d0702dc09dsc00dp01ic09isc00ip00in00",
         "resources": [
           {
             "bits": 0,
@@ -2340,7 +2340,7 @@
         ],
         "revision": {
           "hex": "0000",
-          "name": "7.01",
+          "name": "7.02",
           "value": 0
         },
         "serial": "0000:00:0d.0",
@@ -2352,7 +2352,7 @@
         "sysfs_id": "/devices/pci0000:00/0000:00:0d.0/usb1/1-0:1.0",
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 7.1.8 xhci-hcd",
+          "name": "Linux 7.2.6 xhci-hcd",
           "value": 7531
         }
       },
@@ -2413,11 +2413,11 @@
         ],
         "hotplug": "usb",
         "index": 81,
-        "model": "Linux 7.1.8 xhci-hcd xHCI Host Controller",
-        "module_alias": "usb:v1D6Bp0003d0701dc09dsc00dp03ic09isc00ip00in00",
+        "model": "Linux 7.2.6 xhci-hcd xHCI Host Controller",
+        "module_alias": "usb:v1D6Bp0003d0702dc09dsc00dp03ic09isc00ip00in00",
         "revision": {
           "hex": "0000",
-          "name": "7.01",
+          "name": "7.02",
           "value": 0
         },
         "serial": "0000:00:0d.0",
@@ -2429,7 +2429,7 @@
         "sysfs_id": "/devices/pci0000:00/0000:00:0d.0/usb2/2-0:1.0",
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 7.1.8 xhci-hcd",
+          "name": "Linux 7.2.6 xhci-hcd",
           "value": 7531
         }
       }
@@ -2529,7 +2529,7 @@
           "/dev/input/by-id/usb-SEMICO_USB_Keyboard-event-kbd",
           "/dev/input/by-path/pci-0000:80:14.0-usb-0:6:1.0-event-kbd",
           "/dev/input/by-path/pci-0000:80:14.0-usbv2-0:6:1.0-event-kbd",
-          "/dev/input/event0"
+          "/dev/input/event15"
         ],
         "vendor": {
           "hex": "1a2c",
@@ -2840,7 +2840,7 @@
         "sysfs_bus_id": "3-6:1.1",
         "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-6/3-6:1.1",
         "unix_device_names": [
-          "/dev/input/event3"
+          "/dev/input/event17"
         ],
         "vendor": {
           "hex": "1a2c",
@@ -2849,7 +2849,7 @@
         }
       },
       {
-        "attached_to": 74,
+        "attached_to": 68,
         "base_class": {
           "hex": "0105",
           "name": "Mouse",
@@ -2917,7 +2917,7 @@
           "usbhid"
         ],
         "hotplug": "usb",
-        "index": 75,
+        "index": 74,
         "model": "YSPRINGTECH USB OPTICAL MOUSE",
         "module_alias": "usb:v10C4p0005d0000dc00dsc00dp00ic03isc01ip02in00",
         "resources": [
@@ -2939,8 +2939,8 @@
           "name": "USB Mouse",
           "value": 3
         },
-        "sysfs_bus_id": "3-11.3:1.0",
-        "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-11/3-11.3/3-11.3:1.0",
+        "sysfs_bus_id": "3-5:1.0",
+        "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb3/3-5/3-5:1.0",
         "unix_device_name2": "/dev/input/mouse0",
         "unix_device_names": [
           "/dev/input/mice"
@@ -2970,7 +2970,7 @@
           "pci"
         ],
         "detail": {
-          "command": 1031,
+          "command": 1027,
           "function": 0,
           "header_type": 0,
           "prog_if": 0,

@@ -6,6 +6,14 @@
   }
 
   {
+    domain = "api.fanbox.cc";
+    ips = [
+      "104.18.41.140"
+      "172.64.146.116"
+    ];
+  }
+
+  {
     domain = "pixiv.net";
     altNames = [
       "*.pixiv.net"
@@ -34,7 +42,6 @@
       "210.140.139.129"
       "210.140.139.136"
     ];
-    sni = "pixivision.net";
   }
 
   {
@@ -50,12 +57,15 @@
       "210.140.139.129"
       "210.140.139.136"
     ];
-    sni = "pixivision.net";
   }
 
   {
     domain = "a.pixiv.org";
-    altNames = [ "*.pixiv.org" ];
-    sni = "pixivision.net";
+    altNames = [ "d.pixiv.org" ];
+    ips = [
+      "210.140.139.183"
+      "210.140.139.184"
+      "210.140.139.182"
+    ];
   }
 ]

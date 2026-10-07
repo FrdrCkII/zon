@@ -3,6 +3,9 @@
     "http": {
       "servers": {
         "srv0": {
+          "automatic_https": {
+            "disable": true
+          },
           "listen": [
             "127.0.0.1:443"
           ],
@@ -2437,8 +2440,7 @@
                           "transport": {
                             "protocol": "http",
                             "tls": {
-                              "insecure_skip_verify": true,
-                              "server_name": "pixivision.net"
+                              "insecure_skip_verify": true
                             }
                           },
                           "upstreams": [
@@ -2744,6 +2746,180 @@
                 {
                   "host": [
                     "lab.github.com"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "ip_hash"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          },
+                          "upstreams": [
+                            {
+                              "dial": "104.18.41.140:443"
+                            },
+                            {
+                              "dial": "172.64.146.116:443"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "api.fanbox.cc"
+                  ]
+                }
+              ],
+              "terminal": true
+            },
+            {
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "handler": "reverse_proxy",
+                          "headers": {
+                            "request": {
+                              "replace": {
+                                "@has_if_range": [
+                                  {
+                                    "replace": "{http.request.header.If-Range}",
+                                    "search_regexp": "If-Range"
+                                  }
+                                ],
+                                "@has_range": [
+                                  {
+                                    "replace": "{http.request.header.Range}",
+                                    "search_regexp": "Range"
+                                  }
+                                ]
+                              },
+                              "set": {
+                                "Host": [
+                                  "{http.request.host}"
+                                ],
+                                "User-Agent": [
+                                  "{http.request.header.User-Agent}"
+                                ],
+                                "X-Real-Ip": [
+                                  "{http.request.remote.host}"
+                                ]
+                              }
+                            }
+                          },
+                          "health_checks": {
+                            "passive": {
+                              "fail_duration": 10000000000,
+                              "max_fails": 2,
+                              "unhealthy_latency": 1000000000,
+                              "unhealthy_status": [
+                                500,
+                                502,
+                                503,
+                                504
+                              ]
+                            }
+                          },
+                          "load_balancing": {
+                            "selection_policy": {
+                              "policy": "ip_hash"
+                            }
+                          },
+                          "transport": {
+                            "protocol": "http",
+                            "tls": {
+                              "insecure_skip_verify": true
+                            }
+                          },
+                          "upstreams": [
+                            {
+                              "dial": "210.140.139.183:443"
+                            },
+                            {
+                              "dial": "210.140.139.184:443"
+                            },
+                            {
+                              "dial": "210.140.139.182:443"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "match": [
+                {
+                  "host": [
+                    "a.pixiv.org",
+                    "d.pixiv.org"
                   ]
                 }
               ],
@@ -3471,8 +3647,7 @@
                           "transport": {
                             "protocol": "http",
                             "tls": {
-                              "insecure_skip_verify": true,
-                              "server_name": "pixivision.net"
+                              "insecure_skip_verify": true
                             }
                           },
                           "upstreams": [
@@ -3512,96 +3687,6 @@
                   "host": [
                     "i.pximg.net",
                     "*.pximg.net"
-                  ]
-                }
-              ],
-              "terminal": true
-            },
-            {
-              "handle": [
-                {
-                  "handler": "subroute",
-                  "routes": [
-                    {
-                      "handle": [
-                        {
-                          "dynamic_upstreams": {
-                            "name": "a.pixiv.org",
-                            "port": "443",
-                            "refresh": 1000000000,
-                            "resolver": {
-                              "addresses": [
-                                "127.0.0.1:5360"
-                              ]
-                            },
-                            "source": "a"
-                          },
-                          "handler": "reverse_proxy",
-                          "headers": {
-                            "request": {
-                              "replace": {
-                                "@has_if_range": [
-                                  {
-                                    "replace": "{http.request.header.If-Range}",
-                                    "search_regexp": "If-Range"
-                                  }
-                                ],
-                                "@has_range": [
-                                  {
-                                    "replace": "{http.request.header.Range}",
-                                    "search_regexp": "Range"
-                                  }
-                                ]
-                              },
-                              "set": {
-                                "Host": [
-                                  "{http.request.host}"
-                                ],
-                                "User-Agent": [
-                                  "{http.request.header.User-Agent}"
-                                ],
-                                "X-Real-Ip": [
-                                  "{http.request.remote.host}"
-                                ]
-                              }
-                            }
-                          },
-                          "health_checks": {
-                            "passive": {
-                              "fail_duration": 10000000000,
-                              "max_fails": 2,
-                              "unhealthy_latency": 1000000000,
-                              "unhealthy_status": [
-                                500,
-                                502,
-                                503,
-                                504
-                              ]
-                            }
-                          },
-                          "load_balancing": {
-                            "selection_policy": {
-                              "policy": "ip_hash"
-                            }
-                          },
-                          "transport": {
-                            "protocol": "http",
-                            "tls": {
-                              "insecure_skip_verify": true,
-                              "server_name": "pixivision.net"
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "match": [
-                {
-                  "host": [
-                    "a.pixiv.org",
-                    "*.pixiv.org"
                   ]
                 }
               ],
@@ -3743,6 +3828,9 @@
                   "api.github.com",
                   "lfs.github.com",
                   "lab.github.com",
+                  "api.fanbox.cc",
+                  "a.pixiv.org",
+                  "d.pixiv.org",
                   "*.githubusercontent.com",
                   "raw.githubusercontent.com",
                   "*.githubassets.com",
@@ -3757,8 +3845,6 @@
                   "github.com",
                   "*.pximg.net",
                   "i.pximg.net",
-                  "*.pixiv.org",
-                  "a.pixiv.org",
                   "*.fanbox.cc",
                   "*.pixiv.net",
                   "fanbox.cc",

@@ -12,6 +12,8 @@
         `((".*" ,(expand-file-name "auto-saves/" user-emacs-directory) t)))
 (ignore-errors
   (make-directory (expand-file-name "auto-saves/" user-emacs-directory) t))
+(setopt package-quickstart-file
+        (expand-file-name "package-quickstart.elc" user-emacs-directory))
 
 ;; 原生编译缓存
 (when (fboundp 'startup-redirect-eln-cache)

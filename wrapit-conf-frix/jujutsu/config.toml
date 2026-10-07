@@ -32,5 +32,5 @@ upmain = ["bookmark", "set", "main"]
 "closest_bookmark(to)" = "heads(::to & bookmarks())"
 
 [user]
-email = "FrdrCkII@outlook.com"
-name = "FrdrCkII"
+email = "frederickshen@foxmail.com"
+name = "frederickshen"

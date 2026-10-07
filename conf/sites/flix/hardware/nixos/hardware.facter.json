@@ -1187,6 +1187,7 @@
         ],
         "siblings": 18,
         "stepping": 2,
+        "tlb_size": 15696,
         "units": 128,
         "vendor_name": "GenuineIntel",
         "write_protect": false
@@ -1489,8 +1490,8 @@
         ],
         "hotplug": "usb",
         "index": 55,
-        "model": "Linux 7.1.8 xhci-hcd xHCI Host Controller",
-        "module_alias": "usb:v1D6Bp0002d0701dc09dsc00dp01ic09isc00ip00in00",
+        "model": "Linux 7.2.8 xhci-hcd xHCI Host Controller",
+        "module_alias": "usb:v1D6Bp0002d0702dc09dsc00dp01ic09isc00ip00in00",
         "resources": [
           {
             "bits": 0,
@@ -1503,7 +1504,7 @@
         ],
         "revision": {
           "hex": "0000",
-          "name": "7.01",
+          "name": "7.02",
           "value": 0
         },
         "serial": "0000:80:14.0",
@@ -1515,7 +1516,7 @@
         "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb1/1-0:1.0",
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 7.1.8 xhci-hcd",
+          "name": "Linux 7.2.8 xhci-hcd",
           "value": 7531
         }
       },
@@ -1576,11 +1577,11 @@
         ],
         "hotplug": "usb",
         "index": 58,
-        "model": "Linux 7.1.8 xhci-hcd xHCI Host Controller",
-        "module_alias": "usb:v1D6Bp0003d0701dc09dsc00dp03ic09isc00ip00in00",
+        "model": "Linux 7.2.8 xhci-hcd xHCI Host Controller",
+        "module_alias": "usb:v1D6Bp0003d0702dc09dsc00dp03ic09isc00ip00in00",
         "revision": {
           "hex": "0000",
-          "name": "7.01",
+          "name": "7.02",
           "value": 0
         },
         "serial": "0000:80:14.0",
@@ -1592,7 +1593,7 @@
         "sysfs_id": "/devices/pci0000:80/0000:80:14.0/usb2/2-0:1.0",
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 7.1.8 xhci-hcd",
+          "name": "Linux 7.2.8 xhci-hcd",
           "value": 7531
         }
       }
@@ -1746,15 +1747,15 @@
           "hex": "528a",
           "value": 21130
         },
-        "index": 62,
+        "index": 64,
         "sub_class": {
           "hex": "0001",
           "name": "bus",
           "value": 1
         },
-        "sysfs_id": "/devices/pci0000:80/0000:80:19.0/i2c_designware.0/i2c-13/i2c-HTX528A:00/0018:0911:528A.0001/input/input18",
+        "sysfs_id": "/devices/pci0000:80/0000:80:19.0/i2c_designware.0/i2c-17/i2c-HTX528A:00/0018:0911:528A.0001/input/input11",
         "unix_device_names": [
-          "/dev/input/event13",
+          "/dev/input/event9",
           "/dev/input/ + handler"
         ],
         "vendor": {
@@ -1833,6 +1834,7 @@
               "11",
               "12",
               "13",
+              "14",
               "36",
               "40",
               "44",
@@ -1841,11 +1843,16 @@
               "56",
               "60",
               "64",
-              "149",
-              "153",
-              "157",
-              "161",
-              "165"
+              "100",
+              "104",
+              "108",
+              "112",
+              "116",
+              "120",
+              "124",
+              "128",
+              "132",
+              "136"
             ],
             "enc_modes": [
               "WEP40",
@@ -1867,6 +1874,7 @@
               "2.462",
               "2.467",
               "2.472",
+              "2.484",
               "5.18",
               "5.2",
               "5.22",
@@ -1875,11 +1883,16 @@
               "5.28",
               "5.3",
               "5.32",
-              "5.745",
-              "5.765",
-              "5.785",
-              "5.805",
-              "5.825"
+              "5.5",
+              "5.52",
+              "5.54",
+              "5.56",
+              "5.58",
+              "5.6",
+              "5.62",
+              "5.64",
+              "5.66",
+              "5.68"
             ],
             "type": "wlan"
           }
@@ -1928,7 +1941,7 @@
           "pci"
         ],
         "detail": {
-          "command": 1031,
+          "command": 1027,
           "function": 0,
           "header_type": 0,
           "prog_if": 0,
@@ -2009,7 +2022,7 @@
         "class_list": [
           "network_interface"
         ],
-        "index": 59,
+        "index": 60,
         "model": "Loopback network interface",
         "sub_class": {
           "hex": "0000",
@@ -2039,7 +2052,7 @@
         "drivers": [
           "mt7921e"
         ],
-        "index": 60,
+        "index": 61,
         "model": "WLAN network interface",
         "resources": [
           {
@@ -2080,7 +2093,7 @@
         "drivers": [
           "r8169"
         ],
-        "index": 61,
+        "index": 62,
         "model": "Ethernet network interface",
         "resources": [
           {
@@ -3683,7 +3696,7 @@
           274877907007,
           279172874304,
           283467841601,
-          141733920834
+          158913790018
         ],
         "name": "Firmware Version Info"
       },

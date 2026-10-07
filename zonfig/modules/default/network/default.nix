@@ -24,14 +24,6 @@ in
         ];
         default = "iwd";
       };
-
-      dns = lib.mkOption {
-        type = lib.types.enum [
-          null
-          "dnsmasq"
-        ];
-        default = "dnsmasq";
-      };
     };
   };
 

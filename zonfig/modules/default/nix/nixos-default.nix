@@ -14,11 +14,10 @@
         experimental-features = [
           "nix-command"
         ];
+        nix-path = lib.mkForce (
+          lib.mapAttrsToList (name: lib.const "${name}=/run/current-system/inputs/${name}") inputs
+        );
       };
-
-      nixPath = lib.mkForce (
-        lib.mapAttrsToList (name: lib.const "${name}=/run/current-system/inputs/${name}") inputs
-      );
     };
 
     system.systemBuilderCommands = ''

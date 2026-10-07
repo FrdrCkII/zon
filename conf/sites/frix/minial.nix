@@ -67,6 +67,7 @@
           "render"
           "incus-admin"
           "keys"
+          "tty"
         ];
         packages = [
           pkgs.frix.jujutsu

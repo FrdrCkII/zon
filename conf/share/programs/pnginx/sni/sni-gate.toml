@@ -1,0 +1,67 @@
+# ==============================================================================
+# 全局基础配置
+# ==============================================================================
+
+[ca]
+cert_path = "/etc/pproxy/ca/rootCA.crt"
+key_path = "/etc/pproxy/ca/rootCA.key"
+common_name = "sni-gate Global ECH CA"
+organization = "Local"
+leaf_validity_days = 397
+install_to_system_root = false
+
+[cache]
+capacity = 8192
+ttl_secs = 86400
+
+[global]
+log = "warn"
+connect_timeout = "5s"
+resolver = "@cloudflare-doh"
+unmatched = "close"
+
+[global.http2]
+enabled = true
+probe = "warn"
+
+[[listener]]
+addr = "127.0.0.1:10443"
+
+[listener.default_route]
+type = "ech"
+upstream = "443"
+
+[listener.ech]
+mode = "doh"
+require_ech = false
+
+[[listener]]
+addr = "[::1]:10443"
+
+[listener.default_route]
+type = "ech"
+upstream = "443"
+
+[listener.ech]
+mode = "doh"
+require_ech = false
+
+[psl]
+source = "file"
+max_age = "30d"
+auto_update = true
+
+[resolvers.cloudflare-doh]
+endpoint = "https://dns.cloudflare.com/dns-query"
+
+[resolvers.cloudflare-doh.ech]
+mode = "doh-with-fallback"
+config = "AEX+DQBB1AAgACCuuUsJXnatSGdOb+4U4agDcGIoe7CEgnEQuWfwsbO2JAAEAAEAAQASY2xvdWRmbGFyZS1lY2guY29tAAA="
+require_ech = true
+ech_refresh = "1h"
+ech_domain = "cloudflare-ech.com"
+
+[store]
+enabled = true
+dir = "certs"
+renew_margin_days = 30

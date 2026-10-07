@@ -83,6 +83,7 @@ let
   caddyFile = pkgs.writeText "caddyfile" ''
     {
     	default_bind 127.0.0.1
+      auto_https off
     	log {
     		level error
     		format console
