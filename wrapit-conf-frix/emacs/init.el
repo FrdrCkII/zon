@@ -132,19 +132,95 @@
 
 ;;; LSP & Tree-sitter ;;;
 
-(setopt treesit-font-lock-level 4)
+(use-package treesit
+  :ensure nil
+  :custom
+  (treesit-font-lock-level 4)
+  :config
+  (add-to-list 'treesit-language-source-alist
+               '(kotlin "https://github.com/fwcd/tree-sitter-kotlin" "v0.3.8")))
 
 (use-package treesit-auto
   :custom
   (treesit-auto-install nil)
   :config
+  ;; Kotlin
+  (add-to-list 'treesit-auto-recipe-list
+               (make-treesit-auto-recipe
+                :lang 'kotlin
+                :ts-mode 'kotlin-ts-mode
+                :remap 'kotlin-mode
+                :url "https://github.com/fwcd/tree-sitter-kotlin"
+                :ext "\\.kts?\\'"))
+
+  ;; Nix
+  (add-to-list 'treesit-auto-recipe-list
+               (make-treesit-auto-recipe
+                :lang 'nix
+                :ts-mode 'nix-ts-mode
+                :remap 'nix-mode
+                :url "https://github.com/nix-community/tree-sitter-nix"
+                :ext "\\.nix\\'"))
+
+  ;; Just
+  (add-to-list 'treesit-auto-recipe-list
+               (make-treesit-auto-recipe
+                :lang 'just
+                :ts-mode 'just-ts-mode
+                :remap 'just-mode
+                :url "https://github.com/IndianBoy42/tree-sitter-just"
+                :ext "\\(?:Justfile\\|\\.just\\|\\.justfile\\)\\'"))
+
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode 1))
-
 (use-package apheleia
   :config
   (setq apheleia-mode-lighter " fmt")
+
+  ;; nixfmt
+  (add-to-list 'apheleia-formatters
+               '(nixfmt "nixfmt" "--strict"))
+
+  ;; rustfmt
+  (add-to-list 'apheleia-formatters
+               '(rustfmt "rustfmt"
+                         "--config" "skip_children=true"
+                         "--edition" "2024"))
+
+  ;; google-java-format
+  (add-to-list 'apheleia-formatters
+               '(google-java-format "google-java-format" "-"))
+
+  ;; taplo
+  (add-to-list 'apheleia-formatters
+               '(taplo "taplo" "format" "-"))
+
+  ;; prettier
+  (add-to-list 'apheleia-formatters
+               '(prettier "prettier" "--stdin-filepath" filepath))
+
+  ;; yamlfmt
+  (add-to-list 'apheleia-formatters
+               '(yamlfmt "yamlfmt" "-"))
+
+  ;; ktlint
+  (add-to-list 'apheleia-formatters
+               '(ktlint "ktlint" "--log-level=none" "--stdin" "-F" "-"))
+
+  (add-to-list 'apheleia-mode-alist '(nix-ts-mode        . nixfmt))
+  (add-to-list 'apheleia-mode-alist '(rust-ts-mode       . rustfmt))
+  (add-to-list 'apheleia-mode-alist '(java-ts-mode       . google-java-format))
+  (add-to-list 'apheleia-mode-alist '(toml-ts-mode       . taplo))
+  (add-to-list 'apheleia-mode-alist '(json-ts-mode       . prettier))
+  (add-to-list 'apheleia-mode-alist '(json5-ts-mode      . prettier))
+  (add-to-list 'apheleia-mode-alist '(yaml-ts-mode       . yamlfmt))
+  (add-to-list 'apheleia-mode-alist '(kotlin-ts-mode     . ktlint))
+
   (apheleia-global-mode 1))
+
+(use-package trust-manager
+  :config
+  (trust-manager-mode 1))
 
 (use-package eglot
   :hook
@@ -159,21 +235,32 @@
    (bazel-ts-mode      . eglot-ensure)
    (toml-ts-mode       . eglot-ensure)
    (json-ts-mode       . eglot-ensure)
-   (css-ts-mode        . eglot-ensure))
+   (css-ts-mode        . eglot-ensure)
+   (kotlin-ts-mode     . eglot-ensure))
+  
   :custom
   (eglot-server-programs
    '(((rust-ts-mode rust-mode) . ("rust-analyzer"))
      ((nix-ts-mode nix-mode)   . ("nil"))
      ((java-ts-mode java-mode) . ("jdtls"))
+     ((kotlin-ts-mode)         . ("kotlin-language-server"))
      ((js-ts-mode)             . ("typescript-language-server" "--stdio"))
      ((typescript-ts-mode)     . ("typescript-language-server" "--stdio"))
      ((tsx-ts-mode)            . ("typescript-language-server" "--stdio"))
      ((c-ts-mode c-mode)       . ("clangd"))
      ((c++-ts-mode c++-mode)   . ("clangd"))))
   (eglot-code-action-indications '(eldoc-hint))
+  
   :bind (:map eglot-mode-map
               ("C-c r" . eglot-rename)
               ("C-c f" . eglot-format)))
+
+(add-hook 'java-ts-mode-hook
+          (lambda ()
+            (setq-local lsp-java-format-tab-size 2)
+            (setq-local java-ts-mode-indent-offset 2)
+            (setq-local tab-width 2)
+            (setq-local indent-tabs-mode nil)))
 
 ;; 补全前端
 (use-package corfu

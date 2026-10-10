@@ -2,24 +2,21 @@
   lib,
   rustPlatform,
   fetchFromGitHub,
-  pkg-config,
-  sqlite,
-  zstd,
   nix-update-script,
 }:
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "oxidns";
-  version = "1.6.0";
+  version = "1.6.1";
   __structuredAttrs = true;
 
   src = fetchFromGitHub {
     owner = "svenshi";
     repo = "oxidns";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-BiB+dn+8eVTf31VV2M6bvhcklfvWh7r2NtOhxqk2l9s=";
+    hash = "sha256-AJ1ZjX++5vXbuW6ongxr11yTuBO+MQEHN5lKXT9B9UQ=";
   };
 
-  cargoHash = "sha256-pssXDMTRaUwyAqC07cSMuQFs/KKei3M0eu0tuDJa5lY=";
+  cargoHash = "sha256-giGgqdCNY1T/8cY6V1q0BxrGb3ApIGvnzJcWEa7dUMM=";
 
   doCheck = false;
 

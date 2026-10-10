@@ -7,9 +7,19 @@
   rust-analyzer,
   clang-tools,
   jdt-language-server,
+  kotlin-language-server,
   typescript-language-server,
   nixd,
   nil,
+  # formater
+  treefmt,
+  google-java-format,
+  ktlint,
+  nixfmt,
+  rustfmt,
+  taplo,
+  prettier,
+  yamlfmt,
 }:
 wrapit.emacs.override {
   package = emacs-pgtk;
@@ -37,8 +47,18 @@ wrapit.emacs.override {
     rust-analyzer
     clang-tools
     jdt-language-server
+    kotlin-language-server
     typescript-language-server
     nixd
     nil
+
+    treefmt
+    google-java-format
+    ktlint
+    nixfmt
+    rustfmt
+    taplo
+    prettier
+    yamlfmt
   ];
 }
