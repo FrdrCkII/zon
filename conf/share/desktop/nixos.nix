@@ -54,6 +54,7 @@ in
           pkgs.xdg-desktop-portal-wlr
           pkgs.xdg-desktop-portal-gtk
           pkgs.xdg-desktop-portal-gnome
+          pkgs.xdg-desktop-portal-hyprland
         ];
         config = {
           niri = {
@@ -62,10 +63,12 @@ in
               "gtk"
             ];
             "org.freedesktop.impl.portal.Settings" = [ "darkman" ];
-            "org.freedesktop.impl.portal.Access" = "gtk";
-            "org.freedesktop.impl.portal.FileChooser" = "gtk";
-            "org.freedesktop.impl.portal.Notification" = "gtk";
-            "org.freedesktop.impl.portal.Secret" = "gnome-keyring";
+            "org.freedesktop.impl.portal.Access" = [ "gtk" ];
+            "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+            "org.freedesktop.impl.portal.Notification" = [ "gtk" ];
+            "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+            "org.freedesktop.impl.portal.ScreenCast" = [ "hyprland" ];
+            "org.freedesktop.impl.portal.RemoteDesktop" = [ "hyprland" ];
           };
         };
       };
@@ -83,9 +86,7 @@ in
       etc = {
         "niri/config.kdl".source = config.desktop.niri.configFile;
       };
-      systemPackages = [
-        config.desktop.niri
-      ];
+      systemPackages = [ config.desktop.niri ];
       sessionVariables = {
         NIXOS_OZONE_WL = "1";
         MOZ_ENABLE_WAYLAND = "1";

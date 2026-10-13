@@ -143,7 +143,7 @@ spawn-at-startup "fcitx5" "-d"
 spawn-at-startup "foot" "--server"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "ironbar"
-spawn-at-startup "uwsm" "finalize"
+spawn-sh-at-startup "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=niri"
 layout {
     gaps 0
     center-focused-column "never"
